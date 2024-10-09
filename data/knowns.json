@@ -1,0 +1,11 @@
+[
+    {
+        "known_id": 613,
+        "subject": "LeBron James",
+        "attribute": "basketball",
+        "template": "{} professionally plays the sport",
+        "prediction": " of basketball. He is a professional basketball player.",
+        "prompt": "LeBron James professionally plays the sport of",
+        "relation_id": "P641"
+    }
+]
