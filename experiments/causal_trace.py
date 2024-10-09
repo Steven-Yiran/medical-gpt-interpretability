@@ -2,6 +2,8 @@ import argparse
 import re
 
 import torch
+from nnsight import LanguageModel, util
+from nnsight.tracing.Proxy import Proxy
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
@@ -20,8 +22,25 @@ def main():
     )
     args = parser.parse_args()
 
-    mt = ModelAndTokenizer(args.model_name)
-    print(mt)
+    #mt = ModelAndTokenizer(args.model_name)
+
+    model = LanguageModel(args.model_name, device_map='cuda:0')
+
+    clean_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
+    corrupted_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
+    
+    N_LAYERS = model.config.n_layer
+
+    with model.trace() as tracer:
+
+        # Clean run
+        with tracer.invoke(clean_prompt) as invoker:
+            clean_tokens = invoker.inputs[0]['input_ids']
+
+            clean_hs = [
+                model.transformer.h[layer_idx].output[0]
+                for layer_idx in range(N_LAYERS)
+            ]
 
 
 class ModelAndTokenizer:
