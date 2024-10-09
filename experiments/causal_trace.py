@@ -21,7 +21,7 @@ def main():
     args = parser.parse_args()
 
     mt = ModelAndTokenizer(args.model_name)
-    
+    print(mt)
 
 
 class ModelAndTokenizer:
