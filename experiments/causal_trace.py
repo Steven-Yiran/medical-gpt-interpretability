@@ -11,7 +11,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dsets import ClinicalKnownsDataset
+from dsets.clinical_knowns import ClinicalKnownsDataset
 
 def main():
     parser = argparse.ArgumentParser(description="Causal Trace")
