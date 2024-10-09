@@ -29,7 +29,10 @@ def main():
     clean_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
     corrupted_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
     
-    N_LAYERS = model.config.n_layer
+    if args.model_name == "microsoft/biogpt":
+        N_LAYERS = model.config.num_hidden_layers
+    else:
+        assert False, f"Unsupported model: {args.model_name}"
 
     with model.trace() as tracer:
 
