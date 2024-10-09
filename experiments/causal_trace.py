@@ -11,7 +11,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dsets import ClinicalKnownsDataset
+from clinical_knowns import ClinicalKnownsDataset
 
 def main():
     parser = argparse.ArgumentParser(description="Causal Trace")
@@ -49,7 +49,7 @@ def main():
     mt = ModelAndTokenizer(args.model_name)
 
     if args.fact_file is None:
-        knowns = ClinicalKnownsDataset("data")
+        knowns = ClinicalKnownsDataset("experiments")
     else:
         with open(args.fact_file, "r") as f:
             knowns = json.load(f)
