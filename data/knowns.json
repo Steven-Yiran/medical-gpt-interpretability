@@ -1,0 +1,11 @@
+[
+    {
+        "known_id": 613,
+        "subject": "Alzheimer 's disease",
+        "attribute": "memory",
+        "template": "{} is characterized by",
+        "prediction": " progressive cognitive decline, particularly in memory loss",
+        "prompt": "Alzheimer's disease is characterized by progressive cognitive decline, particularly in",
+        "relation_id": "P641"
+    }
+]

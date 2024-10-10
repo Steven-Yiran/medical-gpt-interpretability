@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 
 class ClinicalKnownsDataset(Dataset):
     def __init__(self, data_dir: str, *args, **kwargs):
-        known_loc = data_dir / "knowns.json"
+        known_loc = f"{data_dir}/knowns.json"
 
         with open(known_loc, "r") as f:
             self.data = json.load(f)
