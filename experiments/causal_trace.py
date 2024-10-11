@@ -7,6 +7,7 @@ from typing import Tuple
 
 import numpy
 import torch
+import matplotlib.pyplot as plt
 from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -45,7 +46,9 @@ def main():
     model_dir = f"n{args.noise_level}_{model_dir}"
     output_dir = args.output_dir.format(model_name=model_dir)
     result_dir = f"{output_dir}/cases"
+    pdf_dir = f"{output_dir}/pdf"
     os.makedirs(result_dir, exist_ok=True)
+    os.makedirs(pdf_dir, exist_ok=True)
 
     mt = ModelAndTokenizer(args.model_name)
 
@@ -66,8 +69,8 @@ def main():
 
     for knowledge in tqdm(knowns):
         known_id = knowledge["known_id"]
-        for kind in [None, "mlp", "attn"]:
-            kind_suffix = f"_{kind}" if kind is not None else ""
+        for module_kind in None, "mlp", "attn":
+            kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{known_id}{kind_suffix}.npz"
             if not os.path.exists(filename):
                 result = calculate_hidden_flow(
@@ -75,28 +78,25 @@ def main():
                     knowledge["prompt"],
                     knowledge["subject"],
                     expect=knowledge["attribute"],
-                    module_kind=kind,
+                    module_kind=module_kind,
                     noise=noise_level,
                     uniform_noise=uniform_noise,
                     replace=args.replace,
-                )
-                print(result)
-            #     numpy_result = {
-            #         k: v.detach().cpu().numpy() if torch.is_tensor(v) else v
-            #         for k, v in result.items()
-            #     }
-            #     numpy.savez(filename, **numpy_result)
-            # else:
-            #     numpy_result = numpy.load(filename, allow_pickle=True)
-            # if not numpy_result["correct_prediction"]:
-            #     tqdm.write(f"Skipping {knowledge['prompt']}")
-            #     continue
-
-
-    # Start of causal tracing of Factual Association Experiment
-
-    clean_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
-    corrupted_prompt = "Alzheimer's disease is characterized by progressive cognitive decline, particularly in"
+                ) 
+                numpy_result = {
+                    k: v.detach().cpu().numpy() if torch.is_tensor(v) else v
+                    for k, v in result.items()
+                }
+                numpy.savez(filename, **numpy_result)
+            else:
+                numpy_result = numpy.load(filename, allow_pickle=True)
+            if not numpy_result["correct_prediction"]:
+                tqdm.write(f"Skipping {knowledge['prompt']}")
+                continue
+            plot_result = dict(numpy_result)
+            plot_result["module_kind"] = module_kind
+            pdfname = f'{pdf_dir}/{str(numpy_result["answer"]).strip()}_{known_id}{kind_suffix}.pdf'
+            plot_trace_heatmap(plot_result, filepath=pdfname)
 
 
 def run_activation_patching_experiment(
@@ -104,7 +104,7 @@ def run_activation_patching_experiment(
     inputs,
     states_to_patch,
     answer_t,
-    tokens_to_currupt: Tuple[int, int],
+    corrupt_range: Tuple[int, int],
     noise: int = 0.1,
     uniform_noise=False,
     replace: bool = False,
@@ -117,14 +117,14 @@ def run_activation_patching_experiment(
 
     Two methods can be used to corrupt the input:
         - Gaussian noising (GN): Adds a large Gaussian noise to the token embeddings of the input 
-          specified by tokens_to_currupt.
+          specified by corrupt_range.
         - Symmetric token replacement (STR): Swap input tokens with semantically related ones.
 
     Args:
         states_to_patch: list of (token_index, layernam). Specifies the states to be patched by restoring 
             the original values in the clean run.
 
-        tokens_to_currupt: specifies a range of tokens (begin, end) to be corrupted.
+        corrupt_range: specifies a range of tokens (begin, end) to be corrupted.
     """
     rs = numpy.random.RandomState(42) # Fixed seed for reproducibility
     if uniform_noise:
@@ -152,8 +152,8 @@ def run_activation_patching_experiment(
         Define rules to execute corrupted run or patched run for a given layer.
         """
         if layer == embed_layername:
-            if tokens_to_currupt is not None:
-                start, end = tokens_to_currupt
+            if corrupt_range is not None:
+                start, end = corrupt_range
                 noise_embed = noise_fn(
                     torch.from_numpy(generator(x.shape[0] - 1, end - start, x.shape[2]))
                 ).cuda()
@@ -209,9 +209,134 @@ def calculate_hidden_flow(
         return dict(correct_prediction=False)
     corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
     low_score = run_activation_patching_experiment(
-        mt.model, inputs, [], answer_t, corrupt_range, noise=noise, uniform_noise=uniform_noise
+        mt.model,
+        inputs,
+        [],
+        answer_t,
+        corrupt_range=corrupt_range,
+        noise=noise,
+        uniform_noise=uniform_noise
     ).item()
-    return low_score
+    if not module_kind:
+        differences = trace_significant_states(
+            mt.model,
+            mt.num_layers,
+            inputs,
+            corrupt_range,
+            answer_t,
+            noise=noise,
+            uniform_noise=uniform_noise,
+            replace=replace,
+            token_range=token_range,
+        )
+    else:
+        differences = trace_significant_window(
+            mt.model,
+            mt.num_layers,
+            inputs,
+            corrupt_range,
+            answer_t,
+            noise=noise,
+            uniform_noise=uniform_noise,
+            replace=replace,
+            window=window,
+            module_kind=module_kind,
+            token_range=token_range,
+        )
+    differences = differences.detach().cpu()
+    return dict(
+        scores=differences,
+        low_score=low_score,
+        high_score=base_score,
+        input_ids=inputs["input_ids"][0],
+        input_tokens=decode_tokens(mt.tokenizer, inputs["input_ids"][0]),
+        subject_range=corrupt_range,
+        answer=answer,
+        window=window,
+        correct_prediction=True,
+        module_kind=module_kind or "",
+    )
+
+
+def trace_significant_states(
+    model,
+    num_layers,
+    inputs,
+    corrupt_range,
+    answer_t,
+    noise=0.1,
+    uniform_noise=False,
+    replace=False,
+    token_range=None,
+):
+    """
+    Traces the important states in the model by running the activation patching experiment
+    over every token/layer combination in the network.
+    """
+    ntokens = inputs["input_ids"].shape[1]
+    table = []
+
+    if token_range is None:
+        token_range = range(ntokens)
+    
+    for tid in token_range:
+        row = []
+        for layer in range(num_layers):
+            r = run_activation_patching_experiment(
+                model,
+                inputs,
+                [(tid, get_layer_name(model, layer))],
+                answer_t,
+                corrupt_range=corrupt_range,
+                noise=noise,
+                uniform_noise=uniform_noise,
+                replace=replace,  
+            )
+            row.append(r)
+        table.append(torch.stack(row))
+    return torch.stack(table)
+
+
+def trace_significant_window(
+    model,
+    num_layers,
+    inputs,
+    corrupt_range,
+    answer_t,
+    module_kind,
+    window=10,
+    noise=0.1,
+    uniform_noise=False,
+    replace=False,
+    token_range=None,
+):
+    ntokens = inputs["input_ids"].shape[1]
+    table = []
+
+    if token_range is None:
+        token_range = range(ntokens)
+    for tid in token_range:
+        row = []
+        for layer in range(num_layers):
+            layerlist = [
+                (tid, get_layer_name(model, nei, component=module_kind))
+                for nei in range(
+                    max(0, layer - window // 2), min(num_layers, layer - (-window // 2))
+                )
+            ]
+            r = run_activation_patching_experiment(
+                model,
+                inputs,
+                layerlist,
+                answer_t,
+                corrupt_range=corrupt_range,
+                noise=noise,
+                uniform_noise=uniform_noise,
+                replace=replace,
+            )
+            row.append(r)
+        table.append(torch.stack(row))
+    return torch.stack(table)
 
 
 class ModelAndTokenizer:
@@ -242,6 +367,7 @@ class ModelAndTokenizer:
         self.layer_names = [
             name
             for name, _ in model.named_modules()
+            if (re.match(r"^(transformer|biogpt)\.(layers)\.\d+$", name))
         ]
         self.num_layers = len(self.layer_names)
 
@@ -313,8 +439,59 @@ def get_layer_name(model, layer_id, component=None):
             return f"biogpt.layers.{layer_id}.{comp_names['biogpt']['mlp']}"
         elif component == "attn":
             return f"biogpt.layers.{layer_id}.{comp_names['biogpt']['attn']}"
+        else:
+            return f"biogpt.layers.{layer_id}"
             
-    assert False, "unknown model architecture or layer type"
+    assert False, f"unknown model architecture or layer type"
+
+
+def plot_trace_heatmap(result, filepath=None):
+    differences = result["scores"]
+    low_score = result["low_score"]
+    answer = result["answer"]
+    module_kind = result["module_kind"]
+    window = result.get("window", 10)
+    labels = list(result["input_tokens"])
+    for i in range(*result["subject_range"]):
+        labels[i] = labels[i] + "*"
+
+
+    with plt.rc_context():
+        fig, ax = plt.subplots(figsize=(3.5, 2), dpi=200)
+        module_color_map = {
+            None: "Purples",
+            "None": "Purples",
+            "mlp": "Greens",
+            "attn": "Reds",
+        }
+        h = ax.pcolor(
+            differences,
+            cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
+                module_kind
+            ],
+            vmin=low_score,
+        )
+        ax.invert_yaxis()
+        ax.set_yticks([0.5 + i for i in range(len(differences))])
+        ax.set_xticks([0.5 + i for i in range(0, differences.shape[1] - 6, 5)])
+        ax.set_xticklabels(list(range(0, differences.shape[1] - 6, 5)))
+        ax.set_yticklabels(labels)
+        modelname = "BioGPT"
+        if not module_kind:
+            ax.set_title("Impact of restoring state after corrupted input")
+            ax.set_xlabel(f"single restored layer within {modelname}")
+        else:
+            ax.set_title(f"Impact of restoring state after corrupted input ({module_kind})")
+            ax.set_xlabel(f"center of interval of {window} layers within {module_kind} layers")
+        cb = plt.colorbar(h)
+        if answer is not None:
+            cb.ax.set_title(f"p({str(answer).strip()})", y=-0.16, fontsize=10)
+        if filepath is not None:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            plt.savefig(filepath, bbox_inches="tight")
+            plt.close()
+        else:
+            plt.show()
 
 
 if __name__ == "__main__":
