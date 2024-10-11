@@ -73,7 +73,7 @@ def main():
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{known_id}{kind_suffix}.npz"
             if not os.path.exists(filename):
-                result = calculate_hidden_flow(
+                result = run_causal_analysis(
                     mt,
                     knowledge["prompt"],
                     knowledge["subject"],
@@ -99,7 +99,7 @@ def main():
             plot_trace_heatmap(plot_result, filepath=pdfname)
 
 
-def run_activation_patching_experiment(
+def compute_answer_prob(
     model,
     inputs,
     states_to_patch,
@@ -125,6 +125,9 @@ def run_activation_patching_experiment(
             the original values in the clean run.
 
         corrupt_range: specifies a range of tokens (begin, end) to be corrupted.
+
+    Returns:
+        probs: the probability of emitting the answer token (answer_t)
     """
     rs = numpy.random.RandomState(42) # Fixed seed for reproducibility
     if uniform_noise:
@@ -184,7 +187,7 @@ def run_activation_patching_experiment(
     return probs
 
 
-def calculate_hidden_flow(
+def run_causal_analysis(
     mt,
     prompt,
     subject,
@@ -198,9 +201,12 @@ def calculate_hidden_flow(
     expect: str = None,
 ):
     """
-    Runs causal tracing experiment over every token/layer combination in the network
-    and returns a dictionary that numerically summarizing the results.
+    Runs causal tracing experiment over every token/layer combination in a model
+    and returns a dictionary that numerically summarizing the results. This analysis 
+    collect model internal activations during a clean run, a corrupted run, and a
+    corrupted-with-restoration run.
     """
+    # clean run
     inputs = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
     with torch.no_grad():
         answer_t, base_score = [d[0] for d in predict_from_input(mt.model, inputs)]
@@ -212,7 +218,8 @@ def calculate_hidden_flow(
             correct_prediction=False
         )
     corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
-    low_score = run_activation_patching_experiment(
+    # corrupted run
+    low_score = compute_answer_prob(
         mt.model,
         inputs,
         [],
@@ -221,6 +228,7 @@ def calculate_hidden_flow(
         noise=noise,
         uniform_noise=uniform_noise
     ).item()
+    # corrupted-with-restoration run
     if not module_kind:
         differences = trace_significant_states(
             mt.model,
@@ -286,7 +294,7 @@ def trace_significant_states(
     for tid in token_range:
         row = []
         for layer in range(num_layers):
-            r = run_activation_patching_experiment(
+            r = compute_answer_prob(
                 model,
                 inputs,
                 [(tid, get_layer_name(model, layer))],
@@ -328,7 +336,7 @@ def trace_significant_window(
                     max(0, layer - window // 2), min(num_layers, layer - (-window // 2))
                 )
             ]
-            r = run_activation_patching_experiment(
+            r = compute_answer_prob(
                 model,
                 inputs,
                 layerlist,
