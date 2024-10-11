@@ -91,7 +91,7 @@ def main():
             else:
                 numpy_result = numpy.load(filename, allow_pickle=True)
             if not numpy_result["correct_prediction"]:
-                tqdm.write(f"Skipping {knowledge['prompt']}")
+                tqdm.write(f"Skipping {knowledge['prompt']}, prediction: {numpy_result['answer']}, expected: {numpy_result['expect']}")
                 continue
             plot_result = dict(numpy_result)
             plot_result["module_kind"] = module_kind
@@ -206,7 +206,11 @@ def calculate_hidden_flow(
         answer_t, base_score = [d[0] for d in predict_from_input(mt.model, inputs)]
     [answer] = decode_tokens(mt.tokenizer, [answer_t])
     if expect is not None and answer.strip() != expect:
-        return dict(correct_prediction=False)
+        return dict(
+            answer=answer,
+            expect=expect,
+            correct_prediction=False
+        )
     corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
     low_score = run_activation_patching_experiment(
         mt.model,
@@ -381,8 +385,14 @@ class ModelAndTokenizer:
 
 def find_token_range(tokenizer, token_array, substring):
     toks = decode_tokens(tokenizer, token_array)
-    whole_string = " ".join(toks)
-    char_loc = whole_string.index(substring)
+    #remove all whitespace in substring
+    substring = "".join(substring.split())
+    whole_string = "".join(toks)
+    try:
+        char_loc = whole_string.index(substring)
+    except ValueError:
+        print(f"Could not find substring {substring} in {whole_string}")
+        raise ValueError
     loc = 0
     tok_start, tok_end = None, None
     for i, t in enumerate(toks):

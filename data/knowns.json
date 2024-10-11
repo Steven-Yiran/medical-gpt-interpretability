@@ -1,11 +1,47 @@
 [
     {
         "known_id": 613,
-        "subject": "Alzheimer 's disease",
-        "attribute": "memory",
-        "template": "{} is characterized by",
-        "prediction": " progressive cognitive decline, particularly in memory loss",
-        "prompt": "Alzheimer's disease is characterized by progressive cognitive decline, particularly in",
+        "subject": "Kidneys",
+        "attribute": "iron",
+        "template": "{} help to remove excess",
+        "prediction": " iron from the body.",
+        "prompt": "Kidneys help to remove excess",
+        "relation_id": "P641"
+    },
+    {
+        "known_id": 614,
+        "subject": "Furosemide",
+        "attribute": "fluid",
+        "template": "{} help to remove excess",
+        "prediction": " fluid from the body.",
+        "prompt": "Furosemide help to remove excess",
+        "relation_id": "P641"
+    },
+    {
+        "known_id": 615,
+        "subject": "Spironolactone",
+        "attribute": "sodium",
+        "template": "{} help to remove excess",
+        "prediction": " sodium and potassium in patients.",
+        "prompt": "Spironolactone help to remove excess",
+        "relation_id": "P641"
+    },
+    {
+        "known_id": 616,
+        "subject": "Diabetes",
+        "attribute": "insulin",
+        "template": "{} is primarily controlled by",
+        "prediction": " insulin therapy.",
+        "prompt": "Diabetes is primarily controlled by",
+        "relation_id": "P641"
+    },
+    {
+        "known_id": 617,
+        "subject": "Antiotensin II receptor blockers (ARBs)",
+        "attribute": "salt",
+        "template": "{} help to remove excess",
+        "prediction": " salt and water from the body.",
+        "prompt": "Antiotensin II receptor blockers (ARBs) help to remove excess",
         "relation_id": "P641"
     }
 ]

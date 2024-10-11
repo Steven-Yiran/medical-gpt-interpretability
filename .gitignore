@@ -4,3 +4,6 @@
 
 # Environment
 /ENV
+
+# Plots and results
+/results
