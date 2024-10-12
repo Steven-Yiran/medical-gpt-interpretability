@@ -73,7 +73,7 @@ def main():
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{known_id}{kind_suffix}.npz"
             if not os.path.exists(filename):
-                result = run_causal_analysis(
+                result = run_patching_analysis(
                     mt,
                     knowledge["prompt"],
                     knowledge["subject"],
@@ -99,7 +99,7 @@ def main():
             plot_trace_heatmap(plot_result, filepath=pdfname)
 
 
-def compute_answer_prob(
+def compute_correct_answer_prob(
     model,
     inputs,
     states_to_patch,
@@ -111,11 +111,12 @@ def compute_answer_prob(
     trace_layers=None, 
 ):
     """
-    Compute the probability of answer token while patching or corrupting states inside a model.
+    Compute the probability of the correct answer performing intervention on model's states.
+    
     Given a GPT-style model and a batch of n inputs, performs n + 1 runs where the 0th input is
     used for a clean run and [1...n] inputs are used for corrupted run.
 
-    Two methods can be used to corrupt the input:
+    Two methods can be used for corruption:
         - Gaussian noising (GN): Adds a large Gaussian noise to the token embeddings of the input 
           specified by corrupt_range.
         - Symmetric token replacement (STR): Swap input tokens with semantically related ones.
@@ -186,7 +187,7 @@ def compute_answer_prob(
     return probs
 
 
-def run_causal_analysis(
+def run_patching_analysis(
     mt,
     prompt,
     subject,
@@ -200,12 +201,11 @@ def run_causal_analysis(
     expect: str = None,
 ):
     """
-    Runs causal mediation analysis over the provided model, subject, object, and re-
-    lation prompt. Causal mediation analysis quantifies the contribution of each sta-
-    te in the model towards a correct factual prediction. To do this, we observe mod-
-    el's internal activations during three runs: a clean run, a corrupted run, and a
-    corrupted run with restoration that tests the ability of a single state to resto-
-    re the correct prediction.
+    Runs an activation patching experiment over the provided model, subject, object, 
+    and relation prompt. Causal mediation analysis quantifies the contribution of each 
+    state in the model towards a correct factual prediction. To do this, we observe model's 
+    internal activations during three runs: a clean run, a corrupted run, and a corrupted run 
+    with restoration that tests the ability of a single state to restore the correct prediction.
     """
     # clean run
     inputs = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
@@ -220,7 +220,7 @@ def run_causal_analysis(
         )
     corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
     # corrupted run
-    low_score = compute_answer_prob(
+    low_score = compute_correct_answer_prob(
         mt.model,
         inputs,
         [],
@@ -295,7 +295,7 @@ def trace_significant_states(
     for tid in token_range:
         row = []
         for layer in range(num_layers):
-            r = compute_answer_prob(
+            r = compute_correct_answer_prob(
                 model,
                 inputs,
                 [(tid, get_layer_name(model, layer))],
@@ -337,7 +337,7 @@ def trace_significant_window(
                     max(0, layer - window // 2), min(num_layers, layer - (-window // 2))
                 )
             ]
-            r = compute_answer_prob(
+            r = compute_correct_answer_prob(
                 model,
                 inputs,
                 layerlist,
