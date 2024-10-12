@@ -111,9 +111,9 @@ def compute_answer_prob(
     trace_layers=None, 
 ):
     """
-    Runs a single causal trace experiment. Given a GPT-style model and a batch of n inputs,
-    performs n + 1 runs where the 0th input is used for a clean run and [1...n] inputs are used for
-    corrupted run.
+    Compute the probability of answer token while patching or corrupting states inside a model.
+    Given a GPT-style model and a batch of n inputs, performs n + 1 runs where the 0th input is
+    used for a clean run and [1...n] inputs are used for corrupted run.
 
     Two methods can be used to corrupt the input:
         - Gaussian noising (GN): Adds a large Gaussian noise to the token embeddings of the input 
@@ -136,8 +136,8 @@ def compute_answer_prob(
         generator = lambda *shape: rs.normal(*shape)
 
     patch_spec = defaultdict(list)
-    for t, l in states_to_patch:
-        patch_spec[l].append(t)
+    for token, layer in states_to_patch:
+        patch_spec[layer].append(token)
 
     embed_layername = get_layer_name(model, 0, component="embed")
 
@@ -152,7 +152,7 @@ def compute_answer_prob(
 
     def patch_rule(x, layer):
         """
-        Define rules to execute corrupted run or patched run for a given layer.
+        This function execute state patching depending on the layer.
         """
         if layer == embed_layername:
             if corrupt_range is not None:
@@ -172,7 +172,6 @@ def compute_answer_prob(
             h[1:, t] = h[0, t]
         return x
 
-    # patched runs
     additional_layers = [] if trace_layers is None else trace_layers
     with torch.no_grad(), nethook.TraceDict(
         model,
@@ -201,10 +200,12 @@ def run_causal_analysis(
     expect: str = None,
 ):
     """
-    Runs causal tracing experiment over every token/layer combination in a model
-    and returns a dictionary that numerically summarizing the results. This analysis 
-    collect model internal activations during a clean run, a corrupted run, and a
-    corrupted-with-restoration run.
+    Runs causal mediation analysis over the provided model, subject, object, and re-
+    lation prompt. Causal mediation analysis quantifies the contribution of each sta-
+    te in the model towards a correct factual prediction. To do this, we observe mod-
+    el's internal activations during three runs: a clean run, a corrupted run, and a
+    corrupted run with restoration that tests the ability of a single state to resto-
+    re the correct prediction.
     """
     # clean run
     inputs = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
@@ -464,6 +465,12 @@ def get_layer_name(model, layer_id, component=None):
 
 
 def plot_trace_heatmap(result, filepath=None):
+    """
+    Plots the causal impact on output probability on the prediction for
+        1. each hidden state
+        2. only MLP activations
+        3. only attention activations
+    """
     differences = result["scores"]
     low_score = result["low_score"]
     answer = result["answer"]
@@ -473,15 +480,8 @@ def plot_trace_heatmap(result, filepath=None):
     for i in range(*result["subject_range"]):
         labels[i] = labels[i] + "*"
 
-
     with plt.rc_context():
         fig, ax = plt.subplots(figsize=(3.5, 2), dpi=200)
-        module_color_map = {
-            None: "Purples",
-            "None": "Purples",
-            "mlp": "Greens",
-            "attn": "Reds",
-        }
         h = ax.pcolor(
             differences,
             cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
