@@ -34,6 +34,7 @@ def main():
         default="microsoft/biogpt",
         choices=[
             "microsoft/biogpt",
+            "microsoft/BioGPT-Large-PubMedQA"
         ]
     )
     aa("--fact_file", default=None)
