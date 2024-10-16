@@ -13,7 +13,7 @@ python3 -m experiments.inference --interactive
 ```
 
 ## Todos
-- [ ] Integrate the PubMedQA dataset
+- [x] Integrate the PubMedQA dataset
 - [ ] Proprocess data and implement corruption method
 - [ ] Modify the activation patching framework for the new task
 - [ ] Design and run age-information experiment
