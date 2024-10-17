@@ -23,25 +23,23 @@ new_id = 0
 
 for entry_id, entry_data in data.items():
     question = entry_data.get("QUESTION", "").lower()
-
     keywords = [word for word in age_keywords if word in question]
-
     if len(keywords) > 0:
         contexts = entry_data.get("CONTEXTS", [])
         labels = entry_data.get("LABELS", [])
         combined_context = "".join(
             [contexts[i] for i in range(len(contexts)) if labels[i].upper() in required_fields]
         )
-
         answer = entry_data.get("final_decision", "")
+        
+        prompt = f"Question: {question} the answer of the question is"
 
         filtered_data.append({
             "id": new_id,
-            "age_group": keywords[0],
+            "subject": keywords[0],
+            "attribute": answer,
+            "prompt": prompt,
             "original_id": entry_id,
-            "question": question,
-            "context": combined_context,
-            "answer": answer
         })
 
         new_id += 1

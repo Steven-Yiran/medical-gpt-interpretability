@@ -1,6 +1,6 @@
 [
     {
-        "known_id": 613,
+        "id": 613,
         "subject": "Kidneys",
         "attribute": "iron",
         "template": "{} help to remove excess",
@@ -9,7 +9,7 @@
         "relation_id": "P641"
     },
     {
-        "known_id": 614,
+        "id": 614,
         "subject": "Furosemide",
         "attribute": "fluid",
         "template": "{} help to remove excess",
@@ -18,7 +18,7 @@
         "relation_id": "P641"
     },
     {
-        "known_id": 615,
+        "id": 615,
         "subject": "Spironolactone",
         "attribute": "sodium",
         "template": "{} help to remove excess",
@@ -27,7 +27,7 @@
         "relation_id": "P641"
     },
     {
-        "known_id": 616,
+        "id": 616,
         "subject": "Diabetes",
         "attribute": "insulin",
         "template": "{} is primarily controlled by",
@@ -36,7 +36,7 @@
         "relation_id": "P641"
     },
     {
-        "known_id": 617,
+        "id": 617,
         "subject": "Antiotensin II receptor blockers (ARBs)",
         "attribute": "salt",
         "template": "{} help to remove excess",

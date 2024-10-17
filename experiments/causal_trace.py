@@ -12,7 +12,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dsets import ClinicalKnownsDataset
+from dsets import ClinicalKnownsDataset, ClinicalAgeGroupDataset
 from util import nethook
 
 def main():
@@ -37,7 +37,7 @@ def main():
             "microsoft/BioGPT-Large-PubMedQA"
         ]
     )
-    aa("--fact_file", default=None)
+    aa("--fact_data", default=None, type=str)
     aa("--output_dir", default="results/{model_name}/causal_trace")
     aa("--noise_level", default="s3", type=parse_noise_rule)
     aa("--replace", default=False, type=bool)
@@ -53,11 +53,12 @@ def main():
 
     mt = ModelAndTokenizer(args.model_name)
 
-    if args.fact_file is None:
+    if args.fact_data == "knowns":
         knowns = ClinicalKnownsDataset("data")
+    elif args.fact_data == "pubmedqa":
+        knowns = ClinicalAgeGroupDataset("data")
     else:
-        with open(args.fact_file, "r") as f:
-            knowns = json.load(f)
+        raise ValueError(f"Unknown fact_data: {args.fact_data}")
 
     noise_level = args.noise_level
     uniform_noise = False
@@ -66,19 +67,20 @@ def main():
             # Automatic spherical gaussian noise
             factor = float(noise_level[1:]) if len(noise_level) > 1 else 1.0
             noise_level = factor * 0.05 # TODO: temporary
-            print(f"Using noise_level {noise_level} to match model times {factor}")
+            print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
 
     for knowledge in tqdm(knowns):
-        known_id = knowledge["known_id"]
+        kid = knowledge["id"]
+        orid = knowledge["original_id"]
         for module_kind in None, "mlp", "attn":
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
-            filename = f"{result_dir}/knowledge_{known_id}{kind_suffix}.npz"
+            filename = f"{result_dir}/knowledge_{kid}{kind_suffix}.npz"
             if not os.path.exists(filename):
                 result = run_patching_analysis(
                     mt,
                     knowledge["prompt"],
                     knowledge["subject"],
-                    expect=knowledge["attribute"],
+                    knowledge["attribute"],
                     module_kind=module_kind,
                     noise=noise_level,
                     uniform_noise=uniform_noise,
@@ -92,15 +94,15 @@ def main():
             else:
                 numpy_result = numpy.load(filename, allow_pickle=True)
             if not numpy_result["correct_prediction"]:
-                tqdm.write(f"Skipping {knowledge['prompt']}, prediction: {numpy_result['answer']}, expected: {numpy_result['expect']}")
+                tqdm.write(f"Skipping {kid}, prediction: {numpy_result['answer']}, expected: {numpy_result['expect']}")
                 continue
             plot_result = dict(numpy_result)
             plot_result["module_kind"] = module_kind
-            pdfname = f'{pdf_dir}/{str(numpy_result["answer"]).strip()}_{known_id}{kind_suffix}.pdf'
-            plot_trace_heatmap(plot_result, filepath=pdfname)
+            pdfname = f'{pdf_dir}/{str(numpy_result["answer"]).strip()}_{orid}{kind_suffix}.pdf'
+            plot_trace_heatmap(plot_result, filepath=pdfname, modelname=args.model_name)
 
 
-def compute_correct_answer_prob(
+def get_prob_interv(
     model,
     inputs,
     states_to_patch,
@@ -112,7 +114,7 @@ def compute_correct_answer_prob(
     trace_layers=None, 
 ):
     """
-    Compute the probability of the correct answer performing intervention on model's states.
+    Compute the probability of the output while performing intervention on model's states.
     
     Given a GPT-style model and a batch of n inputs, performs n + 1 runs where the 0th input is
     used for a clean run and [1...n] inputs are used for corrupted run.
@@ -190,8 +192,9 @@ def compute_correct_answer_prob(
 
 def run_patching_analysis(
     mt,
-    prompt,
-    subject,
+    prompt: str,
+    subject: str,
+    expect: str,
     samples: int = 10,
     noise: float = 0.0,
     token_range: Tuple = None,
@@ -199,57 +202,75 @@ def run_patching_analysis(
     replace: bool = False,
     window=10,
     module_kind: str = None,
-    expect: str = None,
 ):
     """
     Runs an activation patching experiment over the provided model, subject, object, 
-    and relation prompt. Causal mediation analysis quantifies the contribution of each 
-    state in the model towards a correct factual prediction. To do this, we observe model's 
-    internal activations during three runs: a clean run, a corrupted run, and a corrupted run 
-    with restoration that tests the ability of a single state to restore the correct prediction.
+    and relation prompt. Activation patching quantifies the contribution of each 
+    state or a group of neighboring states in the model towards a correct answer prediction.
+    To do this, we observe model's internal activations during three runs: a clean run, a corrupted run,
+    and a corrupted run with restoration that tests the ability of state(s) to restore the correct prediction.
+
+    Args:
+        mt: ModelAndTokenizer object containing the model and tokenizer
+        prompt: the prompt to be used for the experiment
+        subject: the subject to be corrupted in the experiment
+        expect: the expected answer to the prompt
+
+    Returns:
+        A dictionary containing the following
+        - scores: a table of shape (ntokens, num_layers) containing the each state's 
+            causal impact on output probability
+        - low_score: the probability of the output after corrupting the subject
+        - high_score: the probability of the output in the clean run
+
     """
     # clean run
     inputs = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
     with torch.no_grad():
-        answer_t, base_score = [d[0] for d in predict_from_input(mt.model, inputs)]
-    [answer] = decode_tokens(mt.tokenizer, [answer_t])
-    if expect is not None and answer.strip() != expect:
+        answer_id, clean_prob = [d[0] for d in predict_from_input(mt.model, inputs)]
+    [answer_tok] = decode_tokens(mt.tokenizer, [answer_id])
+    if expect is not None and answer_tok.strip() != expect:
         return dict(
-            answer=answer,
+            answer=answer_tok,
             expect=expect,
             correct_prediction=False
         )
     corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
     # corrupted run
-    low_score = compute_correct_answer_prob(
+    corrupt_prob = get_prob_interv(
         mt.model,
         inputs,
         [],
-        answer_t,
+        answer_id,
         corrupt_range=corrupt_range,
         noise=noise,
         uniform_noise=uniform_noise
     ).item()
+    # find trace token range: (i.e. After "Questions:" token Before "the answer of the question is" token)
+    if token_range is None:
+        start_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "Question:")
+        end_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "the answer of the question is")
+        token_range = (start_range[1], end_range[0])
     # corrupted-with-restoration run
     if not module_kind:
-        differences = trace_significant_states(
+        probs = trace_significant_states(
             mt.model,
             mt.num_layers,
             inputs,
             corrupt_range,
-            answer_t,
+            answer_id,
             noise=noise,
             uniform_noise=uniform_noise,
             replace=replace,
             token_range=token_range,
         )
     else:
-        differences = trace_significant_window(
+        probs = trace_significant_window(
             mt.model,
             mt.num_layers,
             inputs,
             corrupt_range,
-            answer_t,
+            answer_id,
             noise=noise,
             uniform_noise=uniform_noise,
             replace=replace,
@@ -257,18 +278,19 @@ def run_patching_analysis(
             module_kind=module_kind,
             token_range=token_range,
         )
-    differences = differences.detach().cpu()
+    probs = probs.detach().cpu()
     return dict(
-        scores=differences,
-        low_score=low_score,
-        high_score=base_score,
+        scores=probs,
+        low_score=corrupt_prob,
+        high_score=clean_prob,
         input_ids=inputs["input_ids"][0],
         input_tokens=decode_tokens(mt.tokenizer, inputs["input_ids"][0]),
         subject_range=corrupt_range,
-        answer=answer,
+        answer=answer_tok,
         window=window,
         correct_prediction=True,
         module_kind=module_kind or "",
+        token_range=token_range,
     )
 
 
@@ -286,17 +308,24 @@ def trace_significant_states(
     """
     Traces the important states in the model by running the activation patching experiment
     over every token/layer combination in the network.
+
+    Returns:
+        A tensor of shape (ntokens, num_layers) containing the difference in the probability 
+        of the correct answer between the corrupted and restored runs when the state at the
+        token/layer combination is patched.
     """
     ntokens = inputs["input_ids"].shape[1]
     table = []
 
     if token_range is None:
         token_range = range(ntokens)
+    elif isinstance(token_range, Tuple):
+        token_range = range(*token_range)
     
     for tid in token_range:
         row = []
         for layer in range(num_layers):
-            r = compute_correct_answer_prob(
+            r = get_prob_interv(
                 model,
                 inputs,
                 [(tid, get_layer_name(model, layer))],
@@ -329,6 +358,9 @@ def trace_significant_window(
 
     if token_range is None:
         token_range = range(ntokens)
+    elif isinstance(token_range, Tuple):
+        token_range = range(*token_range)
+
     for tid in token_range:
         row = []
         for layer in range(num_layers):
@@ -338,7 +370,7 @@ def trace_significant_window(
                     max(0, layer - window // 2), min(num_layers, layer - (-window // 2))
                 )
             ]
-            r = compute_correct_answer_prob(
+            r = get_prob_interv(
                 model,
                 inputs,
                 layerlist,
@@ -465,21 +497,28 @@ def get_layer_name(model, layer_id, component=None):
     assert False, f"unknown model architecture or layer type"
 
 
-def plot_trace_heatmap(result, filepath=None):
+def plot_trace_heatmap(result, filepath=None, modelname=None):
     """
     Plots the causal impact on output probability on the prediction for
         1. each hidden state
         2. only MLP activations
         3. only attention activations
     """
+    if modelname is None:
+        modelname = "BioGPT-PubMedQA"
+
     differences = result["scores"]
     low_score = result["low_score"]
     answer = result["answer"]
     module_kind = result["module_kind"]
     window = result.get("window", 10)
     labels = list(result["input_tokens"])
+    start, end = result["token_range"]
     for i in range(*result["subject_range"]):
         labels[i] = labels[i] + "*"
+
+    # cut labels
+    labels = labels[start:end]
 
     with plt.rc_context():
         fig, ax = plt.subplots(figsize=(3.5, 2), dpi=200)
@@ -495,7 +534,6 @@ def plot_trace_heatmap(result, filepath=None):
         ax.set_xticks([0.5 + i for i in range(0, differences.shape[1] - 6, 5)])
         ax.set_xticklabels(list(range(0, differences.shape[1] - 6, 5)))
         ax.set_yticklabels(labels)
-        modelname = "BioGPT"
         if not module_kind:
             ax.set_title("Impact of restoring state after corrupted input")
             ax.set_xlabel(f"single restored layer within {modelname}")

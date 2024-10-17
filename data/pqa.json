@@ -1,746 +1,653 @@
 [
   {
     "id": 0,
-    "age_group": "infant",
-    "original_id": "9488747",
-    "question": "syncope during bathing in infants, a pediatric form of water-induced urticaria?",
-    "context": "Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. The prognosis is uncertain because of risk of sudden infant death syndrome.",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: syncope during bathing in infants, a pediatric form of water-induced urticaria? the answer of the question is",
+    "original_id": "9488747"
   },
   {
     "id": 1,
-    "age_group": "children",
-    "original_id": "10966337",
-    "question": "a short stay or 23-hour ward in a general and academic children's hospital: are they effective?",
-    "context": "The short stay ward accounted for 10.3% (Westmead Hospital) and 14.7% (New Children's Hospital) of admissions, with 56% medical in nature, 30% surgical, and the remainder procedural or psychological. Admission patterns were similar, with asthma, gastroenteritis, convulsion, pneumonia, and simple surgical conditions accounting for most short stay ward admissions. The short stay ward increased hospital efficiency with an average length of stay of 17.5 hours (Westmead Hospital) compared to 20.5 hours (New Children's Hospital). The users of the short stay ward were children of young age less than 2 years, with stay greater than 23 hours reported in only 1% of all admissions to the short stay ward. The rate of patient admission to an in-hospital bed was low, (4% [Westmead Hospital] compared to 6% [New Children's Hospital]), with the number of unscheduled visits within 72 hours of short stay ward discharge less than 1%. There were no adverse events reported at either short stay ward, with parental satisfaction high. The short stay ward was developed through reallocation of resources from within the hospital to the short stay ward. This resulted in estimated savings of $1/2 million (Westmead Hospital) to $2.3 million (New Children's Hospital) to the hospital, due to more efficient bed usage.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: a short stay or 23-hour ward in a general and academic children's hospital: are they effective? the answer of the question is",
+    "original_id": "10966337"
   },
   {
     "id": 2,
-    "age_group": "children",
-    "original_id": "11729377",
-    "question": "is there still a need for living-related liver transplantation in children?",
-    "context": "After a median follow-up of 35 months, actual patient survival rates were 82% in the SLT group and 88% in the LRT group. Actual graft survival rates were 76% and 81%, respectively. The incidence of primary nonfunction was 12% in the SLT group and 2.3% in the LRT group. Liver function parameters (prothrombin time, factor V, bilirubin clearance) and surgical complication rates did not differ significantly. In the SLT group, mean cold ischemic time was longer than in the LRT group. Serum values of alanine aminotransferase during the first postoperative week were significantly higher in the SLT group. In the LRT group, there were more grafts with signs of fatty degeneration than in the SLT group.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: is there still a need for living-related liver transplantation in children? the answer of the question is",
+    "original_id": "11729377"
   },
   {
     "id": 3,
-    "age_group": "adult",
-    "original_id": "22990761",
-    "question": "cardiovascular risk in a rural adult west african population: is resting heart rate also relevant?",
-    "context": "Of study participants, 36% were male. Prevalence of casual high BP was 19%. In the population, 10% were current cigarette smokers and habitual alcohol use was high at 56%. As measured by body mass index, 2% were obese and 14% had abdominal obesity. RHR was elevated (>90 bpm) in 19%. Overall, 79% of study participants were found to have at least one CVD risk factor. RHR was significantly associated with age, waist circumference, and BP. Individuals with an elevated RHR had a higher risk (OR 1.94, 95% CI 1.15-3.26%, p = 0.013) of casual high BP compared with participants with normal RHR independently of several established CVD risk factors. The regression dilution ratio of RHR was 0.75 (95% CI 0.62-0.89).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: cardiovascular risk in a rural adult west african population: is resting heart rate also relevant? the answer of the question is",
+    "original_id": "22990761"
   },
   {
     "id": 4,
-    "age_group": "children",
-    "original_id": "11481599",
-    "question": "acute respiratory distress syndrome in children with malignancy--can we predict outcome?",
-    "context": "Seventeen children with ARDS and malignancy aged 10.5 +/- 5.1 years were identified. Six of the 17 children (35.3%) survived. Sepsis syndrome was present in 70.6% of all the children. Peak inspiratory pressure, positive end-expiratory pressure (PEEP), and ventilation index values could distinguish outcome by day 3. A significant relationship between respiratory data and outcome related to efficiency of oxygenation, as determined by PaO(2)/FIO(2) and P(A-a)O(2), was present from day 8 after onset of mechanical ventilation.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: acute respiratory distress syndrome in children with malignancy--can we predict outcome? the answer of the question is",
+    "original_id": "11481599"
   },
   {
     "id": 5,
-    "age_group": "infant",
-    "original_id": "21669959",
-    "question": "secondhand smoke risk in infants discharged from an nicu: potential for significant health disparities?",
-    "context": "Overall, 26% of all families with a high-risk infant in the NICU reported a household smoker. Almost half of the families with a smoker reported an annual income of less than $25,000. 46.2% of families reported having a total smoking ban in place in both their homes and cars. Only 27.8% families earning less than $25,000 reported having a total smoking ban in place relative to almost 60% of families earning more (p<.01). African American and Caucasian families were less likely to have a smoking ban compared with Hispanics (p<.05). Mothers who reported no smoking ban were more depressed than those who had a household smoking ban (p<.02).",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: secondhand smoke risk in infants discharged from an nicu: potential for significant health disparities? the answer of the question is",
+    "original_id": "21669959"
   },
   {
     "id": 6,
-    "age_group": "elderly",
-    "original_id": "20571467",
-    "question": "is it appropriate to implant kidneys from elderly donors in young recipients?",
-    "context": "Kidneys from elderly donors tend to be implanted in recipients who are also elderly. We present the results obtained after 10 years of evolution on transplanting elderly kidneys into young recipients.There were no differences between groups with regard to recipient age, sex, cause of death and renal function of the donor, hepatitis C and cytomegalovirus serologies, cold ischemia time, tubular necrosis, immediate diuresis, need for dialysis, human leukocyte antigen incompatibilities, hypersensitized patients, acute rejection, waiting time on dialysis, and days of admission. Survival in both groups at 1, 5, and 10 years was 97.6%, 87.2%, and 76.6% vs. 98.8%, 87.5%, and 69.5% for the patient (P=0.642), 92.9%, 81.3%, and 64.2% vs. 93.9%, 76.4%, and 69.5% for the graft (P=0.980), and 94.4%, 92.6%, and 77.4% vs. 94.3%, 86.7%, and 84.4% for the graft with death censured (P=0.747), respectively. Creatininaemias at 1, 5, and 10 years were 172, 175, and 210 vs. 139, 134, and 155 (P<0.05).",
-    "answer": "yes"
+    "subject": "elderly",
+    "attribute": "yes",
+    "prompt": "Question: is it appropriate to implant kidneys from elderly donors in young recipients? the answer of the question is",
+    "original_id": "20571467"
   },
   {
     "id": 7,
-    "age_group": "children",
-    "original_id": "25277731",
-    "question": "sternal fracture in growing children : a rare and often overlooked fracture?",
-    "context": "Sternal fractures in childhood are rare. The aim of the study was to investigate the accident mechanism, the detection of radiological and sonographical criteria and consideration of associated injuries.A total of 4 children aged 5-14\u00a0years with a sternal fracture were treated in 2\u00a0years, 2\u00a0children were hospitalized for pain management and 2 remained in outpatient care.",
-    "answer": "maybe"
+    "subject": "children",
+    "attribute": "maybe",
+    "prompt": "Question: sternal fracture in growing children : a rare and often overlooked fracture? the answer of the question is",
+    "original_id": "25277731"
   },
   {
     "id": 8,
-    "age_group": "children",
-    "original_id": "23539689",
-    "question": "cold preparation use in young children after fda warnings: do concerns still exist?",
-    "context": "In all, 65 patients and their caregivers consented and participated in the study. During the demonstration, 82% (53/65) stated that they would treat with cough or cold medicines, and 72% (38/53) incorrectly dosed the medication they desired to give.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: cold preparation use in young children after fda warnings: do concerns still exist? the answer of the question is",
+    "original_id": "23539689"
   },
   {
     "id": 9,
-    "age_group": "children",
-    "original_id": "18607272",
-    "question": "body perception: do parents, their children, and their children's physicians perceive body image differently?",
-    "context": "We administered a structured questionnaire of body size perception using a descriptive Likert scale keyed to body image figures to children ages 12 to 18 years. The same scale was given to parents of children ages 5 to 18 years. The sample consisted of 91 children and their parents being seen in the Pediatric Gastroenterology Clinic for concerns unrelated to overweight. Weight and height of the children were measured, and body mass index (BMI) was calculated. The children's BMI percentiles were categorized as underweight (<15th), normal (15th-85th), overweight (85th-95th), and obese (95th and above). The attending physician independently completed the body image and description scale and indicated the figure that most accurately represented the patient without reference to BMI standards. Accuracy of the patients', parents', and doctors' estimates were statistically compared.The sample population consisted of 6.4% underweight, 70.5% normal weight, 7.7% overweight, and 15.4% obese. Forty-four percent of parents underestimated children's body size using word descriptions and 47% underestimated using figures. Forty percent of the children underestimated their own body size using descriptions and 43% underestimated using figures. The physicians in this study had a higher percentage of correct estimates; however, they underestimated 33% of the patients using both word descriptions and figures. Some obese children were not recognized, and several average children were perceived as underweight.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: body perception: do parents, their children, and their children's physicians perceive body image differently? the answer of the question is",
+    "original_id": "18607272"
   },
   {
     "id": 10,
-    "age_group": "children",
-    "original_id": "9199905",
-    "question": "vertical lines in distal esophageal mucosa (vlem): a true endoscopic manifestation of esophagitis in children?",
-    "context": "We observed an endoscopic abnormally in a group of children with histological esophagitis. We termed this finding \"vertical lines in esophageal mucosa\" (VLEM). We examined the relationship between the presence of VLEM and significant histologic changes in esophageal mucosal biopsies.The esophageal mucosa had a normal appearance on 160 endoscopic studies (Group 1) and VLEM were the only mucosal abnormalities in 41 endoscopies (Group 2). Histology was normal in 92 of 160 biopsies (57.5%) from Group 1, and 1 of 41 biopsies (2.4%) from Group 2. Most patients in Group 2 had eosinophilic esophagitis (34 of 41, 83%, specificity 0.85, sensitivity 0.5, p>0.001) which was of moderate to severe intensity (31 of 34, 91.2%, specificity 0.88, sensitivity 0.73, p<0.001).",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: vertical lines in distal esophageal mucosa (vlem): a true endoscopic manifestation of esophagitis in children? the answer of the question is",
+    "original_id": "9199905"
   },
   {
     "id": 11,
-    "age_group": "adult",
-    "original_id": "26686513",
-    "question": "cycloplegic autorefraction in young adults: is it mandatory?",
-    "context": "The mean difference in SE between non-cycloplegic and cycloplegic measurements was 0.68\u2009\u00b1\u20090.83\u00a0D (95\u00a0% CI, 0.64-0.72). Significantly greater differences were observed in hypermetropes than myopes (1.30\u2009\u00b1\u20090.90\u00a0D versus 0.46\u2009\u00b1\u20090.68\u00a0D, p\u2009<\u20090.001). Moderate hypermetropes (2 to 5\u00a0D) demonstrated significantly greater refractive error than mild (0.5 to 2\u00a0D) or severe (>5\u00a0D) hypermetropes (1.71\u2009\u00b1\u20091.18\u00a0D versus 1.19\u2009\u00b1\u20090.74\u00a0D and 1.16\u2009\u00b1\u20091.08\u00a0D respectively, p\u2009<\u20090.001).",
-    "answer": "maybe"
+    "subject": "adult",
+    "attribute": "maybe",
+    "prompt": "Question: cycloplegic autorefraction in young adults: is it mandatory? the answer of the question is",
+    "original_id": "26686513"
   },
   {
     "id": 12,
-    "age_group": "newborn",
-    "original_id": "18540901",
-    "question": "transient tachypnea of the newborn (ttn): a role for polymorphisms in the beta-adrenergic receptor (adrb) encoding genes?",
-    "context": "TTN infants were more likely to be male (70% vs. 49%; p<0.05), had a lower mean birthweight (3120 +/- 450 vs. 3396 +/- 504 g; p<0.001) and gestational age (GA) (38.4 +/- 1.2 vs. 39.4 +/- 1.3 weeks; p<0.001) and were more often delivered by caesarean section (CS) (71% vs. 26%; p<0.001). The beta1Ser49Gly polymorphism differed significantly between cases and controls. Multivariate analysis provided beta1Gly49 homozygotes with higher risk for TTN (OR 18.5; 95%CI 1.5-229; p = 0.023) than beta1Ser49 allele carrier. Further analysis showed significant association of T-47C, A46G, C79G and C491T (TACC) haplotype in ADRB2 gene with TTN (p = 0.048).",
-    "answer": "yes"
+    "subject": "newborn",
+    "attribute": "yes",
+    "prompt": "Question: transient tachypnea of the newborn (ttn): a role for polymorphisms in the beta-adrenergic receptor (adrb) encoding genes? the answer of the question is",
+    "original_id": "18540901"
   },
   {
     "id": 13,
-    "age_group": "newborn",
-    "original_id": "16769333",
-    "question": "preoperative tracheobronchoscopy in newborns with esophageal atresia: does it matter?",
-    "context": "Before TBS, the Gross classification of the 62 patients was as follows: type A, 9 patients; type B, none; type C, 51 patients. At TBS, however, 3 of 9 type A patients had an unsuspected proximal fistula (type B). These 3 patients, plus the 2 with H-type fistula, were repaired through a cervical approach. In 4 patients, previously undetected malformations of the respiratory tree (2 aberrant right upper bronchus and 2 hypoplastic bronchi) were found at TBS. Carinal fistulas in 14 type C patients were occluded by Fogarty catheter to improve ventilation during repair. No complications were observed. Overall, TBS was clinically useful in 28 (45.2%) of 62 patients, including 15 (24.2%) of 62 infants in whom it was crucial in modifying the surgical approach.",
-    "answer": "yes"
+    "subject": "newborn",
+    "attribute": "yes",
+    "prompt": "Question: preoperative tracheobronchoscopy in newborns with esophageal atresia: does it matter? the answer of the question is",
+    "original_id": "16769333"
   },
   {
     "id": 14,
-    "age_group": "adult",
-    "original_id": "21123461",
-    "question": "are adult body circumferences associated with height?",
-    "context": "Weight scales as height squared, which is an observation that forms the basis of body mass index (weight/height(2)). If, and how, circumferences, including waist circumference (WC) and hip circumference (HC), scale to height remains unclear, but this is an important consideration when developing normative ranges or applying WC/height and HC/height as risk indexes.After adjustment for age and race, weight scaled to height in men and women with mean (\u00b1SEE) powers of 2.29 \u00b1 0.11 and 1.80 \u00b1 0.07, respectively (both P<0.001). Although univariate circumference-height models were weak or nonsignificant, when adjusted for age and race WC and HC scaled to height with powers of 0.76 \u00b1 0.08 and 0.45 \u00b1 0.05, respectively, in men and 0.80 \u00b1 0.05 and 0.53 \u00b1 0.04, respectively, in women (all P<0.001). Age- and race-adjusted incremental increases in circumferences ranged from 0.2 to 0.5 cm per centimeter increase in height. Both WC/height and HC/height scaled negatively to height in men and women, and WC/HC scaled negatively to height in women only (all P<0.001). Health status-adjusted models were similar.",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: are adult body circumferences associated with height? the answer of the question is",
+    "original_id": "21123461"
   },
   {
     "id": 15,
-    "age_group": "children",
-    "original_id": "19482903",
-    "question": "treadmill testing of children who have spina bifida and are ambulatory: does peak oxygen uptake reflect maximum oxygen uptake?",
-    "context": "Earlier studies have demonstrated low peak oxygen uptake ((.)Vo(2)peak) in children with spina bifida. Low peak heart rate and low peak respiratory exchange ratio in these studies raised questions regarding the true maximal character of (.)Vo(2)peak values obtained with treadmill testing.The average values for (.)Vo(2)peak and normalized (.)Vo(2)peak were, respectively, 1.23 L/min (SD=0.6) and 34.1 mL/kg/min (SD=8.3). Fifteen children met at least 2 of the 3 previously described criteria; one child failed to meet any criteria. Although there were no significant differences between (.)Vo(2)peak and Vo(2)supramaximal, 5 children did show improvement during supramaximal testing.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: treadmill testing of children who have spina bifida and are ambulatory: does peak oxygen uptake reflect maximum oxygen uptake? the answer of the question is",
+    "original_id": "19482903"
   },
   {
     "id": 16,
-    "age_group": "children",
-    "original_id": "25156467",
-    "question": "should early extubation be the goal for children after congenital cardiac surgery?",
-    "context": "We operated on 613 children, including 97 neonates. Intraoperative extubation was achieved in 71% of the cases and early extubation (\u2264 24 hours) was achieved in 89% of the cases. The overall mortality was 1.5% (9 of 613 patients). Early extubation was associated with lower mortality (1% vs 9%, P<.001) and a lower rate of reintubation (4% vs 23%, P<.001) compared with delayed extubation. Notably, 63% of the neonates were extubated within 24 hours, including 67% of arterial switch operations and 54% of total anomalous pulmonary venous return repairs. Norwood operations were the only procedure in which no patient was extubated within the first 24 hours. Multivariable logistic regression demonstrated that the predictors of delayed extubation included preoperative mechanical ventilation, weight<5 kg, a longer procedure time, and the need for postoperative inotrope support. Implementation of an early extubation strategy was associated with low rates of complications (5.1 per 10 procedures), short lengths of intensive care unit stay (median, 1 day; interquartile range, 1-3), and short hospital stays (median, 4 days; interquartile range, 3-6).",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: should early extubation be the goal for children after congenital cardiac surgery? the answer of the question is",
+    "original_id": "25156467"
   },
   {
     "id": 17,
-    "age_group": "children",
-    "original_id": "22211919",
-    "question": "actinobaculum schaalii, a cause of urinary tract infections in children?",
-    "context": "In 5 of the 29 screened urines, A. schaalii was found only by real-time PCR in quantities equivalent to \u2265 10(4) -10(5) CFU/mL. In addition, A. schaalii was found in quantities equivalent to \u2265 10(6) CFU/mL by both culture and PCR in two children with a urinary tract infection and large numbers of leucocytes in the urine.",
-    "answer": "maybe"
+    "subject": "children",
+    "attribute": "maybe",
+    "prompt": "Question: actinobaculum schaalii, a cause of urinary tract infections in children? the answer of the question is",
+    "original_id": "22211919"
   },
   {
     "id": 18,
-    "age_group": "adult",
-    "original_id": "14872327",
-    "question": "is pain a clinically relevant problem in general adult psychiatry?",
-    "context": "The point prevalence of pain was about 50%, the 6-month prevalence 75.5% and the 12-month prevalence 76.5%. The patients' most frequent complaints were low back pain, headache and shoulder and neck pain. Patients with affective disorders most frequently had pain complaints, followed by those with neurotic, stress-related and somatoform disorders and those with psychotic disorders such as schizophrenia, schizotypic and delusional disorders. Almost 10% of all patients reported pain continuing at least 3 months in the past year. Impairment and unfitness for work were related to specific psychiatric diagnosis. Statistically significant risk factors for pain were depression (OR=6.05) and the number of past admissions to psychiatric hospitals (OR=3.609).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: is pain a clinically relevant problem in general adult psychiatry? the answer of the question is",
+    "original_id": "14872327"
   },
   {
     "id": 19,
-    "age_group": "adult",
-    "original_id": "11079675",
-    "question": "pulmonary valve replacement in adults late after repair of tetralogy of fallot: are we operating too late?",
-    "context": "Chronic pulmonary regurgitation (PR) following repair of tetralogy of Fallot (TOF) leads to RV dilation and an increased incidence of sudden cardiac death in adult patients.Mean RVEDV, RVESV and RVEF remained unchanged after PVR (227.1 ml versus 214.9 ml, p = 0.74; 157.4 ml versus 155.4 ml, p = 0.94; 35.6% versus 34.7%, p = 0.78, respectively). Of the 10 patients with RVEF>or = 0.40 before PVR, 5 patients (50%) maintained a RVEF>or = 0.40 following PVR, whereas only 2 out of 15 patients (13%) with pre-operative values<0.40 reached an RVEF>or = 0.40 postoperatively (p<0.001).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: pulmonary valve replacement in adults late after repair of tetralogy of fallot: are we operating too late? the answer of the question is",
+    "original_id": "11079675"
   },
   {
     "id": 20,
-    "age_group": "adolescent",
-    "original_id": "11413427",
-    "question": "does transverse apex coincide with coronal apex levels (regional or global) in adolescent idiopathic scoliosis?",
-    "context": "Regional and global apexes were at the same level in 18 (54.5%) curves, and within half a level in another 15 (45.4%), and the regional apex was one level higher in two curves (95% confidence levels: -0.82, +0.88). Comparison of the most rotated levels with regional and global apex levels revealed a higher variability, extending up to two levels for the global apex (95% confidence levels: -1.19, +1.54 levels for the global and -1.0, +1.41 levels for the regional apexes).",
-    "answer": "no"
+    "subject": "adolescent",
+    "attribute": "no",
+    "prompt": "Question: does transverse apex coincide with coronal apex levels (regional or global) in adolescent idiopathic scoliosis? the answer of the question is",
+    "original_id": "11413427"
   },
   {
     "id": 21,
-    "age_group": "children",
-    "original_id": "9602458",
-    "question": "does the child health computing system adequately identify children with cerebral palsy?",
-    "context": "This paper assesses the usefulness of the Child Health Computing System as a source of information about children with cerebral palsy.Of the 135 cases recorded on the NICPR, 47 per cent were not found on the CHCS; the majority of these children had no computer record of any medical diagnosis. Of the 82 cases recorded on the CHCS, 10 (12 per cent) were not found on the NICPR; five of these cases (6 per cent) were found on follow-up not to have CP.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: does the child health computing system adequately identify children with cerebral palsy? the answer of the question is",
+    "original_id": "9602458"
   },
   {
     "id": 22,
-    "age_group": "children",
-    "original_id": "16403186",
-    "question": "are the arginine vasopressin v1a receptor microsatellites related to hypersexuality in children with a prepubertal and early adolescent bipolar disorder phenotype?",
-    "context": "Preferential transmission of AVPR1A GATA or complex repeats was not significant for hypersexuality or uninhibited people-seeking, using the transmission disequilibrium test. Similarly, case-control analyses found no significant associations between hypersexuality or uninhibited people-seeking and the number of AVPR1A GATA or complex repeats. For p<0.05, there was about 80% power to detect odds ratios of 5.0 and 4.0 (in the family-based analyses) and 3.5 and 2.6 (in the case-control analyses), for allele frequencies of 0.1 and 0.5, respectively.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: are the arginine vasopressin v1a receptor microsatellites related to hypersexuality in children with a prepubertal and early adolescent bipolar disorder phenotype? the answer of the question is",
+    "original_id": "16403186"
   },
   {
     "id": 23,
-    "age_group": "infant",
-    "original_id": "11566686",
-    "question": "in vivo visualization of pyloric mucosal hypertrophy in infants with hypertrophic pyloric stenosis: is there an etiologic role?",
-    "context": "Mean mucosal thickness in patients with IHPS approximated mean muscle thickness, with a ratio of 0.89. In infants with IHPS, the pyloric mucosa constitutes approximately one third of the cross-sectional diameter of the pyloric mass and fills and obstructs the pyloric canal.",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: in vivo visualization of pyloric mucosal hypertrophy in infants with hypertrophic pyloric stenosis: is there an etiologic role? the answer of the question is",
+    "original_id": "11566686"
   },
   {
     "id": 24,
-    "age_group": "adult",
-    "original_id": "18403944",
-    "question": "gluten tolerance in adult patients with celiac disease 20 years after diagnosis?",
-    "context": "Sixty-six patients accepted participation, but after review of the diagnostic biopsies 53 were found to have true CD. Twenty-three percent of patients had a gluten-containing diet, 15% admitted gluten transgression and 62% followed the GFD. Patients on a GFD had significantly more osteoporosis. Normal small bowel mucosa was found in four of eight on gluten-containing diet and in four of four with gluten transgression. Two patients were considered to have developed tolerance to gluten. One of them was HLA-DQ2/DQ8 negative.",
-    "answer": "maybe"
+    "subject": "adult",
+    "attribute": "maybe",
+    "prompt": "Question: gluten tolerance in adult patients with celiac disease 20 years after diagnosis? the answer of the question is",
+    "original_id": "18403944"
   },
   {
     "id": 25,
-    "age_group": "children",
-    "original_id": "20187289",
-    "question": "prescriptions as a proxy for asthma in children: a good choice?",
-    "context": "In children aged 0-4 years insured in the GEK, prevalences were found to range from 11.7 to 17.7% for boys and from 7.2 to 11.1% for girls when the criteria of Stock et al. were applied. A steady decline in prevalences was observed in older age groups. Asthma prevalence estimated in the KiGGS data showed a quite different distribution. In the age group 0-4 years, prevalences were found to range from 0 to 2.6% in boys and from 0 to 1.0% in girls; in children>4 years, prevalences were found to increase with increasing age.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: prescriptions as a proxy for asthma in children: a good choice? the answer of the question is",
+    "original_id": "20187289"
   },
   {
     "id": 26,
-    "age_group": "adult",
-    "original_id": "27615402",
-    "question": "does the familial transmission of drinking patterns persist into young adulthood?",
-    "context": "Parental drinking has been shown to be associated with offspring drinking. However, the relationship appears to be more complex than often assumed and few studies have tracked it over longer time periods.Young adults whose families were abstainers in 2000 drank substantially less across quintiles in 2010 than offspring of non-abstaining families. The difference, however, was not statistically significant between quintiles of the conditional distribution. Actual drinking levels in drinking families were not at all or weakly associated with drinking in offspring. Supplementary analyses confirmed these patterns.",
-    "answer": "maybe"
+    "subject": "adult",
+    "attribute": "maybe",
+    "prompt": "Question: does the familial transmission of drinking patterns persist into young adulthood? the answer of the question is",
+    "original_id": "27615402"
   },
   {
     "id": 27,
-    "age_group": "infant",
-    "original_id": "25592625",
-    "question": "is cardiovascular evaluation necessary prior to and during beta-blocker therapy for infantile hemangiomas?",
-    "context": "Although consensus guidelines for pretreatment evaluation and monitoring of propranolol therapy in patients with infantile hemangiomas (IH) have been formulated, little is known about the cardiovascular side effects.Questionnaire analyses (n = 83) identified 3 cases with a family history of cardiovascular disease in first-degree relatives. ECG findings were normal in each case and no serious complication of therapy occurred. ECG abnormalities were found in 6.5% of patients but there were no contraindications to beta-blocker therapy and no major complications. Hypotension in 9 patients did not require therapy adjustment. In all, 88 parents (81%) reported side effects during beta-blocker treatment.",
-    "answer": "no"
+    "subject": "infant",
+    "attribute": "no",
+    "prompt": "Question: is cardiovascular evaluation necessary prior to and during beta-blocker therapy for infantile hemangiomas? the answer of the question is",
+    "original_id": "25592625"
   },
   {
     "id": 28,
-    "age_group": "elderly",
-    "original_id": "18307476",
-    "question": "upstream solutions: does the supplemental security income program reduce disability in the elderly?",
-    "context": "",
-    "answer": "yes"
+    "subject": "elderly",
+    "attribute": "yes",
+    "prompt": "Question: upstream solutions: does the supplemental security income program reduce disability in the elderly? the answer of the question is",
+    "original_id": "18307476"
   },
   {
     "id": 29,
-    "age_group": "infant",
-    "original_id": "25394614",
-    "question": "does timing of initial surfactant treatment make a difference in rates of chronic lung disease or mortality in premature infants?",
-    "context": "Of the 2170 infants who received surfactant, 1182 (54.5%) and 988 (45.5%) received early and late surfactant, respectively. The early surfactant group was less mature (27.1\u2009\u00b1\u20092.1 versus 29.4\u2009\u00b1\u20092.1 weeks) and had more CLD and mortality (40.2% versus 20.0%). The multivariable analysis showed early surfactant to be associated with less duration of ventilation, longer duration of CPAP and longer hospital stay but had little or no impact on CLD/mortality.",
-    "answer": "maybe"
+    "subject": "infant",
+    "attribute": "maybe",
+    "prompt": "Question: does timing of initial surfactant treatment make a difference in rates of chronic lung disease or mortality in premature infants? the answer of the question is",
+    "original_id": "25394614"
   },
   {
     "id": 30,
-    "age_group": "adult",
-    "original_id": "16510651",
-    "question": "birth characteristics and risk of low intellectual performance in early adulthood: are the associations confounded by socioeconomic factors in adolescence or familial effects?",
-    "context": "Compared with men born with appropriate birth weight for gestational age, men born light for gestational age suffered an increased risk of low intellectual performance after adjustment for maternal and socioeconomic factors. The increase in risk of low intellectual performance related to a decrease in birth weight for gestational age was similar between families and within families. Men born short or with a small head circumference for gestational age were also at increased risk of low intellectual performance, both when adjusting for maternal and socioeconomic factors and within families.",
-    "answer": "no"
+    "subject": "adult",
+    "attribute": "no",
+    "prompt": "Question: birth characteristics and risk of low intellectual performance in early adulthood: are the associations confounded by socioeconomic factors in adolescence or familial effects? the answer of the question is",
+    "original_id": "16510651"
   },
   {
     "id": 31,
-    "age_group": "elderly",
-    "original_id": "12238307",
-    "question": "vaccine protection in the elderly: are austrian seniors adequately protected by vaccinations?",
-    "context": "The results of the study demonstrate that protection against infectious diseases was frequently insufficient in the elderly. This was partly due to the fact that old persons were not vaccinated according to recommended strategies. However, low antibody concentration and a short duration of protective humoral immunity were also observed in many elderly persons in spite of regular vaccination. This was not only the case in frail, but also in healthy elderlies.",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: vaccine protection in the elderly: are austrian seniors adequately protected by vaccinations? the answer of the question is",
+    "original_id": "12238307"
   },
   {
     "id": 32,
-    "age_group": "adolescent",
-    "original_id": "24947183",
-    "question": "does delaying surgery in immature adolescent idiopathic scoliosis patients with progressive curve, lead to addition of fusion levels?",
-    "context": "The average age of 35 AIS patients was 12.7 \u00b1 1.6 years. The time interval between initial and final radiography was 39.3 \u00b1 20.2 months and the degree of progress of the primary curve was 13 \u00b1 9.7\u00b0. Fusion levels changed in 33 (94.2%), 33 (94.2%) and 32 (91.4%) patients according to King's, Lenke's and Suk's guidelines, respectively. Curve pattern was changed in 2 (5.7%), 12 (34.3%) and 10 (28.6) patients by King's, Lenke's and Suk's guidelines. The mean number of levels requiring fusion increased from 9.4 \u00b1 2.1 at initial visit to 11.1 \u00b1 1.8 at the final follow-up using King's guidelines, 9.7 \u00b1 2.2-11.6 \u00b1 2.0 as per Lenke's guidelines and 9.1 \u00b1 2.0-11.5 \u00b1 2.3 when fusion was planned using Suk's guidelines (p<0.001 in all guidelines).",
-    "answer": "yes"
+    "subject": "adolescent",
+    "attribute": "yes",
+    "prompt": "Question: does delaying surgery in immature adolescent idiopathic scoliosis patients with progressive curve, lead to addition of fusion levels? the answer of the question is",
+    "original_id": "24947183"
   },
   {
     "id": 33,
-    "age_group": "adult",
-    "original_id": "27690714",
-    "question": "can ems providers provide appropriate tidal volumes in a simulated adult-sized patient with a pediatric-sized bag-valve-mask?",
-    "context": "We enrolled 50 providers from a large, busy, urban fire-based EMS agency with 14.96 (SD = 9.92) mean years of experience. Only 1.5% of all breaths delivered with the pediatric BVM during the ventilation scenarios were below the recommended tidal volume. A greater percentage of breaths delivered in the recommended range occurred when the pediatric BVM was used (17.5% vs 5.1%, p<0.001). Median volumes for each scenario were 570.5mL, 664.0mL, 663.0mL for the pediatric BMV and 796.0mL, 994.5mL, 981.5mL for the adult BVM. In all three categories of airway devices, the pediatric BVM provided lower median tidal volumes (p<0.001).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: can ems providers provide appropriate tidal volumes in a simulated adult-sized patient with a pediatric-sized bag-valve-mask? the answer of the question is",
+    "original_id": "27690714"
   },
   {
     "id": 34,
-    "age_group": "children",
-    "original_id": "25501465",
-    "question": "evaluation of pediatric vcug at an academic children's hospital: is the radiographic scout image necessary?",
-    "context": "There is heterogeneity in how pediatric voiding cystourethrography (VCUG) is performed. Some institutions, including our own, obtain a radiographic scout image prior to contrast agent instillation.No clinically significant or management-changing findings were present on scout images, and no radiopaque urinary tract calculi or concerning incidental finding was identified. Scout image estimated effective radiation dose averaged 0.09\u00a0mSv in children younger than 1\u00a0y, 0.09\u00a0mSv in children age 1-5, 0.13\u00a0mSv in children age 6-10 and 0.18\u00a0mSv in children age 11-18. Total fluoroscopy time per examination averaged 36.7\u00a0s (range 34.8-39.6\u00a0s for all age group averages). Evaluation of known or suspected vesicoureteral reflux (VUR) and urinary tract infection (UTI) were the most common clinical indications, stated in 40.9% and 37.0% of exams, respectively.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: evaluation of pediatric vcug at an academic children's hospital: is the radiographic scout image necessary? the answer of the question is",
+    "original_id": "25501465"
   },
   {
     "id": 35,
-    "age_group": "adolescent",
-    "original_id": "17259061",
-    "question": "cigarettes and cinema: does parental restriction of r-rated movie viewing reduce adolescent smoking susceptibility?",
-    "context": "An index of smoking susceptibility was created using measures of cigarette use and future intention to smoke. A zero-order correlation for parental restriction of R-rated movie viewing and smoking susceptibility showed a strong association (r = -.36, p<.001). A hierarchical logistic regression yielded odds ratios (ORs) for being susceptible to or having tried smoking for three levels of parental R-rated movie restriction. Results show that compared to full restriction, respondents with partial or no restriction were more likely to be susceptible to smoking (partial restriction: OR = 2.1, 95% CI = 1.5-2.8; no restriction: OR = 3.3, 95% CI = 2.3-4.6), when controlling for demographic factors, and family and friend smoking. Analyses using a measure of smoking prevalence as the dependent variable yielded similar results (partial restriction: OR = 1.5, 95% CI = 1.0-2.2; no restriction: OR = 2.5, 95% CI = 1.7-3.7).",
-    "answer": "yes"
+    "subject": "adolescent",
+    "attribute": "yes",
+    "prompt": "Question: cigarettes and cinema: does parental restriction of r-rated movie viewing reduce adolescent smoking susceptibility? the answer of the question is",
+    "original_id": "17259061"
   },
   {
     "id": 36,
-    "age_group": "children",
-    "original_id": "18388848",
-    "question": "does having a regular primary care clinician improve quality of preventive care for young children?",
-    "context": "",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: does having a regular primary care clinician improve quality of preventive care for young children? the answer of the question is",
+    "original_id": "18388848"
   },
   {
     "id": 37,
-    "age_group": "adult",
-    "original_id": "26717802",
-    "question": "after class--is a voluntary public insurance program a realistic way to meet the long-term support and service needs of adults with disabilities?",
-    "context": "The CLASS Act, which was part of the Affordable Care Act of 2010, established a voluntary personal assistance services (PAS) insurance program. However, concerns about enrollment and adverse selection led to repeal of the CLASS Act in\u00a02013.An estimated 25.8 million adults aged 40-65 (26.7%) said they would be interested in paying for a public insurance program to cover PAS benefits. However, interest in PAS insurance varied by age, race, ethnicity, region, income, disability status, and family experience with ADL assistance. Only 1.6 million adults aged 40-65 (1.8%) said they would be willing to pay $100 per month or more for coverage.",
-    "answer": "no"
+    "subject": "adult",
+    "attribute": "no",
+    "prompt": "Question: after class--is a voluntary public insurance program a realistic way to meet the long-term support and service needs of adults with disabilities? the answer of the question is",
+    "original_id": "26717802"
   },
   {
     "id": 38,
-    "age_group": "children",
-    "original_id": "27096199",
-    "question": "does viral co-infection influence the severity of acute respiratory infection in children?",
-    "context": "Multiple viruses are often detected in children with respiratory infection but the significance of co-infection in pathogenesis, severity and outcome is unclear.204 children were recruited in the main cohort and 97 in the replication cohort. The number of detected viruses did not correlate with any markers of severity. However, bacterial superinfection was associated with increased severity (OR: 4.356; P-value = 0.005), PICU admission (OR: 3.342; P-value = 0.006), higher clinical score (1.988; P-value = 0.002) respiratory support requirement (OR: 7.484; P-value<0.001) and longer hospital length of stay (OR: 1.468; P-value<0.001). In addition, pneumococcal vaccination was found to be a protective factor in terms of degree of respiratory distress (OR: 2.917; P-value = 0.035), PICU admission (OR: 0.301; P-value = 0.011), lower clinical score (-1.499; P-value = 0.021) respiratory support requirement (OR: 0.324; P-value = 0.016) and oxygen necessity (OR: 0.328; P-value = 0.001). All these findings were replicated in the UK cohort.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: does viral co-infection influence the severity of acute respiratory infection in children? the answer of the question is",
+    "original_id": "27096199"
   },
   {
     "id": 39,
-    "age_group": "elderly",
-    "original_id": "12040336",
-    "question": "cardiogenic shock complicating acute myocardial infarction in elderly patients: does admission to a tertiary center improve survival?",
-    "context": "The role of early revascularization among patients with acute myocardial infarction complicated by cardiogenic shock remains controversial. Angioplasty registries, while suggesting a benefit, are subject to selection bias, and clinical trials have been underpowered to detect early benefits. If an invasive strategy is beneficial in this population, patients admitted to hospitals with onsite coronary revascularization might be expected to have a better prognosis. We sought to determine whether access to cardiovascular resources at the admitting hospital influenced the prognosis of patients with acute myocardial infarction complicated by cardiogenic shock.Of the 601 patients with cardiogenic shock, 287 (47.8%) were admitted to hospitals without revascularization services and 314 (52.2%) were admitted to hospitals with coronary angioplasty and coronary artery bypass surgery facilities. Clinical characteristics were similar across the subgroups. Patients admitted to hospitals with revascularization services were more likely to undergo coronary revascularization during the index hospitalization and during the first month after acute myocardial infarction. After adjustment for demographic, clinical, hospital, and treatment strategies, the presence of onsite revascularization services was not associated with a significantly lower 30-day (odds ratio 0.83, 95% CI 0.47, 1.45) or 1-year mortality (odds ratio 0.91, 95% CI 0.49, 1.72).",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: cardiogenic shock complicating acute myocardial infarction in elderly patients: does admission to a tertiary center improve survival? the answer of the question is",
+    "original_id": "12040336"
   },
   {
     "id": 40,
-    "age_group": "adult",
-    "original_id": "25155638",
-    "question": "can routine offering of influenza vaccination in office-based settings reduce racial and ethnic disparities in adult influenza vaccination?",
-    "context": "Influenza vaccination remains below the federally targeted levels outlined in Healthy People 2020. Compared to non-Hispanic whites, racial and ethnic minorities are less likely to be vaccinated for influenza, despite being at increased risk for influenza-related complications and death. Also, vaccinated minorities are more likely to receive influenza vaccinations in office-based settings and less likely to use non-medical vaccination locations compared to non-Hispanic white vaccine users.",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: can routine offering of influenza vaccination in office-based settings reduce racial and ethnic disparities in adult influenza vaccination? the answer of the question is",
+    "original_id": "25155638"
   },
   {
     "id": 41,
-    "age_group": "adolescent",
-    "original_id": "23283159",
-    "question": "is obesity a risk factor for wheezing among adolescents?",
-    "context": "From the original cohort, 4,349 individuals were located (85.7% follow-up rate). The prevalence of chest wheezing at 11 and 15 years were 13.5% (95% CI: 12.5%-14.5%) and 12.1% (95% CI: 11.1%-13.1%), respectively. The prevalence of wheezing at both times was 4.5% (95% CI: 3.9%-5.1%) and the incidence of wheezing was 7.5% (95% CI: 6.7%-8.3%). Independent of the effect of various confounding variables, the prevalence of wheezing at 15 years was 50% greater among obese individuals than among eutrophic individuals at 11 years (RR 1.53; 95% CI: 1.14-2.05). The greater the skinfold tertile at 11 years, the higher the prevalence of wheezing at 15 years was (p = .011). Weight status and skinfolds did not present any association with incident wheezing. After controlling for confounding factors, the risk of persistent wheezing among obese individuals at 11 years was 1.82 (95% CI: 1.30-2.54).",
-    "answer": "yes"
+    "subject": "adolescent",
+    "attribute": "yes",
+    "prompt": "Question: is obesity a risk factor for wheezing among adolescents? the answer of the question is",
+    "original_id": "23283159"
   },
   {
     "id": 42,
-    "age_group": "infant",
-    "original_id": "16465002",
-    "question": "dose end-tidal carbon dioxide measurement correlate with arterial carbon dioxide in extremely low birth weight infants in the first week of life?",
-    "context": "There were 754 end-tidal and arterial CO(2) pairs from 31 ELBW infants (21 male and 10 female). The overall EtCO(2) values were significantly lower than PaCO(2) value. In only 89/754(11.8%) pairs, the EtCO(2) was higher than the PaCO(2). The overall bias was 5.6 +/- 6.9 mmHg (95% C.I. 5.11-6.09). The intraclass correlation coefficient was 0.81. Using EtCO2 ranges of 30 to 50 mmHg, the capnographic method was able to identify 84% of instances where PaCO(2) was between 35 (<35 = hypocarbia) and 55 mmHg (>55= hypercapnia).",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: dose end-tidal carbon dioxide measurement correlate with arterial carbon dioxide in extremely low birth weight infants in the first week of life? the answer of the question is",
+    "original_id": "16465002"
   },
   {
     "id": 43,
-    "age_group": "adolescent",
-    "original_id": "24922528",
-    "question": "the association of puberty and young adolescent alcohol use: do parents have a moderating role?",
-    "context": "The interaction of family factors and pubertal stage did not improve the fit of the model, so a main effect model of family factors and pubertal stage was adopted. There were significant main effects for pubertal stage with boys in middle puberty at increased odds of alcohol use, and girls in advanced puberty at increased odds of alcohol use.",
-    "answer": "no"
+    "subject": "adolescent",
+    "attribute": "no",
+    "prompt": "Question: the association of puberty and young adolescent alcohol use: do parents have a moderating role? the answer of the question is",
+    "original_id": "24922528"
   },
   {
     "id": 44,
-    "age_group": "infant",
-    "original_id": "9142039",
-    "question": "does pediatric housestaff experience influence tests ordered for infants in the neonatal intensive care unit?",
-    "context": "",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: does pediatric housestaff experience influence tests ordered for infants in the neonatal intensive care unit? the answer of the question is",
+    "original_id": "9142039"
   },
   {
     "id": 45,
-    "age_group": "adult",
-    "original_id": "26818046",
-    "question": "could adult european pharmacoresistant epilepsy patients be treated with higher doses of zonisamide?",
-    "context": "Nine patients (5 female): 8 focal/1 generalized pharmacoresistant epilepsy. Mean age: 34 years. Most frequent seizure type: complex partial seizures; other seizure types: generalized tonic-clonic, tonic, myoclonia. Zonisamide in polytherapy in all (100%), administered in tritherapy in 3 (33%) of 9 patients; mean dose: 633 (600-700) mg/d; efficacy (>50% seizure reduction) was observed in 5 (55%) of 9 patients. Five of 9 patients are still taking high doses of ZNS (more than 1 year). Adverse events were observed in 3 (37%) of 8 patients. Good tolerance to high doses of other antiepileptic drugs had been observed in 6 (66%) of 9 patients. Plasma levels of ZNS were only available in 2 patients; both were in the therapeutic range (34.95, 30.91) (10-40 mg/L).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: could adult european pharmacoresistant epilepsy patients be treated with higher doses of zonisamide? the answer of the question is",
+    "original_id": "26818046"
   },
   {
     "id": 46,
-    "age_group": "children",
-    "original_id": "26867834",
-    "question": "is alveolar macrophage phagocytic dysfunction in children with protracted bacterial bronchitis a forerunner to bronchiectasis?",
-    "context": "Children with recurrent protracted bacterial bronchitis (PBB) and bronchiectasis share common features, and PBB is likely a forerunner to bronchiectasis. Both diseases are associated with neutrophilic inflammation and frequent isolation of potentially pathogenic microorganisms, including nontypeable Haemophilus influenzae (NTHi), from the lower airway. Defective alveolar macrophage phagocytosis of apoptotic bronchial epithelial cells (efferocytosis), as found in other chronic lung diseases, may also contribute to tissue damage and neutrophil persistence. Thus, in children with bronchiectasis or PBB and in control subjects, we quantified the phagocytosis of airway apoptotic cells and NTHi by alveolar macrophages and related the phagocytic capacity to clinical and airway inflammation.For children with PBB or bronchiectasis, macrophage phagocytic capacity was significantly lower than for control subjects (P = .003 and P<.001 for efferocytosis and P = .041 and P = .004 for phagocytosis of NTHi; PBB and bronchiectasis, respectively); median phagocytosis of NTHi for the groups was as follows: bronchiectasis, 13.7% (interquartile range [IQR], 11%-16%); PBB, 16% (IQR, 11%-16%); control subjects, 19.0% (IQR, 13%-21%); and median efferocytosis for the groups was as follows: bronchiectasis, 14.1% (IQR, 10%-16%); PBB, 16.2% (IQR, 14%-17%); control subjects, 18.1% (IQR, 16%-21%). Mannose receptor expression was significantly reduced in the bronchiectasis group (P = .019), and IL-1\u03b2 increased in both bronchiectasis and PBB groups vs control subjects.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: is alveolar macrophage phagocytic dysfunction in children with protracted bacterial bronchitis a forerunner to bronchiectasis? the answer of the question is",
+    "original_id": "26867834"
   },
   {
     "id": 47,
-    "age_group": "elderly",
-    "original_id": "22349635",
-    "question": "do elderly patients benefit from surgery in addition to radiotherapy for treatment of metastatic spinal cord compression?",
-    "context": "Treatment of elderly cancer patients has gained importance. One question regarding the treatment of metastatic spinal cord compression (MSCC) is whether elderly patients benefit from surgery in addition to radiotherapy? In attempting to answer this question, we performed a matched-pair analysis comparing surgery followed by radiotherapy to radiotherapy alone.Data from 42 elderly (age>\u200965 years) patients receiving surgery plus radiotherapy (S\u2009+\u2009RT) were matched to 84 patients (1:2) receiving radiotherapy alone (RT). Groups were matched for ten potential prognostic factors and compared regarding motor function, local control, and survival. Additional matched-pair analyses were performed for the subgroups of patients receiving direct decompressive surgery plus stabilization of involved vertebrae (DDSS, n\u2009=\u200981) and receiving laminectomy (LE, n\u2009=\u200945).Improvement of motor function occurred in 21% after S\u2009+\u2009RT and 24% after RT (p\u2009=\u20090.39). The 1-year local control rates were 81% and 91% (p\u2009=\u20090.44), while the 1-year survival rates were 46% and 39% (p\u2009=\u20090.71). In the matched-pair analysis of patients receiving DDSS, improvement of motor function occurred in 22% after DDSS\u2009+\u2009RT and 24% after RT alone (p\u2009=\u20090.92). The 1-year local control rates were 95% and 89% (p\u2009=\u20090.62), and the 1-year survival rates were 54% and 43% (p\u2009=\u20090.30). In the matched-pair analysis of patients receiving LE, improvement of motor function occurred in 20% after LE\u2009+\u2009RT and 23% after RT alone (p\u2009=\u20090.06). The 1-year local control rates were 50% and 92% (p\u2009=\u20090.33). The 1-year survival rates were 32% and 32% (p\u2009=\u20090.55).",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: do elderly patients benefit from surgery in addition to radiotherapy for treatment of metastatic spinal cord compression? the answer of the question is",
+    "original_id": "22349635"
   },
   {
     "id": 48,
-    "age_group": "infant",
-    "original_id": "15112004",
-    "question": "are who/unaids/unicef-recommended replacement milks for infants of hiv-infected mothers appropriate in the south african context?",
-    "context": "",
-    "answer": "no"
+    "subject": "infant",
+    "attribute": "no",
+    "prompt": "Question: are who/unaids/unicef-recommended replacement milks for infants of hiv-infected mothers appropriate in the south african context? the answer of the question is",
+    "original_id": "15112004"
   },
   {
     "id": 49,
-    "age_group": "elderly",
-    "original_id": "8199520",
-    "question": "are physicians meeting the needs of family caregivers of the frail elderly?",
-    "context": "An average of 75.4% respondents did not use formal support services. Just under half of caregivers were dissatisfied with the attention they received from the health care system, and more than one third expressed feelings of stress, depression, guilt, and isolation.",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: are physicians meeting the needs of family caregivers of the frail elderly? the answer of the question is",
+    "original_id": "8199520"
   },
   {
     "id": 50,
-    "age_group": "newborn",
-    "original_id": "20828836",
-    "question": "is discordance in teoae and aabr outcomes predictable in newborns?",
-    "context": "Of the 4718 infants enrolled under the program 1745 (36.9%) completed both TEOAE and AABR. Of this group, 1060 (60.7%) passed both TEOAE and AABR (\"true-negatives\"); 92 (5.3%) failed both TEOAE and AABR (\"true-positive\"); 571 (32.7%) failed TEOAE but passed AABR (\"false-positives\") while 22 (1.3%) passed TEOAE but failed AABR (\"false-negatives\"). Infants with false-positives were likely to be admitted into well-baby nursery (p=0.001), belong to mothers who attended antenatal care (p=0.010) or who delivered vaginally (p<0.001) compared to infants with true-negatives while infants with true-positives were also more likely to be delivered vaginally (p=0.002) or admitted into well-baby nursery (p=0.035) compared to infants with false-negatives. Infants with true-positives were significantly more likely to be delivered vaginally (p<0.001) and have severe hyperbilirubinemia (p=0.045) compared with infants with true-negatives. No association was observed between false-negatives and true-negatives. Antenatal care status, mode of delivery and nursery type were useful predictors of discordant outcomes among all infants undergoing screening (c-statistic=0.73).",
-    "answer": "yes"
+    "subject": "newborn",
+    "attribute": "yes",
+    "prompt": "Question: is discordance in teoae and aabr outcomes predictable in newborns? the answer of the question is",
+    "original_id": "20828836"
   },
   {
     "id": 51,
-    "age_group": "adult",
-    "original_id": "17910536",
-    "question": "adults with mild intellectual disabilities: can their reading comprehension ability be improved?",
-    "context": "Adults with a mild intellectual disability (ID) often show poor decoding and reading comprehension skills. The goal of this study was to investigate the effects of teaching text comprehension strategies to these adults. Specific research goals were to determine (1) the effects of two instruction conditions, i.e. strategy instruction to individuals and strategy instruction in small groups in a reciprocal teaching context; (2) intervention programme effects on specific strategy tests (so-called direct effects), and possible differences between strategies; (3) (long-term) transfer effects of the programme on general reading comprehension ability; and (4) the regression of general text comprehension by the variables of technical reading, IQ, reading comprehension of sentences (RCS), and pretest and posttest scores on the strategies taught.Results indicated no significant difference between group and individual instruction conditions. Second, direct programme effects - as determined by posttest-pretest contrasts for strategy tests - were substantial, except for the questioning strategy. Third, even more substantial was the transfer effect to general text comprehension. Moreover, the results on this test were well maintained at a follow-up test. Finally, the variance of general reading comprehension ability was best explained by the test of RCS, and only moderately by the strategies trained.",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: adults with mild intellectual disabilities: can their reading comprehension ability be improved? the answer of the question is",
+    "original_id": "17910536"
   },
   {
     "id": 52,
-    "age_group": "children",
-    "original_id": "15841770",
-    "question": "do inhaled steroids differ from cromones in terms of hospital admission rates for asthma in children?",
-    "context": "Total and first admissions, as well as hospital days were clearly less in the Oulu province. In the children aged>or = 6y, the average annual total admissions were 0.3/1000 (Oulu) vs 1.2/1000 (Kuopio) (p<0.001). Similarly, the first admissions were 0.2/1000 vs 1.0/1000 (p<0.001), proportions of readmissions 6.3% vs 19.3% (p<0.05), and numbers of hospital days 0.7/1000 vs 3.8/1000 (p<0.001). The differences were in the same direction, though less prominent, also among children 2-5 y of age.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: do inhaled steroids differ from cromones in terms of hospital admission rates for asthma in children? the answer of the question is",
+    "original_id": "15841770"
   },
   {
     "id": 53,
-    "age_group": "elderly",
-    "original_id": "10340286",
-    "question": "is there a role for leukocyte and crp measurements in the diagnosis of acute appendicitis in the elderly?",
-    "context": "There was no statistically significant difference in leukocyte counts or CRP values between patients with an uninflamed appendix (group A) and those with acute appendicitis (group B). When the patients were divided into the four subgroups, the most conspicuous finding was that group B (acute appendicitis, n = 73) contained no patients with both values unelevated.",
-    "answer": "maybe"
+    "subject": "elderly",
+    "attribute": "maybe",
+    "prompt": "Question: is there a role for leukocyte and crp measurements in the diagnosis of acute appendicitis in the elderly? the answer of the question is",
+    "original_id": "10340286"
   },
   {
     "id": 54,
-    "age_group": "elderly",
-    "original_id": "26237424",
-    "question": "does patient-prosthesis mismatch after aortic valve replacement affect survival and quality of life in elderly patients?",
-    "context": "To evaluate the impact of patient-prosthesis mismatch (PPM) on survival, functional status, and quality of life (QoL) after aortic valve replacement (AVR) with small prosthesis size in elderly patients.Overall, PPM was found in 78 patients (53.8%). Among them, 42 patients (29%) had an indexed effective orifice area less than 0.75\u200acm/m and 17 less than 0.65\u200acm/m (11.7%). Overall survival at 5 years was 78\u200a\u00b1\u200a4.5% and was not influenced by PPM (P\u200a=\u200aNS). The mean New York Heart Association class for long-term survivors with PPM improved from 3.0 to 1.7 (P\u200a<\u200a0.001). QoL (physical functioning 45.18\u200a\u00b1\u200a11.35, energy/fatigue 49.36\u200a\u00b1\u200a8.64, emotional well being 58.84\u200a\u00b1\u200a15.44, social functioning 61.29\u200a\u00b1\u200a6.15) was similar to that of no-PPM patients (P\u200a=\u200aNS).",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: does patient-prosthesis mismatch after aortic valve replacement affect survival and quality of life in elderly patients? the answer of the question is",
+    "original_id": "26237424"
   },
   {
     "id": 55,
-    "age_group": "adult",
-    "original_id": "23072266",
-    "question": "has the use of complementary and alternative medicine therapies by u.s. adults with chronic disease-related functional limitations changed from 2002 to 2007?",
-    "context": "The unadjusted and age-standardized prevalence of overall CAM use (22 therapies comparable between both survey years) was higher in 2007 than in 2002 (30.6% versus 26.9%, p<0.001 and 34.4% versus 30.6%, p<0.001, respectively). Adults with functional limitations that included changing and maintaining body position experienced a significant increase in CAM use between 2002 and 2007 (31.1%-35.0%, p<0.01). The use of deep breathing exercises was the most prevalent CAM therapy in both 2002 and 2007 and increased significantly during this period (from 17.9% to 19.9%, p<0.05). The use of meditation, massage, and yoga also increased significantly from 2002 and 2007 (11.0%-13.5%, p<0.01; 7.0%-10.9%, p<0.0001; and 5.1% to 6.6%, p<0.05, respectively), while the use of the Atkins diet decreased (2.2%- 1.4%, p<0.01).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: has the use of complementary and alternative medicine therapies by u.s. adults with chronic disease-related functional limitations changed from 2002 to 2007? the answer of the question is",
+    "original_id": "23072266"
   },
   {
     "id": 56,
-    "age_group": "elderly",
-    "original_id": "25571931",
-    "question": "do elderly patients call 911 when presented with clinical scenarios suggestive of acute stroke?",
-    "context": "Among 367 elderly adults, 14% correctly endorsed intention to call 911. Presented with the most typical signs and symptoms, only 65% reported that they would call an ambulance. Amaurosis Fugax was the symptom for which was called the least (15%). On average, the correct response was chosen only 37% of the time. Compared to lower levels of education, higher levels were associated to correctly endorsed intention to call 911 (secondary School adjusted OR 3.53, 95% CI 1.59-7.86 and Tertiary/University adjusted OR 3.04, 95% CI 1.12-8.21).",
-    "answer": "maybe"
+    "subject": "elderly",
+    "attribute": "maybe",
+    "prompt": "Question: do elderly patients call 911 when presented with clinical scenarios suggestive of acute stroke? the answer of the question is",
+    "original_id": "25571931"
   },
   {
     "id": 57,
-    "age_group": "children",
-    "original_id": "18719011",
-    "question": "do overweight children necessarily make overweight adults?",
-    "context": "Generally, body mass index decreased in preschool children (2-5 years), increased in children (6-12 years) and adolescents (13-18 years), and slightly decreased in young adults (19-25 years) in these Japanese females. However, the curves differed among birth cohorts. More recent cohorts were more overweight as children but thinner as young women. The increments in body mass index in early childhood were larger in more recent cohorts than in older cohorts. However, the increments in body mass index in adolescents were smaller and the decrease in body mass index in young adults started earlier, with lower peak values in more recent cohorts than in older cohorts. The decrements in body mass index in young adults were similar in all birth cohorts.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: do overweight children necessarily make overweight adults? the answer of the question is",
+    "original_id": "18719011"
   },
   {
     "id": 58,
-    "age_group": "newborn",
-    "original_id": "12970636",
-    "question": "does early discharge with nurse home visits affect adequacy of newborn metabolic screening?",
-    "context": "The state laboratory received specimens from 3860 infants; 1324 were on early discharge newborns and 2536 infants in the traditional stay group. At least one filter paper test (PKU, hypothyroidism, and CAH) was collected on 99.2% of early discharge infants and 96.0% of traditional stay infants (P<.0001). Early discharge infants had a higher rate of initial filter paper specimens being inadequate (22.9%) compared with traditional stay infants (14.3%, P<.0001) but had a higher rate of repeat specimens when the initial specimen was inadequate (85.0% early discharge vs 75.3% traditional stay, P=.002). The early discharge group was more likely to have an adequate specimen within the first 9 days of life (1001, 98.8% early discharge vs 2016, 96.7% traditional stay, P=.0005).",
-    "answer": "no"
+    "subject": "newborn",
+    "attribute": "no",
+    "prompt": "Question: does early discharge with nurse home visits affect adequacy of newborn metabolic screening? the answer of the question is",
+    "original_id": "12970636"
   },
   {
     "id": 59,
-    "age_group": "adult",
-    "original_id": "14655021",
-    "question": "juvenile ankylosing spondylitis--is it the same disease as adult ankylosing spondylitis?",
-    "context": "Case records of 210 Indian patients diagnosed with AS according to modified New York criteria were reviewed. Data were collected regarding age of onset, clinical features, drug treatment, and outcome at last follow-up. Patients with onset before 17 years of age were classified as having juvenile AS (JAS) and the rest with adult AS (AAS).There were 150 patients with AAS and 60 with JAS. The latter had higher male preponderance, more frequent onset with peripheral arthritis, and greater involvement of hip and knee joints. Valvular dysfunction was seen only in patients with JAS.",
-    "answer": "no"
+    "subject": "adult",
+    "attribute": "no",
+    "prompt": "Question: juvenile ankylosing spondylitis--is it the same disease as adult ankylosing spondylitis? the answer of the question is",
+    "original_id": "14655021"
   },
   {
     "id": 60,
-    "age_group": "children",
-    "original_id": "27757987",
-    "question": "does the treatment of amblyopia normalise subfoveal choroidal thickness in amblyopic children?",
-    "context": "The mean visual acuity of the amblyopic eyes significantly increased from 0.35\u2009\u00b1\u20090.3 to 0.16\u2009\u00b1\u20090.2 logMAR after the treatment (p\u2009<\u20090.001). The mean initial choroidal thickness was significantly higher in the amblyopic eyes than in the fellow eyes (p\u2009=\u20090.019). There were no significant differences between the pre- and post-treatment mean choroidal thickness in the amblyopic eyes (p\u2009=\u20090.428) and in the fellow eyes (p\u2009=\u20090.343). The mean choroidal thickness was still higher in the amblyopic eyes than in the fellow eyes after the treatment (p\u2009=\u20090.006).",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: does the treatment of amblyopia normalise subfoveal choroidal thickness in amblyopic children? the answer of the question is",
+    "original_id": "27757987"
   },
   {
     "id": 61,
-    "age_group": "elderly",
-    "original_id": "21789019",
-    "question": "do elderly cancer patients have different care needs compared with younger ones?",
-    "context": "The requests most frequently expressed by the older group concerned financial-insurance information (73.9%), the need to talk to people with the same illness (71.7%), the need to receive more comprehensible information from doctors and nurses (71.7%), and the need for a better dialogue with clinicians (69.6%). Few significant differences between the two age subgroups were found, with the exception of issues such as the need for intimacy and support.",
-    "answer": "no"
+    "subject": "elderly",
+    "attribute": "no",
+    "prompt": "Question: do elderly cancer patients have different care needs compared with younger ones? the answer of the question is",
+    "original_id": "21789019"
   },
   {
     "id": 62,
-    "age_group": "adult",
-    "original_id": "25699562",
-    "question": "does the transmissible liability index (tli) assessed in late childhood predict suicidal symptoms at young adulthood?",
-    "context": "TLI was significantly associated with number and severity of lifetime suicide attempts.",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: does the transmissible liability index (tli) assessed in late childhood predict suicidal symptoms at young adulthood? the answer of the question is",
+    "original_id": "25699562"
   },
   {
     "id": 63,
-    "age_group": "children",
-    "original_id": "20971618",
-    "question": "are lifetime prevalence of impetigo, molluscum and herpes infection really increased in children having atopic dermatitis?",
-    "context": "Cutaneous infections such as impetigo contagiosum (IC), molluscum contagiosum (MC) and herpes virus infection (HI) appear to be associated with atopic dermatitis (AD), but there are no reports of concrete epidemiological evidence.In 913 children (AD; 132), a history of IC, MC or HI was observed in 45.1%, 19.7%, and 2.5%, respectively. Multiple logistic regression analysis revealed that the odds of having a history of IC were 1.8 times higher in AD children than in non-AD children. Meanwhile, a history of MC was significantly correlated to the male gender, but not to a personal history of AD. As for HI, we found no correlated factors in this study.",
-    "answer": "maybe"
+    "subject": "children",
+    "attribute": "maybe",
+    "prompt": "Question: are lifetime prevalence of impetigo, molluscum and herpes infection really increased in children having atopic dermatitis? the answer of the question is",
+    "original_id": "20971618"
   },
   {
     "id": 64,
-    "age_group": "infant",
-    "original_id": "19322056",
-    "question": "does the enteral feeding advancement affect short-term outcomes in very low birth weight infants?",
-    "context": "We prospectively studied the influence of center-specific enteral feeding advancement in 1430 VLBW infants recruited from 13 tertiary neonatal intensive care units in Germany on short-term outcome parameters. The centers were post hoc stratified to \"rapid advancement to full enteral feeds\" (median duration of advancement to full enteral feeds<or =12.5 days; 6 centers), that is, rapid advancement (RA), or \"slow advancement to full enteral feeds\" (median duration of advancement to full enteral feeds>12.5 days; 7 centers), that is, slow advancement (SA).VLBW infants born in centers with SA (n = 713) had a significantly higher rate of sepsis compared with VLBW infants born in centers with RA (n = 717), which was particularly evident for late-onset sepsis (14.0% vs 20.4%; P = 0.002). Furthermore, more central venous lines (48.6% vs 31.1%, P<0.001) and antibiotics (92.4% vs 77.7%, P<0.001) were used in centers with SA.",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: does the enteral feeding advancement affect short-term outcomes in very low birth weight infants? the answer of the question is",
+    "original_id": "19322056"
   },
   {
     "id": 65,
-    "age_group": "adult",
-    "original_id": "21849531",
-    "question": "does growth hormone replacement therapy reduce mortality in adults with growth hormone deficiency?",
-    "context": "In the treatment group, 95 patients died compared to 74.6 expected [SMR 1.27 (95% confidence interval, 1.04-1.56)]. Mortality was higher in women than in men. After exclusion of high-risk patients, the SMR for CVD mortality remained increased in women. Mortality due to malignancies was not elevated. In the control groups mortality was not different from the background population. Univariate analyses demonstrated sex, GHD onset, age, and underlying diagnosis as influencing factors.",
-    "answer": "no"
+    "subject": "adult",
+    "attribute": "no",
+    "prompt": "Question: does growth hormone replacement therapy reduce mortality in adults with growth hormone deficiency? the answer of the question is",
+    "original_id": "21849531"
   },
   {
     "id": 66,
-    "age_group": "children",
-    "original_id": "23860049",
-    "question": "do we need imaging to diagnose appendicitis in children?",
-    "context": "To evaluate the role of clinical assessment with selective use of imaging studies in the management of suspected acute appendicitis in children.Medical records of children referred to Emergency Room in 2010 for suspected appendicitis were retrospectively reviewed. Diagnostic investigations divided by age and sex were related to pathological findings. Negative appendectomy and complication rates were calculated.923 children needed surgical assessment : In 75.7% of them surgical indication was excluded and 24.3% were admitted to surgical ward for observation. Appendectomy was eventually performed in 137 patients (61.9%), 82.4% of them without any preoperative imaging while 17.6% underwent selective studies, mainly abdominal ultrasonography (14.6%). Imaging was requested twice as frequently in not operated admitted children (39.3%) than in the operated ones (17.5%, P<0.001). Overall complicated appendicitis rate (peritonitis and abscess) resulted 26.4% and negative appendectomy rate 8.8%. Females older than 10 years presented histologically not-confirmed appendicitis in 22.2% of cases, while the younger ones presented more frequently complicated appendicitis (29.3%).",
-    "answer": "maybe"
+    "subject": "children",
+    "attribute": "maybe",
+    "prompt": "Question: do we need imaging to diagnose appendicitis in children? the answer of the question is",
+    "original_id": "23860049"
   },
   {
     "id": 67,
-    "age_group": "children",
-    "original_id": "17971187",
-    "question": "cholesterol screening in school children: is family history reliable to choose the ones to screen?",
-    "context": "In 135 of the subjects' serum cholesterol level was>or=200 mg/dL and in 83 subjects serum LDL-cholesterol level was>or=130 mg/dL. Despite 64.4% of the subjects reported a family history of hyperlipidemia, no relations between family history and serum lipid levels were found.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: cholesterol screening in school children: is family history reliable to choose the ones to screen? the answer of the question is",
+    "original_id": "17971187"
   },
   {
     "id": 68,
-    "age_group": "children",
-    "original_id": "25079920",
-    "question": "do parents recall and understand children's weight status information after bmi screening?",
-    "context": "Overall, 39% of the information was recalled (mean score 6.3 from possible score of 16). Parents given feedback via BPC recalled more than those in the MI group (difference in total score 0.48; 95% CI 0.05 to 0.92). Although 94% of parents were able to correctly recall their child's weight status, fewer than 10 parents could accurately describe what the measurements meant. Maternal education (0.81; 0.25 to 1.37) and parental ratings of how useful they found the information (0.19; 0.04 to 0.35) were significant predictors of recall score in multivariate analyses.",
-    "answer": "maybe"
+    "subject": "children",
+    "attribute": "maybe",
+    "prompt": "Question: do parents recall and understand children's weight status information after bmi screening? the answer of the question is",
+    "original_id": "25079920"
   },
   {
     "id": 69,
-    "age_group": "children",
-    "original_id": "15137012",
-    "question": "ovarian torsion in children: is oophorectomy necessary?",
-    "context": "Most pediatric surgeons perform oophorectomy in girls presenting with ovarian torsion in which the ovary appears necrotic. However, the adult gynecology literature suggests that many ovaries can be treated by detorsion alone.There were 36 torsions in 34 children. Seventeen underwent detorsion with or without ovarian cystectomy, and 19 had oophorectomy (mean age 10 years in both groups). Torsion was suspected preoperatively in 94% of the detorsion cases and in 47% of the oophorectomy patients. Median time from presentation to surgery was significantly lower in the detorsion than the oophorectomy group (median 14 v 27 hours; P =.04). Postoperative complications and length of stay were similar between the 2 groups. Despite the ovary being judged intraoperatively as moderately to severely ischemic in 53% of the detorsion cases, follow-up sonogram or ovarian biopsy available in 14 of the 17 cases showed normal ovary with follicular development in each case.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: ovarian torsion in children: is oophorectomy necessary? the answer of the question is",
+    "original_id": "15137012"
   },
   {
     "id": 70,
-    "age_group": "newborn",
-    "original_id": "21194998",
-    "question": "does minimal access major surgery in the newborn hurt less?",
-    "context": "Minimal access surgery (MAS) in adults is associated with less postoperative pain in comparison to conventional 'open' surgery. It is not known whether this holds true for neonates as well. Less pain would imply that opioid consumption can be reduced, which has a beneficial effect on morbidity.AIM: To evaluate potential differences in' opioid consumption between neonates undergoing thoracoscopic minimal access surgery or conventional surgery of esophageal atresia (EA) and congenital diaphragmatic hernia (CDH).The study group consisted of 24 MAS patients (14 EA; 10 CDH). These were matched to 48 control patients (28 EA; 20 CDH). At none of the time points cumulative opioid (median in mg/kg (IQR)) doses significantly differed between MAS patients and controls, both with CDH and EA. For example at 24 h postoperative for CDH patients cumulative opioid doses were [0.84(0.61-1.83) MAS vs. 1.06(0.60-1.36) p=1.0] controls, For EApatients at 24 h the cumulative opioid doses were [0.48(0.30-0.75) MAS vs. 0.49(0.35-0.79) p=0.83] controls. This held true for the postoperative pain scores as well.",
-    "answer": "no"
+    "subject": "newborn",
+    "attribute": "no",
+    "prompt": "Question: does minimal access major surgery in the newborn hurt less? the answer of the question is",
+    "original_id": "21194998"
   },
   {
     "id": 71,
-    "age_group": "adult",
-    "original_id": "15787677",
-    "question": "does aerobic fitness influence microvascular function in healthy adults at risk of developing type 2 diabetes?",
-    "context": "Maximal oxygen uptake was not significantly different in the 'at-risk' group compared with healthy controls. Maximum hyperaemia was reduced in those 'at risk' (1.29 +/- 0.30 vs. 1.46 +/- 0.33 V, P = 0.047); however, the peak response to acetylcholine or sodium nitroprusside did not differ in the two groups. A significant positive correlation was demonstrated between maximal oxygen uptake and maximum hyperaemia (r = 0.52, P = 0.006 l/min and r = 0.60, P = 0.001 ml/kg/min) and peak ACh response (r = 0.40, P = 0.04 l/min and r = 0.47, P = 0.013 ml/kg/min) in the 'at-risk' group when expressed in absolute (l/min) or body mass-related (ml/kg/min) terms. No significant correlations were found in the control group.",
-    "answer": "maybe"
+    "subject": "adult",
+    "attribute": "maybe",
+    "prompt": "Question: does aerobic fitness influence microvascular function in healthy adults at risk of developing type 2 diabetes? the answer of the question is",
+    "original_id": "15787677"
   },
   {
     "id": 72,
-    "age_group": "infant",
-    "original_id": "24625433",
-    "question": "are high flow nasal cannulae noisier than bubble cpap for preterm infants?",
-    "context": "Noise exposure in the neonatal intensive care unit is believed to be a risk factor for hearing loss in preterm neonates. Continuous positive airway pressure (CPAP) devices exceed recommended noise levels. High flow nasal cannulae (HFNC) are an increasingly popular alternative to CPAP for treating preterm infants, but there are no in vivo studies assessing noise production by HFNC.A total of 21 HFNC and 13 BCPAP noise measurements were performed in 21 infants. HFNC gas flows were 2-5 L/min, and BCPAP gas flows were 6-10 L/min with set pressures of 5-7 cm of water. There was no evidence of a difference in average noise levels measured at the EAM: mean difference (95% CI) of -1.6 (-4.0 to 0.9) dBA for HFNC compared to BCPAP. At low frequency (500 Hz), HFNC was mean (95% CI) 3.0 (0.3 to 5.7) dBA quieter than BCPAP. Noise increased with increasing BCPAP gas flow (p=0.007), but not with increasing set pressure. There was a trend to noise increasing with increasing HFNC gas flows.",
-    "answer": "no"
+    "subject": "infant",
+    "attribute": "no",
+    "prompt": "Question: are high flow nasal cannulae noisier than bubble cpap for preterm infants? the answer of the question is",
+    "original_id": "24625433"
   },
   {
     "id": 73,
-    "age_group": "elderly",
-    "original_id": "24591144",
-    "question": "are the elderly with oropharyngeal carcinoma undertreated?",
-    "context": "A total of 14,909 patients with OPSCC were identified. In our demographic data, we observed a significant increase in the number of patients who did not receive treatment (surgery, radiation, or combined therapy) after age 55. Kaplan-Meier analysis showed that age groups 65 to 74 and 75 to 84 had substantial benefits in DSS with surgery, radiation, or combined therapy. Multivariable analysis did not demonstrate any statistically significant difference in the hazard ratios for combined treatment among age groups 45 to 54, 55 to 64, 65 to 74, and 75 to 84.",
-    "answer": "maybe"
+    "subject": "elderly",
+    "attribute": "maybe",
+    "prompt": "Question: are the elderly with oropharyngeal carcinoma undertreated? the answer of the question is",
+    "original_id": "24591144"
   },
   {
     "id": 74,
-    "age_group": "children",
-    "original_id": "26209118",
-    "question": "utility of unenhanced fat-suppressed t1-weighted mri in children with sickle cell disease -- can it differentiate bone infarcts from acute osteomyelitis?",
-    "context": "Children with sickle cell disease (SCD) are at risk of bone infarcts and acute osteomyelitis. The clinical differentiation between a bone infarct and acute osteomyelitis is a diagnostic challenge. Unenhanced T1-W fat-saturated MR images have been proposed as a potential tool to differentiate bone infarcts from osteomyelitis.Based on the clinical standard, 5 children were classified as positive for osteomyelitis and 26 children as positive for bone infarct (negative for osteomyelitis). The bone marrow signal intensity on T1-W fat-saturated imaging was not significant for the differentiation between bone infarct and osteomyelitis (P\u2009=\u20090.56). None of the additional evaluated imaging parameters on unenhanced MRI proved reliable in differentiating these diagnoses.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: utility of unenhanced fat-suppressed t1-weighted mri in children with sickle cell disease -- can it differentiate bone infarcts from acute osteomyelitis? the answer of the question is",
+    "original_id": "26209118"
   },
   {
     "id": 75,
-    "age_group": "children",
-    "original_id": "22813804",
-    "question": "does obesity impact the pattern and outcome of trauma in children?",
-    "context": "Childhood obesity is pandemic condition. The effect of obesity on trauma outcomes in children has been relatively understudied. We conducted this study to ascertain the effects of obesity on the hospital outcome of injured children.",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: does obesity impact the pattern and outcome of trauma in children? the answer of the question is",
+    "original_id": "22813804"
   },
   {
     "id": 76,
-    "age_group": "children",
-    "original_id": "21689015",
-    "question": "can dogs prime autistic children for therapy?",
-    "context": "",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: can dogs prime autistic children for therapy? the answer of the question is",
+    "original_id": "21689015"
   },
   {
     "id": 77,
-    "age_group": "children",
-    "original_id": "10811329",
-    "question": "are 99mtc leukocyte scintigraphy and sbft studies useful in children suspected of having inflammatory bowel disease?",
-    "context": "Of the 130 children studied to exclude IBD, the final diagnosis was Crohn's disease in 27, ulcerative colitis in nine, miscellaneous colitis in 13, probably normal in 42, and normal in 39. The 99mTc-WBC scans were positive in all but three newly diagnosed Crohn's disease, ulcerative colitis, or miscellaneous colitis children. The false-negative 99mTc-WBC studies were seen in children with mild inflammation on biopsies and normal UGI-SBFT studies. In the 46 children with a true-positive 99mTc-WBC scan, 81% (17/21) of UGI-SBFT studies were normal. In five children with equivocal UGI-SBFT studies, the 99mTc-WBC scan correctly predicted if inflammation was present in the terminal ileum.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: are 99mtc leukocyte scintigraphy and sbft studies useful in children suspected of having inflammatory bowel disease? the answer of the question is",
+    "original_id": "10811329"
   },
   {
     "id": 78,
-    "age_group": "children",
-    "original_id": "25034219",
-    "question": "does maternal obesity have an influence on feeding behavior of obese children?",
-    "context": "A total of 491 obese subjects (292 girls, mean age 12.0 \u00b1 2.8 years) and their mothers participated in this study. A direct correlation between children's BMI and their mothers' BMI was found (P<0.001) both in girls (r = 0.372) and boys (r = 0.337). While 64.4% of mothers were found obese in the study, only half of them consider themselves as obese. No difference were found in the scores of the subscales \"perceived responsibility\", \"restriction\", \"concern for child's weight\" and \"monitoring\" between obese and non-obese mothers. Child's BMI-SDS positively correlated with mothers' personal weight perception, concern for child's weight and restriction after adjustment for child's age (P<0.001, P = 0.012 and P = 0.002, respectively).",
-    "answer": "no"
+    "subject": "children",
+    "attribute": "no",
+    "prompt": "Question: does maternal obesity have an influence on feeding behavior of obese children? the answer of the question is",
+    "original_id": "25034219"
   },
   {
     "id": 79,
-    "age_group": "adult",
-    "original_id": "23448747",
-    "question": "do older adults with cancer fall more often?",
-    "context": "",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: do older adults with cancer fall more often? the answer of the question is",
+    "original_id": "23448747"
   },
   {
     "id": 80,
-    "age_group": "children",
-    "original_id": "20850631",
-    "question": "diagnosis and follow-up in constipated children: should we use ultrasound?",
-    "context": "Comparison of the US measurements of the 2 radiologists performing the US tests did not show any interobserver difference (r = 0.981; P<.001). We therefore believe our results are objective and reproducible. We found a positive correlation between the rectal diameters and the age, height, weight, and bladder capacity. The posturination mean rectal diameter was thicker in the constipated group (3.02 \u00b1 1.04 cm) than in the control group (1.98 \u00b1 0.64 cm) (P<.001). The cutoff point of rectal diameter for a diagnosis of constipation was determined as 2.44 cm (71% sensitive; 76% specific; area under curve, 0.825; P<.001). The rectal anterior wall thickness and fecal load were higher in the constipated patients (P<.001). There was a significant decrease in the constipation score and fecal load after treatment for a month (P<.001), but the rectal diameter had not reached normal limits yet despite the decrease (2.71 \u00b1 0.77 cm) (P>.05).",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: diagnosis and follow-up in constipated children: should we use ultrasound? the answer of the question is",
+    "original_id": "20850631"
   },
   {
     "id": 81,
-    "age_group": "adolescent",
-    "original_id": "22849512",
-    "question": "are neighbourhood social capital and availability of sports facilities related to sports participation among dutch adolescents?",
-    "context": "The aim of this study is to explore whether availability of sports facilities, parks, and neighbourhood social capital (NSC) and their interaction are associated with leisure time sports participation among Dutch adolescents.NSC was significantly associated with sports participation (OR: 3.51 (95%CI: 1.18;10.41)) after adjustment for potential confounders. Availability of sports facilities and availability of parks were not associated with sports participation. A significant interaction between NSC and density of parks within the neighbourhood area (OR: 1.22 (90%CI: 1.01;1.34)) was found. Decomposition of the interaction term showed that adolescents were most likely to engage in leisure time sports when both availability of parks and NSC were highest.",
-    "answer": "maybe"
+    "subject": "adolescent",
+    "attribute": "maybe",
+    "prompt": "Question: are neighbourhood social capital and availability of sports facilities related to sports participation among dutch adolescents? the answer of the question is",
+    "original_id": "22849512"
   },
   {
     "id": 82,
-    "age_group": "adult",
-    "original_id": "21420186",
-    "question": "could adma levels in young adults born preterm predict an early endothelial dysfunction?",
-    "context": "Sporadic data present in literature report how preterm birth and low birth weight are risk factors for the development of cardiovascular diseases in later life. High levels of asymmetric dimethylarginine (ADMA), a strong inhibitor of nitric oxide synthesis, are associated with the future development of adverse cardiovascular events and cardiac death.ADMA levels were reduced in ex-ELBW subjects compared to C (0.606+0.095 vs 0.562+0.101 \u03bcmol/L, p<0.05), and significantly correlated inversely with gestational age (r=-0.61, p<0.00001) and birth weight (r=-0.57, p<0.0002).",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: could adma levels in young adults born preterm predict an early endothelial dysfunction? the answer of the question is",
+    "original_id": "21420186"
   },
   {
     "id": 83,
-    "age_group": "children",
-    "original_id": "23848044",
-    "question": "does oxybutynin hydrochloride cause arrhythmia in children with bladder dysfunction?",
-    "context": "",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: does oxybutynin hydrochloride cause arrhythmia in children with bladder dysfunction? the answer of the question is",
+    "original_id": "23848044"
   },
   {
     "id": 84,
-    "age_group": "infant",
-    "original_id": "28011794",
-    "question": "can ambu self-inflating bag and neopuff infant resuscitator provide adequate and safe manual inflations for infants up to 10\u2005kg weight?",
-    "context": "Manual resuscitation devices for infants and newborns must be able to provide adequate ventilation in a safe and consistent manner across a wide range of patient sizes (0.5-10\u2005kg) and differing clinical states. There are little comparative data assessing biomechanical performance of common infant manual resuscitation devices across the manufacturers' recommended operating weight ranges. We aimed to compare performance of the Ambu self-inflating bag (SIB) with the Neopuff T-piece resuscitator in three resuscitation models.3309 inflations were collected and analysed with analysis of variance for repeated measures. The Neopuff was unable to reach set peak inflation pressures and exhibited seriously elevated positive end expiratory pressure (PEEP) with all inflow gas rates (p<0.001) in this infant model. The Ambu SIB accurately delivered targeted pressures in all three models.",
-    "answer": "maybe"
+    "subject": "infant",
+    "attribute": "maybe",
+    "prompt": "Question: can ambu self-inflating bag and neopuff infant resuscitator provide adequate and safe manual inflations for infants up to 10\u2005kg weight? the answer of the question is",
+    "original_id": "28011794"
   },
   {
     "id": 85,
-    "age_group": "infant",
-    "original_id": "24098953",
-    "question": "are igm-enriched immunoglobulins an effective adjuvant in septic vlbw infants?",
-    "context": "79 neonates (40 cases) were enrolled. No difference in birth weight, gestational age or SNAP II score (disease severity score) were found. Significantly reduced short-term mortality was found in treated infants (22% vs 46%; p = 0.005) considering all microbial aetiologies and the subgroup affected by Candida spp. Secondary outcomes were not different between groups.",
-    "answer": "yes"
+    "subject": "infant",
+    "attribute": "yes",
+    "prompt": "Question: are igm-enriched immunoglobulins an effective adjuvant in septic vlbw infants? the answer of the question is",
+    "original_id": "24098953"
   },
   {
     "id": 86,
-    "age_group": "adult",
-    "original_id": "9140335",
-    "question": "does fluoridation reduce the use of dental services among adults?",
-    "context": "Relative to adults with no lifetime exposure to fluoridated water, adults drinking fluoridated water for half or more of their lives had less disease at baseline and a lower but nonsignificant probability of receiving a restoration in the follow-up period. In the 2-year follow-up period, however, more than half of the restorations were performed to replace fillings of satisfactory or ideal quality at baseline. When only teeth with decay and unsatisfactory fillings at baseline were considered, adults with high fluoridation exposure had a lower probability of receiving a restoration than adults with no exposure. Market effects also were detected in demand equations; relative to adults in the nonfluoridated community, adults residing in the fluoridated community with a large dentist supply received a greater number of restorations, suggesting potential supplier-induced demand from less disease and fewer patients.",
-    "answer": "maybe"
+    "subject": "adult",
+    "attribute": "maybe",
+    "prompt": "Question: does fluoridation reduce the use of dental services among adults? the answer of the question is",
+    "original_id": "9140335"
   },
   {
     "id": 87,
-    "age_group": "children",
-    "original_id": "17329379",
-    "question": "are the gfrup's recommendations for withholding or withdrawing treatments in critically ill children applicable?",
-    "context": "Of 967 children admitted, 55 were included with a 2-day median delay. They were younger than others (24 v 60 months), had a higher paediatric risk of mortality (PRISM) score (14 v 4), and a higher paediatric overall performance category (POPC) score at admission (2 v 1); all p<0.002. 34 (50% of total deaths) children died. A limitation decision was made without meeting for 7 children who died: 6 received do-not-resuscitate orders (DNROs) and 1 received withholding decision. Decision-making meetings were organised for 31 children, and the following decisions were made: 12 DNROs (6 deaths and 6 survivals), 4 withholding (1 death and 3 survivals), with 14 withdrawing (14 deaths) and 1 continuing treatment (survival). After limitation, 21 (31% of total deaths) children died and 10 survived (POPC score 4). 13 procedures were interrupted because of death and 11 because of clinical improvement (POPC score 4). Parents' opinions were obtained after 4 family conferences (for a total of 110 min), 3 days after inclusion. The first meeting was planned for 6 days after inclusion and held on the 7th day after inclusion; 80% of parents were immediately informed of the decision, which was implemented after half a day.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: are the gfrup's recommendations for withholding or withdrawing treatments in critically ill children applicable? the answer of the question is",
+    "original_id": "17329379"
   },
   {
     "id": 88,
-    "age_group": "adult",
-    "original_id": "21845457",
-    "question": "outcomes of severely injured adult trauma patients in an australian health service: does trauma center level make a difference?",
-    "context": "Trauma centers are designated to provide systematized multidisciplinary care to injured patients. Effective trauma systems reduce patient mortality by facilitating the treatment of injured patients at appropriately resourced hospitals. Several U.S. studies report reduced mortality among patients admitted directly to a level I trauma center compared with those admitted to hospitals with less resources. It has yet to be shown whether there is an outcome benefit associated with the \"level of hospital\" initially treating severely injured trauma patients in Australia. This study was designed to determine whether the level of trauma center providing treatment impacts mortality and/or hospital length of stay.There were 1,986 trauma presentations during the 6-year period. Patients presenting to a level III trauma center had a significantly higher risk of death than those presenting to the level I center, regardless of age, sex, ISS, or prehospital time. Peer review of deaths at the level III center identified problems in care delivery in 15 cases associated with technical errors, delay in decision making, or errors of judgement.",
-    "answer": "yes"
+    "subject": "adult",
+    "attribute": "yes",
+    "prompt": "Question: outcomes of severely injured adult trauma patients in an australian health service: does trauma center level make a difference? the answer of the question is",
+    "original_id": "21845457"
   },
   {
     "id": 89,
-    "age_group": "elderly",
-    "original_id": "23972333",
-    "question": "has the prevalence of health care services use increased over the last decade (2001-2009) in elderly people?",
-    "context": "The total number of subjects was 24,349 (15,041 woman, 9309 men). Women were significantly older than men (P<0.001). Women had higher prevalence of general practitioner visits than men in all surveys. Men had significantly higher prevalence of hospitalizations than women in the years 2001, 2006 and 2009. When we adjusted the hospitalization by possible confounders using logistic regressions, men had a higher probability of being hospitalized than women (OR 1.53, 1.39-1.69). The variables that were significantly associated with a higher use of health care services were lower educational level, worse self-rated health, chronic conditions, polypharmacy, and the level of disability. The number of general practitioner visits among women and men significantly increased from 2001 to 2009 (women: OR 1.43, 1.27-1.61; men: OR 1.71, 1.49-1.97).",
-    "answer": "yes"
+    "subject": "elderly",
+    "attribute": "yes",
+    "prompt": "Question: has the prevalence of health care services use increased over the last decade (2001-2009) in elderly people? the answer of the question is",
+    "original_id": "23972333"
   },
   {
     "id": 90,
-    "age_group": "elderly",
-    "original_id": "18693227",
-    "question": "does a geriatric oncology consultation modify the cancer treatment plan for elderly patients?",
-    "context": "This study was performed to describe the treatment plan modifications after a geriatric oncology clinic. Assessment of health and functional status and cancer assessment was performed in older cancer patients referred to a cancer center.Between June 2004 and May 2005, 105 patients 70 years old or older referred to a geriatric oncology consultation at the Institut Curie cancer center were included. Functional status, nutritional status, mood, mobility, comorbidity, medication, social support, and place of residence were assessed. Oncology data and treatment decisions were recorded before and after this consultation. Data were analyzed for a possible correlation between one domain of the assessment and modification of the treatment plan.Patient characteristics included a median age of 79 years and a predominance of women with breast cancer. About one half of patients had an independent functional status. Nearly 15% presented severe undernourishment. Depression was suspected in 53.1% of cases. One third of these patients had>2 chronic diseases, and 74% of patients took>or =3 medications. Of the 93 patients with an initial treatment decision, the treatment plan was modified for 38.7% of cases after this assessment. Only body mass index and the absence of depressive symptoms were associated with a modification of the treatment plan.",
-    "answer": "yes"
+    "subject": "elderly",
+    "attribute": "yes",
+    "prompt": "Question: does a geriatric oncology consultation modify the cancer treatment plan for elderly patients? the answer of the question is",
+    "original_id": "18693227"
   },
   {
     "id": 91,
-    "age_group": "children",
-    "original_id": "8375607",
-    "question": "is the breast best for children with a family history of atopy?",
-    "context": "Previous studies reported that breast-feeding protects children against a variety of diseases, but these studies were generally conducted on \"high-risk\" or hospitalized children. This paper describes the results of our study on the effects of breast-feeding on rate of illness in normal children with a family history of atopy.Breast-feeding was related to lower levels of childhood illness both in the first and the first three years of life. In the first year of life they had fewer episodes of gastroenteritis, lower respiratory tract infections, and digestive tract disorders. Over the next three years of life they had fewer respiratory tract infections and skin infections.",
-    "answer": "yes"
+    "subject": "children",
+    "attribute": "yes",
+    "prompt": "Question: is the breast best for children with a family history of atopy? the answer of the question is",
+    "original_id": "8375607"
   },
   {
     "id": 92,
-    "age_group": "adolescent",
-    "original_id": "23677366",
-    "question": "do oblique views add value in the diagnosis of spondylolysis in adolescents?",
-    "context": "Anteroposterior, lateral, and right and left oblique lumbar spine radiographs are often a standard part of the evaluation of children who are clinically suspected of having spondylolysis. Recent concerns regarding radiation exposure and costs have brought the value of oblique radiographs into question. The purpose of the present study was to determine the diagnostic value of oblique views in the diagnosis of spondylolysis.There was no significant difference in sensitivity and specificity between four-view and two-view radiographs in the diagnosis of spondylolysis. The sensitivity was 0.59 for two-view studies and 0.53 for four-view studies (p = 0.33). The specificity was 0.96 for two-view studies and 0.94 for four-view studies (p = 0.60). Inter-rater agreement, intra-rater agreement, and agreement with gold-standard ICC values were in the moderate range and also demonstrated no significant differences. Percent overall agreement was 78% for four-view studies and 82% for two-view studies. The radiation effective dose was 1.26 mSv for four-view studies and 0.72 mSv for two-view studies (difference, 0.54 mSv). The charge for four-view studies was $145 more than that for two-view studies.",
-    "answer": "no"
+    "subject": "adolescent",
+    "attribute": "no",
+    "prompt": "Question: do oblique views add value in the diagnosis of spondylolysis in adolescents? the answer of the question is",
+    "original_id": "23677366"
   }
 ]
