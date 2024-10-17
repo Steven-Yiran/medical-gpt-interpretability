@@ -14,13 +14,17 @@ def main():
     aa("--interactive", action="store_true", help="Whether to run in interactive mode")
     args = parser.parse_args()
 
+    print("Running in interactive mode")
     if args.interactive:
         while True:
-            inputs = input("Please enter a prompt: ")
-            if not inputs:
+            question = input(": ")
+            if not question:
                 print("Prompt cannot be empty")
                 continue
-            generate_text(inputs)
+            prompt = (
+                f"Question: {question} the answer to the question is"
+            )
+            generate_text(prompt)
             
 
 def generate_text(prompt):
@@ -29,15 +33,13 @@ def generate_text(prompt):
     # add gpu device
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device="cuda:0")
     set_seed(42)
-    results = generator(
+    result = generator(
         prompt,
-        max_length=20,
+        max_length=40,
         truncation=True,
     )
 
-    print("Generated text:")
-    for result in results:
-        print(result["generated_text"])
+    print(result[0]["generated_text"][len(prompt):])
 
 if __name__ == "__main__":
     main()
