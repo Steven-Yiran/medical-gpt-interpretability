@@ -71,7 +71,7 @@ def main():
 
     for knowledge in tqdm(knowns):
         kid = knowledge["id"]
-        orid = knowledge["original_id"]
+        #orid = knowledge["original_id"]
         for module_kind in None, "mlp", "attn":
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{kid}{kind_suffix}.npz"
@@ -98,7 +98,7 @@ def main():
                 continue
             plot_result = dict(numpy_result)
             plot_result["module_kind"] = module_kind
-            pdfname = f'{pdf_dir}/{str(numpy_result["answer"]).strip()}_{orid}{kind_suffix}.pdf'
+            pdfname = f'{pdf_dir}/{str(numpy_result["answer"]).strip()}_{kid}{kind_suffix}.pdf'
             plot_trace_heatmap(plot_result, filepath=pdfname, modelname=args.model_name)
 
 
@@ -247,10 +247,10 @@ def run_patching_analysis(
         uniform_noise=uniform_noise
     ).item()
     # find trace token range: (i.e. After "Questions:" token Before "the answer of the question is" token)
-    if token_range is None:
-        start_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "Question:")
-        end_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "the answer of the question is")
-        token_range = (start_range[1], end_range[0])
+    # if token_range is None:
+    #     start_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "Question:")
+    #     end_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "the answer of the question is")
+    #     token_range = (start_range[1], end_range[0])
     # corrupted-with-restoration run
     if not module_kind:
         probs = trace_significant_states(
@@ -513,12 +513,12 @@ def plot_trace_heatmap(result, filepath=None, modelname=None):
     module_kind = result["module_kind"]
     window = result.get("window", 10)
     labels = list(result["input_tokens"])
-    start, end = result["token_range"]
     for i in range(*result["subject_range"]):
         labels[i] = labels[i] + "*"
 
     # cut labels
-    labels = labels[start:end]
+    # start, end = result["token_range"]
+    # labels = labels[start:end]
 
     with plt.rc_context():
         fig, ax = plt.subplots(figsize=(3.5, 2), dpi=200)
