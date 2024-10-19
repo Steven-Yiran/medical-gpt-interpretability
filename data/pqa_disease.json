@@ -1,0 +1,126 @@
+[
+  {
+    "id": 0,
+    "subject": [
+      "strabismus amblyopia"
+    ],
+    "attribute": "no",
+    "question": "landolt c and snellen e acuity: differences in strabismus amblyopia?",
+    "context": "assessment of visual acuity depends on the optotypes used for measurement. the ability to recognize different optotypes differs even if their critical details appear under the same visual angle. since optotypes are evaluated on individuals with good visual acuity and without eye disorders, differences in the lower visual acuity range cannot be excluded. in this study, visual acuity measured with the snellen e was compared to the landolt c acuity.100 patients (age 8 - 90 years, median 60.5 years) with various eye disorders, among them 39 with amblyopia due to strabismus, and 13 healthy volunteers were tested. charts with the snellen e and the landolt c (precision vision) which mimic the etdrs charts were used to assess visual acuity. three out of 5 optotypes per line had to be correctly identified, while wrong answers were monitored. in the group of patients, the eyes with the lower visual acuity, and the right eyes of the healthy subjects, were evaluated.differences between landolt c acuity (lr) and snellen e acuity (se) were small. the mean decimal values for lr and se were 0.25 and 0.29 in the entire group and 0.14 and 0.16 for the eyes with strabismus amblyopia. the mean difference between lr and se was 0.55 lines in the entire group and 0.55 lines for the eyes with strabismus amblyopia, with higher values of se in both groups. the results of the other groups were similar with only small differences between lr and se.",
+    "original_id": "16418930"
+  },
+  {
+    "id": 1,
+    "subject": [
+      "Hirschsprung Disease"
+    ],
+    "attribute": "no",
+    "question": "are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through?",
+    "context": "overall scores were similar. however, continence score was significantly better in the abd group, and the stool pattern score was better in the terpt group. a significant difference in age at interview between the 2 groups was noted; we therefore reanalyzed the data controlling for age, and this showed that age did not significantly affect the long-term scoring outcome between groups.",
+    "original_id": "17208539"
+  },
+  {
+    "id": 2,
+    "subject": [
+      "Intestinal Diseases",
+      "double-balloon enteroscopy",
+      "community"
+    ],
+    "attribute": "yes",
+    "question": "double balloon enteroscopy: is it efficacious and safe in a community setting?",
+    "context": "the mean age was 62 years. thirty-two patients were female, 15 were african-american; 44 antegrade and 44 retrograde dbes were performed. the mean time per antegrade dbe was 107.4\u00b130.0 minutes with a distance of 318.4\u00b1152.9 cm reached past the pylorus. the mean time per lower dbe was 100.7\u00b127.3 minutes with 168.9\u00b1109.1 cm meters past the ileocecal valve reached. endoscopic therapy in the form of electrocautery to ablate bleeding sources was performed in 20 patients (30.3%), biopsy in 17 patients (25.8%) and dilation of crohn's-related small bowel strictures in 4 (6.1%). 43 vces with pathology noted were performed prior to dbe, with findings endoscopically confirmed in 32 cases (74.4%). in 3 cases the dbe showed findings not noted on vce.",
+    "original_id": "23831910"
+  },
+  {
+    "id": 3,
+    "subject": [
+      "sleep disorders",
+      "sleep-related problems",
+      "self-reported",
+      "sleep"
+    ],
+    "attribute": "no",
+    "question": "is adjustment for reporting heterogeneity necessary in sleep disorders?",
+    "context": "anchoring vignettes are brief texts describing a hypothetical character who illustrates a certain fixed level of a trait under evaluation. this research uses vignettes to elucidate factors associated with sleep disorders in adult japanese before and after adjustment for reporting heterogeneity in self-reports. this study also evaluates the need for adjusting for reporting heterogeneity in the management of sleep and energy related problems in japan.the prevalence of self-reported problems with sleep and energy was 53 %. without correction of cut-point shifts, age, sex, and the number of comorbidities were significantly associated with a greater severity of sleep-related problems. after correction, age, the number of comorbidities, and regular exercise were significantly associated with a greater severity of sleep-related problems; sex was no longer a significant factor. compared to the ordered probit model, the chopit model provided two changes with a subtle difference in the magnitude of regression coefficients after correction for reporting heterogeneity.",
+    "original_id": "26852225"
+  },
+  {
+    "id": 4,
+    "subject": [
+      "high-density lipoprotein",
+      "HDL",
+      "cholesterol",
+      "coronary heart disease",
+      "mutations",
+      "low HDL"
+    ],
+    "attribute": "no",
+    "question": "do mutations causing low hdl-c promote increased carotid intima-media thickness?",
+    "context": "although observational data support an inverse relationship between high-density lipoprotein (hdl) cholesterol and coronary heart disease (chd), genetic hdl deficiency states often do not correlate with premature chd.in a 1:2 case-control study of sex and age-related (+/-5 y) subjects (n=114), cimt was nearly identical between cases (0.66+/-0.17 cm) and controls (0.65+/-0.18 cm) despite significantly lower hdl cholesterol (0.67 vs. 1.58 mmol/l) and apolipoprotein a-i levels (96.7 vs. 151.4 mg/dl) (p<0.05)",
+    "original_id": "17113061"
+  },
+  {
+    "id": 5,
+    "subject": [
+      "Acute Disease",
+      "asthma",
+      "gastroenteritis",
+      "convulsion",
+      "pneumonia"
+    ],
+    "attribute": "yes",
+    "question": "a short stay or 23-hour ward in a general and academic children's hospital: are they effective?",
+    "context": "the short stay ward accounted for 10.3% (westmead hospital) and 14.7% (new children's hospital) of admissions, with 56% medical in nature, 30% surgical, and the remainder procedural or psychological. admission patterns were similar, with asthma, gastroenteritis, convulsion, pneumonia, and simple surgical conditions accounting for most short stay ward admissions. the short stay ward increased hospital efficiency with an average length of stay of 17.5 hours (westmead hospital) compared to 20.5 hours (new children's hospital). the users of the short stay ward were children of young age less than 2 years, with stay greater than 23 hours reported in only 1% of all admissions to the short stay ward. the rate of patient admission to an in-hospital bed was low, (4% [westmead hospital] compared to 6% [new children's hospital]), with the number of unscheduled visits within 72 hours of short stay ward discharge less than 1%. there were no adverse events reported at either short stay ward, with parental satisfaction high. the short stay ward was developed through reallocation of resources from within the hospital to the short stay ward. this resulted in estimated savings of $1/2 million (westmead hospital) to $2.3 million (new children's hospital) to the hospital, due to more efficient bed usage.",
+    "original_id": "10966337"
+  },
+  {
+    "id": 6,
+    "subject": [
+      "family history",
+      "family history risk"
+    ],
+    "attribute": "no",
+    "question": "prompting primary care providers about increased patient risk as a result of family history: does it work?",
+    "context": "electronic health records have the potential to facilitate family history use by primary care physicians (pcps) to provide personalized care. the objective of this study was to determine whether automated, at-the-visit tailored prompts about family history risk change pcp behavior.the 492 eligible patients had 847 visits during the study period; 152 visits had no documentation of response to a family history prompt. of the remaining 695 visits, physician responses were reviewed family history (n = 372, 53.5%), discussed family history (n = 159, 22.9%), not addressed (n = 155, 22.3%), and reviewed family history and ordered tests/referrals (n = 5, 0.7%). there was no significant change in problem summary list documentation of risk status or screening interventions for any of the 6 diseases.",
+    "original_id": "25957366"
+  },
+  {
+    "id": 7,
+    "subject": [
+      "neoplasms",
+      "palliative care",
+      "opioid",
+      "Dyspnea"
+    ],
+    "attribute": "yes",
+    "question": "patient-controlled therapy of breathlessness in palliative care: a new therapeutic concept for opioid administration?",
+    "context": "eighteen of 815 patients (advanced cancer; median age\u00a0=\u00a057.5\u00a0years [range 36-81]; 77.8% female) received breathlessness symptom control with opioid pct; daily morphine equivalent dose at day 1 was median\u00a0=\u00a020.3\u00a0mg (5.0-49.6\u00a0mg); day 2: 13.0\u00a0mg (1.0-78.5\u00a0mg); day 3: 16.0\u00a0mg (8.3-47.0\u00a0mg). numeric rating scale of current breathlessness decreased (baseline: median\u00a0=\u00a05 [range 1-10]; day 1: median\u00a0=\u00a04 [range 0-8], p\u00a0<\u00a00.01; day 2: median\u00a0=\u00a04 [range 0-5], p\u00a0<\u00a00.01). physiological parameters were stable over time. on day 3, 12/12 patients confirmed that this mode of application provided relief of breathlessness.",
+    "original_id": "26578404"
+  },
+  {
+    "id": 8,
+    "subject": [
+      "cardiovascular diseases",
+      "prevalence",
+      "risk factors",
+      "rural health",
+      "Cardiovascular risk"
+    ],
+    "attribute": "yes",
+    "question": "cardiovascular risk in a rural adult west african population: is resting heart rate also relevant?",
+    "context": "of study participants, 36% were male. prevalence of casual high bp was 19%. in the population, 10% were current cigarette smokers and habitual alcohol use was high at 56%. as measured by body mass index, 2% were obese and 14% had abdominal obesity. rhr was elevated (>90 bpm) in 19%. overall, 79% of study participants were found to have at least one cvd risk factor. rhr was significantly associated with age, waist circumference, and bp. individuals with an elevated rhr had a higher risk (or 1.94, 95% ci 1.15-3.26%, p = 0.013) of casual high bp compared with participants with normal rhr independently of several established cvd risk factors. the regression dilution ratio of rhr was 0.75 (95% ci 0.62-0.89).",
+    "original_id": "22990761"
+  },
+  {
+    "id": 9,
+    "subject": [
+      "leukemia",
+      "lymphoma",
+      "respiratory distress syndrome"
+    ],
+    "attribute": "yes",
+    "question": "acute respiratory distress syndrome in children with malignancy--can we predict outcome?",
+    "context": "seventeen children with ards and malignancy aged 10.5 +/- 5.1 years were identified. six of the 17 children (35.3%) survived. sepsis syndrome was present in 70.6% of all the children. peak inspiratory pressure, positive end-expiratory pressure (peep), and ventilation index values could distinguish outcome by day 3. a significant relationship between respiratory data and outcome related to efficiency of oxygenation, as determined by pao(2)/fio(2) and p(a-a)o(2), was present from day 8 after onset of mechanical ventilation.",
+    "original_id": "11481599"
+  }
+]
