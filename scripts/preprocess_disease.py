@@ -60,6 +60,7 @@ def contain_disease_meshes(meshes):
 def main():
     original_file = 'data/ori_pqal.json'
     output_file = 'data/pqa_disease.json'
+    output_keywords_file = 'data/disease_keywords.json'
 
     with open(original_file, 'r') as f:
         data = json.load(f)
@@ -105,6 +106,9 @@ def main():
 
     with open(output_file, 'w') as f:
         json.dump(filtered_data, f, indent=2)
+
+    with open(output_keywords_file, 'w') as f:
+        json.dump(list(all_disease_keywords), f, indent=2)
 
     print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
 

@@ -2,7 +2,10 @@
   {
     "id": 0,
     "subject": [
-      "strabismus amblyopia"
+      "amblyopia",
+      "eye disorders",
+      "strabismus amblyopia",
+      "visual acuity"
     ],
     "attribute": "no",
     "question": "landolt c and snellen e acuity: differences in strabismus amblyopia?",
@@ -22,9 +25,8 @@
   {
     "id": 2,
     "subject": [
-      "Intestinal Diseases",
-      "double-balloon enteroscopy",
-      "community"
+      "intestinal diseases",
+      "double-balloon enteroscopy"
     ],
     "attribute": "yes",
     "question": "double balloon enteroscopy: is it efficacious and safe in a community setting?",
@@ -36,8 +38,7 @@
     "subject": [
       "sleep disorders",
       "sleep-related problems",
-      "self-reported",
-      "sleep"
+      "sleep and energy"
     ],
     "attribute": "no",
     "question": "is adjustment for reporting heterogeneity necessary in sleep disorders?",
@@ -48,11 +49,9 @@
     "id": 4,
     "subject": [
       "high-density lipoprotein",
-      "HDL",
-      "cholesterol",
+      "hdl",
       "coronary heart disease",
-      "mutations",
-      "low HDL"
+      "mutations"
     ],
     "attribute": "no",
     "question": "do mutations causing low hdl-c promote increased carotid intima-media thickness?",
@@ -62,7 +61,6 @@
   {
     "id": 5,
     "subject": [
-      "Acute Disease",
       "asthma",
       "gastroenteritis",
       "convulsion",
@@ -77,6 +75,7 @@
     "id": 6,
     "subject": [
       "family history",
+      "primary care physicians",
       "family history risk"
     ],
     "attribute": "no",
@@ -88,9 +87,9 @@
     "id": 7,
     "subject": [
       "neoplasms",
+      "breathlessness",
       "palliative care",
-      "opioid",
-      "Dyspnea"
+      "opioid"
     ],
     "attribute": "yes",
     "question": "patient-controlled therapy of breathlessness in palliative care: a new therapeutic concept for opioid administration?",
@@ -101,10 +100,10 @@
     "id": 8,
     "subject": [
       "cardiovascular diseases",
-      "prevalence",
-      "risk factors",
-      "rural health",
-      "Cardiovascular risk"
+      "casual high bp",
+      "cvd risk factor",
+      "elevated rhr",
+      "risk"
     ],
     "attribute": "yes",
     "question": "cardiovascular risk in a rural adult west african population: is resting heart rate also relevant?",

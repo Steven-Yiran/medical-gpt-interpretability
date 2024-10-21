@@ -1,2 +1,3 @@
 from .clinical_knowns import ClinicalKnownsDataset
 from .pubmed_age import ClinicalAgeGroupDataset
+from .pubmed_disease import ClinicalDiseaseDataset
