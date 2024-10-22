@@ -2,10 +2,10 @@
   {
     "id": 0,
     "subject": [
+      "strabismus",
       "amblyopia",
-      "eye disorders",
-      "strabismus amblyopia",
-      "visual acuity"
+      "visual acuity",
+      "eye disorders"
     ],
     "attribute": "no",
     "question": "landolt c and snellen e acuity: differences in strabismus amblyopia?",
@@ -15,7 +15,8 @@
   {
     "id": 1,
     "subject": [
-      "Hirschsprung Disease"
+      "colectomy",
+      "hirschsprung disease"
     ],
     "attribute": "no",
     "question": "are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through?",
@@ -25,8 +26,10 @@
   {
     "id": 2,
     "subject": [
-      "intestinal diseases",
-      "double-balloon enteroscopy"
+      "double-balloon enteroscopy",
+      "community",
+      "female",
+      "intestinal diseases"
     ],
     "attribute": "yes",
     "question": "double balloon enteroscopy: is it efficacious and safe in a community setting?",
@@ -37,8 +40,10 @@
     "id": 3,
     "subject": [
       "sleep disorders",
-      "sleep-related problems",
-      "sleep and energy"
+      "sleep",
+      "self-reports",
+      "prevalence",
+      "self-reported"
     ],
     "attribute": "no",
     "question": "is adjustment for reporting heterogeneity necessary in sleep disorders?",
@@ -48,10 +53,11 @@
   {
     "id": 4,
     "subject": [
-      "high-density lipoprotein",
+      "mutations",
       "hdl",
       "coronary heart disease",
-      "mutations"
+      "cholesterol",
+      "hdl cholesterol"
     ],
     "attribute": "no",
     "question": "do mutations causing low hdl-c promote increased carotid intima-media thickness?",
@@ -61,10 +67,15 @@
   {
     "id": 5,
     "subject": [
-      "asthma",
-      "gastroenteritis",
-      "convulsion",
-      "pneumonia"
+      "academic children's hospital",
+      "general and academic children's hospital",
+      "hospital",
+      "children",
+      "young age",
+      "hospital efficiency",
+      "length of stay",
+      "pediatric",
+      "admissions"
     ],
     "attribute": "yes",
     "question": "a short stay or 23-hour ward in a general and academic children's hospital: are they effective?",
@@ -76,7 +87,7 @@
     "subject": [
       "family history",
       "primary care physicians",
-      "family history risk"
+      "electronic health records"
     ],
     "attribute": "no",
     "question": "prompting primary care providers about increased patient risk as a result of family history: does it work?",
@@ -86,9 +97,9 @@
   {
     "id": 7,
     "subject": [
-      "neoplasms",
-      "breathlessness",
       "palliative care",
+      "opioid administration",
+      "breathlessness",
       "opioid"
     ],
     "attribute": "yes",
@@ -99,11 +110,17 @@
   {
     "id": 8,
     "subject": [
-      "cardiovascular diseases",
+      "cardiovascular",
+      "resting heart rate",
+      "heart rate",
+      "risk",
       "casual high bp",
-      "cvd risk factor",
+      "obese",
+      "abdominal obesity",
       "elevated rhr",
-      "risk"
+      "cvd risk factor",
+      "higher risk",
+      "risk factors"
     ],
     "attribute": "yes",
     "question": "cardiovascular risk in a rural adult west african population: is resting heart rate also relevant?",
@@ -113,13 +130,648 @@
   {
     "id": 9,
     "subject": [
-      "leukemia",
-      "lymphoma",
-      "respiratory distress syndrome"
+      "acute respiratory distress syndrome",
+      "malignancy",
+      "children",
+      "survived",
+      "sepsis",
+      "respiratory",
+      "ventilation"
     ],
     "attribute": "yes",
     "question": "acute respiratory distress syndrome in children with malignancy--can we predict outcome?",
     "context": "seventeen children with ards and malignancy aged 10.5 +/- 5.1 years were identified. six of the 17 children (35.3%) survived. sepsis syndrome was present in 70.6% of all the children. peak inspiratory pressure, positive end-expiratory pressure (peep), and ventilation index values could distinguish outcome by day 3. a significant relationship between respiratory data and outcome related to efficiency of oxygenation, as determined by pao(2)/fio(2) and p(a-a)o(2), was present from day 8 after onset of mechanical ventilation.",
     "original_id": "11481599"
+  },
+  {
+    "id": 10,
+    "subject": [
+      "nomograms",
+      "predict",
+      "biochemical recurrence",
+      "predicting",
+      "prostate cancer",
+      "predicted"
+    ],
+    "attribute": "yes",
+    "question": "do nomograms designed to predict biochemical recurrence (bcr) do a better job of predicting more clinically relevant prostate cancer outcomes than bcr?",
+    "context": "we found that each nomogram could predict aggressive bcr and pcsm in a statistically significant manner and that they all predicted pcsm more accurately than they predicted bcr (ie, with higher c-index values).",
+    "original_id": "23806388"
+  },
+  {
+    "id": 11,
+    "subject": [
+      "chronic oro-facial pain",
+      "teeth grinding",
+      "facial trauma",
+      "chronic oro-facial pain"
+    ],
+    "attribute": "yes",
+    "question": "are reports of mechanical dysfunction in chronic oro-facial pain related to somatisation?",
+    "context": "an adjusted response rate of 72% was achieved. only two mechanical factors: teeth grinding (odds ratio (or) 2.0, 95% ci 1.3-3.0) and facial trauma (or 2.0; 95% ci 1.3-2.9) were independently associated with chronic oro-facial pain after adjusting for psychological factors. however, these factors were also commonly associated with the reporting of other frequently unexplained syndromes: teeth grinding (odds ratio (or) 1.8, 95% ci 1.5-2.2), facial trauma (or 2.1; 95% ci 1.7-2.6).",
+    "original_id": "17919952"
+  },
+  {
+    "id": 12,
+    "subject": [
+      "immunohistochemistry",
+      "urothelial carcinoma",
+      "chemotherapy",
+      "adjuvant",
+      "disease-specific"
+    ],
+    "attribute": "maybe",
+    "question": "does her2 immunoreactivity provide prognostic information in locally advanced urothelial carcinoma patients receiving adjuvant m-vec chemotherapy?",
+    "context": "urothelial carcinoma of the bladder had a significantly higher frequency of her2 immunoreactivity than that of the upper urinary tract (60.7 vs. 20.7%, p<0.0001). overall, nodal status was a strong and independent prognostic indicator for clinical outcome. the her2 immunoreactivity was significantly associated with pfs (p = 0.02) and disease-specific os (p = 0.005) in advanced urothelial carcinoma patients. as for patients with adjuvant m-vec, her2 immunoreactivity was a significant prognostic factor for pfs (p = 0.03) and disease-specific os (p = 0.02) using univariate analysis, but not multivariate analysis, and not for patients receiving watchful waiting.",
+    "original_id": "17940352"
+  },
+  {
+    "id": 13,
+    "subject": [
+      "information system",
+      "information technology",
+      "diabetes-educated"
+    ],
+    "attribute": "no",
+    "question": "do general practice characteristics influence uptake of an information technology (it) innovation in primary care?",
+    "context": "initially there were a few practices which made very frequent use of the information system, with relatively high numbers of practices using the facility infrequently. however, overall use gradually became more evenly spread. this effect was particularly evident among nurse users. frequent use by gps was evident in only a small number of practices, with mean gp use decreasing over the three years. in linear regression analyses, none of the general practice variables were associated with online use, either overall or stratified by staff type, except for the numbers of diabetes-educated staff. this was consistently associated with increased use by nurses and gps.",
+    "original_id": "18534072"
+  },
+  {
+    "id": 14,
+    "subject": [
+      "hepatocellular carcinoma",
+      "portal vein",
+      "disease free survival",
+      "cancer"
+    ],
+    "attribute": "no",
+    "question": "prognosis of well differentiated small hepatocellular carcinoma--is well differentiated hepatocellular carcinoma clinically early cancer?",
+    "context": "the histological analysis revealed that w-d hccs had lower incidences of fibrous capsule formation (p<0.01), when compared to l-d hccs. there were no significant differences in the incidence of intrahepatic metastasis, or portal vein invasion. in a resected specimen of w-d hcc, barium sulfate and gelatin were injected into portal vein and a transparent specimen was made. the transparent specimen showed that the portal vein in the tumor seemed to be intact. microscopically, cancer cell infiltration into the fibrous frame of the portal tract was present. there were no significant differences in the disease free survival between the two groups. an analysis of tumor volume doubling time in recurrent foci suggested that minute cancerous foci had been present at the time of operation.",
+    "original_id": "8847047"
+  },
+  {
+    "id": 15,
+    "subject": [
+      "papanicolaou smears",
+      "colposcopy",
+      "pap smear"
+    ],
+    "attribute": "no",
+    "question": "do follow-up recommendations for abnormal papanicolaou smears influence patient adherence?",
+    "context": "the rate of overall adherence to follow-up recommendations was 56.0% (136/243). adherence to a second colposcopy was not significantly different from that to a repeated pap smear (odds ratio, 1.40; 95% confidence interval, 0.80-2.46). the use of as many as 3 patient reminders substantially improved adherence to follow-up. women without insurance and women attending 1 of the 3 clinics were less likely to adhere to any follow-up recommendation (hazard ratio for no insurance, 0.43 [95% confidence interval, 0.20-0.93], and for clinic, 0.35 [95% confidence interval, 0.15-0.73]).",
+    "original_id": "10575390"
+  },
+  {
+    "id": 16,
+    "subject": [
+      "diabetes mellitus",
+      "cervical cancer",
+      "fdg-pet"
+    ],
+    "attribute": "no",
+    "question": "does diabetes mellitus influence the efficacy of fdg-pet in the diagnosis of cervical cancer?",
+    "context": "from february 2001 to january 2003, 219 patients (75 with primary and 144 with recurrent cervical cancer) were eligible for analysis. sixteen had hyperglycaemic dm, 12 had euglycaemic dm and 191 were in the non-dm group. the diagnostic power of pet in the hyperglycaemic dm, euglycaemic dm and non-dm groups did not differ significantly with regard to the identification of either metastatic lesions (auc, 0.967/0.947/0.925, p>0.05) or primary tumours/local recurrence (auc, 0.950/0.938/0.979, p>0.05). considering all dm patients, pet showed a significantly higher detection power than mri/ct scans in respect of metastatic lesions (auc=0.956 vs 0.824, p=0.012).",
+    "original_id": "15703931"
+  },
+  {
+    "id": 17,
+    "subject": [
+      "rectal cancer",
+      "prognosis",
+      "pelvic exenteration",
+      "recurrent rectal cancer",
+      "radiotherapy",
+      "local recurrence",
+      "primary rectal cancer",
+      "disease-free survival",
+      "survival",
+      "treatment"
+    ],
+    "attribute": "yes",
+    "question": "does radiotherapy of the primary rectal cancer affect prognosis after pelvic exenteration for recurrent rectal cancer?",
+    "context": "radiotherapy reduces local recurrence rates but is also capable of short- and long-term toxicity. it may also render treatment of local recurrence more challenging if it develops despite previous radiotherapy.there were 108 patients, of which 87 were eligible for analysis. patients who received radiotherapy for their primary rectal cancer (n = 41) required more radical exenterations (68% vs 44%; p = 0.020), had lower rates of clear resection margins (63% vs 87%; p = 0.010), had increased rates of surgical complications per patient (p = 0.014), and had a lower disease-free survival (p = 0.022). overall survival and disease-free survival in patients with clear margins were also lower in the primary irradiated patients (p = 0.049 and p<0.0001). this difference in survival persisted in multivariate analysis that corrected for t and n stages of the primary tumor.",
+    "original_id": "25489696"
+  },
+  {
+    "id": 18,
+    "subject": [
+      "lymphedema",
+      "circumference",
+      "sensitivity"
+    ],
+    "attribute": "maybe",
+    "question": "can a practicing surgeon detect early lymphedema reliably?",
+    "context": "lymphedema may be identified by simpler circumference changes as compared with changes in limb volume.thirty-nine cases of lymphedema were identified by the academic trial. using a 10% increase in circumference at two sites as the criterion, half the lymphedema cases were detected (sensitivity 37%). when using a 10% increase in circumference at any site, 74.4% of cases were detected (sensitivity 49%). detection by a 5% increase in circumference at any site was 91% sensitive.",
+    "original_id": "14599616"
+  },
+  {
+    "id": 19,
+    "subject": [
+      "colorectal cancer",
+      "synchronous liver metastases",
+      "colorectal cancers",
+      "liver resection",
+      "liver surgery",
+      "colorectal surgery",
+      "overall survival",
+      "disease-free survival"
+    ],
+    "attribute": "no",
+    "question": "colorectal cancer with synchronous liver metastases: does global management at the same centre improve results?",
+    "context": "synchronous liver metastases (slm) occur in 20% of colorectal cancers (crc). resection of slm and clc can be undertaken at different centres (separate management, sm) or at the same centre (global management, gm).morphologic characteristics and type of crc and slm resection were similar for the gm (n = 45) or sm (n = 66) groups. in patients with delayed liver resection (62 sm, 17 gm), chemotherapy prior to liver surgery was used in 92% and 38% of sm and gm patients (p<0.0001) and the median delay between procedures was 212 and 182 days, respectively (p = 0.04). first step of liver resection was more often performed during colorectal surgery in the gm group (62 vs. 6% for sm, p<0.0001) and the mean number of procedures (crc+slm) was lower (1.6 vs. 2.3, p = 0.003). three-month mortality was 3% for gm and 0% for sm (n.s.). overall survival rates were 67% and 51% for sm and gm at 3 years (n.s.), and 35 and 31% at 5 years (n.s.). disease-free survival to 5 years was higher in sm patients (14% vs. 11%, p = 0.009).",
+    "original_id": "22537902"
+  },
+  {
+    "id": 20,
+    "subject": [
+      "motion perception",
+      "eye-tracking abnormality",
+      "eye movement",
+      "eye-tracking difficulties",
+      "eye tracking",
+      "speed discrimination"
+    ],
+    "attribute": "yes",
+    "question": "is motion perception deficit in schizophrenia a consequence of eye-tracking abnormality?",
+    "context": "studies have shown that schizophrenia patients have motion perception deficit, which was thought to cause eye-tracking abnormality in schizophrenia. however, eye movement closely interacts with motion perception. the known eye-tracking difficulties in schizophrenia patients may interact with their motion perception.at 150 msec, speed discrimination thresholds did not differ between schizophrenia patients (n = 38) and control subjects (n = 33). at 300 msec, patients had significantly higher thresholds than control subjects (p = .03). furthermore, frequencies of eye tracking during the 300 msec stimulus were significantly correlated with speed discrimination in control subjects (p = .01) but not in patients, suggesting that eye-tracking initiation may benefit control subjects but not patients. the frequency of eye tracking during speed discrimination was not significantly related to regular eye-tracking performance.",
+    "original_id": "19054501"
+  },
+  {
+    "id": 21,
+    "subject": [
+      "carotid stenosis",
+      "coronary artery bypass",
+      "stroke",
+      "carotid endarterectomies",
+      "risk factors"
+    ],
+    "attribute": "no",
+    "question": "assessment of carotid artery stenosis before coronary artery bypass surgery. is it always necessary?",
+    "context": "extracranial internal carotid artery stenosis is a risk factor for perioperative stroke in patients undergoing coronary artery bypass surgery (cab). although selective and non-selective methods of preoperative carotid screening have been advocated, it remains unclear if this screening is clinically relevant.aim: to test whether selective carotid screening is as effective as non-selective screening in detecting significant carotid disease.overall, 205 consecutive patients underwent preoperative carotid screening. the prevalence of significant carotid stenosis was 5.8%. univariate analysis confirmed that pvd (p=0.005), carotid bruit (p=0.003) and diabetes mellitus (p=0.05) were significant risk factors for stenosis. carotid stenosis was a risk factor for stroke (p=0.03). prevalence of carotid stenosis was higher in the high-risk group (9.1%) than the low-risk group (1.2%) (p<0.05). all concomitant or staged carotid endarterectomies/cab (5/205) and all patients who had perioperative strokes (5/205) were in the high-risk group (p=0.01).",
+    "original_id": "21402341"
+  },
+  {
+    "id": 22,
+    "subject": [
+      "mesocolon invasion",
+      "staging",
+      "gastric cancer",
+      "nodal metastasis",
+      "survival",
+      "mesocolon invasion",
+      "curative resection",
+      "incurable factors"
+    ],
+    "attribute": "maybe",
+    "question": "should direct mesocolon invasion be included in t4 for the staging of gastric cancer?",
+    "context": "the curability, number and extent of nodal metastasis, and the survival of the mesocolon invasion group were significantly worse than these factors in the t3 group. however, the survival of the mesocolon invasion group after curative resection was much better than that of patients who had incurable factors.",
+    "original_id": "20082356"
+  },
+  {
+    "id": 23,
+    "subject": [
+      "stroke",
+      "odds ratio",
+      "prognostic",
+      "logistic",
+      "statins"
+    ],
+    "attribute": "no",
+    "question": "does pretreatment with statins improve clinical outcome after stroke?",
+    "context": "the unadjusted odds ratio for early discharge to home (versus late discharge or death) was 1.41 (95% ci 0.91 to 2.17) when patients on statin treatment were compared with referent stroke patients not on statins. prognostic factors were, in general, more unfavorable among patients on statins. when this was adjusted for in a logistic regression model, the use of statins was a moderately strong but statistically nonsignificant predictor of discharge to home (multiple-adjusted odds ratio 1.42, 95% ci 0.90 to 2.22).",
+    "original_id": "11340218"
+  },
+  {
+    "id": 24,
+    "subject": [
+      "sternal fracture",
+      "children",
+      "fracture",
+      "sternal fractures",
+      "children",
+      "radiological",
+      "sonographical",
+      "injuries",
+      "children",
+      "sternal fracture",
+      "children",
+      "pain"
+    ],
+    "attribute": "maybe",
+    "question": "sternal fracture in growing children : a rare and often overlooked fracture?",
+    "context": "sternal fractures in childhood are rare. the aim of the study was to investigate the accident mechanism, the detection of radiological and sonographical criteria and consideration of associated injuries.a total of 4 children aged 5-14\u00a0years with a sternal fracture were treated in 2\u00a0years, 2\u00a0children were hospitalized for pain management and 2 remained in outpatient care.",
+    "original_id": "25277731"
+  },
+  {
+    "id": 25,
+    "subject": [
+      "breast reconstruction",
+      "adjuvant chemotherapy",
+      "mastectomy",
+      "chemotherapy delivery",
+      "complications"
+    ],
+    "attribute": "no",
+    "question": "does immediate breast reconstruction compromise the delivery of adjuvant chemotherapy?",
+    "context": "immediate breast reconstruction (ibr) provides psychological benefit to many early breast cancer patients however concerns persist regarding its potential impact on chemotherapy delivery. we investigated the association between ibr, complications and adjuvant chemotherapy delivery.comparisons were made between 107 patients who received ibr and 113 who received mastectomy alone. those receiving ibr were on average younger, with lower body mass index (bmi) and better prognoses. overall complication rates were comparable (mastectomy alone: 45.1% versus ibr: 35.5%, p = 0.2). there was more return to surgery in the ibr group with 11.5% of tissue expanders requiring removal, whilst more seromas occurred in the mastectomy group. there was no significant difference in the median time to chemotherapy.",
+    "original_id": "23177368"
+  },
+  {
+    "id": 26,
+    "subject": [
+      "human papillomavirus",
+      "pterygium",
+      "virus",
+      "risk factor",
+      "cornea",
+      "studies",
+      "hpv",
+      "development of pterygia",
+      "hpv analysis",
+      "pcr",
+      "hpv-positive",
+      "dna",
+      "hpv type 6"
+    ],
+    "attribute": "maybe",
+    "question": "human papillomavirus and pterygium. is the virus a risk factor?",
+    "context": "pterygium is a disease of unknown origin and pathogenesis that might be vision threatening. it is characterised by a wing-like conjunctival overgrowth of the cornea. several studies have investigated human papillomavirus (hpv) as a risk factor for the development of pterygia, but the results are inconclusive.aim: to investigate a large sample of pterygia for the presence of hpv in order to clarify the putative association between pterygia and hpv.90 of 100 investigated pterygia proved suitable for hpv analysis by pcr. as beta-globin could not be amplified, 10 specimens were excluded from the study. 4 of 90 pterygia harboured hpv. hpv type 6 was identified in all four hpv-positive pterygia. the 20 normal conjunctival biopsy specimens were beta-globin positive and hpv negative. all four pterygia that were hpv type 6 positive were dna ish negative.",
+    "original_id": "17179167"
+  },
+  {
+    "id": 27,
+    "subject": [
+      "asphyxia"
+    ],
+    "attribute": "yes",
+    "question": "autoerotic asphyxiation: secret pleasure--lethal outcome?",
+    "context": "aea can be conceptualized as a personalized, ritualized, and symbolic biopsychosocial drama. it seems to be a reenactment of intense emotional feeling-states involving an identification and sadomasochistic relationship with a female figure. inept aea practitioners can miscalculate the peril of the situation that they have contrived and for numerous reasons lose their gamble with death.",
+    "original_id": "19822586"
+  },
+  {
+    "id": 28,
+    "subject": [
+      "major depression",
+      "alcohol use disorder",
+      "comorbidity",
+      "adult",
+      "adolescent",
+      "comorbid",
+      "outcomes"
+    ],
+    "attribute": "no",
+    "question": "major depression and alcohol use disorder in adolescence: does comorbidity lead to poorer outcomes of depression?",
+    "context": "comorbid major depression (md) and alcohol use disorder (aud), particularly in adolescents, have been shown to be associated with poorer subsequent md outcomes.the three disorder groups had rates of adult md during the period 18-35 years that were significantly (p<.05) higher than that of the group with no disorder. furthermore, those in the comorbid md/aud group had significantly (p<.05) higher rates of adult md than those in the aud-only group, and marginally (p<.10) higher rates of adult md than those in the md-only group. after adjustment for confounding, the difference in rates of adult md between the md-only group and the md/aud group were no longer statistically significant. the factors that explained the associations were gender, childhood behavior problems, and exposure to physical and sexual abuse.",
+    "original_id": "27643961"
+  },
+  {
+    "id": 29,
+    "subject": [
+      "circumcision",
+      "dilation",
+      "prepuce",
+      "adhesions",
+      "penis",
+      "phimosis"
+    ],
+    "attribute": "no",
+    "question": "should circumcision be performed in childhood?",
+    "context": "in boys under 1 year prepuce retractibility (assessed only in children who did not undergo forced dilation previously) was type i (non retractile) in 71.5% whereas type v (completely retractile) was only 5.5%. in adolescent boys type i prepuce was observed in 1 boy only, 1.6%, whereas type v was observed in 82.3%. furthermore, it was observed that at the time of examination for the study 106 boys who had undergone forced dilation at an earlier age had balano-prepucial adhesions again, which demonstrates that prepuce adheres again to glans penis in many boys after a forced dilation is performed. only 11 boys were considered in need for circumcision, three of them for prepucial orifice stenosis, which prevented normal micturition, causing a prepucial sac, one case due to a constrictive ring below the prepucial edge that would have prevented ulterior retractability, two cases with repetitive balanopostitis, and five cases secondary to xerosol balanitis, accounting for 2.7% of all examined boys.",
+    "original_id": "12380309"
+  },
+  {
+    "id": 30,
+    "subject": [
+      "colonoscopy",
+      "acute diverticulitis",
+      "colonic"
+    ],
+    "attribute": "no",
+    "question": "does a colonoscopy after acute diverticulitis affect its management?",
+    "context": "one hundred patients (aged 61.8\u00b113.3 y, 54.1% females), underwent an early (4 to 6 wk) colonoscopy after hospital discharge. there were no significant differences in patients' characteristics or survival between those with or without colonoscopy (4\u00b11.9 vs. 4.2\u00b12.1 y, p=0.62). no colonic malignancy was detected. however, in 32 patients (32%) at least 1 polyp was found. only 1 was determined as an advanced adenoma. no new or different diagnosis was made after colonoscopy.",
+    "original_id": "22186742"
+  },
+  {
+    "id": 31,
+    "subject": [
+      "phonological awareness",
+      "preschool",
+      "writing",
+      "hearing loss",
+      "reading abilities"
+    ],
+    "attribute": "maybe",
+    "question": "is a specialised training of phonological awareness indicated in every preschool child?",
+    "context": "in the whole group only a slight difference was found between both training modalities concerning their writing abilities. however, children with a history of hearing loss, actual hearing loss or pathologic middle ear findings profited most from the specialized training program compared to the control in their reading abilities.",
+    "original_id": "18235194"
+  },
+  {
+    "id": 32,
+    "subject": [
+      "streptococcal infection",
+      "multiple sclerosis"
+    ],
+    "attribute": "yes",
+    "question": "is there any relationship between streptococcal infection and multiple sclerosis?",
+    "context": "multiple sclerosis (ms) is an immune-mediated inflammatory demyelinating disease of uncertain etiology. although the mechanisms of inducting autoimmunity by some of the infectious agents have been investigated, there is not yet enough research on streptococcal infections.material/adnase b levels in the patients with ms were found to be significantly higher than in the controls (p<0.001); however, aso levels were similar in both groups.",
+    "original_id": "18049437"
+  },
+  {
+    "id": 33,
+    "subject": [
+      "ovarian cancer",
+      "ovary cancer cell lines",
+      "epirubicine",
+      "carboplatin"
+    ],
+    "attribute": "yes",
+    "question": "is the combination with 2-methoxyestradiol able to reduce the dosages of chemotherapeutices in the treatment of human ovarian cancer?",
+    "context": "for both ovary cancer cell lines a significant additive effect of 2me with epirubicine and carboplatin was observed at the lower concentration range of these chemotherapeutic substances.",
+    "original_id": "15597845"
+  },
+  {
+    "id": 34,
+    "subject": [
+      "vegf",
+      "venous invasion",
+      "renal cell carcinoma",
+      "tumour size",
+      "invasion of the perirenal fat",
+      "lymph node involvement",
+      "distant metastases",
+      "survival"
+    ],
+    "attribute": "maybe",
+    "question": "is tumour expression of vegf associated with venous invasion and survival in pt3 renal cell carcinoma?",
+    "context": "only tumour size appeared to be significantly different between the 3 groups. on univariate analysis, invasion of the perirenal fat, lymph node involvement, distant metastases and vegf expression were significantly associated with survival (p<0.01). on multivariate analysis, lymph node involvement, distant metastases and vegf expression (or 6.07) were identified as independent predictive factors of survival.",
+    "original_id": "17489316"
+  },
+  {
+    "id": 35,
+    "subject": [
+      "injury",
+      "poisoning",
+      "suicide",
+      "deaths",
+      "death",
+      "die",
+      "mortality"
+    ],
+    "attribute": "yes",
+    "question": "injury and poisoning mortality among young men--are there any common factors amenable to prevention?",
+    "context": "deaths from injury and poisoning (suicide, accidents, undetermined deaths, and homicide) are the major cause of death among young men aged 15-39 years in england and wales and have been increasing in recent years.aim: to describe common characteristics among young men who die from injury and poisoning.",
+    "original_id": "14518645"
+  },
+  {
+    "id": 36,
+    "subject": [
+      "rectal cancer",
+      "travel",
+      "high-volume centers",
+      "lymph node",
+      "chemoradiation",
+      "mortality"
+    ],
+    "attribute": "yes",
+    "question": "is the distance worth it?",
+    "context": "it is unclear whether traveling long distances to high-volume centers would compensate for travel burden among patients undergoing rectal cancer resection.a total of 18,605 patients met inclusion criteria; 2067 patients were in the long-distance/high-volume group and 1362 in the short-distance/low-volume group. the median travel distance was 62.6 miles for the long-distance/high-volume group and 2.3 miles for the short-distance/low-volume group. patients who were younger, white, privately insured, and stage iii were more likely to have traveled to a high-volume center. when controlled for patient factors, stage, and hospital factors, patients in the short-distance/low-volume group had lower odds of a lymph node yield \u226512 (or = 0.51) and neoadjuvant chemoradiation (or = 0.67) and higher 30-day (or = 3.38) and 90-day mortality (or = 2.07) compared with those in the long-distance/high-volume group. the short-distance/low-volume group had a 34% high risk of overall mortality at 5 years compared with the long-distance/high-volume group.",
+    "original_id": "29112560"
+  },
+  {
+    "id": 37,
+    "subject": [
+      "lysosomotropic amines",
+      "cyclosporine",
+      "t-cell responses",
+      "minor histocompatibility antigens",
+      "major histocompatibility antigens",
+      "murine",
+      "chloroquine",
+      "graft-versus-host disease",
+      "t cells",
+      "minor histocompatibility antigens",
+      "major histocompatibility complex",
+      "class ii antigen",
+      "immune suppressant drugs",
+      "cyclosporine",
+      "chloroquine",
+      "hydroxychloroquine",
+      "t-cell response",
+      "mice",
+      "c57bl/6",
+      "cyclosporine",
+      "synergistic suppression",
+      "proliferative response",
+      "alloreactive response",
+      "c57bl/6",
+      "anti-cd3epsilon",
+      "antigen-presenting cells",
+      "t-cell proliferative responses",
+      "t-cell viability",
+      "interleukin-2",
+      "interferon-gamma",
+      "antigen-presenting cells",
+      "c57bl/6",
+      "mhc class ii",
+      "lipopolysaccharide"
+    ],
+    "attribute": "yes",
+    "question": "immune suppression by lysosomotropic amines and cyclosporine on t-cell responses to minor and major histocompatibility antigens: does synergy exist?",
+    "context": "using murine models, we have shown that the lysosomotropic amine, chloroquine, is effective in the prevention of graft-versus-host disease (gvhd) mediated by donor t cells reactive with recipient minor histocompatibility antigens (mihcs). because lysosomotropic amines can suppress major histocompatibility complex (mhc) class ii antigen presentation, their mechanism of action is potentially different from current immune suppressant drugs used to control gvhd such as cyclosporine.we found that similar concentrations of chloroquine and hydroxychloroquine suppress the t-cell response to mihc in mice (c57bl/6 anti-balb.b) and that lysosomotropic amines in combination with cyclosporine result in synergistic suppression of a proliferative response to mihc. similar suppression and synergy appear to be present in an alloreactive response (c57bl/6 anti-balb/c). direct inhibition by chloroquine of t-cell proliferative responses induced by anti-cd3epsilon in the absence of antigen-presenting cells is present at higher concentrations than that required to suppress responses to mihc or mhc. chloroquine appears to induce decreased t-cell viability at high concentrations. this effect does not appear to be due to decreased t-cell production of interleukin-2 or interferon-gamma. at lower concentrations (<25 microg/ml), chloroquine can also decrease the ability of antigen-presenting cells to stimulate an a c57bl/6 anti-balb/c t-cell response and can inhibit mhc class ii expression after activation with lipopolysaccharide.",
+    "original_id": "9381529"
+  },
+  {
+    "id": 38,
+    "subject": [
+      "induction chemotherapy",
+      "nasopharyngeal carcinoma",
+      "survival rates",
+      "disease recurrence",
+      "local regional failures",
+      "neck",
+      "local failure",
+      "distant sites",
+      "stage iv",
+      "survival",
+      "freedom from relapse",
+      "local control",
+      "distant failure rate",
+      "chemotherapy",
+      "local control"
+    ],
+    "attribute": "yes",
+    "question": "does induction chemotherapy have a role in the management of nasopharyngeal carcinoma?",
+    "context": "the overall actuarial 2- and 5-year survival rates were 78 and 68%, respectively. forty-nine patients (40%) had disease recurrence. thirty-three (27%) had local regional failures; 19 at the primary site only, 8 in the neck and 6 in both. local failure occurred in 31% of patients staged t4 compared to 13% of t1-t3 (p = 0.007). sixteen patients failed at distant sites alone. among stage iv patients the 5-year actuarial rates for patients who did and did not receive induction chemotherapy were as follows: overall survival: 68 vs. 56% (p = 0.02), freedom from relapse: 64 vs. 37% (p = 0.01), and local control: 86 vs. 56% (p = 0.009). the actuarial 5-year distant failure rate in patients with unpc who were treated with induction chemotherapy and controlled in the primary and neck was 13%. in patients who did not receive chemotherapy, the actuarial 5-year local control rates for patients treated with concomitant boost or conventional fractionation were 66 and 67%, respectively.",
+    "original_id": "8985020"
+  },
+  {
+    "id": 39,
+    "subject": [
+      "crohn's disease",
+      "sulfasalazine"
+    ],
+    "attribute": "maybe",
+    "question": "is it crohn's disease?",
+    "context": "sulfasalazine is a widely used anti-inflammatory agent in the treatment of inflammatory bowel disease and several rheumatological disorders. although as many as 20% of treated patients may experience reversible, dose-dependent side effects, less frequent but potentially severe, systemic reactions have also been reported.",
+    "original_id": "11570976"
+  },
+  {
+    "id": 40,
+    "subject": [
+      "students",
+      "chaalia",
+      "pan masala",
+      "use",
+      "harmful",
+      "health",
+      "knowledge"
+    ],
+    "attribute": "yes",
+    "question": "is chaalia/pan masala harmful for health?",
+    "context": "a total of 370 students were interviewed over a period of six weeks, of which 205 (55.4%) were boys. the ages of the students were between 10 and 15 years. thirty one percent of the fathers and 62% of the mothers were uneducated. the frequency of use of any brand of chaalia was found to be 94% and that of pan masala was 73.8%. eighty five percent of them were regular users. a large majority (88%) procured the substances themselves from near their homes. ninety five percent of the children had friends with the same habits. eighty four percent were using the substances in full knowledge of their families. chaalia was considered harmful for health by 96% and pan masala by 60%. good taste was cited as a reason for continuing the habit by 88.5% of the children and use by friends by 57%. knowledge about established harmful effects was variable. knowledge about harmful effects was high in both \"daily\" and \"less than daily users\".",
+    "original_id": "19757704"
+  },
+  {
+    "id": 41,
+    "subject": [
+      "tinnitus",
+      "cervical",
+      "somatosensory",
+      "cervical spine treatment",
+      "treatment"
+    ],
+    "attribute": "yes",
+    "question": "does multi-modal cervical physical therapy improve tinnitus in patients with cervicogenic somatic tinnitus?",
+    "context": "tinnitus can be related to many different aetiologies such as hearing loss or a noise trauma, but it can also be related to the somatosensory system of the cervical spine, called cervicogenic somatic tinnitus (cst). case studies suggest a positive effect of cervical spine treatment on tinnitus complaints in patients with cst, but no experimental studies are available.in all patients (n\u00a0=\u00a038) tfi and nbq-scores decreased significantly after treatment (p\u00a0=\u00a00.04 and p\u00a0<\u00a00.001). nbq-scores remained significantly lower after follow-up (p\u00a0=\u00a00.001). immediately after treatment, 53% (n\u00a0=\u00a038) experienced substantial improvement of tinnitus. this effect was maintained in 24% of patients after follow-up at six weeks.",
+    "original_id": "27592038"
+  },
+  {
+    "id": 42,
+    "subject": [
+      "hiv",
+      "std",
+      "aids",
+      "confidence interval",
+      "homosexuals",
+      "female prostitutes",
+      "condom use",
+      "condom sales"
+    ],
+    "attribute": "yes",
+    "question": "is hiv/std control in jamaica making a difference?",
+    "context": "the annual aids incidence rate in jamaica increased only marginally in the past three years from 18.5 per 100000 population to 21.4 in 1997. hiv prevalence in the general population groups tested has been about 1% or less. among those at high risk, hiv prevalence rates have risen to 6.3% (95% confidence interval 5.0-8.0) in std clinic attenders, around 10% and 21% in female prostitutes in kingston and montego bay respectively and approximately 30% among homosexuals. syphilis rates and congenital syphilis cases have declined. the proportion of men aged 15-49 years reporting sex with a non-regular partner declined from 35% in 1994 to 26% in 1996 (p<0.001). women ever having used condoms increased from 51% in 1988 to 62.5% in 1992 and 73% in 1994 and 1996 (p<0.001), while condom use with a non-regular partner increased from 37% in 1992 to 73% in 1996 (p= 0.006). condom use among men was high over the period: around 81% had ever used condoms and 77% used them with non-regular partners. gay men, inner-city adults and adolescents aged 12-14 years all reported increases in condom use while condom sales and distribution increased from around 2 million in 1985 to 10 million in 1995.",
+    "original_id": "9792366"
+  },
+  {
+    "id": 43,
+    "subject": [
+      "panton-valentine leucocidin",
+      "staphylococcus aureus",
+      "bacteraemia",
+      "uk",
+      "pathogenesis",
+      "toxin",
+      "primary bacteraemia",
+      "oxacillin",
+      "methicillin-resistant s. aureus",
+      "methicillin-susceptible s. aureus",
+      "penicillin",
+      "fusidic acid",
+      "isolates",
+      "ireland"
+    ],
+    "attribute": "maybe",
+    "question": "is panton-valentine leucocidin associated with the pathogenesis of staphylococcus aureus bacteraemia in the uk?",
+    "context": "the morbidity and mortality associated with panton-valentine leucocidin (pvl)-positive staphylococcus aureus suggest that this toxin is a key marker of disease severity. nevertheless, the importance of pvl in the pathogenesis of primary bacteraemia caused by s. aureus is uncertain. we have determined the prevalence of pvl-encoding genes among isolates of s. aureus from bacteraemic patients.four out of 244 isolates (1.6%) were pvl-positive and susceptible to oxacillin [methicillin-susceptible s. aureus (mssa)]. eighty-eight out of 244 (36%) were oxacillin-resistant (methicillin-resistant s. aureus), but none was pvl-positive. the four patients (two males: 30 and 33 years; two females: 62 and 80 years) had infection foci of: skin and soft tissue, unknown, indwelling line, and surgical site, and were located at one centre in wales, one in england and two in ireland. one of four pvl-positive isolates was resistant to penicillin and fusidic acid, the remainder were susceptible to all antibiotics tested. genotypic analyses showed that the four isolates represented three distinct strains; the two isolates from ireland were related.",
+    "original_id": "17562682"
+  },
+  {
+    "id": 44,
+    "subject": [
+      "rectal cancer",
+      "positron emission tomography",
+      "radiotherapy"
+    ],
+    "attribute": "yes",
+    "question": "does positron emission tomography change management in primary rectal cancer?",
+    "context": "the surgical management of 36 of 46 patients (78 percent) was unchanged as a result of position emission tomography, even though position emission tomography upstaged disease in 3 of 36 cases (8 percent) and downstaged disease in 5 of 36 cases (14 percent). in 8 of 46 cases (17 percent), management was altered because of the position emission tomography scan findings, including 6 cases (13 percent) in which surgery was cancelled and 2 other cases (4 percent) in which the radiotherapy field was changed. where available, follow-up confirmed the appropriateness of position emission tomography-induced management change in each case. two patients had a change in therapy independent of the position emission tomography scan due to clinical circumstances. overall tumor stage was changed following position emission tomography in 18 of 46 patients (39 percent).",
+    "original_id": "14978612"
+  },
+  {
+    "id": 45,
+    "subject": [
+      "radiographic",
+      "hirschsprung's disease",
+      "radiological",
+      "specimen",
+      "pathology",
+      "rectal",
+      "rectosigmoid",
+      "long-segment",
+      "total colonic"
+    ],
+    "attribute": "no",
+    "question": "does the radiographic transition zone correlate with the level of aganglionosis on the specimen in hirschsprung's disease?",
+    "context": "radiological findings were concordant with the specimen in pathology in 8 cases of 19 in rectal form (42 %), in 20 cases of 35 in rectosigmoid form (57 %), in all 6 cases of long-segment form (100 %), in the 2 cases of total colonic form (100 %) with a global agreement of 58.1 %, \u03ba = 0.39 ci [0.24; 0.57].",
+    "original_id": "22534881"
+  },
+  {
+    "id": 46,
+    "subject": [
+      "dexamethasone",
+      "oral",
+      "prednisone",
+      "pediatric",
+      "asthma",
+      "treatment",
+      "corticosteroids"
+    ],
+    "attribute": "yes",
+    "question": "is dexamethasone an effective alternative to oral prednisone in the treatment of pediatric asthma exacerbations?",
+    "context": "a short course of systemic corticosteroids is an important therapy in the treatment of pediatric asthma exacerbations. although a 5-day course of oral prednisone or prednisolone has become the most commonly used regimen, dexamethasone has also been used for a shorter duration (1-2 days) with potential for improvement in compliance and palatability. we reviewed the literature to determine if there is sufficient evidence that dexamethasone can be used as an effective alternative in the treatment of pediatric asthma exacerbations in the inpatient setting.six completed pediatric clinical trials met the inclusion criteria. all of the pediatric trials found that prednisone is not superior to dexamethasone in treating mild to moderate asthma exacerbations. meta-analysis demonstrated homogeneity between the dexamethasone and prednisone groups when examining symptomatic return to baseline and unplanned physician revisits after the initial emergency department encounter. some studies found potential additional benefits of dexamethasone, including improved compliance and less vomiting.",
+    "original_id": "24785562"
+  },
+  {
+    "id": 47,
+    "subject": [
+      "mammographic screening",
+      "ethnicity",
+      "breast cancers"
+    ],
+    "attribute": "yes",
+    "question": "mammographic screening in sami speaking municipalities and a control group. are early outcome measures influenced by ethnicity?",
+    "context": "the attendance rate in the nbcsp was 78% in the sami and 75% in the non-sami population (p<0.01). the recall rates were 2.4 and 3.3% in the sami and non-sami population, respectively (p<0.01). the rate of invasive screen detected cancer was not significantly lower in the sami group (p=0.14). the percentage of all breast cancers detected in the nbcsp among the sami (67%) was lower compared with the non-sami population (86%, p=0.06).",
+    "original_id": "22564465"
+  },
+  {
+    "id": 48,
+    "subject": [
+      "autoantibodies",
+      "type 1 diabetes",
+      "progression to diabetes",
+      "diabetes mellitus",
+      "type 1",
+      "time to diabetes",
+      "c-peptide",
+      "blood glucose"
+    ],
+    "attribute": "yes",
+    "question": "do electrochemiluminescence assays improve prediction of time to type 1 diabetes in autoantibody-positive trialnet subjects?",
+    "context": "univariate analyses showed that autoantibodies by radioimmunoassays (rias), ecl-iaa, ecl-gada, age, sex, number of positive autoantibodies, presence of hla dr3/4-dq8 genotype, hba1c, and oral glucose tolerance test (ogtt) measurements were all significantly associated with progression to diabetes. subjects who were ecl positive had a risk of progression to diabetes within 6 years of 58% compared with 5% for the ecl-negative subjects (p<0.0001). multivariate cox proportional hazards models were compared, with the base model including age, sex, ogtt measurements, and number of positive autoantibodies by rias. the model with positivity for ecl-gada and/or ecl-iaa was the best, and factors that remained significantly associated with time to diabetes were area under the curve (auc) c-peptide, fasting c-peptide, auc glucose, number of positive autoantibodies by rias, and ecl positivity. adding ecl to the diabetes prevention trial risk score (dptrs) improved the receiver operating characteristic curves with auc of 0.83 (p<0.0001).",
+    "original_id": "27456836"
+  },
+  {
+    "id": 49,
+    "subject": [
+      "antimicrobial",
+      "prescribing",
+      "specialists",
+      "hospital"
+    ],
+    "attribute": "yes",
+    "question": "assessment of appropriate antimicrobial prescribing: do experts agree?",
+    "context": "specialists agreed with the reference standard in 80% of cases (range 75%-86%), with a sensitivity and specificity of 75% and 84%, respectively. this did not differ by clinical specialty, hospital or years of experience, and residents had similar results. specialists agreed with the index expert in 76% of cases and the index expert agreed with his previous assessments in 71% of cases.",
+    "original_id": "27287237"
   }
 ]

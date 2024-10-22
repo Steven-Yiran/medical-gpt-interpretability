@@ -1,35 +1,427 @@
-[
-  "intestinal diseases",
-  "coronary heart disease",
-  "sleep disorders",
-  "convulsion",
-  "cardiovascular diseases",
-  "sleep-related problems",
-  "amblyopia",
-  "family history risk",
-  "palliative care",
-  "opioid",
-  "eye disorders",
-  "hdl",
-  "family history",
-  "primary care physicians",
-  "mutations",
-  "elevated rhr",
-  "leukemia",
-  "double-balloon enteroscopy",
-  "sleep and energy",
-  "strabismus amblyopia",
-  "high-density lipoprotein",
-  "neoplasms",
-  "casual high bp",
-  "breathlessness",
-  "pneumonia",
-  "respiratory distress syndrome",
-  "asthma",
-  "cvd risk factor",
-  "gastroenteritis",
-  "visual acuity",
-  "risk",
-  "lymphoma",
-  "Hirschsprung Disease"
-]
+{
+  "0": [
+    "strabismus",
+    "amblyopia",
+    "visual acuity",
+    "eye disorders"
+  ],
+  "1": [
+    "colectomy",
+    "hirschsprung disease"
+  ],
+  "2": [
+    "double-balloon enteroscopy",
+    "community",
+    "female",
+    "intestinal diseases"
+  ],
+  "3": [
+    "sleep disorders",
+    "sleep",
+    "self-reports",
+    "prevalence",
+    "self-reported"
+  ],
+  "4": [
+    "mutations",
+    "hdl",
+    "coronary heart disease",
+    "cholesterol",
+    "hdl cholesterol"
+  ],
+  "5": [
+    "academic children's hospital",
+    "general and academic children's hospital",
+    "hospital",
+    "children",
+    "young age",
+    "hospital efficiency",
+    "length of stay",
+    "pediatric",
+    "admissions"
+  ],
+  "6": [
+    "family history",
+    "primary care physicians",
+    "electronic health records"
+  ],
+  "7": [
+    "palliative care",
+    "opioid administration",
+    "breathlessness",
+    "opioid"
+  ],
+  "8": [
+    "cardiovascular",
+    "resting heart rate",
+    "heart rate",
+    "risk",
+    "casual high bp",
+    "obese",
+    "abdominal obesity",
+    "elevated rhr",
+    "cvd risk factor",
+    "higher risk",
+    "risk factors"
+  ],
+  "9": [
+    "acute respiratory distress syndrome",
+    "malignancy",
+    "children",
+    "survived",
+    "sepsis",
+    "respiratory",
+    "ventilation"
+  ],
+  "10": [
+    "nomograms",
+    "predict",
+    "biochemical recurrence",
+    "predicting",
+    "prostate cancer",
+    "predicted"
+  ],
+  "11": [
+    "chronic oro-facial pain",
+    "teeth grinding",
+    "facial trauma",
+    "chronic oro-facial pain"
+  ],
+  "12": [
+    "immunohistochemistry",
+    "urothelial carcinoma",
+    "chemotherapy",
+    "adjuvant",
+    "disease-specific"
+  ],
+  "13": [
+    "information system",
+    "information technology",
+    "diabetes-educated"
+  ],
+  "14": [
+    "hepatocellular carcinoma",
+    "portal vein",
+    "disease free survival",
+    "cancer"
+  ],
+  "15": [
+    "papanicolaou smears",
+    "colposcopy",
+    "pap smear"
+  ],
+  "16": [
+    "diabetes mellitus",
+    "cervical cancer",
+    "fdg-pet"
+  ],
+  "17": [
+    "rectal cancer",
+    "prognosis",
+    "pelvic exenteration",
+    "recurrent rectal cancer",
+    "radiotherapy",
+    "local recurrence",
+    "primary rectal cancer",
+    "disease-free survival",
+    "survival",
+    "treatment"
+  ],
+  "18": [
+    "lymphedema",
+    "circumference",
+    "sensitivity"
+  ],
+  "19": [
+    "colorectal cancer",
+    "synchronous liver metastases",
+    "colorectal cancers",
+    "liver resection",
+    "liver surgery",
+    "colorectal surgery",
+    "overall survival",
+    "disease-free survival"
+  ],
+  "20": [
+    "motion perception",
+    "eye-tracking abnormality",
+    "eye movement",
+    "eye-tracking difficulties",
+    "eye tracking",
+    "speed discrimination"
+  ],
+  "21": [
+    "carotid stenosis",
+    "coronary artery bypass",
+    "stroke",
+    "carotid endarterectomies",
+    "risk factors"
+  ],
+  "22": [
+    "mesocolon invasion",
+    "staging",
+    "gastric cancer",
+    "nodal metastasis",
+    "survival",
+    "mesocolon invasion",
+    "curative resection",
+    "incurable factors"
+  ],
+  "23": [
+    "stroke",
+    "odds ratio",
+    "prognostic",
+    "logistic",
+    "statins"
+  ],
+  "24": [
+    "sternal fracture",
+    "children",
+    "fracture",
+    "sternal fractures",
+    "children",
+    "radiological",
+    "sonographical",
+    "injuries",
+    "children",
+    "sternal fracture",
+    "children",
+    "pain"
+  ],
+  "25": [
+    "breast reconstruction",
+    "adjuvant chemotherapy",
+    "mastectomy",
+    "chemotherapy delivery",
+    "complications"
+  ],
+  "26": [
+    "human papillomavirus",
+    "pterygium",
+    "virus",
+    "risk factor",
+    "cornea",
+    "studies",
+    "hpv",
+    "development of pterygia",
+    "hpv analysis",
+    "pcr",
+    "hpv-positive",
+    "dna",
+    "hpv type 6"
+  ],
+  "27": [
+    "asphyxia"
+  ],
+  "28": [
+    "major depression",
+    "alcohol use disorder",
+    "comorbidity",
+    "adult",
+    "adolescent",
+    "comorbid",
+    "outcomes"
+  ],
+  "29": [
+    "circumcision",
+    "dilation",
+    "prepuce",
+    "adhesions",
+    "penis",
+    "phimosis"
+  ],
+  "30": [
+    "colonoscopy",
+    "acute diverticulitis",
+    "colonic"
+  ],
+  "31": [
+    "phonological awareness",
+    "preschool",
+    "writing",
+    "hearing loss",
+    "reading abilities"
+  ],
+  "32": [
+    "streptococcal infection",
+    "multiple sclerosis"
+  ],
+  "33": [
+    "ovarian cancer",
+    "ovary cancer cell lines",
+    "epirubicine",
+    "carboplatin"
+  ],
+  "34": [
+    "vegf",
+    "venous invasion",
+    "renal cell carcinoma",
+    "tumour size",
+    "invasion of the perirenal fat",
+    "lymph node involvement",
+    "distant metastases",
+    "survival"
+  ],
+  "35": [
+    "injury",
+    "poisoning",
+    "suicide",
+    "deaths",
+    "death",
+    "die",
+    "mortality"
+  ],
+  "36": [
+    "rectal cancer",
+    "travel",
+    "high-volume centers",
+    "lymph node",
+    "chemoradiation",
+    "mortality"
+  ],
+  "37": [
+    "lysosomotropic amines",
+    "cyclosporine",
+    "t-cell responses",
+    "minor histocompatibility antigens",
+    "major histocompatibility antigens",
+    "murine",
+    "chloroquine",
+    "graft-versus-host disease",
+    "t cells",
+    "minor histocompatibility antigens",
+    "major histocompatibility complex",
+    "class ii antigen",
+    "immune suppressant drugs",
+    "cyclosporine",
+    "chloroquine",
+    "hydroxychloroquine",
+    "t-cell response",
+    "mice",
+    "c57bl/6",
+    "cyclosporine",
+    "synergistic suppression",
+    "proliferative response",
+    "alloreactive response",
+    "c57bl/6",
+    "anti-cd3epsilon",
+    "antigen-presenting cells",
+    "t-cell proliferative responses",
+    "t-cell viability",
+    "interleukin-2",
+    "interferon-gamma",
+    "antigen-presenting cells",
+    "c57bl/6",
+    "mhc class ii",
+    "lipopolysaccharide"
+  ],
+  "38": [
+    "induction chemotherapy",
+    "nasopharyngeal carcinoma",
+    "survival rates",
+    "disease recurrence",
+    "local regional failures",
+    "neck",
+    "local failure",
+    "distant sites",
+    "stage iv",
+    "survival",
+    "freedom from relapse",
+    "local control",
+    "distant failure rate",
+    "chemotherapy",
+    "local control"
+  ],
+  "39": [
+    "crohn's disease",
+    "sulfasalazine"
+  ],
+  "40": [
+    "students",
+    "chaalia",
+    "pan masala",
+    "use",
+    "harmful",
+    "health",
+    "knowledge"
+  ],
+  "41": [
+    "tinnitus",
+    "cervical",
+    "somatosensory",
+    "cervical spine treatment",
+    "treatment"
+  ],
+  "42": [
+    "hiv",
+    "std",
+    "aids",
+    "confidence interval",
+    "homosexuals",
+    "female prostitutes",
+    "condom use",
+    "condom sales"
+  ],
+  "43": [
+    "panton-valentine leucocidin",
+    "staphylococcus aureus",
+    "bacteraemia",
+    "uk",
+    "pathogenesis",
+    "toxin",
+    "primary bacteraemia",
+    "oxacillin",
+    "methicillin-resistant s. aureus",
+    "methicillin-susceptible s. aureus",
+    "penicillin",
+    "fusidic acid",
+    "isolates",
+    "ireland"
+  ],
+  "44": [
+    "rectal cancer",
+    "positron emission tomography",
+    "radiotherapy"
+  ],
+  "45": [
+    "radiographic",
+    "hirschsprung's disease",
+    "radiological",
+    "specimen",
+    "pathology",
+    "rectal",
+    "rectosigmoid",
+    "long-segment",
+    "total colonic"
+  ],
+  "46": [
+    "dexamethasone",
+    "oral",
+    "prednisone",
+    "pediatric",
+    "asthma",
+    "treatment",
+    "corticosteroids"
+  ],
+  "47": [
+    "mammographic screening",
+    "ethnicity",
+    "breast cancers"
+  ],
+  "48": [
+    "autoantibodies",
+    "type 1 diabetes",
+    "progression to diabetes",
+    "diabetes mellitus",
+    "type 1",
+    "time to diabetes",
+    "c-peptide",
+    "blood glucose"
+  ],
+  "49": [
+    "antimicrobial",
+    "prescribing",
+    "specialists",
+    "hospital"
+  ]
+}

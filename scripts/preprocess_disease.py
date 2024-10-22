@@ -8,19 +8,19 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def system_message():
     return f"""
 You are an expert in Natural Language Processing. Your task is to identify words related to the provided MeSH disease keywords.
-First, you need to identify diseases MeSH keywords from the provided MeSH keywords.
+First, you need to identify MeSH keywords that are related to a specific disease, symptom, or disorder.
 Then, you need to identify the words in the text that are related to the diseases MeSH keywords.
 You need to return the identified words in a common separated string.
-If you can't find any related words, return an string.
-The MeSH keywords are exclusively user provided."""
+If you can't find any related words, return an empty string.
+"""
 
 def assistant_message():
     return f"""
 EXAMPLE:
     MeSH: Baths, Histamine, Humans, Infant, Syncope, Urticaria, Water
     Text: 'Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. / 
-    The prognosis is uncertain because of risk of sudden infant death syndrome. / 
-    Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
+        The prognosis is uncertain because of risk of sudden infant death syndrome. / 
+        Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
     {"syncope, water-induced urticaria"}
 --"""
 
@@ -58,6 +58,7 @@ def contain_disease_meshes(meshes):
 
 
 def main():
+    num_samples = 50
     original_file = 'data/ori_pqal.json'
     output_file = 'data/pqa_disease.json'
     output_keywords_file = 'data/disease_keywords.json'
@@ -68,7 +69,7 @@ def main():
     required_context_labels = ['BACKGROUND', 'PATIENTS AND METHODS', 'RESULTS']
 
     filtered_data = []
-    all_disease_keywords = set()
+    all_disease_keywords = {}
     new_id = 0
 
     for entry_id, entry_data in data.items():
@@ -85,9 +86,9 @@ def main():
         answer = entry_data.get("final_decision", "")
 
 
-        response = run_openai_task(meshes, combined_context + question)
-        disease_keywords = response.split(", ")
-        all_disease_keywords.update(disease_keywords)
+        response = run_openai_task(meshes, question + " " + combined_context)
+        disease_keywords = response.lower().split(", ")
+        all_disease_keywords[new_id] = disease_keywords
 
         filtered_data.append({
             "id": new_id,
@@ -100,17 +101,18 @@ def main():
 
         new_id += 1
 
-        # save first 300 samples
-        if new_id >= 10:
+        # save first x samples
+        if new_id >= 50:
             break
 
     with open(output_file, 'w') as f:
         json.dump(filtered_data, f, indent=2)
 
     with open(output_keywords_file, 'w') as f:
-        json.dump(list(all_disease_keywords), f, indent=2)
+        json.dump(all_disease_keywords, f, indent=2)
 
     print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
+    print(f"Disease keywords saved to {output_keywords_file}")
 
 
 if __name__ == "__main__":

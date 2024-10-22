@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 # Set the Git username and email
 git config --global user.name "yiran0811@outlook.com"
 git config --global user.email "Yiran Shi"
