@@ -6,7 +6,7 @@ To perform causal analysis in a language model G, We view G as a causal graph, w
 
 ## Run Experiments
 
-Activate environment
+Activate environment and install required dependencies.
 
 ```bash
 bash scripts/causal_trace.sh
