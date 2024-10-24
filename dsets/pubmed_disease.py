@@ -16,8 +16,8 @@ class ClinicalDiseaseDataset(Dataset):
         return len(self.data)
     
     def __getitem__(self, idx):
-        subject_arr = self.data[idx]["subject"]
-        self.data[idx]["subject"] = subject_arr[0]
+        # subject_arr = self.data[idx]["subject"]
+        # self.data[idx]["subject"] = subject_arr[0]
 
         prompt = "Question: " + self.data[idx]["question"]
         if self.with_context:

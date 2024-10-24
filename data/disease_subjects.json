@@ -1,0 +1,52 @@
+[
+  {
+    "id": 0,
+    "subject": [
+      "Strabismus amblyopia"
+    ],
+    "attribute": "no",
+    "question": "landolt c and snellen e acuity: differences in strabismus amblyopia?",
+    "context": "assessment of visual acuity depends on the optotypes used for measurement. the ability to recognize different optotypes differs even if their critical details appear under the same visual angle. since optotypes are evaluated on individuals with good visual acuity and without eye disorders, differences in the lower visual acuity range cannot be excluded. in this study, visual acuity measured with the snellen e was compared to the landolt c acuity.100 patients (age 8 - 90 years, median 60.5 years) with various eye disorders, among them 39 with amblyopia due to strabismus, and 13 healthy volunteers were tested. charts with the snellen e and the landolt c (precision vision) which mimic the etdrs charts were used to assess visual acuity. three out of 5 optotypes per line had to be correctly identified, while wrong answers were monitored. in the group of patients, the eyes with the lower visual acuity, and the right eyes of the healthy subjects, were evaluated.differences between landolt c acuity (lr) and snellen e acuity (se) were small. the mean decimal values for lr and se were 0.25 and 0.29 in the entire group and 0.14 and 0.16 for the eyes with strabismus amblyopia. the mean difference between lr and se was 0.55 lines in the entire group and 0.55 lines for the eyes with strabismus amblyopia, with higher values of se in both groups. the results of the other groups were similar with only small differences between lr and se."
+  },
+  {
+    "id": 1,
+    "subject": [
+      "Syncope",
+      "Urticaria",
+      "Sudden Infant Death Syndrome"
+    ],
+    "attribute": "yes",
+    "question": "syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+    "context": "apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. the prognosis is uncertain because of risk of sudden infant death syndrome."
+  },
+  {
+    "id": 2,
+    "subject": [
+      "sleep disorders"
+    ],
+    "attribute": "no",
+    "question": "is adjustment for reporting heterogeneity necessary in sleep disorders?",
+    "context": "anchoring vignettes are brief texts describing a hypothetical character who illustrates a certain fixed level of a trait under evaluation. this research uses vignettes to elucidate factors associated with sleep disorders in adult japanese before and after adjustment for reporting heterogeneity in self-reports. this study also evaluates the need for adjusting for reporting heterogeneity in the management of sleep and energy related problems in japan.the prevalence of self-reported problems with sleep and energy was 53 %. without correction of cut-point shifts, age, sex, and the number of comorbidities were significantly associated with a greater severity of sleep-related problems. after correction, age, the number of comorbidities, and regular exercise were significantly associated with a greater severity of sleep-related problems; sex was no longer a significant factor. compared to the ordered probit model, the chopit model provided two changes with a subtle difference in the magnitude of regression coefficients after correction for reporting heterogeneity."
+  },
+  {
+    "id": 3,
+    "subject": [
+      "Coronary heart disease"
+    ],
+    "attribute": "no",
+    "question": "do mutations causing low hdl-c promote increased carotid intima-media thickness?",
+    "context": "although observational data support an inverse relationship between high-density lipoprotein (hdl) cholesterol and coronary heart disease (chd), genetic hdl deficiency states often do not correlate with premature chd.in a 1:2 case-control study of sex and age-related (+/-5 y) subjects (n=114), cimt was nearly identical between cases (0.66+/-0.17 cm) and controls (0.65+/-0.18 cm) despite significantly lower hdl cholesterol (0.67 vs. 1.58 mmol/l) and apolipoprotein a-i levels (96.7 vs. 151.4 mg/dl) (p<0.05)"
+  },
+  {
+    "id": 4,
+    "subject": [
+      "nonalcoholic steatohepatitis",
+      "alcoholic steatohepatitis",
+      "NASH",
+      "ASH"
+    ],
+    "attribute": "yes",
+    "question": "differentiation of nonalcoholic from alcoholic steatohepatitis: are routine laboratory markers useful?",
+    "context": "nash was diagnosed in 58 patients (61%; 30 f) and ash in 37 (39%; 9 f). high-grade fibrosis (59% vs. 19%, p<0.0001) and an ast/alt ratio>1 (54.1% vs 20.7%, p = 0.0008) were more common in ash. the mcv was elevated in 53% of ash patients and normal in all nash patients (p<0.0001). multivariate analysis identified the mcv (p = 0.0013), the ast/alt ratio (p = 0.011) and sex (p = 0.0029) as relevant regressors (aroc = 0.92). the ast/alt ratio (p<0.0001) and age (p = 0.00049) were independent predictors of high-grade fibrosis. differences in mcv were more marked in high-grade fibrosis."
+  }
+]

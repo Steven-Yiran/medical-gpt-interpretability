@@ -1,0 +1,178 @@
+[
+    {
+        "QUESTION": "Are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through?",
+        "CONTEXTS": [
+            "The transanal endorectal pull-through (TERPT) is becoming the most popular procedure in the treatment of Hirschsprung disease (HD), but overstretching of the anal sphincters remains a critical issue that may impact the continence. This study examined the long-term outcome of TERPT versus conventional transabdominal (ABD) pull-through for HD.",
+            "Records of 41 patients more than 3 years old who underwent a pull-through for HD (TERPT, n = 20; ABD, n = 21) were reviewed, and their families were thoroughly interviewed and scored via a 15-item post-pull-through long-term outcome questionnaire. Patients were operated on between the years 1995 and 2003. During this time, our group transitioned from the ABD to the TERPT technique. Total scoring ranged from 0 to 40: 0 to 10, excellent; 11 to 20 good; 21 to 30 fair; 31 to 40 poor. A 2-tailed Student t test, analysis of covariance, as well as logistic and linear regression were used to analyze the collected data with confidence interval higher than 95%.",
+            "Overall scores were similar. However, continence score was significantly better in the ABD group, and the stool pattern score was better in the TERPT group. A significant difference in age at interview between the 2 groups was noted; we therefore reanalyzed the data controlling for age, and this showed that age did not significantly affect the long-term scoring outcome between groups."
+        ],
+        "LABELS": [
+            "PURPOSE",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Child",
+            "Child, Preschool",
+            "Colectomy",
+            "Female",
+            "Hirschsprung Disease",
+            "Humans",
+            "Male",
+            "Treatment Outcome"
+        ],
+        "YEAR": "2007",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "Our long-term study showed significantly better (2-fold) results regarding the continence score for the abdominal approach compared with the transanal pull-through. The stool pattern and enterocolitis scores were somewhat better for the TERPT group. These findings raise an important issue about the current surgical management of HD; however, more cases will need to be studied before a definitive conclusion can be drawn."
+    },
+    {
+        "QUESTION": "Can tailored interventions increase mammography use among HMO women?",
+        "CONTEXTS": [
+            "Telephone counseling and tailored print communications have emerged as promising methods for promoting mammography screening. However, there has been little research testing, within the same randomized field trial, of the efficacy of these two methods compared to a high-quality usual care system for enhancing screening. This study addressed the question: Compared to usual care, is tailored telephone counseling more effective than tailored print materials for promoting mammography screening?",
+            "Three-year randomized field trial.",
+            "One thousand ninety-nine women aged 50 and older recruited from a health maintenance organization in North Carolina.",
+            "Women were randomized to 1 of 3 groups: (1) usual care, (2) tailored print communications, and (3) tailored telephone counseling.",
+            "Adherence to mammography screening based on self-reports obtained during 1995, 1996, and 1997.",
+            "Compared to usual care alone, telephone counseling promoted a significantly higher proportion of women having mammograms on schedule (71% vs 61%) than did tailored print (67% vs 61%) but only after the first year of intervention (during 1996). Furthermore, compared to usual care, telephone counseling was more effective than tailored print materials at promoting being on schedule with screening during 1996 and 1997 among women who were off-schedule during the previous year."
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "DESIGN",
+            "PARTICIPANTS",
+            "INTERVENTION",
+            "MAIN OUTCOME",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Cost-Benefit Analysis",
+            "Female",
+            "Health Maintenance Organizations",
+            "Humans",
+            "Logistic Models",
+            "Mammography",
+            "Marketing of Health Services",
+            "Middle Aged",
+            "North Carolina",
+            "Odds Ratio",
+            "Pamphlets",
+            "Patient Acceptance of Health Care",
+            "Patient Satisfaction",
+            "Reminder Systems",
+            "Telephone"
+        ],
+        "YEAR": "2000",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "no",
+        "final_decision": "yes",
+        "LONG_ANSWER": "The effects of the intervention were most pronounced after the first intervention. Compared to usual care, telephone counseling seemed particularly effective at promoting change among nonadherent women, the group for whom the intervention was developed. These results suggest that telephone counseling, rather than tailored print, might be the preferred first-line intervention for getting nonadherent women on schedule for mammography screening. Many questions would have to be answered about why the tailored print intervention was not more powerful. Nevertheless, it is clear that additional interventions will be needed to maintain women's adherence to mammography. Medical Subject Headings (MeSH): mammography screening, telephone counseling, tailored print communications, barriers."
+    },
+    {
+        "QUESTION": "Double balloon enteroscopy: is it efficacious and safe in a community setting?",
+        "CONTEXTS": [
+            "From March 2007 to January 2011, 88 DBE procedures were performed on 66 patients. Indications included evaluation anemia/gastrointestinal bleed, small bowel IBD and dilation of strictures. Video-capsule endoscopy (VCE) was used prior to DBE in 43 of the 66 patients prior to DBE evaluation.",
+            "The mean age was 62 years. Thirty-two patients were female, 15 were African-American; 44 antegrade and 44 retrograde DBEs were performed. The mean time per antegrade DBE was 107.4\u00b130.0 minutes with a distance of 318.4\u00b1152.9 cm reached past the pylorus. The mean time per lower DBE was 100.7\u00b127.3 minutes with 168.9\u00b1109.1 cm meters past the ileocecal valve reached. Endoscopic therapy in the form of electrocautery to ablate bleeding sources was performed in 20 patients (30.3%), biopsy in 17 patients (25.8%) and dilation of Crohn's-related small bowel strictures in 4 (6.1%). 43 VCEs with pathology noted were performed prior to DBE, with findings endoscopically confirmed in 32 cases (74.4%). In 3 cases the DBE showed findings not noted on VCE."
+        ],
+        "LABELS": [
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Community Health Centers",
+            "Double-Balloon Enteroscopy",
+            "Female",
+            "Humans",
+            "Intestinal Diseases",
+            "Male",
+            "Middle Aged"
+        ],
+        "YEAR": "2013",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "yes",
+        "final_decision": "yes",
+        "LONG_ANSWER": "DBE appears to be equally safe and effective when performed in the community setting as compared to a tertiary referral center with a comparable yield, efficacy, and complication rate."
+    },
+    {
+        "QUESTION": "Therapeutic anticoagulation in the trauma patient: is it safe?",
+        "CONTEXTS": [
+            "Trauma patients who require therapeutic anticoagulation pose a difficult treatment problem. The purpose of this study was to determine: (1) the incidence of complications using therapeutic anticoagulation in trauma patients, and (2) if any patient factors are associated with these complications.",
+            "An 18-month retrospective review was performed on trauma patients>or= 15 years old who received therapeutic anticoagulation using unfractionated heparin (UH) and/or fractionated heparin (FH). Forty different pre-treatment and treatment patient characteristics were recorded. Complications of anticoagulation were documented and defined as any unanticipated discontinuation of the anticoagulant for bleeding or other adverse events.",
+            "One-hundred-fourteen trauma patients were initiated on therapeutic anticoagulation. The most common indication for anticoagulation was deep venous thrombosis (46%). Twenty-four patients (21%) had at least 1 anticoagulation complication. The most common complication was a sudden drop in hemoglobin concentration requiring blood transfusion (11 patients). Five patients died (4%), 3 of whom had significant hemorrhage attributed to anticoagulation. Bivariate followed by logistic regression analysis identified chronic obstructive pulmonary disease (OR = 9.2, 95%CI = 1.5-54.7), UH use (OR = 3.8, 95%CI = 1.1-13.0), and lower initial platelet count (OR = 1.004, 95%CI = 1.000-1.008) as being associated with complications. Patients receiving UH vs. FH differed in several characteristics including laboratory values and anticoagulation indications."
+        ],
+        "LABELS": [
+            "PURPOSE",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adult",
+            "Anticoagulants",
+            "Cohort Studies",
+            "Confidence Intervals",
+            "Emergency Treatment",
+            "Female",
+            "Follow-Up Studies",
+            "Heparin, Low-Molecular-Weight",
+            "Humans",
+            "Injury Severity Score",
+            "Male",
+            "Middle Aged",
+            "Odds Ratio",
+            "Postoperative Care",
+            "Preoperative Care",
+            "Probability",
+            "Retrospective Studies",
+            "Risk Assessment",
+            "Safety Management",
+            "Survival Analysis",
+            "Thromboembolism",
+            "Thrombolytic Therapy",
+            "Trauma Centers",
+            "Treatment Outcome",
+            "Warfarin",
+            "Wounds and Injuries"
+        ],
+        "YEAR": "2008",
+        "reasoning_required_pred": "no",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "Trauma patients have a significant complication rate related to anticoagulation therapy, and predicting which patients will develop a complication remains unclear. Prospective studies are needed to determine which treatment regimen, if any, is appropriate to safely anticoagulate this high risk population."
+    },
+    {
+        "QUESTION": "Prompting Primary Care Providers about Increased Patient Risk As a Result of Family History: Does It Work?",
+        "CONTEXTS": [
+            "Electronic health records have the potential to facilitate family history use by primary care physicians (PCPs) to provide personalized care. The objective of this study was to determine whether automated, at-the-visit tailored prompts about family history risk change PCP behavior.",
+            "Automated, tailored prompts highlighting familial risk for heart disease, stroke, diabetes, and breast, colorectal, or ovarian cancer were implemented during 2011 to 2012. Medical records of a cohort of community-based primary care patients, aged 35 to 65 years, who previously participated in our Family Healthware study and had a moderate or strong familial risk for any of the 6 diseases were subsequently reviewed. The main outcome measures were PCP response to the prompts, adding family history risk to problem summary lists, and patient screening status for each disease.",
+            "The 492 eligible patients had 847 visits during the study period; 152 visits had no documentation of response to a family history prompt. Of the remaining 695 visits, physician responses were reviewed family history (n = 372, 53.5%), discussed family history (n = 159, 22.9%), not addressed (n = 155, 22.3%), and reviewed family history and ordered tests/referrals (n = 5, 0.7%). There was no significant change in problem summary list documentation of risk status or screening interventions for any of the 6 diseases."
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adult",
+            "Aged",
+            "Electronic Health Records",
+            "Female",
+            "Genetic Predisposition to Disease",
+            "Heredity",
+            "Humans",
+            "Male",
+            "Medical History Taking",
+            "Middle Aged",
+            "Practice Patterns, Physicians'",
+            "Primary Health Care",
+            "Prospective Studies",
+            "Reminder Systems",
+            "Risk Assessment",
+            "Risk Factors"
+        ],
+        "YEAR": null,
+        "reasoning_required_pred": "no",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "No change occurred upon instituting simple, at-the-visit family history prompts geared to improve PCPs' ability to identify patients at high risk for 6 common conditions. The results are both surprising and disappointing. Further studies should examine physicians' perception of the utility of prompts for family history risk."
+    }
+]

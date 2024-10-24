@@ -1,0 +1,209 @@
+[
+    {
+        "QUESTION": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+        "CONTEXTS": [
+            "Assessment of visual acuity depends on the optotypes used for measurement. The ability to recognize different optotypes differs even if their critical details appear under the same visual angle. Since optotypes are evaluated on individuals with good visual acuity and without eye disorders, differences in the lower visual acuity range cannot be excluded. In this study, visual acuity measured with the Snellen E was compared to the Landolt C acuity.",
+            "100 patients (age 8 - 90 years, median 60.5 years) with various eye disorders, among them 39 with amblyopia due to strabismus, and 13 healthy volunteers were tested. Charts with the Snellen E and the Landolt C (Precision Vision) which mimic the ETDRS charts were used to assess visual acuity. Three out of 5 optotypes per line had to be correctly identified, while wrong answers were monitored. In the group of patients, the eyes with the lower visual acuity, and the right eyes of the healthy subjects, were evaluated.",
+            "Differences between Landolt C acuity (LR) and Snellen E acuity (SE) were small. The mean decimal values for LR and SE were 0.25 and 0.29 in the entire group and 0.14 and 0.16 for the eyes with strabismus amblyopia. The mean difference between LR and SE was 0.55 lines in the entire group and 0.55 lines for the eyes with strabismus amblyopia, with higher values of SE in both groups. The results of the other groups were similar with only small differences between LR and SE."
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "PATIENTS AND METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adolescent",
+            "Adult",
+            "Aged",
+            "Aged, 80 and over",
+            "Amblyopia",
+            "Cataract",
+            "Child",
+            "Eye Diseases",
+            "Female",
+            "Humans",
+            "Male",
+            "Middle Aged",
+            "Reference Values",
+            "Refractive Errors",
+            "Reproducibility of Results",
+            "Retinal Diseases",
+            "Strabismus",
+            "Vision Tests",
+            "Visual Acuity"
+        ],
+        "YEAR": "2006",
+        "reasoning_required_pred": "no",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "Using the charts described, there was only a slight overestimation of visual acuity by the Snellen E compared to the Landolt C, even in strabismus amblyopia. Small differences in the lower visual acuity range have to be considered."
+    },
+    {
+        "QUESTION": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+        "CONTEXTS": [
+            "Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. The prognosis is uncertain because of risk of sudden infant death syndrome.",
+            "Eight infants aged 2 to 15 months were admitted during a period of 6 years; they suffered from similar maladies in the bath: on immersion, they became pale, hypotonic, still and unreactive; recovery took a few seconds after withdrawal from the bath and stimulation. Two diagnoses were initially considered: seizure or gastroesophageal reflux but this was doubtful. The hypothesis of an equivalent of aquagenic urticaria was then considered; as for patients with this disease, each infant's family contained members suffering from dermographism, maladies or eruption after exposure to water or sun. All six infants had dermographism. We found an increase in blood histamine levels after a trial bath in the two infants tested. The evolution of these \"aquagenic maladies\" was favourable after a few weeks without baths. After a 2-7 year follow-up, three out of seven infants continue to suffer from troubles associated with sun or water."
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "CASE REPORTS"
+        ],
+        "MESHES": [
+            "Baths",
+            "Histamine",
+            "Humans",
+            "Infant",
+            "Syncope",
+            "Urticaria",
+            "Water"
+        ],
+        "YEAR": "1997",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "yes",
+        "final_decision": "yes",
+        "LONG_ANSWER": "\"Aquagenic maladies\" could be a pediatric form of the aquagenic urticaria."
+    },
+    {
+        "QUESTION": "30-Day and 1-year mortality in emergency general surgery laparotomies: an area of concern and need for improvement?",
+        "CONTEXTS": [
+            "Emergency surgery is associated with poorer outcomes and higher mortality with recent studies suggesting the 30-day mortality to be 14-15%. The aim of this study was to analyse the 30-day mortality, age-related 30-day mortality and 1-year mortality following emergency laparotomy. We hope this will encourage prospective data collection, improvement of care and initiate strategies to establish best practice in this area.",
+            "This was a retrospective study of patients who underwent emergency laparotomy from June 2010 to May 2012. The primary end point of the study was 30-day mortality, age-related 30-day mortality and 1-year all-cause mortality.",
+            "477 laparotomies were performed in 446 patients. 57% were aged<70 and 43% aged>70 years. 30-day mortality was 12, 4% in those aged<70 years and 22% in those>70 years (p<0.001). 1-year mortality was 25, 15% in those aged under 70 years and 38% in those aged>70 years (p<0.001)."
+        ],
+        "LABELS": [
+            "AIMS",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adult",
+            "Age Factors",
+            "Aged",
+            "Aged, 80 and over",
+            "Cause of Death",
+            "Cohort Studies",
+            "Emergency Treatment",
+            "Female",
+            "General Surgery",
+            "Humans",
+            "Incidence",
+            "Laparotomy",
+            "Male",
+            "Middle Aged",
+            "Needs Assessment",
+            "Retrospective Studies",
+            "Risk Assessment",
+            "Time Factors",
+            "United Kingdom"
+        ],
+        "YEAR": "2015",
+        "reasoning_required_pred": "maybe",
+        "reasoning_free_pred": "yes",
+        "final_decision": "maybe",
+        "LONG_ANSWER": "Emergency laparotomy carries a high rate of mortality, especially in those over the age of 70 years, and more needs to be done to improve outcomes, particularly in this group. This could involve increasing acute surgical care manpower, early recognition of patients requiring emergency surgery, development of clear management protocols for such patients or perhaps even considering centralisation of emergency surgical services to specialist centres with multidisciplinary teams involving emergency surgeons and care of the elderly physicians in hospital and related community outreach services for post-discharge care."
+    },
+    {
+        "QUESTION": "Is adjustment for reporting heterogeneity necessary in sleep disorders?",
+        "CONTEXTS": [
+            "Anchoring vignettes are brief texts describing a hypothetical character who illustrates a certain fixed level of a trait under evaluation. This research uses vignettes to elucidate factors associated with sleep disorders in adult Japanese before and after adjustment for reporting heterogeneity in self-reports. This study also evaluates the need for adjusting for reporting heterogeneity in the management of sleep and energy related problems in Japan.",
+            "We investigated a dataset of 1002 respondents aged 18 years and over from the Japanese World Health Survey, which collected information through face-to-face interview from 2002 to 2003. The ordered probit model and the Compound Hierarchical Ordered Probit (CHOPIT) model, which incorporated anchoring vignettes, were employed to estimate and compare associations of sleep and energy with socio-demographic and life-style factors before and after adjustment for differences in response category cut-points for each individual.",
+            "The prevalence of self-reported problems with sleep and energy was 53 %. Without correction of cut-point shifts, age, sex, and the number of comorbidities were significantly associated with a greater severity of sleep-related problems. After correction, age, the number of comorbidities, and regular exercise were significantly associated with a greater severity of sleep-related problems; sex was no longer a significant factor. Compared to the ordered probit model, the CHOPIT model provided two changes with a subtle difference in the magnitude of regression coefficients after correction for reporting heterogeneity."
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adult",
+            "Aged",
+            "Female",
+            "Health Status Disparities",
+            "Health Surveys",
+            "Humans",
+            "Japan",
+            "Male",
+            "Middle Aged",
+            "Physical Fitness",
+            "Prevalence",
+            "Self Report",
+            "Self-Assessment",
+            "Sleep Wake Disorders",
+            "Socioeconomic Factors"
+        ],
+        "YEAR": "2016",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "Sleep disorders are common in the general adult population of Japan. Correction for reporting heterogeneity using anchoring vignettes is not a necessary tool for proper management of sleep and energy related problems among Japanese adults. Older age, gender differences in communicating sleep-related problems, the presence of multiple morbidities, and regular exercise should be the focus of policies and clinical practice to improve sleep and energy management in Japan."
+    },
+    {
+        "QUESTION": "Do mutations causing low HDL-C promote increased carotid intima-media thickness?",
+        "CONTEXTS": [
+            "Although observational data support an inverse relationship between high-density lipoprotein (HDL) cholesterol and coronary heart disease (CHD), genetic HDL deficiency states often do not correlate with premature CHD.",
+            "Carotid intima-media thickness (cIMT) measurements were obtained in cases comprising 10 different mutations in LCAT, ABCA1 and APOA1 to further evaluate the relationship between low HDL resulting from genetic variation and early atherosclerosis.",
+            "In a 1:2 case-control study of sex and age-related (+/-5 y) subjects (n=114), cIMT was nearly identical between cases (0.66+/-0.17 cm) and controls (0.65+/-0.18 cm) despite significantly lower HDL cholesterol (0.67 vs. 1.58 mmol/l) and apolipoprotein A-I levels (96.7 vs. 151.4 mg/dl) (P<0.05)"
+        ],
+        "LABELS": [
+            "BACKGROUND",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Cholesterol, HDL",
+            "Contrast Media",
+            "Coronary Disease",
+            "Female",
+            "Humans",
+            "Male",
+            "Mutation",
+            "Risk Factors"
+        ],
+        "YEAR": "2007",
+        "reasoning_required_pred": "no",
+        "reasoning_free_pred": "no",
+        "final_decision": "no",
+        "LONG_ANSWER": "Genetic variants identified in the present study may be insufficient to promote early carotid atherosclerosis."
+    },
+    {
+        "QUESTION": "Differentiation of nonalcoholic from alcoholic steatohepatitis: are routine laboratory markers useful?",
+        "CONTEXTS": [
+            "Specific markers for differentiation of nonalcoholic (NASH) from alcoholic steatohepatitis (ASH) are lacking. We investigated the role of routine laboratory parameters in distinguishing NASH from ASH.",
+            "Liver biopsies performed at our hospital over a 10-year period were reviewed, 95 patients with steatohepatitis identified and their data prior to biopsy reevaluated. The diagnosis NASH or ASH was assigned (other liver diseases excluded) on the basis of the biopsy and history of alcohol consumption (<140 g/week). Logistic regression models were used for analysis.",
+            "NASH was diagnosed in 58 patients (61%; 30 f) and ASH in 37 (39%; 9 f). High-grade fibrosis (59% vs. 19%, P<0.0001) and an AST/ALT ratio>1 (54.1% vs 20.7%, P = 0.0008) were more common in ASH. The MCV was elevated in 53% of ASH patients and normal in all NASH patients (P<0.0001). Multivariate analysis identified the MCV (P = 0.0013), the AST/ALT ratio (P = 0.011) and sex (P = 0.0029) as relevant regressors (aROC = 0.92). The AST/ALT ratio (P<0.0001) and age (P = 0.00049) were independent predictors of high-grade fibrosis. Differences in MCV were more marked in high-grade fibrosis."
+        ],
+        "LABELS": [
+            "AIMS",
+            "METHODS",
+            "RESULTS"
+        ],
+        "MESHES": [
+            "Adolescent",
+            "Adult",
+            "Aged",
+            "Alanine Transaminase",
+            "Aspartate Aminotransferases",
+            "Biomarkers",
+            "Biopsy",
+            "Diagnosis, Differential",
+            "Erythrocyte Indices",
+            "Fatty Liver",
+            "Fatty Liver, Alcoholic",
+            "Female",
+            "Humans",
+            "Liver",
+            "Liver Cirrhosis",
+            "Liver Cirrhosis, Alcoholic",
+            "Liver Function Tests",
+            "Male",
+            "Middle Aged",
+            "Predictive Value of Tests",
+            "Retrospective Studies"
+        ],
+        "YEAR": "2008",
+        "reasoning_required_pred": "yes",
+        "reasoning_free_pred": "no",
+        "final_decision": "yes",
+        "LONG_ANSWER": "Higher MCVs and AST/ALT ratios in ASH reflect the severity of underlying liver disease and do not differentiate NASH from ASH. Instead, these biomarkers might prove useful in guiding selection of patients for liver biopsy and in targeting therapy."
+    }
+]
