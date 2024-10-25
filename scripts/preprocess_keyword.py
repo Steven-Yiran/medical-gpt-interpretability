@@ -17,7 +17,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def system_message(labels):
     return f"""
 You are an expert in Natural Language Processing. Your task is to identify common biomedicine Named Entity in a given test.
-The possible Named Entities (NER) are exclusively: ({", ".join(labels)})
+The possible Named Entities (NER) are exclusively: ({", ".join(labels)}).
+Return the identified Named Entities as a dictionary in json string.
 """
 
 # def assistant_message():
@@ -31,16 +32,29 @@ The possible Named Entities (NER) are exclusively: ({", ".join(labels)})
 # --"""
 
 
-def assistant_message():
-    return f"""
-EXAMPLE:
-    Text: 'Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. /
-        The prognosis is uncertain because of risk of sudden infant death syndrome. /
-        Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
-        {{
-            "Disease": ["Syncope", "Urticaria"],
-        }}
---"""
+def assistant_message(keyword_type):
+    if keyword_type == "Disease":
+        return f"""
+    EXAMPLE:
+        Text: 'Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. /
+            The prognosis is uncertain because of risk of sudden infant death syndrome. /
+            Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
+            {{
+                "Disease": ["Syncope", "Urticaria"],
+            }}
+    --"""
+    elif keyword_type == "Medicine":
+        return f"""
+    EXAMPLE:
+        Text: 'From March 2007 to January 2011, 88 DBE procedures were performed on 66 patients. Indications included evaluation anemia/gastrointestinal bleed, small bowel IBD and dilation of strictures. Video-capsule endoscopy (VCE) was used prior to DBE in 43 of the 66 patients prior to DBE evaluation. \
+            The mean age was 62 years. Thirty-two patients were female, 15 were African-American; 44 antegrade and 44 retrograde DBEs were performed. The mean time per antegrade DBE was 107.4\u00b130.0 minutes with a distance of 318.4\u00b1152.9 cm reached past the pylorus. The mean time per lower DBE was 100.7\u00b127.3 minutes with 168.9\u00b1109.1 cm meters past the ileocecal valve reached. Endoscopic therapy in the form of electrocautery to ablate bleeding sources was performed in 20 patients (30.3%), biopsy in 17 patients (25.8%) and dilation of Crohn's-related small bowel strictures in 4 (6.1%). 43 VCEs with pathology noted were performed prior to DBE, with findings endoscopically confirmed in 32 cases (74.4%). In 3 cases the DBE showed findings not noted on VCE.
+            Double balloon enteroscopy: is it efficacious and safe in a community setting?'
+            {{
+                "Medicine": ["Double balloon enteroscopy"],
+            }}
+    --"""
+    else:
+        print("Invalid keyword type")
 
 # def user_message(meshes, text):
 #     return f"""
@@ -89,9 +103,12 @@ def run_openai_task(text, type):
 
     messages = [
         {"role": "system", "content": system_message(labels)},
-        {"role": "assistant", "content": assistant_message()},
+        {"role": "assistant", "content": assistant_message(type)},
         {"role": "user", "content": user_message(text)}
     ]
+
+    print(messages)
+    return
 
     response = client.chat.completions.create(
         model="gpt-4-turbo",
@@ -160,7 +177,8 @@ def run_openai_task(text, type):
 
 
 def main():
-    keyword_type = "Disease"
+    num_samples = 100
+    keyword_type = "Disease" # "Disease" or "Medicine"
     original_file = f"data/{keyword_type.lower()}_pqal.json"
     output_file = f"data/{keyword_type.lower()}_subjects.json"
 
@@ -183,8 +201,13 @@ def main():
 
 
         response = run_openai_task(question + " " + combined_context, keyword_type)
+        return
         # parse resonse as json
-        response = json.loads(response)
+        try:
+            response = json.loads(response)
+        except:
+            print(f"Failed to parse response {response}")
+            continue
         entities = response.get(keyword_type, [])
 
         if not entities:
@@ -202,7 +225,7 @@ def main():
         new_id += 1
 
         # # save first x samples
-        if new_id >= 5:
+        if new_id >= num_samples:
             break
 
     with open(output_file, "w") as f:

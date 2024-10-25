@@ -22,7 +22,8 @@
   {
     "id": 2,
     "subject": [
-      "sleep disorders"
+      "sleep disorders",
+      "sleep-related problems"
     ],
     "attribute": "no",
     "question": "is adjustment for reporting heterogeneity necessary in sleep disorders?",
@@ -31,7 +32,7 @@
   {
     "id": 3,
     "subject": [
-      "Coronary heart disease"
+      "coronary heart disease"
     ],
     "attribute": "no",
     "question": "do mutations causing low hdl-c promote increased carotid intima-media thickness?",
@@ -42,11 +43,942 @@
     "subject": [
       "nonalcoholic steatohepatitis",
       "alcoholic steatohepatitis",
-      "NASH",
-      "ASH"
+      "high-grade fibrosis"
     ],
     "attribute": "yes",
     "question": "differentiation of nonalcoholic from alcoholic steatohepatitis: are routine laboratory markers useful?",
     "context": "nash was diagnosed in 58 patients (61%; 30 f) and ash in 37 (39%; 9 f). high-grade fibrosis (59% vs. 19%, p<0.0001) and an ast/alt ratio>1 (54.1% vs 20.7%, p = 0.0008) were more common in ash. the mcv was elevated in 53% of ash patients and normal in all nash patients (p<0.0001). multivariate analysis identified the mcv (p = 0.0013), the ast/alt ratio (p = 0.011) and sex (p = 0.0029) as relevant regressors (aroc = 0.92). the ast/alt ratio (p<0.0001) and age (p = 0.00049) were independent predictors of high-grade fibrosis. differences in mcv were more marked in high-grade fibrosis."
+  },
+  {
+    "id": 5,
+    "subject": [
+      "acute respiratory distress syndrome",
+      "malignancy",
+      "sepsis syndrome"
+    ],
+    "attribute": "yes",
+    "question": "acute respiratory distress syndrome in children with malignancy--can we predict outcome?",
+    "context": "seventeen children with ards and malignancy aged 10.5 +/- 5.1 years were identified. six of the 17 children (35.3%) survived. sepsis syndrome was present in 70.6% of all the children. peak inspiratory pressure, positive end-expiratory pressure (peep), and ventilation index values could distinguish outcome by day 3. a significant relationship between respiratory data and outcome related to efficiency of oxygenation, as determined by pao(2)/fio(2) and p(a-a)o(2), was present from day 8 after onset of mechanical ventilation."
+  },
+  {
+    "id": 6,
+    "subject": [
+      "Amblyopia"
+    ],
+    "attribute": "no",
+    "question": "amblyopia: is visual loss permanent?",
+    "context": "12 such cases were detected. in nine of these the eye showing improvement of acuity had a history of amblyopia. the mean improvement in distance and near acuity in amblyopic eyes by 12 months was 3.3 and 1.9 lines logmar respectively. the improvement in acuity generally occurred between 1 and 12 months from baseline and remained stable over the period of follow up."
+  },
+  {
+    "id": 7,
+    "subject": [
+      "Urothelial carcinoma"
+    ],
+    "attribute": "maybe",
+    "question": "does her2 immunoreactivity provide prognostic information in locally advanced urothelial carcinoma patients receiving adjuvant m-vec chemotherapy?",
+    "context": "urothelial carcinoma of the bladder had a significantly higher frequency of her2 immunoreactivity than that of the upper urinary tract (60.7 vs. 20.7%, p<0.0001). overall, nodal status was a strong and independent prognostic indicator for clinical outcome. the her2 immunoreactivity was significantly associated with pfs (p = 0.02) and disease-specific os (p = 0.005) in advanced urothelial carcinoma patients. as for patients with adjuvant m-vec, her2 immunoreactivity was a significant prognostic factor for pfs (p = 0.03) and disease-specific os (p = 0.02) using univariate analysis, but not multivariate analysis, and not for patients receiving watchful waiting."
+  },
+  {
+    "id": 8,
+    "subject": [
+      "necrotizing fasciitis"
+    ],
+    "attribute": "no",
+    "question": "necrotizing fasciitis: an indication for hyperbaric oxygenation therapy?",
+    "context": "the accepted treatment protocol for necrotizing fasciitis (nf) consists of extensive surgery and wide spectrum antibiotics. hyperbaric oxygenation (hbo) has been recommended as adjuvant therapy for nf, improving patient mortality and outcome. however, the beneficial effect of hbo for nf remains controversial.the two groups were found to be similar with regard to age, gender, the incidence of individual risk factors for ominous prognosis, and the acute physiology and chronic health evaluation (apache) ii score for disease's severity on presentation. the mortality rate among the hbo-treated patients was 36%, as opposed to 25% in the non-hbo group. the mean number of surgical d\u00e9bridements required per patient was significantly higher in the hbo group: 3.3 compared with 1.5 in the non-hbo-treated patients. although the average length of hospitalization for survivors was shorter for the hbo group, the difference between the groups did not reach statistical significance."
+  },
+  {
+    "id": 9,
+    "subject": [
+      "Aneurysmal Subarachnoid Hemorrhage"
+    ],
+    "attribute": "yes",
+    "question": "is aneurysm repair justified for the patients aged 80 or older after aneurysmal subarachnoid hemorrhage?",
+    "context": "with the advancement of an aging society in the world, an increasing number of elderly patients have been hospitalized due to aneurysmal subarachnoid hemorrhage (asah). there is no study that compares the elderly cases of asah who receive the definitive treatment with those who treated conservatively. the aim of this study was to investigate the feasibility of the definitive surgery for the acute subarachnoid cases aged 80 or older.69 cases were included in this study (ranged 80-98, male:female=9:60). 56 cases (81.2%) had an aneurysm in the anterior circulation. 23 cases received clipping, 20 cases coil embolization and 26 cases treated conservatively. the cases with aneurysm repair showed significantly better clinical outcome than the controls, while world federation of neurological surgeons (wfns) grade on admission and premorbid modified rankin scale showed no difference between them."
+  },
+  {
+    "id": 10,
+    "subject": [
+      "hepatocellular carcinoma",
+      "intrahepatic metastasis",
+      "portal vein invasion"
+    ],
+    "attribute": "no",
+    "question": "prognosis of well differentiated small hepatocellular carcinoma--is well differentiated hepatocellular carcinoma clinically early cancer?",
+    "context": "the histological analysis revealed that w-d hccs had lower incidences of fibrous capsule formation (p<0.01), when compared to l-d hccs. there were no significant differences in the incidence of intrahepatic metastasis, or portal vein invasion. in a resected specimen of w-d hcc, barium sulfate and gelatin were injected into portal vein and a transparent specimen was made. the transparent specimen showed that the portal vein in the tumor seemed to be intact. microscopically, cancer cell infiltration into the fibrous frame of the portal tract was present. there were no significant differences in the disease free survival between the two groups. an analysis of tumor volume doubling time in recurrent foci suggested that minute cancerous foci had been present at the time of operation."
+  },
+  {
+    "id": 11,
+    "subject": [
+      "Diabetes mellitus",
+      "Cervical cancer"
+    ],
+    "attribute": "no",
+    "question": "does diabetes mellitus influence the efficacy of fdg-pet in the diagnosis of cervical cancer?",
+    "context": "from february 2001 to january 2003, 219 patients (75 with primary and 144 with recurrent cervical cancer) were eligible for analysis. sixteen had hyperglycaemic dm, 12 had euglycaemic dm and 191 were in the non-dm group. the diagnostic power of pet in the hyperglycaemic dm, euglycaemic dm and non-dm groups did not differ significantly with regard to the identification of either metastatic lesions (auc, 0.967/0.947/0.925, p>0.05) or primary tumours/local recurrence (auc, 0.950/0.938/0.979, p>0.05). considering all dm patients, pet showed a significantly higher detection power than mri/ct scans in respect of metastatic lesions (auc=0.956 vs 0.824, p=0.012)."
+  },
+  {
+    "id": 12,
+    "subject": [
+      "colorectal cancer",
+      "liver metastases"
+    ],
+    "attribute": "no",
+    "question": "colorectal cancer with synchronous liver metastases: does global management at the same centre improve results?",
+    "context": "synchronous liver metastases (slm) occur in 20% of colorectal cancers (crc). resection of slm and clc can be undertaken at different centres (separate management, sm) or at the same centre (global management, gm).morphologic characteristics and type of crc and slm resection were similar for the gm (n = 45) or sm (n = 66) groups. in patients with delayed liver resection (62 sm, 17 gm), chemotherapy prior to liver surgery was used in 92% and 38% of sm and gm patients (p<0.0001) and the median delay between procedures was 212 and 182 days, respectively (p = 0.04). first step of liver resection was more often performed during colorectal surgery in the gm group (62 vs. 6% for sm, p<0.0001) and the mean number of procedures (crc+slm) was lower (1.6 vs. 2.3, p = 0.003). three-month mortality was 3% for gm and 0% for sm (n.s.). overall survival rates were 67% and 51% for sm and gm at 3 years (n.s.), and 35 and 31% at 5 years (n.s.). disease-free survival to 5 years was higher in sm patients (14% vs. 11%, p = 0.009)."
+  },
+  {
+    "id": 13,
+    "subject": [
+      "Schizophrenia"
+    ],
+    "attribute": "yes",
+    "question": "is motion perception deficit in schizophrenia a consequence of eye-tracking abnormality?",
+    "context": "studies have shown that schizophrenia patients have motion perception deficit, which was thought to cause eye-tracking abnormality in schizophrenia. however, eye movement closely interacts with motion perception. the known eye-tracking difficulties in schizophrenia patients may interact with their motion perception.at 150 msec, speed discrimination thresholds did not differ between schizophrenia patients (n = 38) and control subjects (n = 33). at 300 msec, patients had significantly higher thresholds than control subjects (p = .03). furthermore, frequencies of eye tracking during the 300 msec stimulus were significantly correlated with speed discrimination in control subjects (p = .01) but not in patients, suggesting that eye-tracking initiation may benefit control subjects but not patients. the frequency of eye tracking during speed discrimination was not significantly related to regular eye-tracking performance."
+  },
+  {
+    "id": 14,
+    "subject": [
+      "Fournier's gangrene"
+    ],
+    "attribute": "yes",
+    "question": "it's fournier's gangrene still dangerous?",
+    "context": "fournier's gangrene is known to have an impact in the morbidity and despite antibiotics and aggressive debridement, the mortality rate remains high.of the 14 patients, 5 died and 9 survived. mean age was 54 years (range from 41-61): it was 53 years in the group of survivors and 62 years in deceased group. there was a significant difference in leukocyte count between patients who survived (range 4900-17000/mm) and those died (range 20.300-31000/mm3). mean hospital stay was about 19 days (range 2-57 days)."
+  },
+  {
+    "id": 15,
+    "subject": [
+      "gastric cancer",
+      "mesocolon invasion"
+    ],
+    "attribute": "maybe",
+    "question": "should direct mesocolon invasion be included in t4 for the staging of gastric cancer?",
+    "context": "the curability, number and extent of nodal metastasis, and the survival of the mesocolon invasion group were significantly worse than these factors in the t3 group. however, the survival of the mesocolon invasion group after curative resection was much better than that of patients who had incurable factors."
+  },
+  {
+    "id": 16,
+    "subject": [
+      "heterotopic ossification"
+    ],
+    "attribute": "maybe",
+    "question": "do surrogates of injury severity influence the occurrence of heterotopic ossification in fractures of the acetabulum?",
+    "context": "length of stay (los) in the intensive care unit (icu), non-icu los>10 days, and ho prophylaxis with external radiation beam therapy (xrt) were significantly associated with the development of ho in a multivariate model ["
+  },
+  {
+    "id": 17,
+    "subject": [
+      "sternal fracture"
+    ],
+    "attribute": "maybe",
+    "question": "sternal fracture in growing children : a rare and often overlooked fracture?",
+    "context": "sternal fractures in childhood are rare. the aim of the study was to investigate the accident mechanism, the detection of radiological and sonographical criteria and consideration of associated injuries.a total of 4 children aged 5-14\u00a0years with a sternal fracture were treated in 2\u00a0years, 2\u00a0children were hospitalized for pain management and 2 remained in outpatient care."
+  },
+  {
+    "id": 18,
+    "subject": [
+      "pterygium"
+    ],
+    "attribute": "maybe",
+    "question": "human papillomavirus and pterygium. is the virus a risk factor?",
+    "context": "pterygium is a disease of unknown origin and pathogenesis that might be vision threatening. it is characterised by a wing-like conjunctival overgrowth of the cornea. several studies have investigated human papillomavirus (hpv) as a risk factor for the development of pterygia, but the results are inconclusive.aim: to investigate a large sample of pterygia for the presence of hpv in order to clarify the putative association between pterygia and hpv.90 of 100 investigated pterygia proved suitable for hpv analysis by pcr. as beta-globin could not be amplified, 10 specimens were excluded from the study. 4 of 90 pterygia harboured hpv. hpv type 6 was identified in all four hpv-positive pterygia. the 20 normal conjunctival biopsy specimens were beta-globin positive and hpv negative. all four pterygia that were hpv type 6 positive were dna ish negative."
+  },
+  {
+    "id": 19,
+    "subject": [
+      "major depression",
+      "alcohol use disorder",
+      "adult MD"
+    ],
+    "attribute": "no",
+    "question": "major depression and alcohol use disorder in adolescence: does comorbidity lead to poorer outcomes of depression?",
+    "context": "comorbid major depression (md) and alcohol use disorder (aud), particularly in adolescents, have been shown to be associated with poorer subsequent md outcomes.the three disorder groups had rates of adult md during the period 18-35 years that were significantly (p<.05) higher than that of the group with no disorder. furthermore, those in the comorbid md/aud group had significantly (p<.05) higher rates of adult md than those in the aud-only group, and marginally (p<.10) higher rates of adult md than those in the md-only group. after adjustment for confounding, the difference in rates of adult md between the md-only group and the md/aud group were no longer statistically significant. the factors that explained the associations were gender, childhood behavior problems, and exposure to physical and sexual abuse."
+  },
+  {
+    "id": 20,
+    "subject": [
+      "dementia"
+    ],
+    "attribute": "yes",
+    "question": "do instrumental activities of daily living predict dementia at 1- and 2-year follow-up?",
+    "context": "five hundred thirty-one participants had baseline and 1-year follow-up assessments; 69 (13.0%) of these had developed dementia at 1-year follow-up. at 2-year follow-up, 481 participants were seen, of whom 100 (20.8%) had developed dementia. participants with iadl disabilities at baseline had a higher conversion rate (24.4%) than participants without iadl disabilities (16.7%) (chi-square\u00a0=\u00a04.28, degrees of freedom\u00a0=\u00a01, p\u00a0=\u00a0.04). sem showed that iadl disability could help predict dementia in addition to the measured variables at 1-year follow-up (odds ratio (or)\u00a0=\u00a02.20, 95% confidence interval (ci)\u00a0= 1.51-3.13) and 2-year follow-up (or\u00a0=\u00a02.11, 95% ci\u00a0=\u00a01.33-3.33)."
+  },
+  {
+    "id": 21,
+    "subject": [
+      "streptococcal infection",
+      "multiple sclerosis"
+    ],
+    "attribute": "yes",
+    "question": "is there any relationship between streptococcal infection and multiple sclerosis?",
+    "context": "multiple sclerosis (ms) is an immune-mediated inflammatory demyelinating disease of uncertain etiology. although the mechanisms of inducting autoimmunity by some of the infectious agents have been investigated, there is not yet enough research on streptococcal infections.material/adnase b levels in the patients with ms were found to be significantly higher than in the controls (p<0.001); however, aso levels were similar in both groups."
+  },
+  {
+    "id": 22,
+    "subject": [
+      "renal cell carcinoma",
+      "invasion of the perirenal fat",
+      "lymph node involvement",
+      "distant metastases"
+    ],
+    "attribute": "maybe",
+    "question": "is tumour expression of vegf associated with venous invasion and survival in pt3 renal cell carcinoma?",
+    "context": "only tumour size appeared to be significantly different between the 3 groups. on univariate analysis, invasion of the perirenal fat, lymph node involvement, distant metastases and vegf expression were significantly associated with survival (p<0.01). on multivariate analysis, lymph node involvement, distant metastases and vegf expression (or 6.07) were identified as independent predictive factors of survival."
+  },
+  {
+    "id": 23,
+    "subject": [
+      "Obesity",
+      "OSA"
+    ],
+    "attribute": "yes",
+    "question": "does either obesity or osa severity influence the response of autotitrating cpap machines in very obese subjects?",
+    "context": "fifty-four obese individuals (median body mass index (bmi) 43.0\u00a0kg/m(2)), 52\u00a0% of whom had osa (apnoea-hypopnoea index (ahi)\u2009\u2265\u200915), had a median 95th centile autocpap pressure of 11.8\u2009cmh2o. we found no significant correlation between autocpap pressure and neck circumference, waist circumference or bmi. there was a moderate correlation between autocpap pressure and osa severity (ahi r\u2009=\u20090.34, p\u2009=\u20090.02; oxygen desaturation index (odi) r\u2009=\u20090.48, p\u2009<\u20090.001)."
+  },
+  {
+    "id": 24,
+    "subject": [
+      "Crohn's disease",
+      "inflammatory bowel disease"
+    ],
+    "attribute": "maybe",
+    "question": "is it crohn's disease?",
+    "context": "sulfasalazine is a widely used anti-inflammatory agent in the treatment of inflammatory bowel disease and several rheumatological disorders. although as many as 20% of treated patients may experience reversible, dose-dependent side effects, less frequent but potentially severe, systemic reactions have also been reported."
+  },
+  {
+    "id": 25,
+    "subject": [
+      "Asthma",
+      "Eosinophilic asthma",
+      "Neutrophilic asthma",
+      "Paucigranulocytic asthma"
+    ],
+    "attribute": "maybe",
+    "question": "detailed analysis of sputum and systemic inflammation in asthma phenotypes: are paucigranulocytic asthmatics really non-inflammatory?",
+    "context": "the technique of induced sputum has allowed to subdivide asthma patients into inflammatory phenotypes according to their level of granulocyte airway infiltration. there are very few studies which looked at detailed sputum and blood cell counts in a large cohort of asthmatics divided into inflammatory phenotypes. the purpose of this study was to analyze sputum cell counts, blood leukocytes and systemic inflammatory markers in these phenotypes, and investigate how those groups compared with healthy subjects.the total non-squamous cell count per gram of sputum was greater in mixed granulocytic and neutrophilic phenotypes as compared to eosinophilic, paucigranulocytic asthma and healthy subjects (p\u2009<\u20090.005). sputum eosinophils (in absolute values and percentages) were increased in all asthma phenotypes including paucigranulocytic asthma, compared to healthy subjects (p\u2009<\u20090.005). eosinophilic asthma showed higher absolute sputum neutrophil and lymphocyte counts than healthy subjects (p\u2009<\u20090.005), while neutrophilic asthmatics had a particularly low number of sputum macrophages and epithelial cells. all asthma phenotypes showed an increased blood leukocyte count compared to healthy subjects (p\u2009<\u20090.005), with paucigranulocytic asthmatics having also increased absolute blood eosinophils compared to healthy subjects (p\u2009<\u20090.005). neutrophilic asthma had raised crp and fibrinogen while eosinophilic asthma only showed raised fibrinogen compared to healthy subjects (p\u2009<\u20090.005)."
+  },
+  {
+    "id": 26,
+    "subject": [
+      "HIV",
+      "AIDS",
+      "Syphilis",
+      "Congenital syphilis"
+    ],
+    "attribute": "yes",
+    "question": "is hiv/std control in jamaica making a difference?",
+    "context": "the annual aids incidence rate in jamaica increased only marginally in the past three years from 18.5 per 100000 population to 21.4 in 1997. hiv prevalence in the general population groups tested has been about 1% or less. among those at high risk, hiv prevalence rates have risen to 6.3% (95% confidence interval 5.0-8.0) in std clinic attenders, around 10% and 21% in female prostitutes in kingston and montego bay respectively and approximately 30% among homosexuals. syphilis rates and congenital syphilis cases have declined. the proportion of men aged 15-49 years reporting sex with a non-regular partner declined from 35% in 1994 to 26% in 1996 (p<0.001). women ever having used condoms increased from 51% in 1988 to 62.5% in 1992 and 73% in 1994 and 1996 (p<0.001), while condom use with a non-regular partner increased from 37% in 1992 to 73% in 1996 (p= 0.006). condom use among men was high over the period: around 81% had ever used condoms and 77% used them with non-regular partners. gay men, inner-city adults and adolescents aged 12-14 years all reported increases in condom use while condom sales and distribution increased from around 2 million in 1985 to 10 million in 1995."
+  },
+  {
+    "id": 27,
+    "subject": [
+      "bacteraemia"
+    ],
+    "attribute": "maybe",
+    "question": "is panton-valentine leucocidin associated with the pathogenesis of staphylococcus aureus bacteraemia in the uk?",
+    "context": "the morbidity and mortality associated with panton-valentine leucocidin (pvl)-positive staphylococcus aureus suggest that this toxin is a key marker of disease severity. nevertheless, the importance of pvl in the pathogenesis of primary bacteraemia caused by s. aureus is uncertain. we have determined the prevalence of pvl-encoding genes among isolates of s. aureus from bacteraemic patients.four out of 244 isolates (1.6%) were pvl-positive and susceptible to oxacillin [methicillin-susceptible s. aureus (mssa)]. eighty-eight out of 244 (36%) were oxacillin-resistant (methicillin-resistant s. aureus), but none was pvl-positive. the four patients (two males: 30 and 33 years; two females: 62 and 80 years) had infection foci of: skin and soft tissue, unknown, indwelling line, and surgical site, and were located at one centre in wales, one in england and two in ireland. one of four pvl-positive isolates was resistant to penicillin and fusidic acid, the remainder were susceptible to all antibiotics tested. genotypic analyses showed that the four isolates represented three distinct strains; the two isolates from ireland were related."
+  },
+  {
+    "id": 28,
+    "subject": [
+      "Esophagitis",
+      "Eosinophilic esophagitis"
+    ],
+    "attribute": "yes",
+    "question": "vertical lines in distal esophageal mucosa (vlem): a true endoscopic manifestation of esophagitis in children?",
+    "context": "we observed an endoscopic abnormally in a group of children with histological esophagitis. we termed this finding \"vertical lines in esophageal mucosa\" (vlem). we examined the relationship between the presence of vlem and significant histologic changes in esophageal mucosal biopsies.the esophageal mucosa had a normal appearance on 160 endoscopic studies (group 1) and vlem were the only mucosal abnormalities in 41 endoscopies (group 2). histology was normal in 92 of 160 biopsies (57.5%) from group 1, and 1 of 41 biopsies (2.4%) from group 2. most patients in group 2 had eosinophilic esophagitis (34 of 41, 83%, specificity 0.85, sensitivity 0.5, p>0.001) which was of moderate to severe intensity (31 of 34, 91.2%, specificity 0.88, sensitivity 0.73, p<0.001)."
+  },
+  {
+    "id": 29,
+    "subject": [
+      "Hirschsprung's disease"
+    ],
+    "attribute": "no",
+    "question": "does the radiographic transition zone correlate with the level of aganglionosis on the specimen in hirschsprung's disease?",
+    "context": "radiological findings were concordant with the specimen in pathology in 8 cases of 19 in rectal form (42 %), in 20 cases of 35 in rectosigmoid form (57 %), in all 6 cases of long-segment form (100 %), in the 2 cases of total colonic form (100 %) with a global agreement of 58.1 %, \u03ba = 0.39 ci [0.24; 0.57]."
+  },
+  {
+    "id": 30,
+    "subject": [
+      "Type 1 diabetes",
+      "diabetes"
+    ],
+    "attribute": "yes",
+    "question": "do electrochemiluminescence assays improve prediction of time to type 1 diabetes in autoantibody-positive trialnet subjects?",
+    "context": "univariate analyses showed that autoantibodies by radioimmunoassays (rias), ecl-iaa, ecl-gada, age, sex, number of positive autoantibodies, presence of hla dr3/4-dq8 genotype, hba1c, and oral glucose tolerance test (ogtt) measurements were all significantly associated with progression to diabetes. subjects who were ecl positive had a risk of progression to diabetes within 6 years of 58% compared with 5% for the ecl-negative subjects (p<0.0001). multivariate cox proportional hazards models were compared, with the base model including age, sex, ogtt measurements, and number of positive autoantibodies by rias. the model with positivity for ecl-gada and/or ecl-iaa was the best, and factors that remained significantly associated with time to diabetes were area under the curve (auc) c-peptide, fasting c-peptide, auc glucose, number of positive autoantibodies by rias, and ecl positivity. adding ecl to the diabetes prevention trial risk score (dptrs) improved the receiver operating characteristic curves with auc of 0.83 (p<0.0001)."
+  },
+  {
+    "id": 31,
+    "subject": [
+      "prostate cancer",
+      "bone metastases"
+    ],
+    "attribute": "yes",
+    "question": "is there a favorable subset of patients with prostate cancer who develop oligometastases?",
+    "context": "the overall survival rate for the 369 patients was 75% at 5 years and 45% at 10 years. the overall survival rate of patients who never developed metastases was 90% and 81% at 5 and 10 years, respectively. however, among the 74 patients (20%) who developed metastases, the survival rate at both 5 and 10 years was significantly reduced (p<0.0001). the overall survival rate for patients who developed bone metastases was 58% and 27% at 5 and 10 years, respectively, and patients with bone metastases to the pelvis fared worse compared with those with vertebral metastases. with regard to the metastatic number, patients with<or =5 metastatic lesions had superior survival rates relative to those with>5 lesions (73% and 36% at 5 and 10 years vs. 45% and 18% at 5 and 10 years, respectively; p = 0.02). in addition, both the metastasis-free survival rate and the interval measured from the date of the initial diagnosis of prostate cancer to the development of bone metastasis were statistically superior for patients with<or =5 lesions compared with patients with>5 lesions (p = 0.01 and 0.02, respectively). however, the survival rate and the interval from the date of diagnosis of bone metastasis to the time of death for patients in both groups were not significantly different, statistically (p = 0.17 and 0.27, respectively)."
+  },
+  {
+    "id": 32,
+    "subject": [
+      "Asthma"
+    ],
+    "attribute": "yes",
+    "question": "are physician estimates of asthma severity less accurate in black than in white patients?",
+    "context": "racial differences in asthma care are not fully explained by socioeconomic status, care access, and insurance status. appropriate care requires accurate physician estimates of severity. it is unknown if accuracy of physician estimates differs between black and white patients, and how this relates to asthma care disparities.three thousand four hundred and ninety-four patients participated (13% were black). blacks were significantly more likely than white patients to have their asthma severity underestimated (or = 1.39, 95% ci 1.08-1.79). among black patients, underestimation was associated with less use of daily inhaled corticosteroids (13% vs 20%, p<.05), less physician instruction on management of asthma flare-ups (33% vs 41%, p<.0001), and lower ratings of asthma care (p = .01) and physician communication (p = .04)."
+  },
+  {
+    "id": 33,
+    "subject": [
+      "lung ischemia",
+      "reperfusion"
+    ],
+    "attribute": "yes",
+    "question": "does lung ischemia and reperfusion have an impact on coronary flow?",
+    "context": "in the ir group, total coronary flow (tcf=lad+cx+rca blood-flow) decreased precipitously and significantly from baseline (113\u00b141 ml min\"1) during ir (p<0.05), with the lowest value observed at 60 min of reperfusion (-37.1%, p<0.003). baseline ctn (0.08\u00b10.02 ng ml(-1)) increased during ir and peaked at 45 min of reperfusion (+138%, p<0.001). baseline il-6 (9.2\u00b12.17 pg ml(-1)) increased during ir and peaked at 60 min of reperfusion (+228%, p<0.0001). significant lvp drop at 5 min of ischemia (p<0.05) was followed by a slow return to baseline at 45 min of ischemia. a second lvp drop occurred at reperfusion (p<0.05) and persisted. conversely, rvp increased throughout ischemia (p<0.05) and returned toward baseline during reperfusion. coronary blood flow and hemodynamic profile remained unchanged in the control group. il-10 and tnf-a remained below the measurable range for both the groups."
+  },
+  {
+    "id": 34,
+    "subject": [
+      "Transient tachypnea of the newborn"
+    ],
+    "attribute": "yes",
+    "question": "transient tachypnea of the newborn (ttn): a role for polymorphisms in the beta-adrenergic receptor (adrb) encoding genes?",
+    "context": "ttn infants were more likely to be male (70% vs. 49%; p<0.05), had a lower mean birthweight (3120 +/- 450 vs. 3396 +/- 504 g; p<0.001) and gestational age (ga) (38.4 +/- 1.2 vs. 39.4 +/- 1.3 weeks; p<0.001) and were more often delivered by caesarean section (cs) (71% vs. 26%; p<0.001). the beta1ser49gly polymorphism differed significantly between cases and controls. multivariate analysis provided beta1gly49 homozygotes with higher risk for ttn (or 18.5; 95%ci 1.5-229; p = 0.023) than beta1ser49 allele carrier. further analysis showed significant association of t-47c, a46g, c79g and c491t (tacc) haplotype in adrb2 gene with ttn (p = 0.048)."
+  },
+  {
+    "id": 35,
+    "subject": [
+      "aortic aneurysm rupture",
+      "hypertension"
+    ],
+    "attribute": "maybe",
+    "question": "the influence of atmospheric pressure on aortic aneurysm rupture--is the diameter of the aneurysm important?",
+    "context": "the rate of aortic aneurysm rupture correlates with the aneurysm's diameter, and a higher rate of rupture is observed in patients with larger aneurysms. according to the literature, contradictory results concerning the relationship between atmospheric pressure and aneurysm size have been reported.aim: in this paper, we assessed the influence of changes in atmospheric pressure on abdominal aneurysm ruptures in relationship to the aneurysm's size.there were no statistically significant differences in pressure between the days of rupture and the remainder of the days within an analysed period. the highest frequency of the admission of patients with a ruptured aortic aneurysm was observed during periods of winter and spring, when the highest mean values of atmospheric pressure were observed; however, this observation was not statistically confirmed. a statistically non-significant trend towards the higher rupture of large aneurysms (>7 cm) was observed in the cases where the pressure increased between the day before the rupture and the day of the rupture. this trend was particularly pronounced in patients suffering from hypertension (p = 0.1)."
+  },
+  {
+    "id": 36,
+    "subject": [
+      "major depression",
+      "depression"
+    ],
+    "attribute": "no",
+    "question": "are women with major depression in pregnancy identifiable in population health data?",
+    "context": "although record linkage of routinely collected health datasets is a valuable research resource, most datasets are established for administrative purposes and not for health outcomes research. in order for meaningful results to be extrapolated to specific populations, the limitations of the data and linkage methodology need to be investigated and clarified. it is the objective of this study to investigate the differences in ascertainment which may arise between a hospital admission dataset and a dispensing claims dataset, using major depression in pregnancy as an example. the safe use of antidepressants in pregnancy is an ongoing issue for clinicians with around 10% of pregnant women suffer from depression. as the birth admission will be the first admission to hospital during their pregnancy for most women, their use of antidepressants, or their depressive condition, may not be revealed to the attending hospital clinicians. this may result in adverse outcomes for the mother and infant.from 2002 to 2005, there were 96698 births in wa. at least one antidepressant was dispensed to 4485 (4.6%) pregnant women. there were 3010 (3.1%) women with a comorbidity related to depression recorded on their delivery admission, or other admission to hospital during pregnancy. there were a total of 7495 pregnancies identified by either set of records. using data linkage, we determined that these records represented 6596 individual pregnancies. only 899 pregnancies were found in both groups (13.6% of all cases). 80% of women dispensed an antidepressant did not have depression recorded as a comorbidity on their hospital records. a simple capture-recapture calculation suggests the prevalence of depression in this population of pregnant women to be around 16%."
+  },
+  {
+    "id": 37,
+    "subject": [
+      "breast cancer"
+    ],
+    "attribute": "yes",
+    "question": "identification of racial disparities in breast cancer mortality: does scale matter?",
+    "context": "this paper investigates the impact of geographic scale (census tract, zip code, and county) on the detection of disparities in breast cancer mortality among three ethnic groups in texas (period 1995-2005). racial disparities were quantified using both relative (rr) and absolute (rd) statistics that account for the population size and correct for unreliable rates typically observed for minority groups and smaller geographic units. results were then correlated with socio-economic status measured by the percentage of habitants living below the poverty level.african-american and hispanic women generally experience higher mortality than white non-hispanics, and these differences are especially significant in the southeast metropolitan areas and southwest border of texas. the proportion and location of significant racial disparities however changed depending on the type of statistic (rr versus rd) and the geographic level. the largest proportion of significant results was observed for the rd statistic and census tract data. geographic regions with significant racial disparities for african-americans and hispanics frequently had a poverty rate above 10.00%."
+  },
+  {
+    "id": 38,
+    "subject": [
+      "endometrial cancer",
+      "asymptomatic endometrial cancer"
+    ],
+    "attribute": "maybe",
+    "question": "could different follow-up modalities play a role in the diagnosis of asymptomatic endometrial cancer relapses?",
+    "context": "thirty-five (12.4%) of 282 patients had recurrence in vaginal vault, 51 patients (18.0%) had recurrence in central pelvis, 14 patients (4.9%) had recurrence in pelvic wall, and 39 patients (13.8%) had recurrence in lymph nodes. one-hundred twenty-eight patients (45.3%) showed a distant relapse, whereas 15 patients (5.3%) developed both distant relapse and local relapse. the site of relapse influenced survival because the patients with vaginal vault recurrences lived significantly longer than the patients with recurrences in other sites. eighty (28.4%) of the 282 patients became symptomatic and anticipated the scheduled visit, 37 (13.1 %) of the patients reported their symptoms during the follow-up meeting, and 165 (58.5 %) of the patients were asymptomatic and the diagnostic path was introduced by a planned visit or examination. among the asymptomatic patients, the first procedure that led to further examinations was clinical visit alone for 60 (36.4%) of 165 patients, imaging for 103 patients (62.4%), and cytologic examination for 2 patients (1.2%). symptoms at recurrence can predict survival: patients with an asymptomatic recurrence had a median survival time from relapse of 35 months versus 13 months if they had a symptomatic repetition (p = 0.0001)."
+  },
+  {
+    "id": 39,
+    "subject": [
+      "Nystagmus"
+    ],
+    "attribute": "yes",
+    "question": "is horizontal semicircular canal ocular reflex influenced by otolith organs input?",
+    "context": "eye movements in the supine position and the prone position were not in a symmetric fashion. nystagmus in the left-ear-down position and the right-ear-down position were not symmetric either. these phenomena indicate that the axis of the eyeball rotation was affected by the shift of the direction of gravity exerted on the head."
+  },
+  {
+    "id": 40,
+    "subject": [
+      "perforation of the appendix",
+      "tubal infertility",
+      "ectopic pregnancy"
+    ],
+    "attribute": "maybe",
+    "question": "is perforation of the appendix a risk factor for tubal infertility and ectopic pregnancy?",
+    "context": ""
+  },
+  {
+    "id": 41,
+    "subject": [
+      "gonorrhoeae"
+    ],
+    "attribute": "no",
+    "question": "serovar specific immunity to neisseria gonorrhoeae: does it exist?",
+    "context": "no significant difference was seen in the prevalence of serovars isolated following a repeat infection compared with those without repeat infections. the site of the initial infection did not appear to influence the subsequent serovar isolated."
+  },
+  {
+    "id": 42,
+    "subject": [
+      "astrocytomas",
+      "pilocytic astrocytomas",
+      "diffuse, low grade astrocytoma",
+      "anaplastic astrocytoma",
+      "gliobastoma multiforme"
+    ],
+    "attribute": "yes",
+    "question": "are endothelial cell patterns of astrocytomas indicative of grade?",
+    "context": "the most common primary brain tumors in children and adults are of astrocytic origin. classic histologic grading schemes for astrocytomas have included evaluating the presence or absence of nuclear abnormalities, mitoses, vascular endothelial proliferation, and tumor necrosis.all tumor cases showed cells positive for gfap. control tissues showed a few, widely separated vessels. pilocytic astrocytomas (four cases) showed lacy clusters of small-to-medium sized vessels, with intact vessel wall integrity. diffuse, low grade astrocytoma (three cases) showed a staining pattern similar to control tissue; intermediate grade (one case), anaplastic astrocytoma (three cases) and gliobastoma multiforme (six cases) showed an increased vessel density with multiple small vessels (glomeruloid clusters), some with prominent intimal hyperplasia, loss of vessel wall integrity, and with numerous vwf-positive single cells/microvessels within the tumor substance."
+  },
+  {
+    "id": 43,
+    "subject": [
+      "Atrial fibrillation",
+      "Hypertension"
+    ],
+    "attribute": "yes",
+    "question": "stretch-sensitive kcnq1 mutation a link between genetic and environmental factors in the pathogenesis of atrial fibrillation?",
+    "context": "although af can have a genetic etiology, links between inherited gene defects and acquired factors such as atrial stretch have not been explored.one missense kcnq1 mutation, r14c, was identified in 1 family with a high prevalence of hypertension. atrial fibrillation was present only in older individuals who had developed atrial dilation and who were genotype positive. patch-clamp studies of wild-type or r14c kcnq1 expressed with kcne1 in cho cells showed no statistically significant differences between wild-type and mutant channel kinetics at baseline, or after activation of adenylate cyclase with forskolin. after exposure to hypotonic solution to elicit cell swelling/stretch, mutant channels showed a marked increase in current, a leftward shift in the voltage dependence of activation, altered channel kinetics, and shortening of the modeled atrial action potential duration."
+  },
+  {
+    "id": 44,
+    "subject": [
+      "atrial fibrillation"
+    ],
+    "attribute": "no",
+    "question": "is there a relationship between complex fractionated atrial electrograms recorded during atrial fibrillation and sinus rhythm fractionation?",
+    "context": "ablation of persistent atrial fibrillation (af) may require adjunctive methods of substrate modification. both ablation-targeting complex fractionated atrial electrograms (cfaes) recorded during af and fractionated electrograms recorded during sinus rhythm (sinus rhythm fractionation [srf]) have been described. however, the relationship of cfaes with srf is unclear.srf (338 \u00b1 150 points) and cfae (418 \u00b1 135 points) regions comprised 29% \u00b1 14% and 25% \u00b1 15% of the left atrial surface area, respectively. there was no significant correlation between srf and cfae maps (r = .2; p = ns). on comparing patients with af and controls, no significant difference was found in the distribution of srf between groups (p = .74). regions of srf overlapped areas of wave-front collision 75% \u00b1 13% of the time."
+  },
+  {
+    "id": 45,
+    "subject": [
+      "Breast cancer"
+    ],
+    "attribute": "no",
+    "question": "is the clinically positive axilla in breast cancer really a contraindication to sentinel lymph node biopsy?",
+    "context": "clinically positive axillary nodes are widely considered a contraindication to sentinel lymph node (sln) biopsy in breast cancer, yet no data support this mandate. in fact, data from the era of axillary lymph node dissection (alnd) suggest that clinical examination of the axilla is falsely positive in as many as 30% of cases. here we report the results of sln biopsy in a selected group of breast cancer patients with palpable axillary nodes classified as either moderately or highly suspicious for metastasis.clinical examination of the axilla was inaccurate in 41% of patients (43 of 106) overall, and was falsely positive in 53% of patients (33 of 62) with moderately suspicious nodes and 23% of patients (10 of 44) with highly suspicious nodes. false-positive results were less frequent with larger tumor size (p = 0.002) and higher histologic grade (p = 0.002), but were not associated with age, body mass index, or a previous surgical biopsy."
+  },
+  {
+    "id": 46,
+    "subject": [
+      "convulsions",
+      "retinal haemorrhage",
+      "febrile convulsion"
+    ],
+    "attribute": "yes",
+    "question": "convulsions and retinal haemorrhage: should we look further?",
+    "context": "one child was found with unilateral retinal haemorrhages following an episode of a simple febrile convulsion. a thorough investigation uncovered no other reason for this finding."
+  },
+  {
+    "id": 47,
+    "subject": [
+      "Lung cancer"
+    ],
+    "attribute": "yes",
+    "question": "quality of life in lung cancer patients: does socioeconomic status matter?",
+    "context": "as part of a prospective study on quality of life in newly diagnosed lung cancer patients an investigation was carried out to examine whether there were differences among patients' quality of life scores and their socioeconomic status.in all, 129 lung cancer patients entered into the study. of these data for 82 patients were complete (at baseline and follow-up). 57% of patients were of lower socioeconomic status and they had more health problems, less functioning, and more symptoms as compared to affluent patients. of these, physical mobility (p = 0.05), energy (p = 0.01), role functioning (p = 0.04), physical functioning (p = 0.03), and breathlessness (p = 0.02) were significant at baseline. however, at follow-up assessment there was no significant difference between patient groups nor did any consistent pattern emerge."
+  },
+  {
+    "id": 48,
+    "subject": [
+      "chronic functional somatic symptoms",
+      "functional somatic symptoms",
+      "psychiatric morbidity"
+    ],
+    "attribute": "no",
+    "question": "chronic functional somatic symptoms: a single syndrome?",
+    "context": "reliable longitudinal data of patients with functional somatic symptoms in general practice are lacking.in the 10 years before the diagnosis of chronic functional somatic symptoms, significantly more patients than controls presented functional somatic symptoms in at least two body systems, and used more somatic and psychotropic drugs. they visited the gp twice as much, statistically had significantly more psychiatric morbidity, and were referred more often to mental health workers and somatic specialists. the number of patients undergoing diagnostic tests was higher for patients with chronic functional somatic symptoms than for controls, but hospital admissions rates were equal."
+  },
+  {
+    "id": 49,
+    "subject": [
+      "urinary tract infections"
+    ],
+    "attribute": "maybe",
+    "question": "actinobaculum schaalii, a cause of urinary tract infections in children?",
+    "context": "in 5 of the 29 screened urines, a. schaalii was found only by real-time pcr in quantities equivalent to \u2265 10(4) -10(5) cfu/ml. in addition, a. schaalii was found in quantities equivalent to \u2265 10(6) cfu/ml by both culture and pcr in two children with a urinary tract infection and large numbers of leucocytes in the urine."
+  },
+  {
+    "id": 50,
+    "subject": [
+      "vaginal intraepithelial neoplasia",
+      "cervical intraepithelial neoplasia"
+    ],
+    "attribute": "maybe",
+    "question": "does vaginal intraepithelial neoplasia have the same evolution as cervical intraepithelial neoplasia?",
+    "context": "vaginal intraepithelial neoplasia is a little known disease which could be related to risk factors different from simple hpv infections.in patients with mild vaginal lesions, mild cervical lesions were significantly more frequent than severe cervical lesions. in patients with \"active\" vaginal lesions the rate of \"active\" cervical lesions was significantly higher than \"non active\" cervical lesions. the differences in rates of mild cervical lesions and severe cervical lesions among patients with high-grade vain and low-grade vain (with and without koilocytosis) were not significant."
+  },
+  {
+    "id": 51,
+    "subject": [
+      "stroke",
+      "cerebral infarction"
+    ],
+    "attribute": "yes",
+    "question": "does the national institutes of health stroke scale favor left hemisphere strokes?",
+    "context": "the volume for right hemisphere stroke was statistically greater than the volume for left hemisphere strokes, adjusting for the baseline nihss (p<0. 001). for each 5-point category of the nihss score<20, the median volume of right hemisphere strokes was approximately double the median volume of left hemisphere strokes. for example, for patients with a left hemisphere stroke and a 24-hour nihss score of 16 to 20, the median volume of cerebral infarction was 48 ml (interquartile range 14 to 111 ml) as compared with 133 ml (interquartile range 81 to 208 ml) for patients with a right hemisphere stroke (p<0.001). the median volume of a right hemisphere stroke was roughly equal to the median volume of a left hemisphere stroke in the next highest 5-point category of the nihss. the spearman rank correlation between the 24-hour nihss score and 3-month lesion volume was 0.72 for patients with left hemisphere stroke and 0.71 for patients with right hemisphere stroke."
+  },
+  {
+    "id": 52,
+    "subject": [
+      "HIV infection"
+    ],
+    "attribute": "no",
+    "question": "is unsafe sexual behaviour increasing among hiv-infected individuals?",
+    "context": "the number of new diagnoses of hiv infection is rising in the northwestern hemisphere and it is becoming increasingly important to understand the mechanisms behind this trend.at least one sexual behaviour questionnaire was obtained for 6545 hiv-infected individuals and the median number of questionnaires completed per individual was five. there was no evidence of an increase in reported unsafe sex over time in this population [odds ratio (or), 1.0; 95% confidence interval (ci), 0.96-1.05]. females (or, 1.38; 95% ci, 1.19-1.60), 15-30 year olds (or, 1.26; 95% ci, 1.09-1.47), those with hiv-positive partners (or, 12.58; 95% ci, 10.84-14.07) and those with occasional partners (or, 3.25; 95% ci, 2.87-3.67) were more likely to report unsafe sex. there was no evidence of a response bias over time, but individuals were less willing to leave questions about their sexual behaviour unanswered or ambiguous (or, 0.93; 95% ci, 0.90-0.97)."
+  },
+  {
+    "id": 53,
+    "subject": [
+      "Cholestasis",
+      "Duodenal atresia",
+      "Jejunoileal atresia",
+      "Multiple atresia",
+      "Biliary atresia",
+      "Cirrhosis"
+    ],
+    "attribute": "no",
+    "question": "cholestasis associated with small bowel atresia: do we always need to investigate?",
+    "context": "fifty-five patients (29 male, 26 female), with a median gestational age and birth weight of 36 weeks and 2025 g, respectively, were reviewed. care was withdrawn for 2 patients before repair. for the remaining 53 patients, sba were duodenal atresia in 18, jejunoileal atresia in 32, and multiple atresia in 3. of 53, 24 (45%) patients developed cholestasis postoperatively (direct/total bilirubin>20%). all patients with short bowel (4) and 60% (6/10) of patients with a delay of enteral feeding more than 14 days postoperatively had cholestasis. ten patients (36%) proceeded with in-depth evaluations for cholestasis, with 8 (28%) undergoing liver biopsy. no patient had biliary atresia. no deaths were related to isolated cholestasis/cirrhosis. cholestasis resolved spontaneously in all the survivors."
+  },
+  {
+    "id": 54,
+    "subject": [
+      "uremia"
+    ],
+    "attribute": "yes",
+    "question": "autoxidation products of both carbohydrates and lipids are increased in uremic plasma: is there oxidative stress in uremia?",
+    "context": "advanced glycation end products (ages), formed by non-enzymatic glycation and oxidation (glycoxidation) reactions, have been implicated in the pathogenesis of several diseases, including normoglycemic uremia. age research in uremia has focused on the accumulation of carbohydrate-derived adducts generated by the maillard reaction. recent studies, however, have demonstrated that one age, the glycoxidation product carboxymethyllysine (cml), could be derived not only from carbohydrates but also from oxidation of polyunsaturated fatty acids in vitro, raising the possibility that both carbohydrate and lipid autoxidation might be increased in uremia.all three adducts were elevated in uremic plasma. plasma cml levels were mainly (>95%) albumin bound. their levels were not correlated with fructoselysine levels and were similar in diabetic and non-diabetic patients on hemodialysis, indicating that their increase was not driven by glucose. pentosidine and mda-lysine were also increased in plasma to the same extent in diabetic and non-diabetic hemodialysis patients. statistical analysis indicated that plasma levels of cml correlated weakly (p<0.05) with those of pentosidine and mda-lysine, but that pentosidine and mda-lysine varied independently (p>0.5)."
+  },
+  {
+    "id": 55,
+    "subject": [
+      "Parkinson's disease"
+    ],
+    "attribute": "yes",
+    "question": "knee extensor strength, dynamic stability, and functional ambulation: are they related in parkinson's disease?",
+    "context": "knee extensor strength positively correlated with dynamic postural stability and negatively correlated with disease severity. further, dynamic postural stability was negatively correlated to disease severity and positively correlated with functional ambulation in this cohort of patients with pd (p<.05). the results also suggest that the functional reach test may be a valuable assessment tool to examine postural stability in pd."
+  },
+  {
+    "id": 56,
+    "subject": [
+      "Type 1 diabetes mellitus"
+    ],
+    "attribute": "no",
+    "question": "does type 1 diabetes mellitus affect achilles tendon response to a 10\u00a0km run?",
+    "context": "achilles tendon structure deteriorates 2-days after maximal loading in elite athletes. the load-response behaviour of tendons may be altered in type 1 diabetes mellitus (t1dm) as hyperglycaemia accelerates collagen cross-linking. this study compared achilles tendon load-response in participants with t1dm and controls.participants were 7 individuals with t1dm and 10 controls. all regularly ran distances greater than 5\u00a0km and visa-a scores indicated good tendon function (t1dm\u2009=\u200994\u2009\u00b1\u200911, control\u2009=\u200994\u2009\u00b1\u200910). there were no diabetic complications and hba1c was 8.7\u2009\u00b1\u20092.6\u00a0mmol/mol for t1dm and 5.3\u2009\u00b1\u20090.4\u00a0mmol/mol for control groups. baseline tendon structure was similar in t1dm and control groups - utc echo-types (i-iv) and anterior-posterior thickness were all p\u2009>\u20090.05. no response to load was seen in either t1dm or control group over the 4-days post exercise."
+  },
+  {
+    "id": 57,
+    "subject": [
+      "primary eosinophilic esophagitis",
+      "dysphagia"
+    ],
+    "attribute": "yes",
+    "question": "fragility of the esophageal mucosa: a pathognomonic endoscopic sign of primary eosinophilic esophagitis?",
+    "context": "primary eosinophilic esophagitis, a chronic inflammatory disorder of the esophagus, evokes recurrent dysphagia. endoscopy is often unremarkable, and no consensus exists regarding management of resultant dysphagia. the response of a series of patients with primary eosinophilic esophagitis to dilation is reported together with a description of a possibly pathognomonic sign: fragile esophageal mucosa, for which the term \"cr\u00eape-paper\" mucosa is introduced."
+  },
+  {
+    "id": 58,
+    "subject": [
+      "xanthogranulomatous cholecystitis",
+      "chronic cholecystitis",
+      "gallbladder carcinoma"
+    ],
+    "attribute": "no",
+    "question": "xanthogranulomatous cholecystitis: a premalignant condition?",
+    "context": "xanthogranulomatous cholecystitis (xgc) is an uncommon variant of chronic cholecystitis, characterized by marked thickening of the gallbladder wall and dense local adhesions. it often mimics a gallbladder carcinoma (gbc), and may coexist with gbc, leading to a diagnostic dilemma. furthermore, the premalignant nature of this entity is not known. this study was undertaken to assess the p53, pcna and beta-catenin expression in xgc in comparison to gbc and chronic inflammation.p53 mutation was positive in 52% of gbc cases and 3% of xgc, but was not expressed in chronic cholecystitis and control gallbladders. p53 expression was lower in xgc than in gbc (p<0.0001). pcna expression was seen in 65% of gbc cases and 11% of xgc, but not in chronic cholecystitis and control gallbladders. pcna expression was higher in gbc than xgc (p=0.0001), but there was no significant difference between the xgc, chronic cholecystitis and control gallbladder groups. beta-catenin expression was positive in the gbc, xgc, chronic cholecystitis and control gallbladder groups. but the expression pattern in xgc, chronic cholecystitis and control gallbladders was homogenously membranous, whereas in gbc the membranous expression pattern was altered to cytoplasmic and nuclear."
+  },
+  {
+    "id": 59,
+    "subject": [
+      "frontotemporal lobar degeneration",
+      "semantic dementia",
+      "motor neuron degeneration"
+    ],
+    "attribute": "yes",
+    "question": "does tdp-43 type confer a distinct pattern of atrophy in frontotemporal lobar degeneration?",
+    "context": "twenty-two subjects were classified as ftld-tdp type 1, 9 as type 2, and 11 as type 3. we identified different patterns of atrophy across the types with type 1 showing frontotemporal and parietal atrophy, type 2 predominantly anterior temporal lobe atrophy, and type 3 predominantly posterior frontal atrophy. within the ftld-tdp type 1 group, those with a progranulin mutation had significantly more lateral temporal lobe atrophy than those without. all type 2 subjects were diagnosed with semantic dementia. subjects with a pathologic diagnosis of ftld with motor neuron degeneration had a similar pattern of atrophy, regardless of whether they were type 1 or type 3."
+  },
+  {
+    "id": 60,
+    "subject": [
+      "Bipolar I disorder",
+      "mania",
+      "ultradian rapid cycling",
+      "psychosis",
+      "suicidality"
+    ],
+    "attribute": "yes",
+    "question": "diagnostic characteristics of child bipolar i disorder: does the \"treatment of early age mania (team)\" sample generalize?",
+    "context": "the team and phenomenology groups were similar in age (10.4 [sd = 2.3], 10.9 [sd = 2.3]years, respectively) and other demography. both had long current episode duration (4.8 [sd = 2.4], 3.2 [sd = 2.3]years) and low lifetime use of any mood stabilizer (23.6%, 35.0%). many mania symptoms and ultradian rapid cycling, psychosis, and suicidality were significantly more prevalent in the rct sample."
+  },
+  {
+    "id": 61,
+    "subject": [
+      "spinal subdural hematoma",
+      "intracranial aneurysm",
+      "subarachnoid hemorrhage",
+      "internal carotid aneurysm"
+    ],
+    "attribute": "yes",
+    "question": "spinal subdural hematoma: a sequela of a ruptured intracranial aneurysm?",
+    "context": "a case of spinal subdural hematoma (ssdh) following subarachnoid hemorrhage (sah) because of a ruptured internal carotid aneurysm is described. such a case has never been reported."
+  },
+  {
+    "id": 62,
+    "subject": [
+      "internal carotid artery thrombus",
+      "atherosclerotic plaque",
+      "stroke",
+      "transient ischemic attack"
+    ],
+    "attribute": "yes",
+    "question": "can shape analysis differentiate free-floating internal carotid artery thrombus from atherosclerotic plaque in patients evaluated with cta for stroke or transient ischemic attack?",
+    "context": "follow-up imaging confirmed sixteen fft+ and seven fft- cases. five shape descriptors delineated fft+ from fft- cases. the logistic regression model produced from combining all five shape features demonstrated a sensitivity of 87.5% and a specificity of 71.4% with an area under the roc curve = 0.85 \u00b1 0.09. average accuracy for each classifier ranged from 65.2%-76.4%."
+  },
+  {
+    "id": 63,
+    "subject": [
+      "dementia",
+      "aphasia",
+      "motor neuron disease"
+    ],
+    "attribute": "yes",
+    "question": "dementia and aphasia in motor neuron disease: an underrecognised association?",
+    "context": "the 18 patients could be divided on the basis of their performance into three groups: three patients were demented and had impaired language function (group 1); two non-demented patients had an aphasic syndrome characterised by word finding difficulties and anomia (group 2). major cognitive deficits were therefore found in five of the 18 patients (28%). the remaining 13 performed normally on the test battery apart from decreased verbal fluency (group 3)."
+  },
+  {
+    "id": 64,
+    "subject": [
+      "suicidal behavior",
+      "affective disorders",
+      "bipolar"
+    ],
+    "attribute": "no",
+    "question": "do risk factors for suicidal behavior differ by affective disorder polarity?",
+    "context": "suicide is a leading cause of death and has been strongly associated with affective disorders. the influence of affective disorder polarity on subsequent suicide attempts or completions and any differential effect of suicide risk factors by polarity were assessed in a prospective cohort.after controlling for age of onset, there were no differences in prior suicide attempts by polarity although bipolar participants had more prior severe attempts. during follow-up, 40 cycles ended in suicide and 384 cycles contained at least one suicide attempt. age, hopelessness and active substance abuse but not polarity predicted suicidal behavior. the effects of risk factors did not differ by polarity."
+  },
+  {
+    "id": 65,
+    "subject": [
+      "sle"
+    ],
+    "attribute": "yes",
+    "question": "are there associations of health status, disease activity and damage in sle patients?",
+    "context": "a cross sectional study of 38 patients fulfilling the classification criteria for sle. the patients visited a rheumatology outpatient clinic in switzerland between january 2002 and december 2004. the last assessment during this period was used for the study. the assessment included, besides demographic data, the measurement of disease activity using the bilag index, the measurement of disease damage using the slicc/acr damage index (sdi), as well as the patient's self assessed health status using the patient's questionnaire medical outcome survey short form 36 (sf-36).a total of 36 women and 2 men were included in the study (median age: 43 yrs, median disease duration: 11 yrs). increased disease activity (total bilag) was shown to be significantly correlated with reduced physical function. a greater damage (total sdi) correlated significantly with reduced role function due to emotional limitations. neither age nor disease duration showed any significant correlation with health status in this study."
+  },
+  {
+    "id": 66,
+    "subject": [
+      "cerebral palsy"
+    ],
+    "attribute": "no",
+    "question": "does the child health computing system adequately identify children with cerebral palsy?",
+    "context": "this paper assesses the usefulness of the child health computing system as a source of information about children with cerebral palsy.of the 135 cases recorded on the nicpr, 47 per cent were not found on the chcs; the majority of these children had no computer record of any medical diagnosis. of the 82 cases recorded on the chcs, 10 (12 per cent) were not found on the nicpr; five of these cases (6 per cent) were found on follow-up not to have cp."
+  },
+  {
+    "id": 67,
+    "subject": [
+      "breast cancer"
+    ],
+    "attribute": "yes",
+    "question": "is breast cancer prognosis inherited?",
+    "context": "the 5-year survival proportion among daughters whose mothers died within 5 years was 87% compared to 91% if the mother was alive (p = 0.03). among sisters, the corresponding proportions were 70% and 88%, respectively (p = 0.001). after adjustment for potential confounders, daughters and sisters of a proband with poor prognosis had a 60% higher 5-year breast cancer mortality compared to those of a proband with good prognosis (hazard ratio [hr], 1.6; 95% confidence interval [ci], 1.2 to 2.2; p for trend 0.002). this association was slightly stronger among sisters (hr, 1.8; 95% ci, 1.0 to 3.4) than among daughters (hr, 1.6; 95% ci, 1.1 to 2.3)."
+  },
+  {
+    "id": 68,
+    "subject": [
+      "GDM"
+    ],
+    "attribute": "no",
+    "question": "does nuchal translucency thickness in the first trimester predict gdm onset during pregnancy?",
+    "context": "there was no significative difference (p = 0.585) between nt values in the study (mean = 1.56) and control group (mean = 1.54)."
+  },
+  {
+    "id": 69,
+    "subject": [
+      "hypersexuality",
+      "bipolar disorder"
+    ],
+    "attribute": "no",
+    "question": "are the arginine vasopressin v1a receptor microsatellites related to hypersexuality in children with a prepubertal and early adolescent bipolar disorder phenotype?",
+    "context": "preferential transmission of avpr1a gata or complex repeats was not significant for hypersexuality or uninhibited people-seeking, using the transmission disequilibrium test. similarly, case-control analyses found no significant associations between hypersexuality or uninhibited people-seeking and the number of avpr1a gata or complex repeats. for p<0.05, there was about 80% power to detect odds ratios of 5.0 and 4.0 (in the family-based analyses) and 3.5 and 2.6 (in the case-control analyses), for allele frequencies of 0.1 and 0.5, respectively."
+  },
+  {
+    "id": 70,
+    "subject": [
+      "non-small cell lung carcinoma",
+      "adenocarcinoma",
+      "squamous cell carcinoma"
+    ],
+    "attribute": "no",
+    "question": "stage i non-small cell lung carcinoma: really an early stage?",
+    "context": "overall 5-year survival was 63%. in both univariate and multivariate survival analysis, significant prognostic factors were histology (adenocarcinoma 65% vs squamous cell carcinoma 51%), tumour size (<or=3cm 67% vs>3cm 46%), and the presence of negative resection margin. five-year survival by general t status was 66% in t1n0 vs 55% in t2n0 disease (p=0.19)."
+  },
+  {
+    "id": 71,
+    "subject": [
+      "depression",
+      "social anxiety disorder"
+    ],
+    "attribute": "yes",
+    "question": "updating emotional content in working memory: a depression-specific deficit?",
+    "context": "compared to control and social anxiety groups, the depression groups (both pure and comorbid with social anxiety disorder) exhibited greater difficulties removing irrelevant emotional material from working memory (i.e., greater intrusion effects). greater intrusion effects were also associated with increased rumination."
+  },
+  {
+    "id": 72,
+    "subject": [
+      "Obstructive sleep apnea"
+    ],
+    "attribute": "maybe",
+    "question": "does obstructive sleep apnea affect aerobic fitness?",
+    "context": "overall, individuals with osa had increased vo2max when compared to the normalized us air force data (p<.001). patients with an apnea-hypopnea index of greater than 20 demonstrated a decreased vo2max as compared to normalized values (p<.001). no differences in vo2max were observed after either medical or surgical therapy for osa."
+  },
+  {
+    "id": 73,
+    "subject": [
+      "seizure"
+    ],
+    "attribute": "yes",
+    "question": "literacy after cerebral hemispherectomy: can the isolated right hemisphere read?",
+    "context": "we found that about 60% of our group developed both word reading and paragraph reading in the average range. phonological processing measured by both phonological awareness and nonword reading was unexpectedly spared in the majority of participants. phonological awareness levels strongly correlated with word reading. verbal memory, a component of phonological processing skills, together with receptive vocabulary size, positively correlated with reading levels similar to those reported in average readers. receptive vocabulary, a bilateral function, was preserved to a certain degree similar to that of strongly left-lateralized phonological skills [3]. later seizure onset was associated with better reading levels."
+  },
+  {
+    "id": 74,
+    "subject": [
+      "breast cancer"
+    ],
+    "attribute": "no",
+    "question": "delays in time to primary treatment after a diagnosis of breast cancer: does it impact survival?",
+    "context": "median tpt was 18 days. majority 508 (69.1%) of the patients received treatment within 30 days after diagnosis. the majority was surgically treated. ethnicity (p=0.002) and stage at presentation (p=0.007) were significantly associated with delayed tpt. malay ethnicity had delayed tpt compared to the chinese; hazard ratio (hr) 1.9 (confidence interval (ci) 1.237, 2.987). delayed tpt did not affect overall survival on univariate and multivariate analyses."
+  },
+  {
+    "id": 75,
+    "subject": [
+      "hypertrophic pyloric stenosis"
+    ],
+    "attribute": "yes",
+    "question": "in vivo visualization of pyloric mucosal hypertrophy in infants with hypertrophic pyloric stenosis: is there an etiologic role?",
+    "context": "mean mucosal thickness in patients with ihps approximated mean muscle thickness, with a ratio of 0.89. in infants with ihps, the pyloric mucosa constitutes approximately one third of the cross-sectional diameter of the pyloric mass and fills and obstructs the pyloric canal."
+  },
+  {
+    "id": 76,
+    "subject": [
+      "Polyarteritis nodosa"
+    ],
+    "attribute": "yes",
+    "question": "does spontaneous remission occur in polyarteritis nodosa?",
+    "context": "polyarteritis nodosa (pan) is a systemic vasculitis involving mainly medium-sized arteries and, rarely, small-sized arteries. the diagnosis is principally based on clinical exams, biopsy of an affected organ, and/or arteriography of renal or mesenteric arteries. once diagnosed, immunosuppressive agents, such as glucocorticoids and cyclophosphamide, are generally introduced as soon as possible. whether spontaneous remission of pan occurs is therefore largely unknown."
+  },
+  {
+    "id": 77,
+    "subject": [
+      "celiac disease",
+      "osteoporosis"
+    ],
+    "attribute": "maybe",
+    "question": "gluten tolerance in adult patients with celiac disease 20 years after diagnosis?",
+    "context": "sixty-six patients accepted participation, but after review of the diagnostic biopsies 53 were found to have true cd. twenty-three percent of patients had a gluten-containing diet, 15% admitted gluten transgression and 62% followed the gfd. patients on a gfd had significantly more osteoporosis. normal small bowel mucosa was found in four of eight on gluten-containing diet and in four of four with gluten transgression. two patients were considered to have developed tolerance to gluten. one of them was hla-dq2/dq8 negative."
+  },
+  {
+    "id": 78,
+    "subject": [
+      "COPD",
+      "Airways obstruction",
+      "Cough",
+      "Dyspnea",
+      "Sputum",
+      "Wheeze"
+    ],
+    "attribute": "no",
+    "question": "do symptoms predict copd in smokers?",
+    "context": "the us preventive services task force recommends against spirometry in the absence of symptoms. however, as much as 50% of copd cases in the united states remain undiagnosed.forty-four percent of smokers in our sample had airways obstruction (ao). of these, 36% reported a diagnosis of or treatment for copd. odds ratio (95% ci) for ao with smoking (>or = 20 pack-years) was 3.73 (3.12- 4.45), 1.98 (1.73-2.27) for cough, 1.79 (1.55-2.08) for dyspnea, 1.95 (1.70-2.34) for sputum, and 2.59 (2.26-2.97) for wheeze. respiratory symptoms were reported by 92% of smokers with ao, 86% smokers with restriction, 76% smokers with normal spirometry, and 73% of nonsmokers. sensitivity (92% vs 90%), specificity (19% vs 22%), positive (47% vs 40%) and negative (75% vs 80%) predictive values for the presence of one or more symptoms were similar between smokers and all subjects."
+  },
+  {
+    "id": 79,
+    "subject": [
+      "hepatorenal syndrome",
+      "cirrhosis",
+      "fulminant hepatic failure",
+      "end-stage liver disease",
+      "autoimmune",
+      "cardiac cirrhosis",
+      "idiopathic",
+      "viral",
+      "hepatitis c",
+      "alcoholic liver disease",
+      "neoplasia"
+    ],
+    "attribute": "yes",
+    "question": "hepatorenal syndrome: are we missing some prognostic factors?",
+    "context": "hepatorenal syndrome (hrs) is the functional renal failure associated with advanced cirrhosis and has also been described in fulminant hepatic failure. without liver transplantation its prognosis is dismal. our study included patients with type 1 hrs associated with cirrhosis, who were not liver transplant candidates.aim: to identify variables associated with improved survival.median survival was 13 days for the whole group. survival varied with the end-stage liver disease (esld) etiology: autoimmune, 49 days, cardiac cirrhosis, 22 days, idiopathic, 15.5 days, viral, 15 days, hepatitis c and alcohol, 14.5 days, alcohol 8 days, and neoplasia 4 days (p = 0.048). survival of hrs associated with alcoholic liver disease versus other etiologies was not statistically significant (p = 0.1). increased serum creatinine (p = 0.02) and urinary sodium 6-10 meq/l (p = 0.027) at the initiation of therapy were prognostic factors for mortality. hrs treatment modalities (p = 0.73), use of dialysis (p = 0.56), dialysis modality (p = 0.35), use of vasopressors (p = 0.26), pre-existing renal disease (p = 0.49), gender (p = 0.90), and age (p = 0.57) were not associated with survival."
+  },
+  {
+    "id": 80,
+    "subject": [
+      "Polymyalgia rheumatica",
+      "GCA"
+    ],
+    "attribute": "yes",
+    "question": "can the prognosis of polymyalgia rheumatica be predicted at disease onset?",
+    "context": "a total of 176 patients with pmr were included, of whom 124 stopped steroids within 5 years. the probability of stopping steroids within 5 years was independently reduced by an elevated plasma viscosity (pv) [hazard ratio (hr) = 0.49; 95% ci 0.29, 0.82 for a pv>or = 2.00 mpa s compared with a pv<or = 1.80 mpa s; overall p = 0.024] and by starting treatment at>15 mg prednisolone (hr = 0.63; 95% ci 0.41, 0.97; p = 0.036). either of these independently reduced the chances of stopping steroids within a given time interval between 27 and 51%. no significant predictors of relapse were identified. predictors of late gca on univariable analysis were female sex [odds ratio (or) = 8.16; 95% ci 1.06, 63.13; p = 0.044], hla-drb1*0101 or -*0401 alleles (or = 4.95; 95% ci 1.05, 23.34; p = 0.043), pv>or = 2.00 mpa s compared with pv<or = 1.80 mpa s (or = 10.64; 95% ci 1.28, 88.38; p = 0.029) and initial prednisolone dose>15 mg (or = 4.53; 95% ci 1.61, 12.79; p = 0.004)."
+  },
+  {
+    "id": 81,
+    "subject": [
+      "hypertensive status",
+      "cardiovascular disease",
+      "hypertension"
+    ],
+    "attribute": "yes",
+    "question": "are behavioural risk factors to be blamed for the conversion from optimal blood pressure to hypertensive status in black south africans?",
+    "context": "longitudinal cohort studies in sub-saharan africa are urgently needed to understand cardiovascular disease development. we, therefore, explored health behaviours and conventional risk factors of african individuals with optimal blood pressure (bp) (\u2264 120/80 mm hg), and their 5-year prediction for the development of hypertension.at baseline, 48% of the participants were hypertensive (\u2265 140/90 mmhg). those with optimal bp (n = 478) were followed at a success rate of 70% for 5 years (213 normotensive, 68 hypertensive, 57 deceased). africans that became hypertensive smoked more than the normotensive individuals (68.2% vs 49.8%), and they also had a greater waist circumference [ratio of geometric means of 0.94 cm (95% ci: 0.86-0.99)] and greater amount of \u03b3-glutamyltransferase [0.74 u/l (95% ci: 0.62-0.88)]at baseline. the 5-year change in bp was independently explained by baseline \u03b3-glutamyltransferase [r(2) = 0.23, \u03b2 = 0.13 u/l (95% ci: 0.01-0.19)]. alcohol intake also predicted central systolic bp and carotid cross-sectional wall area (cswa) at follow-up. waist circumference was another predictor of bp changes [\u03b2 = 0.18 cm (95% ci: 0.05-0.24)]and cswa. hiv infection was inversely associated with increased bp."
+  },
+  {
+    "id": 82,
+    "subject": [
+      "prostatic syndrome",
+      "pleural effusion",
+      "metastatic carcinoma of the prostate"
+    ],
+    "attribute": "maybe",
+    "question": "prostatic syndrome and pleural effusion: are they different diseases?",
+    "context": "both tumors were in the advanced stages. metastatic carcinoma of the prostate was discarded due to the form of presentation."
+  },
+  {
+    "id": 83,
+    "subject": [
+      "atherosclerosis",
+      "type 1 diabetes",
+      "type 2 diabetes"
+    ],
+    "attribute": "yes",
+    "question": "high cumulative insulin exposure: a risk factor of atherosclerosis in type 1 diabetes?",
+    "context": "since insulin therapy might have an atherogenic effect, we studied the relationship between cumulative insulin dose and atherosclerosis in type 1 diabetes. we have focused on patients with type 1 diabetes instead of type 2 diabetes to minimise the effect of insulin resistance as a potential confounder.the cumulative dose of regular insulin showed a positive and significant relation with cimt: increase of 21 microm in cimt per s.d. of insulin use (95% ci: 8-35 adjusted for gender and age), which remained unchanged after adjustment for duration of diabetes, hba1c, bmi, pulse pressure, physical activity and carotid lumen diameter. a similar relation was found for intermediate-acting insulin: 15.5 microm per s.d. (2-29), which was no longer present after further adjustment."
+  },
+  {
+    "id": 84,
+    "subject": [
+      "cryptogenic chronic liver disease",
+      "chronic liver disease"
+    ],
+    "attribute": "no",
+    "question": "are hepatitis g virus and tt virus involved in cryptogenic chronic liver disease?",
+    "context": "hepatitis g virus can cause chronic infection in man but the role of this agent in chronic liver disease is poorly understood. little is known about the relation of another newly discovered agent, the tt virus, with chronic liver disease.aim: to investigate the rate of infection with hepatitis g virus and tt virus in patients with cryptogenic chronic liver disease."
+  },
+  {
+    "id": 85,
+    "subject": [
+      "Cushing's disease"
+    ],
+    "attribute": "yes",
+    "question": "transsphenoidal pituitary surgery in cushing's disease: can we predict outcome?",
+    "context": "of the 61 patients included in this study, 48 (78.7%) achieved initial remission and 13 (21.3%) failed treatment. seven patients suffered subsequent relapse (range 22-158 months) in their condition after apparent remission, leaving a final group of 41 patients (67.2%) in the remission group. tumour was identified at surgery in 52 patients, of whom 38 achieved remission. in comparison, only 3 of 9 patients in whom no tumour was identified achieved remission. this difference was significant (p = 0.048). when both radiological and histological findings were positive, the likelihood of achieving remission was significantly higher than if both modalities were negative (p = 0.038). there were significant differences between remission and failure groups when 2- and 6-week postoperative serum cortisol levels (p = 0.002 and 0.001, respectively) and 6-week postoperative urine free cortisol levels (p = 0.026) were compared. this allowed identification of patients who failed surgical treatment in the early postoperative period. complications of surgery included transitory di in 13, transitory csf leak in 8 and transitory nasal discharge and cacosmia in 3. twelve of 41 patients required some form of hormonal replacement therapy despite achieving long-term remission. thirteen patients underwent a second operation, of whom 5 achieved remission."
+  },
+  {
+    "id": 86,
+    "subject": [
+      "non-small cell lung cancer",
+      "lung cancer",
+      "metastases"
+    ],
+    "attribute": "yes",
+    "question": "can the condition of the cell microenvironment of mediastinal lymph nodes help predict the risk of metastases in non-small cell lung cancer?",
+    "context": "the aim of this study was to analyze the properties of the immune cell microenvironment of regional lymph nodes (lns) positive for lung cancer.the presence of metastases correlated with the downregulation of tcr zeta, especially cd8(+) t cells. the most striking feature was the reduction in the number of myeloid cd11c(+) dendritic cells in the ln of patients with ln metastases. this could be a reflection of the immunodeficient state observed in lung cancer patients. even in the absence of metastases in the regional ln, the same type of changes in the ln microenvironment were observed in those ln located nearer the primary tumor."
+  },
+  {
+    "id": 87,
+    "subject": [
+      "depression"
+    ],
+    "attribute": "yes",
+    "question": "does depression diagnosis and antidepressant prescribing vary by location?",
+    "context": "studies have linked ethnic differences in depression rates with neighbourhood ethnic density although results have not been conclusive. we looked at this using a novel approach analysing whole population data covering just over one million gp patients in four london boroughs.black and minority ethnic groups are up to four times less likely to be newly diagnosed with depression or prescribed antidepressants compared to white british patients. we found an inverse relationship between neighbourhood ethnic density and new depression diagnosis for some groups, where an increase of 10% own-ethnic density was associated with a statistically significant (p<0.05) reduced odds of depression for pakistani [odds ratio (or) 0.81, 95% confidence interval (ci) 0.70-0.93], indian (or 0.88, ci 0.81-0.95), african (or 0.88, ci 0.78-0.99) and bangladeshi (or 0.94, ci 0.90-0.99) patients. black caribbean patients, however, showed the opposite effect (or 1.26, ci 1.09-1.46). the results for antidepressant use were very similar although the corresponding effect for black caribbeans was no longer statistically significant (p = 0.07)."
+  },
+  {
+    "id": 88,
+    "subject": [
+      "uterine myomas"
+    ],
+    "attribute": "no",
+    "question": "volume change of uterine myomas during pregnancy: do myomas really grow?",
+    "context": ""
+  },
+  {
+    "id": 89,
+    "subject": [
+      "juvenile osteochondritis dissecans",
+      "subchondral bone edema"
+    ],
+    "attribute": "yes",
+    "question": "juvenile osteochondritis dissecans: is it a growth disturbance of the secondary physis of the epiphysis?",
+    "context": "all children were skeletally immature. condylar lesions were medial in 24 knees and lateral in six knees. all were in the middle one third, posterior one third, or middle and posterior thirds in the sagittal plane. the majority of lesions spanned the intercondylar and middle one third of the femoral condyle in the coronal plane (73%). there was a significant difference between secondary physeal [corrected] disruption in juvenile ocd condyles compared with unaffected condyles (p<0.001) and control condyles (p<0.001). compared with unaffected and control condyles, the ocd group showed chondroepiphysial widening (p<0.001) and subchondral bone edema (p<0.001) on mri. neither chondroepiphysial integrity nor chondroepiphysial contour was significantly different between groups (p = 0.21, p = 0.31, respectively)."
+  },
+  {
+    "id": 90,
+    "subject": [
+      "acute chest syndrome",
+      "sickle cell disease"
+    ],
+    "attribute": "no",
+    "question": "clinician assessment for acute chest syndrome in febrile patients with sickle cell disease: is it accurate enough?",
+    "context": "seventy-three patients with scd with 96 febrile events were evaluated over a 1-year period. twenty-four percent (23/96) of the patients had cxr evidence of acs. on the basis of the questionnaire data, 61% (14/23) of acs cases were not clinically suspected by the evaluating physician before obtaining cxr. comparing the patients with and without acs revealed that, with the exception of splinting (4/23 [17%] versus 0/73 [0%]), no symptom or physical examination finding helped to identify which patients had acs. fifty-seven percent of patients with acs had completely normal findings on physical examination. the presentation of patients with clinically detected versus clinically unsuspected acs also did not differ significantly. length of hospitalization, oxygen use, and need for transfusion were the same in both the unsuspected and detected acs groups. overall physician sensitivity for predicting acs was only 39%, and diagnostic accuracy did not improve significantly with increasing levels of pediatric training."
+  },
+  {
+    "id": 91,
+    "subject": [
+      "valvar aortic stenosis",
+      "aortic stenosis"
+    ],
+    "attribute": "yes",
+    "question": "can progression of valvar aortic stenosis be predicted accurately?",
+    "context": "it was the aim of the present study to elaborate criteria for the assessment of rapid hemodynamic progression of valvar aortic stenosis. these criteria are of special importance when cardiac surgery is indicated for other reasons but the established criteria for aortic valve replacement are not yet fulfilled. such aspects of therapeutic planing were mostly disregarded in the past so that patients had to undergo cardiac reoperation within a few years.the progression rate of aortic valve obstruction was found to be dependent on the degree of valvar calcification ([vc] scoring 0 to iii) and to be exponentially correlated with the aortic valve opening area (ava) at initial catheterization. neither age nor sex of the patient nor etiology of the valvar obstruction significantly influence the progression of aortic stenosis. if ava decreases below 0.75 cm(2) with a present degree of vc = 0, or ava of 0.8 with vc of i, ava of 0.9 with vc of ii, or ava of 1.0 with vc of iii, it is probable that aortic stenosis will have to be operated upon in the following years."
+  },
+  {
+    "id": 92,
+    "subject": [
+      "low intellectual performance"
+    ],
+    "attribute": "no",
+    "question": "birth characteristics and risk of low intellectual performance in early adulthood: are the associations confounded by socioeconomic factors in adolescence or familial effects?",
+    "context": "compared with men born with appropriate birth weight for gestational age, men born light for gestational age suffered an increased risk of low intellectual performance after adjustment for maternal and socioeconomic factors. the increase in risk of low intellectual performance related to a decrease in birth weight for gestational age was similar between families and within families. men born short or with a small head circumference for gestational age were also at increased risk of low intellectual performance, both when adjusting for maternal and socioeconomic factors and within families."
+  },
+  {
+    "id": 93,
+    "subject": [
+      "traumatic spinal cord injury"
+    ],
+    "attribute": "maybe",
+    "question": "is determination between complete and incomplete traumatic spinal cord injury clinically relevant?",
+    "context": "to achieve independent ambulation 1-year post injury, a normal s4-5 pp score showed the best ppv (96.5%, p<0.001, 95% confidence interval (95% ci): 87.9-99.6). best npv was reported in the s4-5 lt score (91.7%, p<0.001, 95% ci: 81.6-97.2). the use of the combination of only voluntary anal contraction and the s4-5 lt and pp sensory scores (auc: 0.906, p<0.001, 95% ci: 0.871-0.941) showed significantly better (p<0.001, 95% ci: 0.038-0.128) discriminating results in prognosticating 1-year independent ambulation than with the use of currently used distinction between complete and incomplete sci (auc: 0.823, p<0.001, 95% ci: 0.781-0.864)."
+  },
+  {
+    "id": 94,
+    "subject": [
+      "gynaecological cancer"
+    ],
+    "attribute": "yes",
+    "question": "improvements in survival of gynaecological cancer in the anglia region of england: are these an effect of centralisation of care and use of multidisciplinary management?",
+    "context": "the survival rates for cases diagnosed between 1996 and 1999 were broadly the same across the time period, with a marked improvement taking place in 2000, and continuing to 2003 (hr 0.71, 95% ci 0.64-0.79, comparing 2000-03 with 1996-99 diagnoses), for all gynaecological sites combined. adjustment for treatments or method of case follow-up did not attenuate these improvements. there was a concurrent change towards major surgery being performed in specialist centres from 2000."
+  },
+  {
+    "id": 95,
+    "subject": [
+      "episodic migraine",
+      "chronic pain",
+      "chronic musculoskeletal pain",
+      "chronic headache"
+    ],
+    "attribute": "no",
+    "question": "do episodic migraineurs selectively attend to headache-related visual stimuli?",
+    "context": "prior studies have examined whether chronic pain patients selectively attend to pain-related stimuli in the environment, but these studies have produced largely mixed findings and focused primarily on patients with chronic musculoskeletal pain. limited research has implicated attentional biases among chronic headache patients, but no studies have been conducted among episodic migraineurs, who comprise the overwhelming majority of the migraine population.no within-group differences for reaction time latencies to headache vs happy conditions were found among those with episodic migraine or among the non-migraine controls. migraine status was unrelated to attentional bias indices for both headache (f [1,306]\u2009=\u20090.56, p\u2009=\u2009.45) and happy facial stimuli (f [1,306]\u2009=\u20090.37, p\u2009=\u2009.54), indicating a lack of between-group differences. lack of within- and between-group differences was confirmed with repeated measures analysis of variance."
+  },
+  {
+    "id": 96,
+    "subject": [
+      "hydatidiform moles",
+      "nonpartial moles",
+      "partial moles",
+      "complete mole"
+    ],
+    "attribute": "no",
+    "question": "do nontriploid partial hydatidiform moles exist?",
+    "context": "on review of the 19 moles, 53% (10/19) were diploid nonpartial moles (initially pathologically misclassified), and 37% (7/19) were triploid partial moles (initial ploidy misclassifications). one additional case (5%) was a diploid early complete mole (initially pathologically misclassified)."
   }
 ]

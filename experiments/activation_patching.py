@@ -12,11 +12,11 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dsets import ClinicalKnownsDataset, ClinicalAgeGroupDataset
+from dsets import ClinicalKnownsDataset, ClinicalAgeGroupDataset, ClinicalDiseaseDataset, ClinicalMedicineDataset
 from util import nethook
 
 def main():
-    parser = argparse.ArgumentParser(description="Causal Trace")
+    parser = argparse.ArgumentParser(description="activating patching analysis")
 
     def aa(*args, **kwargs):
         parser.add_argument(*args, **kwargs)
@@ -57,6 +57,10 @@ def main():
         knowns = ClinicalKnownsDataset("data")
     elif args.fact_data == "pubmedqa":
         knowns = ClinicalAgeGroupDataset("data")
+    elif args.fact_data == "pqa-disease":
+        knowns = ClinicalDiseaseDataset("data")
+    elif args.fact_data == "pqa-medicine":
+        knowns = ClinicalMedicineDataset("data")
     else:
         raise ValueError(f"Unknown fact_data: {args.fact_data}")
 
@@ -69,13 +73,18 @@ def main():
             noise_level = factor * 0.05 # TODO: temporary
             print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
 
-    for knowledge in tqdm(knowns):
-        kid = knowledge["id"]
+    for i, knowledge in tqdm(enumerate(knowns)):
+        if args.fact_data in ["pqa-disease", "pqa-medicine"]:
+            kid = i
+        else:
+            kid = knowledge["id"]
         #orid = knowledge["original_id"]
         for module_kind in None, "mlp", "attn":
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{kid}{kind_suffix}.npz"
             if not os.path.exists(filename):
+                if args.fact_data in ["pqa-disease", "pqa-medicine"]:
+                    knowledge["subject"] = knowledge["subjects"][0]
                 result = run_patching_analysis(
                     mt,
                     knowledge["prompt"],
@@ -184,7 +193,7 @@ def get_prob_interv(
     ) as td:
         out = model(**inputs)
 
-    # report the probability of object token
+    # report the probability of the output token
     probs = torch.softmax(out.logits[1:, -1, :], dim=1).mean(dim=0)[answer_t]
 
     return probs
@@ -333,7 +342,7 @@ def trace_significant_states(
                 corrupt_range=corrupt_range,
                 noise=noise,
                 uniform_noise=uniform_noise,
-                replace=replace,  
+                replace=replace,
             )
             row.append(r)
         table.append(torch.stack(row))

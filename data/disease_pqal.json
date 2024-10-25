@@ -1,209 +1,4217 @@
 [
     {
-        "QUESTION": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
-        "CONTEXTS": [
-            "Assessment of visual acuity depends on the optotypes used for measurement. The ability to recognize different optotypes differs even if their critical details appear under the same visual angle. Since optotypes are evaluated on individuals with good visual acuity and without eye disorders, differences in the lower visual acuity range cannot be excluded. In this study, visual acuity measured with the Snellen E was compared to the Landolt C acuity.",
-            "100 patients (age 8 - 90 years, median 60.5 years) with various eye disorders, among them 39 with amblyopia due to strabismus, and 13 healthy volunteers were tested. Charts with the Snellen E and the Landolt C (Precision Vision) which mimic the ETDRS charts were used to assess visual acuity. Three out of 5 optotypes per line had to be correctly identified, while wrong answers were monitored. In the group of patients, the eyes with the lower visual acuity, and the right eyes of the healthy subjects, were evaluated.",
-            "Differences between Landolt C acuity (LR) and Snellen E acuity (SE) were small. The mean decimal values for LR and SE were 0.25 and 0.29 in the entire group and 0.14 and 0.16 for the eyes with strabismus amblyopia. The mean difference between LR and SE was 0.55 lines in the entire group and 0.55 lines for the eyes with strabismus amblyopia, with higher values of SE in both groups. The results of the other groups were similar with only small differences between LR and SE."
+        "category": "Disease",
+        "subjects": [
+            "programmed cell death"
         ],
-        "LABELS": [
-            "BACKGROUND",
-            "PATIENTS AND METHODS",
-            "RESULTS"
-        ],
-        "MESHES": [
-            "Adolescent",
-            "Adult",
-            "Aged",
-            "Aged, 80 and over",
-            "Amblyopia",
-            "Cataract",
-            "Child",
-            "Eye Diseases",
-            "Female",
-            "Humans",
-            "Male",
-            "Middle Aged",
-            "Reference Values",
-            "Refractive Errors",
-            "Reproducibility of Results",
-            "Retinal Diseases",
-            "Strabismus",
-            "Vision Tests",
-            "Visual Acuity"
-        ],
-        "YEAR": "2006",
-        "reasoning_required_pred": "no",
-        "reasoning_free_pred": "no",
-        "final_decision": "no",
-        "LONG_ANSWER": "Using the charts described, there was only a slight overestimation of visual acuity by the Snellen E compared to the Landolt C, even in strabismus amblyopia. Small differences in the lower visual acuity range have to be considered."
+        "prompt": "Question: Do mitochondria play a role in remodelling lace plant leaves during programmed cell death? the answer to the question is",
+        "attribute": "yes"
     },
     {
-        "QUESTION": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
-        "CONTEXTS": [
-            "Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. The prognosis is uncertain because of risk of sudden infant death syndrome.",
-            "Eight infants aged 2 to 15 months were admitted during a period of 6 years; they suffered from similar maladies in the bath: on immersion, they became pale, hypotonic, still and unreactive; recovery took a few seconds after withdrawal from the bath and stimulation. Two diagnoses were initially considered: seizure or gastroesophageal reflux but this was doubtful. The hypothesis of an equivalent of aquagenic urticaria was then considered; as for patients with this disease, each infant's family contained members suffering from dermographism, maladies or eruption after exposure to water or sun. All six infants had dermographism. We found an increase in blood histamine levels after a trial bath in the two infants tested. The evolution of these \"aquagenic maladies\" was favourable after a few weeks without baths. After a 2-7 year follow-up, three out of seven infants continue to suffer from troubles associated with sun or water."
+        "category": "Disease",
+        "subjects": [
+            "strabismus amblyopia"
         ],
-        "LABELS": [
-            "BACKGROUND",
-            "CASE REPORTS"
-        ],
-        "MESHES": [
-            "Baths",
-            "Histamine",
-            "Humans",
-            "Infant",
+        "prompt": "Question: Landolt C and snellen e acuity: differences in strabismus amblyopia? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
             "Syncope",
-            "Urticaria",
-            "Water"
+            "water-induced urticaria"
         ],
-        "YEAR": "1997",
-        "reasoning_required_pred": "yes",
-        "reasoning_free_pred": "yes",
-        "final_decision": "yes",
-        "LONG_ANSWER": "\"Aquagenic maladies\" could be a pediatric form of the aquagenic urticaria."
+        "prompt": "Question: Syncope during bathing in infants, a pediatric form of water-induced urticaria? the answer to the question is",
+        "attribute": "yes"
     },
     {
-        "QUESTION": "30-Day and 1-year mortality in emergency general surgery laparotomies: an area of concern and need for improvement?",
-        "CONTEXTS": [
-            "Emergency surgery is associated with poorer outcomes and higher mortality with recent studies suggesting the 30-day mortality to be 14-15%. The aim of this study was to analyse the 30-day mortality, age-related 30-day mortality and 1-year mortality following emergency laparotomy. We hope this will encourage prospective data collection, improvement of care and initiate strategies to establish best practice in this area.",
-            "This was a retrospective study of patients who underwent emergency laparotomy from June 2010 to May 2012. The primary end point of the study was 30-day mortality, age-related 30-day mortality and 1-year all-cause mortality.",
-            "477 laparotomies were performed in 446 patients. 57% were aged<70 and 43% aged>70 years. 30-day mortality was 12, 4% in those aged<70 years and 22% in those>70 years (p<0.001). 1-year mortality was 25, 15% in those aged under 70 years and 38% in those aged>70 years (p<0.001)."
+        "category": "Disease",
+        "subjects": [
+            "mortality"
         ],
-        "LABELS": [
-            "AIMS",
-            "METHODS",
-            "RESULTS"
-        ],
-        "MESHES": [
-            "Adult",
-            "Age Factors",
-            "Aged",
-            "Aged, 80 and over",
-            "Cause of Death",
-            "Cohort Studies",
-            "Emergency Treatment",
-            "Female",
-            "General Surgery",
-            "Humans",
-            "Incidence",
-            "Laparotomy",
-            "Male",
-            "Middle Aged",
-            "Needs Assessment",
-            "Retrospective Studies",
-            "Risk Assessment",
-            "Time Factors",
-            "United Kingdom"
-        ],
-        "YEAR": "2015",
-        "reasoning_required_pred": "maybe",
-        "reasoning_free_pred": "yes",
-        "final_decision": "maybe",
-        "LONG_ANSWER": "Emergency laparotomy carries a high rate of mortality, especially in those over the age of 70 years, and more needs to be done to improve outcomes, particularly in this group. This could involve increasing acute surgical care manpower, early recognition of patients requiring emergency surgery, development of clear management protocols for such patients or perhaps even considering centralisation of emergency surgical services to specialist centres with multidisciplinary teams involving emergency surgeons and care of the elderly physicians in hospital and related community outreach services for post-discharge care."
+        "prompt": "Question: 30-Day and 1-year mortality in emergency general surgery laparotomies: an area of concern and need for improvement? the answer to the question is",
+        "attribute": "maybe"
     },
     {
-        "QUESTION": "Is adjustment for reporting heterogeneity necessary in sleep disorders?",
-        "CONTEXTS": [
-            "Anchoring vignettes are brief texts describing a hypothetical character who illustrates a certain fixed level of a trait under evaluation. This research uses vignettes to elucidate factors associated with sleep disorders in adult Japanese before and after adjustment for reporting heterogeneity in self-reports. This study also evaluates the need for adjusting for reporting heterogeneity in the management of sleep and energy related problems in Japan.",
-            "We investigated a dataset of 1002 respondents aged 18 years and over from the Japanese World Health Survey, which collected information through face-to-face interview from 2002 to 2003. The ordered probit model and the Compound Hierarchical Ordered Probit (CHOPIT) model, which incorporated anchoring vignettes, were employed to estimate and compare associations of sleep and energy with socio-demographic and life-style factors before and after adjustment for differences in response category cut-points for each individual.",
-            "The prevalence of self-reported problems with sleep and energy was 53 %. Without correction of cut-point shifts, age, sex, and the number of comorbidities were significantly associated with a greater severity of sleep-related problems. After correction, age, the number of comorbidities, and regular exercise were significantly associated with a greater severity of sleep-related problems; sex was no longer a significant factor. Compared to the ordered probit model, the CHOPIT model provided two changes with a subtle difference in the magnitude of regression coefficients after correction for reporting heterogeneity."
+        "category": "Disease",
+        "subjects": [
+            "sleep disorders"
         ],
-        "LABELS": [
-            "BACKGROUND",
-            "METHODS",
-            "RESULTS"
-        ],
-        "MESHES": [
-            "Adult",
-            "Aged",
-            "Female",
-            "Health Status Disparities",
-            "Health Surveys",
-            "Humans",
-            "Japan",
-            "Male",
-            "Middle Aged",
-            "Physical Fitness",
-            "Prevalence",
-            "Self Report",
-            "Self-Assessment",
-            "Sleep Wake Disorders",
-            "Socioeconomic Factors"
-        ],
-        "YEAR": "2016",
-        "reasoning_required_pred": "yes",
-        "reasoning_free_pred": "no",
-        "final_decision": "no",
-        "LONG_ANSWER": "Sleep disorders are common in the general adult population of Japan. Correction for reporting heterogeneity using anchoring vignettes is not a necessary tool for proper management of sleep and energy related problems among Japanese adults. Older age, gender differences in communicating sleep-related problems, the presence of multiple morbidities, and regular exercise should be the focus of policies and clinical practice to improve sleep and energy management in Japan."
+        "prompt": "Question: Is adjustment for reporting heterogeneity necessary in sleep disorders? the answer to the question is",
+        "attribute": "no"
     },
     {
-        "QUESTION": "Do mutations causing low HDL-C promote increased carotid intima-media thickness?",
-        "CONTEXTS": [
-            "Although observational data support an inverse relationship between high-density lipoprotein (HDL) cholesterol and coronary heart disease (CHD), genetic HDL deficiency states often do not correlate with premature CHD.",
-            "Carotid intima-media thickness (cIMT) measurements were obtained in cases comprising 10 different mutations in LCAT, ABCA1 and APOA1 to further evaluate the relationship between low HDL resulting from genetic variation and early atherosclerosis.",
-            "In a 1:2 case-control study of sex and age-related (+/-5 y) subjects (n=114), cIMT was nearly identical between cases (0.66+/-0.17 cm) and controls (0.65+/-0.18 cm) despite significantly lower HDL cholesterol (0.67 vs. 1.58 mmol/l) and apolipoprotein A-I levels (96.7 vs. 151.4 mg/dl) (P<0.05)"
+        "category": "Disease",
+        "subjects": [
+            "low HDL-C",
+            "increased carotid intima-media thickness"
         ],
-        "LABELS": [
-            "BACKGROUND",
-            "METHODS",
-            "RESULTS"
-        ],
-        "MESHES": [
-            "Cholesterol, HDL",
-            "Contrast Media",
-            "Coronary Disease",
-            "Female",
-            "Humans",
-            "Male",
-            "Mutation",
-            "Risk Factors"
-        ],
-        "YEAR": "2007",
-        "reasoning_required_pred": "no",
-        "reasoning_free_pred": "no",
-        "final_decision": "no",
-        "LONG_ANSWER": "Genetic variants identified in the present study may be insufficient to promote early carotid atherosclerosis."
+        "prompt": "Question: Do mutations causing low HDL-C promote increased carotid intima-media thickness? the answer to the question is",
+        "attribute": "no"
     },
     {
-        "QUESTION": "Differentiation of nonalcoholic from alcoholic steatohepatitis: are routine laboratory markers useful?",
-        "CONTEXTS": [
-            "Specific markers for differentiation of nonalcoholic (NASH) from alcoholic steatohepatitis (ASH) are lacking. We investigated the role of routine laboratory parameters in distinguishing NASH from ASH.",
-            "Liver biopsies performed at our hospital over a 10-year period were reviewed, 95 patients with steatohepatitis identified and their data prior to biopsy reevaluated. The diagnosis NASH or ASH was assigned (other liver diseases excluded) on the basis of the biopsy and history of alcohol consumption (<140 g/week). Logistic regression models were used for analysis.",
-            "NASH was diagnosed in 58 patients (61%; 30 f) and ASH in 37 (39%; 9 f). High-grade fibrosis (59% vs. 19%, P<0.0001) and an AST/ALT ratio>1 (54.1% vs 20.7%, P = 0.0008) were more common in ASH. The MCV was elevated in 53% of ASH patients and normal in all NASH patients (P<0.0001). Multivariate analysis identified the MCV (P = 0.0013), the AST/ALT ratio (P = 0.011) and sex (P = 0.0029) as relevant regressors (aROC = 0.92). The AST/ALT ratio (P<0.0001) and age (P = 0.00049) were independent predictors of high-grade fibrosis. Differences in MCV were more marked in high-grade fibrosis."
+        "category": "Disease",
+        "subjects": [
+            "nonalcoholic steatohepatitis",
+            "alcoholic steatohepatitis"
         ],
-        "LABELS": [
-            "AIMS",
-            "METHODS",
-            "RESULTS"
+        "prompt": "Question: Differentiation of nonalcoholic from alcoholic steatohepatitis: are routine laboratory markers useful? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "liver transplantation"
         ],
-        "MESHES": [
-            "Adolescent",
-            "Adult",
-            "Aged",
-            "Alanine Transaminase",
-            "Aspartate Aminotransferases",
-            "Biomarkers",
-            "Biopsy",
-            "Diagnosis, Differential",
-            "Erythrocyte Indices",
-            "Fatty Liver",
-            "Fatty Liver, Alcoholic",
-            "Female",
-            "Humans",
-            "Liver",
-            "Liver Cirrhosis",
-            "Liver Cirrhosis, Alcoholic",
-            "Liver Function Tests",
-            "Male",
-            "Middle Aged",
-            "Predictive Value of Tests",
-            "Retrospective Studies"
+        "prompt": "Question: Is there still a need for living-related liver transplantation in children? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cardiovascular risk"
         ],
-        "YEAR": "2008",
-        "reasoning_required_pred": "yes",
-        "reasoning_free_pred": "no",
-        "final_decision": "yes",
-        "LONG_ANSWER": "Higher MCVs and AST/ALT ratios in ASH reflect the severity of underlying liver disease and do not differentiate NASH from ASH. Instead, these biomarkers might prove useful in guiding selection of patients for liver biopsy and in targeting therapy."
+        "prompt": "Question: Cardiovascular risk in a rural adult West African population: is resting heart rate also relevant? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Acute respiratory distress syndrome",
+            "malignancy"
+        ],
+        "prompt": "Question: Acute respiratory distress syndrome in children with malignancy--can we predict outcome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Secondhand smoke risk"
+        ],
+        "prompt": "Question: Secondhand smoke risk in infants discharged from an NICU: potential for significant health disparities? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "biochemical recurrence",
+            "prostate cancer"
+        ],
+        "prompt": "Question: Do nomograms designed to predict biochemical recurrence (BCR) do a better job of predicting more clinically relevant prostate cancer outcomes than BCR? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mechanical dysfunction",
+            "chronic oro-facial pain",
+            "somatisation"
+        ],
+        "prompt": "Question: Are reports of mechanical dysfunction in chronic oro-facial pain related to somatisation? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Amblyopia"
+        ],
+        "prompt": "Question: Amblyopia: is visual loss permanent? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Visceral adipose tissue area"
+        ],
+        "prompt": "Question: Visceral adipose tissue area measurement at a single level: can it represent visceral adipose tissue volume? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Necrotizing fasciitis"
+        ],
+        "prompt": "Question: Necrotizing fasciitis: an indication for hyperbaric oxygenation therapy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "necrosis",
+            "fractures"
+        ],
+        "prompt": "Question: Is the Hawkins sign able to predict necrosis in fractures of the neck of the astragalus? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Phonotraumatic Vocal Pathologies"
+        ],
+        "prompt": "Question: Is Acupuncture Efficacious for Treating Phonotraumatic Vocal Pathologies? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "aneurysm",
+            "aneurysmal subarachnoid hemorrhage"
+        ],
+        "prompt": "Question: Is aneurysm repair justified for the patients aged 80 or older after aneurysmal subarachnoid hemorrhage? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "small hepatocellular carcinoma",
+            "well differentiated hepatocellular carcinoma"
+        ],
+        "prompt": "Question: Prognosis of well differentiated small hepatocellular carcinoma--is well differentiated hepatocellular carcinoma clinically early cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "abnormal Papanicolaou smears"
+        ],
+        "prompt": "Question: Do follow-up recommendations for abnormal Papanicolaou smears influence patient adherence? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "allergenic pollen"
+        ],
+        "prompt": "Question: Biomolecular identification of allergenic pollen: a new perspective for aerobiological monitoring? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "diabetes mellitus",
+            "cervical cancer"
+        ],
+        "prompt": "Question: Does diabetes mellitus influence the efficacy of FDG-PET in the diagnosis of cervical cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "wound healing"
+        ],
+        "prompt": "Question: Biomechanical and wound healing characteristics of corneas after excimer laser keratorefractive surgery: is there a difference between advanced surface ablation and sub-Bowman's keratomileusis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary rectal cancer",
+            "recurrent rectal cancer"
+        ],
+        "prompt": "Question: Does radiotherapy of the primary rectal cancer affect prognosis after pelvic exenteration for recurrent rectal cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lymphedema"
+        ],
+        "prompt": "Question: Can a practicing surgeon detect early lymphedema reliably? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Colorectal cancer",
+            "liver metastases"
+        ],
+        "prompt": "Question: Colorectal cancer with synchronous liver metastases: does global management at the same centre improve results? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "motion perception deficit",
+            "schizophrenia",
+            "eye-tracking abnormality"
+        ],
+        "prompt": "Question: Is motion perception deficit in schizophrenia a consequence of eye-tracking abnormality? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Fournier's gangrene"
+        ],
+        "prompt": "Question: It's Fournier's gangrene still dangerous? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "carotid artery stenosis",
+            "coronary artery bypass surgery"
+        ],
+        "prompt": "Question: Assessment of carotid artery stenosis before coronary artery bypass surgery. Is it always necessary? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mesocolon invasion",
+            "gastric cancer"
+        ],
+        "prompt": "Question: Should direct mesocolon invasion be included in T4 for the staging of gastric cancer? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Heterotopic Ossification",
+            "Fractures of the Acetabulum"
+        ],
+        "prompt": "Question: Do Surrogates of Injury Severity Influence the Occurrence of Heterotopic Ossification in Fractures of the Acetabulum? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "fluency effects"
+        ],
+        "prompt": "Question: Processing fluency effects: can the content and presentation of participant information sheets influence recruitment and participation for an antenatal intervention? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Sternal fracture"
+        ],
+        "prompt": "Question: Sternal fracture in growing children : A rare and often overlooked fracture? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Human papillomavirus",
+            "pterygium"
+        ],
+        "prompt": "Question: Human papillomavirus and pterygium. Is the virus a risk factor? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "transcatheter aortic valve implantation"
+        ],
+        "prompt": "Question: Can predilatation in transcatheter aortic valve implantation be omitted? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Autoerotic asphyxiation"
+        ],
+        "prompt": "Question: Autoerotic asphyxiation: secret pleasure--lethal outcome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Major depression",
+            "alcohol use disorder",
+            "depression"
+        ],
+        "prompt": "Question: Major depression and alcohol use disorder in adolescence: Does comorbidity lead to poorer outcomes of depression? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute diverticulitis"
+        ],
+        "prompt": "Question: Does a colonoscopy after acute diverticulitis affect its management? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "dementia"
+        ],
+        "prompt": "Question: Do instrumental activities of daily living predict dementia at 1- and 2-year follow-up? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Ventriculoperitoneal Shunt Infection"
+        ],
+        "prompt": "Question: Does the Simultaneous Use of a Neuroendoscope Influence the Incidence of Ventriculoperitoneal Shunt Infection? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "phonological awareness"
+        ],
+        "prompt": "Question: Is a specialised training of phonological awareness indicated in every preschool child? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "streptococcal infection",
+            "multiple sclerosis"
+        ],
+        "prompt": "Question: Is there any relationship between streptococcal infection and multiple sclerosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mechanical alignment",
+            "unicompartmental knee replacement"
+        ],
+        "prompt": "Question: Does the type of tibial component affect mechanical alignment in unicompartmental knee replacement? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tumour",
+            "venous invasion",
+            "renal cell carcinoma"
+        ],
+        "prompt": "Question: Is tumour expression of VEGF associated with venous invasion and survival in pT3 renal cell carcinoma? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Injury",
+            "poisoning"
+        ],
+        "prompt": "Question: Injury and poisoning mortality among young men--are there any common factors amenable to prevention? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "obesity",
+            "OSA"
+        ],
+        "prompt": "Question: Does either obesity or OSA severity influence the response of autotitrating CPAP machines in very obese subjects? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "preterm birth"
+        ],
+        "prompt": "Question: Does the clinical presentation of a prior preterm birth predict risk in a subsequent pregnancy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "contralateral hydrocele",
+            "neonatal testicular torsion"
+        ],
+        "prompt": "Question: Treatment of contralateral hydrocele in neonatal testicular torsion: Is less more? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "visually impaired",
+            "blind"
+        ],
+        "prompt": "Question: Are normally sighted, visually impaired, and blind pedestrians accurate and reliable at making street crossing decisions? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Crohn's disease"
+        ],
+        "prompt": "Question: Is it Crohn's disease? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tinnitus",
+            "cervicogenic somatic tinnitus"
+        ],
+        "prompt": "Question: Does multi-modal cervical physical therapy improve tinnitus in patients with cervicogenic somatic tinnitus? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "asthma",
+            "paucigranulocytic asthma"
+        ],
+        "prompt": "Question: Detailed analysis of sputum and systemic inflammation in asthma phenotypes: are paucigranulocytic asthmatics really non-inflammatory? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "HIV",
+            "STD"
+        ],
+        "prompt": "Question: Is HIV/STD control in Jamaica making a difference? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Panton-Valentine leucocidin",
+            "Staphylococcus aureus bacteraemia"
+        ],
+        "prompt": "Question: Is Panton-Valentine leucocidin associated with the pathogenesis of Staphylococcus aureus bacteraemia in the UK? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "impaired fasting blood glucose",
+            "increased mortality"
+        ],
+        "prompt": "Question: Are even impaired fasting blood glucose levels preoperatively associated with increased mortality after CABG surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary rectal cancer"
+        ],
+        "prompt": "Question: Does positron emission tomography change management in primary rectal cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "esophageal mucosa",
+            "esophagitis"
+        ],
+        "prompt": "Question: Vertical lines in distal esophageal mucosa (VLEM): a true endoscopic manifestation of esophagitis in children? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hypoglycaemia",
+            "cardiovascular events"
+        ],
+        "prompt": "Question: Does hypoglycaemia increase the risk of cardiovascular events? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "aganglionosis",
+            "Hirschsprung's disease"
+        ],
+        "prompt": "Question: Does the radiographic transition zone correlate with the level of aganglionosis on the specimen in Hirschsprung's disease? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Type 1 Diabetes"
+        ],
+        "prompt": "Question: Do Electrochemiluminescence Assays Improve Prediction of Time to Type 1 Diabetes in Autoantibody-Positive TrialNet Subjects? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostate cancer",
+            "oligometastases"
+        ],
+        "prompt": "Question: Is there a favorable subset of patients with prostate cancer who develop oligometastases? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary hepatocellular carcinoma"
+        ],
+        "prompt": "Question: Does screening or surveillance for primary hepatocellular carcinoma with ultrasonography improve the prognosis of patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "stroke"
+        ],
+        "prompt": "Question: Department of Transportation vs self-reported data on motor vehicle collisions and driving convictions for stroke survivors: do they agree? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Gastrointestinal stromal Tumours",
+            "Kit Mutation"
+        ],
+        "prompt": "Question: Neoadjuvant Imatinib in Locally Advanced Gastrointestinal stromal Tumours, Will Kit Mutation Analysis Be a Pathfinder? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "colon cancer",
+            "coronary artery disease"
+        ],
+        "prompt": "Question: Does the lipid-lowering peroxisome proliferator-activated receptors ligand bezafibrate prevent colon cancer in patients with coronary artery disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "sleep quality"
+        ],
+        "prompt": "Question: Does self-efficacy mediate the relationship between transformational leadership behaviours and healthcare workers' sleep quality? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "microbial contamination",
+            "hematopoietic cell transplantation outcomes"
+        ],
+        "prompt": "Question: Does microbial contamination influence the success of the hematopoietic cell transplantation outcomes? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Very high serum CA 19-9 levels"
+        ],
+        "prompt": "Question: Very high serum CA 19-9 levels: a contraindication to pancreaticoduodenectomy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Perioperative care"
+        ],
+        "prompt": "Question: Perioperative care in an animal model for training in abdominal surgery: is it necessary a preoperative fasting? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Residual fundus",
+            "neofundus",
+            "laparoscopic sleeve gastrectomy"
+        ],
+        "prompt": "Question: Residual fundus or neofundus after laparoscopic sleeve gastrectomy: is fundectomy safe and effective as revision surgery? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "asthma"
+        ],
+        "prompt": "Question: Are physician estimates of asthma severity less accurate in black than in white patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atrial fibrillation"
+        ],
+        "prompt": "Question: Does laparoscopic surgery decrease the risk of atrial fibrillation after foregut surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Main Gate Syndrome"
+        ],
+        "prompt": "Question: The Main Gate Syndrome: a new format in mass-casualty victim \"surge\" management? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "communication disorders"
+        ],
+        "prompt": "Question: Do communication disorders extend to musical messages? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lower pole calyceal stone"
+        ],
+        "prompt": "Question: Can infundibular height predict the clearance of lower pole calyceal stone after extracorporeal shockwave lithotripsy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lung ischemia",
+            "reperfusion"
+        ],
+        "prompt": "Question: Does lung ischemia and reperfusion have an impact on coronary flow? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "non-small-cell lung cancer"
+        ],
+        "prompt": "Question: Is a patient's self-reported health-related quality of life a prognostic factor for survival in non-small-cell lung cancer patients? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Transient tachypnea of the newborn",
+            "TTN"
+        ],
+        "prompt": "Question: Transient tachypnea of the newborn (TTN): a role for polymorphisms in the beta-adrenergic receptor (ADRB) encoding genes? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "depression"
+        ],
+        "prompt": "Question: Is duration of psychological treatment for depression related to return into treatment? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "infection"
+        ],
+        "prompt": "Question: Does shaving the incision site increase the infection rate after spinal surgery? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "aortic aneurysm rupture",
+            "aortic aneurysm"
+        ],
+        "prompt": "Question: The influence of atmospheric pressure on aortic aneurysm rupture--is the diameter of the aneurysm important? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "sexually transmitted disease"
+        ],
+        "prompt": "Question: Do French lay people and health professionals find it acceptable to breach confidentiality to protect a patient's wife from a sexually transmitted disease? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "somatic complaints",
+            "depression"
+        ],
+        "prompt": "Question: Do somatic complaints predict subsequent symptoms of depression? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "major depression"
+        ],
+        "prompt": "Question: Are women with major depression in pregnancy identifiable in population health data? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ischemic postconditioning",
+            "ischemic damage",
+            "percutaneous coronary revascularization"
+        ],
+        "prompt": "Question: Remote ischemic postconditioning: does it protect against ischemic damage in percutaneous coronary revascularization? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cancer"
+        ],
+        "prompt": "Question: The inverse equity hypothesis: does it apply to coverage of cancer screening in middle-income countries? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Identification of racial disparities in breast cancer mortality: does scale matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "unresponsive wakefulness syndrome",
+            "minimally conscious state"
+        ],
+        "prompt": "Question: Can transcranial direct current stimulation be useful in differentiating unresponsive wakefulness syndrome from minimally conscious state patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Aromatase inhibitor-related musculoskeletal symptoms",
+            "osteoporosis"
+        ],
+        "prompt": "Question: Aromatase inhibitor-related musculoskeletal symptoms: is preventing osteoporosis the key to eliminating these symptoms? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "asymptomatic endometrial cancer relapses"
+        ],
+        "prompt": "Question: Could different follow-up modalities play a role in the diagnosis of asymptomatic endometrial cancer relapses? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tracheobronchoscopy",
+            "esophageal atresia"
+        ],
+        "prompt": "Question: Preoperative tracheobronchoscopy in newborns with esophageal atresia: does it matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "horizontal semicircular canal ocular reflex"
+        ],
+        "prompt": "Question: Is horizontal semicircular canal ocular reflex influenced by otolith organs input? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "perforation of the appendix",
+            "tubal infertility",
+            "ectopic pregnancy"
+        ],
+        "prompt": "Question: Is perforation of the appendix a risk factor for tubal infertility and ectopic pregnancy? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Neisseria gonorrhoeae"
+        ],
+        "prompt": "Question: Serovar specific immunity to Neisseria gonorrhoeae: does it exist? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "medical emergencies"
+        ],
+        "prompt": "Question: May student examiners be reasonable substitute examiners for faculty in an undergraduate OSCE on medical emergencies? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "endothelial cell patterns",
+            "astrocytomas"
+        ],
+        "prompt": "Question: Are endothelial cell patterns of astrocytomas indicative of grade? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mortality"
+        ],
+        "prompt": "Question: Do all ethnic groups in New Zealand exhibit socio-economic mortality gradients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "knee kinematics"
+        ],
+        "prompt": "Question: Can normal knee kinematics be restored with unicompartmental knee replacement? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "advanced lung cancer"
+        ],
+        "prompt": "Question: Are serum leptin levels a prognostic factor in advanced lung cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "asthma"
+        ],
+        "prompt": "Question: Is fetal gender associated with emergency department visits for asthma during pregnancy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atrial fibrillation"
+        ],
+        "prompt": "Question: Stretch-sensitive KCNQ1 mutation A link between genetic and environmental factors in the pathogenesis of atrial fibrillation? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "corrected QT dispersion",
+            "left ventricular hypertrophy"
+        ],
+        "prompt": "Question: Would corrected QT dispersion predict left ventricular hypertrophy in hypertensive patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Traumatic aortic injury",
+            "aortic trauma"
+        ],
+        "prompt": "Question: Traumatic aortic injury: does the anatomy of the aortic arch influence aortic trauma severity? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "neutropenic fever"
+        ],
+        "prompt": "Question: Inpatient versus outpatient management of neutropenic fever in gynecologic oncology patients: is risk stratification useful? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Should chest wall irradiation be included after mastectomy and negative node breast cancer? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "blood pressure",
+            "hypertensive"
+        ],
+        "prompt": "Question: Does blood pressure change in treated hypertensive patients depending on whether it is measured by a physician or a nurse? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "spina bifida"
+        ],
+        "prompt": "Question: Treadmill testing of children who have spina bifida and are ambulatory: does peak oxygen uptake reflect maximum oxygen uptake? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "congenital anomalies"
+        ],
+        "prompt": "Question: Is the probability of prenatal diagnosis or termination of pregnancy different for fetuses with congenital anomalies conceived following assisted reproductive techniques? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "complex fractionated atrial electrograms",
+            "atrial fibrillation",
+            "sinus rhythm fractionation"
+        ],
+        "prompt": "Question: Is there a relationship between complex fractionated atrial electrograms recorded during atrial fibrillation and sinus rhythm fractionation? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "premature birth"
+        ],
+        "prompt": "Question: Does rural or urban residence make a difference to neonatal outcome in premature birth? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "trabecular bone",
+            "primary stability"
+        ],
+        "prompt": "Question: Is trabecular bone related to primary stability of miniscrews? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cancer"
+        ],
+        "prompt": "Question: Is there any evidence of a \"July effect\" in patients undergoing major cancer surgery? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "choledocholithiasis-induced cholangitis",
+            "common bile duct"
+        ],
+        "prompt": "Question: Is it necessary to insert a nasobiliary drainage tube routinely after endoscopic clearance of the common bile duct in patients with choledocholithiasis-induced cholangitis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Is the clinically positive axilla in breast cancer really a contraindication to sentinel lymph node biopsy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Convulsions",
+            "retinal haemorrhage"
+        ],
+        "prompt": "Question: Convulsions and retinal haemorrhage: should we look further? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Femoral Tunnel Lengths",
+            "Anterior Cruciate Ligament Reconstruction"
+        ],
+        "prompt": "Question: Can Flexible Instruments Create Adequate Femoral Tunnel Lengths at 90\u00b0 of Knee Flexion in Anterior Cruciate Ligament Reconstruction? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lung cancer"
+        ],
+        "prompt": "Question: Quality of life in lung cancer patients: does socioeconomic status matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Bone Turnover",
+            "Bone Histomorphometry"
+        ],
+        "prompt": "Question: Are Biochemical Markers of Bone Turnover Representative of Bone Histomorphometry in 370 Postmenopausal Women? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "congenital cardiac surgery"
+        ],
+        "prompt": "Question: Should early extubation be the goal for children after congenital cardiac surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "postpartum quality of life"
+        ],
+        "prompt": "Question: Does delivery mode affect women's postpartum quality of life in rural China? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Menopausal hormone therapy",
+            "irregular endometrial bleeding"
+        ],
+        "prompt": "Question: Menopausal hormone therapy and irregular endometrial bleeding: a potential role for uterine natural killer cells? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gallbladder polyp",
+            "neoplastic polyp"
+        ],
+        "prompt": "Question: Can the growth rate of a gallbladder polyp predict a neoplastic polyp? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "insulin resistance",
+            "hyperglycemia",
+            "cardiovascular risk"
+        ],
+        "prompt": "Question: Does insulin resistance drive the association between hyperglycemia and cardiovascular risk? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "staple line leakage",
+            "morbid obesity"
+        ],
+        "prompt": "Question: Are there risk factors that increase the rate of staple line leakage in patients undergoing primary sleeve gastrectomy for morbid obesity? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Chronic functional somatic symptoms"
+        ],
+        "prompt": "Question: Chronic functional somatic symptoms: a single syndrome? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "urinary tract infections"
+        ],
+        "prompt": "Question: Actinobaculum schaalii, a cause of urinary tract infections in children? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic conditions"
+        ],
+        "prompt": "Question: Prevalence of chronic conditions among Medicare Part A beneficiaries in 2008 and 2010: are Medicare beneficiaries getting sicker? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "localized prostate cancer"
+        ],
+        "prompt": "Question: Do patients with localized prostate cancer treatment really want more aggressive treatment? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "stress"
+        ],
+        "prompt": "Question: Does music influence stress in mechanically ventilated patients? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "spasticity"
+        ],
+        "prompt": "Question: Does reducing spasticity translate into functional benefit? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ureter"
+        ],
+        "prompt": "Question: Is the holmium:YAG laser the best intracorporeal lithotripter for the ureter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vaginal intraepithelial neoplasia",
+            "cervical intraepithelial neoplasia"
+        ],
+        "prompt": "Question: Does vaginal intraepithelial neoplasia have the same evolution as cervical intraepithelial neoplasia? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "brain-dead"
+        ],
+        "prompt": "Question: Transesophageal echocardiographic assessment of left ventricular function in brain-dead patients: are marginally acceptable hearts suitable for transplantation? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "left hemisphere strokes"
+        ],
+        "prompt": "Question: Does the National Institutes of Health Stroke Scale favor left hemisphere strokes? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Temporomandibular Joint"
+        ],
+        "prompt": "Question: Can a Novel Surgical Approach to the Temporomandibular Joint Improve Access and Reduce Complications? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pelvic ring fractures"
+        ],
+        "prompt": "Question: Young-Burgess classification of pelvic ring fractures: does it predict mortality, transfusion requirements, and non-orthopaedic injuries? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vitamin D deficiency",
+            "pediatric celiac disease"
+        ],
+        "prompt": "Question: Is vitamin D deficiency a feature of pediatric celiac disease? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "HIV"
+        ],
+        "prompt": "Question: Is unsafe sexual behaviour increasing among HIV-infected individuals? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cholestasis",
+            "small bowel atresia"
+        ],
+        "prompt": "Question: Cholestasis associated with small bowel atresia: do we always need to investigate? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "smoking cessation"
+        ],
+        "prompt": "Question: Are financial incentives cost-effective to support smoking cessation during pregnancy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "day surgery"
+        ],
+        "prompt": "Question: Can medical students contribute to quality assurance programmes in day surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "paragangliomas"
+        ],
+        "prompt": "Question: Measurement of head and neck paragangliomas: is volumetric analysis worth the effort? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast lesions"
+        ],
+        "prompt": "Question: Three-dimensional ultrasound-validated large-core needle biopsy: is it a reliable method for the histological assessment of breast lesions? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "MRCGP"
+        ],
+        "prompt": "Question: Do general practice selection scores predict success at MRCGP? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Spinal Cord Monitoring Alerts",
+            "Thoracic Spinal Deformity"
+        ],
+        "prompt": "Question: The Deformity Angular Ratio: Does It Correlate With High-Risk Cases for Potential Spinal Cord Monitoring Alerts in Pediatric 3-Column Thoracic Spinal Deformity Corrective Surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "personality disorder"
+        ],
+        "prompt": "Question: Does age moderate the effect of personality disorder on coping style in psychiatric inpatients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "uremic plasma",
+            "uremia"
+        ],
+        "prompt": "Question: Autoxidation products of both carbohydrates and lipids are increased in uremic plasma: is there oxidative stress in uremia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "high-risk human papillomaviruses"
+        ],
+        "prompt": "Question: Can 'high-risk' human papillomaviruses (HPVs) be detected in human breast milk? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ovarian cancer"
+        ],
+        "prompt": "Question: Quaternary cytoreductive surgery in ovarian cancer: does surgical effort still matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pain"
+        ],
+        "prompt": "Question: Is pain a clinically relevant problem in general adult psychiatry? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "overactive bladder",
+            "mixed incontinence"
+        ],
+        "prompt": "Question: Does concomitant anterior/apical repair during midurethral sling improve the overactive bladder component of mixed incontinence? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Parkinson's disease"
+        ],
+        "prompt": "Question: Knee extensor strength, dynamic stability, and functional ambulation: are they related in Parkinson's disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer",
+            "colorectal cancer",
+            "lung cancer"
+        ],
+        "prompt": "Question: Is distance to provider a barrier to care for medicaid patients with breast, colorectal, or lung cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "congenital heart defects",
+            "Down syndrome"
+        ],
+        "prompt": "Question: Can folic acid protect against congenital heart defects in Down syndrome? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mental health differences"
+        ],
+        "prompt": "Question: Are there mental health differences between francophone and non-francophone populations in manitoba? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "type 1 diabetes mellitus",
+            "Achilles tendon"
+        ],
+        "prompt": "Question: Does type 1 diabetes mellitus affect Achilles tendon response to a 10\u00a0km run? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Fragility of the esophageal mucosa",
+            "primary eosinophilic esophagitis"
+        ],
+        "prompt": "Question: Fragility of the esophageal mucosa: a pathognomonic endoscopic sign of primary eosinophilic esophagitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "osteoporotic acetabular fractures"
+        ],
+        "prompt": "Question: Does cup-cage reconstruction with oversized cups provide initial stability in THA for osteoporotic acetabular fractures? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tetralogy of fallot"
+        ],
+        "prompt": "Question: Pulmonary valve replacement in adults late after repair of tetralogy of fallot: are we operating too late? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Xanthogranulomatous cholecystitis"
+        ],
+        "prompt": "Question: Xanthogranulomatous cholecystitis: a premalignant condition? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "frontotemporal lobar degeneration"
+        ],
+        "prompt": "Question: Does TDP-43 type confer a distinct pattern of atrophy in frontotemporal lobar degeneration? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "bipolar I disorder"
+        ],
+        "prompt": "Question: Diagnostic characteristics of child bipolar I disorder: does the \"Treatment of Early Age Mania (team)\" sample generalize? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "concussion"
+        ],
+        "prompt": "Question: Does rugby headgear prevent concussion? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Spinal subdural hematoma",
+            "ruptured intracranial aneurysm"
+        ],
+        "prompt": "Question: Spinal subdural hematoma: a sequela of a ruptured intracranial aneurysm? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "internal carotid artery thrombus",
+            "atherosclerotic plaque",
+            "stroke",
+            "transient ischemic attack"
+        ],
+        "prompt": "Question: Can shape analysis differentiate free-floating internal carotid artery thrombus from atherosclerotic plaque in patients evaluated with CTA for stroke or transient ischemic attack? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Dementia",
+            "aphasia",
+            "motor neuron disease"
+        ],
+        "prompt": "Question: Dementia and aphasia in motor neuron disease: an underrecognised association? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tuberculosis"
+        ],
+        "prompt": "Question: Does solid culture for tuberculosis influence clinical decision making in India? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary parotid gland tumors"
+        ],
+        "prompt": "Question: Diffusion-weighted echo-planar MR imaging of primary parotid gland tumors: is a prediction of different histologic subtypes possible? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hemodynamic changes",
+            "hemodialysis"
+        ],
+        "prompt": "Question: Is there a role for endothelin-1 in the hemodynamic changes during hemodialysis? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "suicidal behavior",
+            "affective disorder"
+        ],
+        "prompt": "Question: Do risk factors for suicidal behavior differ by affective disorder polarity? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Multidisciplinary breast cancer clinics. Do they work? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "SLE"
+        ],
+        "prompt": "Question: Are there associations of health status, disease activity and damage in SLE patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "PSA (Prostate-Specific Antigen) fluctuating levels"
+        ],
+        "prompt": "Question: PSA repeatedly fluctuating levels are reassuring enough to avoid biopsy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "central line-associated bloodstream infection"
+        ],
+        "prompt": "Question: Is zero central line-associated bloodstream infection rate sustainable? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pulpotomy"
+        ],
+        "prompt": "Question: Should pulp chamber pulpotomy be seen as a permanent treatment? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "adolescent idiopathic scoliosis"
+        ],
+        "prompt": "Question: Does transverse apex coincide with coronal apex levels (regional or global) in adolescent idiopathic scoliosis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cerebral palsy"
+        ],
+        "prompt": "Question: Does the Child Health Computing System adequately identify children with cerebral palsy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Is breast cancer prognosis inherited? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "nuchal translucency thickness",
+            "GDM"
+        ],
+        "prompt": "Question: Does nuchal translucency thickness in the first trimester predict GDM onset during pregnancy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hypersexuality",
+            "prepubertal and early adolescent bipolar disorder"
+        ],
+        "prompt": "Question: Are the arginine vasopressin V1a receptor microsatellites related to hypersexuality in children with a prepubertal and early adolescent bipolar disorder phenotype? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Stage I non-small cell lung carcinoma"
+        ],
+        "prompt": "Question: Stage I non-small cell lung carcinoma: really an early stage? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Orthopaedic Surgery"
+        ],
+        "prompt": "Question: Does Residency Selection Criteria Predict Performance in Orthopaedic Surgery Residency? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Bolton tooth-size discrepancy"
+        ],
+        "prompt": "Question: Is arch form influenced by sagittal molar relationship or Bolton tooth-size discrepancy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "depression"
+        ],
+        "prompt": "Question: Updating emotional content in working memory: a depression-specific deficit? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "internal jugular vein cannulation"
+        ],
+        "prompt": "Question: Does ultrasound imaging before puncture facilitate internal jugular vein cannulation? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostate specific antigen"
+        ],
+        "prompt": "Question: Should prostate specific antigen be adjusted for body mass index? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "obstructive sleep apnea"
+        ],
+        "prompt": "Question: Does obstructive sleep apnea affect aerobic fitness? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cerebral hemispherectomy"
+        ],
+        "prompt": "Question: Literacy after cerebral hemispherectomy: Can the isolated right hemisphere read? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "injury",
+            "hemorrhagic shock"
+        ],
+        "prompt": "Question: Characterization of the gender dimorphism after injury and hemorrhagic shock: are hormonal differences responsible? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "terminally ill"
+        ],
+        "prompt": "Question: Can communication with terminally ill patients be taught? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Delays in time to primary treatment after a diagnosis of breast cancer: does it impact survival? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vascular abnormalities"
+        ],
+        "prompt": "Question: Are increased carotid artery pulsatility and resistance indexes early signs of vascular abnormalities in young obese males? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pyloric mucosal hypertrophy",
+            "hypertrophic pyloric stenosis"
+        ],
+        "prompt": "Question: In vivo visualization of pyloric mucosal hypertrophy in infants with hypertrophic pyloric stenosis: is there an etiologic role? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "high blood pressure",
+            "chronic low back pain"
+        ],
+        "prompt": "Question: Does high blood pressure reduce the risk of chronic low back pain? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Nasal fractures"
+        ],
+        "prompt": "Question: Nasal fractures:  is closed reduction satisfying? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "polyarteritis nodosa"
+        ],
+        "prompt": "Question: Does spontaneous remission occur in polyarteritis nodosa? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Gluten tolerance",
+            "celiac disease"
+        ],
+        "prompt": "Question: Gluten tolerance in adult patients with celiac disease 20 years after diagnosis? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "COPD"
+        ],
+        "prompt": "Question: Do symptoms predict COPD in smokers? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "immunological",
+            "allergologic"
+        ],
+        "prompt": "Question: Search engine as a diagnostic tool in difficult immunological and allergologic cases: is Google useful? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Hepatorenal syndrome"
+        ],
+        "prompt": "Question: Hepatorenal syndrome: are we missing some prognostic factors? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cervical cancer"
+        ],
+        "prompt": "Question: Vaginal dose assessment in image-guided brachytherapy for cervical cancer: Can we really rely on dose-point evaluation? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "disorders of consciousness"
+        ],
+        "prompt": "Question: Can mental imagery functional magnetic resonance imaging predict recovery in patients with disorders of consciousness? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cardiovascular",
+            "infantile hemangiomas"
+        ],
+        "prompt": "Question: Is cardiovascular evaluation necessary prior to and during beta-blocker therapy for infantile hemangiomas? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "congestive heart failure"
+        ],
+        "prompt": "Question: Is specialty care associated with improved survival of patients with congestive heart failure? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "polymyalgia rheumatica"
+        ],
+        "prompt": "Question: Can the prognosis of polymyalgia rheumatica be predicted at disease onset? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ascitis",
+            "alcoholic cirrotics"
+        ],
+        "prompt": "Question: Should ascitis volume and anthropometric measurements be estimated in hospitalized alcoholic cirrotics? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "maternal mortality"
+        ],
+        "prompt": "Question: The use of audit to identify maternal mortality in different settings: is it just a difference between the rich and the poor? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lymphadenectomy",
+            "neoadjuvant chemotherapy",
+            "cervical cancer"
+        ],
+        "prompt": "Question: Could the extent of lymphadenectomy be modified by neoadjuvant chemotherapy in cervical cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Wound Cultures",
+            "Blood Cultures",
+            "Severe Burn"
+        ],
+        "prompt": "Question: Do Wound Cultures Give Information About the Microbiology of Blood Cultures in Severe Burn Patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "optimal blood pressure",
+            "hypertensive status"
+        ],
+        "prompt": "Question: Are behavioural risk factors to be blamed for the conversion from optimal blood pressure to hypertensive status in Black South Africans? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "depression"
+        ],
+        "prompt": "Question: Systematic use of patient-rated depression severity monitoring: is it helpful and feasible in clinical psychiatry? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "stroke"
+        ],
+        "prompt": "Question: Treadmill training post stroke: are there any secondary benefits? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Prostatic syndrome",
+            "pleural effusion"
+        ],
+        "prompt": "Question: Prostatic syndrome and pleural effusion: are they different diseases? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "type 1 diabetes"
+        ],
+        "prompt": "Question: Telemedicine and type 1 diabetes: is technology per se sufficient to improve glycaemic control? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Nephrolithiasis"
+        ],
+        "prompt": "Question: Digital Tomosynthesis: A Viable Alternative to Noncontrast Computed Tomography for the Follow-Up of Nephrolithiasis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atherosclerosis",
+            "type 1 diabetes"
+        ],
+        "prompt": "Question: High cumulative insulin exposure: a risk factor of atherosclerosis in type 1 diabetes? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hepatitis G virus",
+            "TT virus",
+            "cryptogenic chronic liver disease"
+        ],
+        "prompt": "Question: Are hepatitis G virus and TT virus involved in cryptogenic chronic liver disease? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gastric cancer"
+        ],
+        "prompt": "Question: Preoperative locoregional staging of gastric cancer: is there a place for magnetic resonance imaging? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cushing's disease"
+        ],
+        "prompt": "Question: Transsphenoidal pituitary surgery in Cushing's disease: can we predict outcome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "aspiration",
+            "acute stroke"
+        ],
+        "prompt": "Question: Can bedside assessment reliably exclude aspiration following acute stroke? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "child abuse"
+        ],
+        "prompt": "Question: Are UK radiologists satisfied with the training and support received in suspected child abuse? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pharyngeal and oesophageal pH"
+        ],
+        "prompt": "Question: Artefacts in 24-h pharyngeal and oesophageal pH monitoring: is simplification of pH data analysis feasible? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mediastinal lymph nodes",
+            "metastases",
+            "non-small cell lung cancer"
+        ],
+        "prompt": "Question: Can the condition of the cell microenvironment of mediastinal lymph nodes help predict the risk of metastases in non-small cell lung cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "wandering",
+            "physically nonaggressive agitation"
+        ],
+        "prompt": "Question: Are wandering and physically nonaggressive agitation equivalent? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ascending aortoplasty"
+        ],
+        "prompt": "Question: Is size-reducing ascending aortoplasty with external reinforcement an option in modern aortic surgery? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "uterine myomas"
+        ],
+        "prompt": "Question: Volume change of uterine myomas during pregnancy: do myomas really grow? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "adrenal masses"
+        ],
+        "prompt": "Question: Is laparoscopic adrenalectomy safe and effective for adrenal masses larger than 7 cm? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "disability"
+        ],
+        "prompt": "Question: Upstream solutions: does the supplemental security income program reduce disability in the elderly? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Eyelid-parotid metastasis"
+        ],
+        "prompt": "Question: Eyelid-parotid metastasis: do we screen for coexisting masses? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "radiation exposure"
+        ],
+        "prompt": "Question: Will CT ordering practices change if we educate residents about the potential effects of radiation exposure? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "all-cause mortality"
+        ],
+        "prompt": "Question: Does context matter for the relationship between deprivation and all-cause mortality? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "stress"
+        ],
+        "prompt": "Question: Does stress increase imitation of drinking behavior? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atopic dermatitis"
+        ],
+        "prompt": "Question: Is the atopy patch test with house dust mites specific for atopic dermatitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Juvenile osteochondritis dissecans"
+        ],
+        "prompt": "Question: Juvenile osteochondritis dissecans: is it a growth disturbance of the secondary physis of the epiphysis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atrial fibrillation",
+            "coronary artery bypass grafting"
+        ],
+        "prompt": "Question: Do preoperative statins reduce atrial fibrillation after coronary artery bypass grafting? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ADRs"
+        ],
+        "prompt": "Question: Can decisional algorithms replace global introspection in the individual causality assessment of spontaneously reported ADRs? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "activated plasma thromboplastin time"
+        ],
+        "prompt": "Question: Can we rely on arterial line sampling in performing activated plasma thromboplastin time after cardiac surgery? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic lung disease",
+            "mortality"
+        ],
+        "prompt": "Question: Does timing of initial surfactant treatment make a difference in rates of chronic lung disease or mortality in premature infants? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute chest syndrome",
+            "sickle cell disease"
+        ],
+        "prompt": "Question: Clinician assessment for acute chest syndrome in febrile patients with sickle cell disease: is it accurate enough? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Emergency Medicine"
+        ],
+        "prompt": "Question: Outcome Feedback within Emergency Medicine Training Programs: An Opportunity to Apply the Theory of Deliberate Practice? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute cholecystitis"
+        ],
+        "prompt": "Question: Does a special interest in laparoscopy affect the treatment of acute cholecystitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "valvar aortic stenosis"
+        ],
+        "prompt": "Question: Can progression of valvar aortic stenosis be predicted accurately? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "low intellectual performance"
+        ],
+        "prompt": "Question: Birth characteristics and risk of low intellectual performance in early adulthood: are the associations confounded by socioeconomic factors in adolescence or familial effects? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "diabetic foot"
+        ],
+        "prompt": "Question: Is scintigraphy a guideline method in determining amputation levels in diabetic foot? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "traumatic spinal cord injury"
+        ],
+        "prompt": "Question: Is determination between complete and incomplete traumatic spinal cord injury clinically relevant? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gynaecological cancer"
+        ],
+        "prompt": "Question: Improvements in survival of gynaecological cancer in the Anglia region of England: are these an effect of centralisation of care and use of multidisciplinary management? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "symptoms"
+        ],
+        "prompt": "Question: Do symptoms matter when considering patients for phase I clinical trials? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vitamin D insufficiency",
+            "deficiency",
+            "osteochondritis dissecans"
+        ],
+        "prompt": "Question: Is vitamin D insufficiency or deficiency related to the development of osteochondritis dissecans? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "episodic migraine",
+            "headache"
+        ],
+        "prompt": "Question: Do episodic migraineurs selectively attend to headache-related visual stimuli? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "functional mitral regurgitation",
+            "dilated cardiomyopathy",
+            "ischemic cardiomyopathy"
+        ],
+        "prompt": "Question: Mitral replacement or repair for functional mitral regurgitation in dilated and ischemic cardiomyopathy: is it really the same? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "nontriploid partial hydatidiform moles"
+        ],
+        "prompt": "Question: Do nontriploid partial hydatidiform moles exist? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mild hereditary spherocytosis"
+        ],
+        "prompt": "Question: Is cholecystectomy really an indication for concomitant splenectomy in mild hereditary spherocytosis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "extrapulmonary small cell cancers"
+        ],
+        "prompt": "Question: Does surgery or radiation therapy impact survival for patients with extrapulmonary small cell cancers? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Bone Metastases"
+        ],
+        "prompt": "Question: MR Diagnosis of Bone Metastases at 1.5 T and 3 T: Can STIR Imaging Be Omitted? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vanishing testes syndrome"
+        ],
+        "prompt": "Question: Histologic evaluation of the testicular remnant associated with the vanishing testes syndrome: is surgical management necessary? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "obesity"
+        ],
+        "prompt": "Question: Is there an intrauterine influence on obesity? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "short-segment Barrett's oesophagus"
+        ],
+        "prompt": "Question: Is cytokeratin immunoreactivity useful in the diagnosis of short-segment Barrett's oesophagus in Korea? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary lung cancer"
+        ],
+        "prompt": "Question: Is routine dissection of the station 9 lymph nodes really necessary for primary lung cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cutaneous melanoma"
+        ],
+        "prompt": "Question: Cutaneous melanoma in a multiethnic population: is this a different disease? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Kell alloimmunization",
+            "fetal thrombocytopenia"
+        ],
+        "prompt": "Question: Kell alloimmunization in pregnancy: associated with fetal thrombocytopenia? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Gynecological cancer"
+        ],
+        "prompt": "Question: Gynecological cancer alarm symptoms: is contact with specialist care associated with lifestyle and socioeconomic status? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "peripheral thrombophlebitis"
+        ],
+        "prompt": "Question: Does elective re-siting of intravenous cannulae decrease peripheral thrombophlebitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "major depression"
+        ],
+        "prompt": "Question: Risk factors for major depression during midlife among a community sample of women with and without prior major depression: are they the same or different? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary/idiopathic adhesive capsulitis"
+        ],
+        "prompt": "Question: Clinical identifiers for early-stage primary/idiopathic adhesive capsulitis: are we seeing the real picture? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "immature adolescent idiopathic scoliosis",
+            "progressive curve"
+        ],
+        "prompt": "Question: Does delaying surgery in immature adolescent idiopathic scoliosis patients with progressive curve, lead to addition of fusion levels? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "surgical site occurrences"
+        ],
+        "prompt": "Question: Do risk calculators accurately predict surgical site\u00a0occurrences? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "epithelial ovarian carcinoma"
+        ],
+        "prompt": "Question: Advanced epithelial ovarian carcinoma in Thai women: should we continue to offer second-look laparotomy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "high-sensitivity C-reactive protein",
+            "carotid atherosclerosis"
+        ],
+        "prompt": "Question: Is high-sensitivity C-reactive protein associated with carotid atherosclerosis in healthy Koreans? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "renal cell carcinoma"
+        ],
+        "prompt": "Question: Validation of the 2009 TNM version in a large multi-institutional cohort of patients treated for renal cell carcinoma: are further improvements needed? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "localized prostate cancer"
+        ],
+        "prompt": "Question: Do older men benefit from curative therapy of localized prostate cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Pituitary apoplexy"
+        ],
+        "prompt": "Question: Pituitary apoplexy: do histological features influence the clinical presentation and outcome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute overt-obscure gastrointestinal bleeding"
+        ],
+        "prompt": "Question: Emergency double-balloon enteroscopy combined with real-time viewing of capsule endoscopy: a feasible combined approach in acute overt-obscure gastrointestinal bleeding? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "euthyroid sick syndrome"
+        ],
+        "prompt": "Question: Cardiopulmonary bypass temperature does not affect postoperative euthyroid sick syndrome? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Body dysmorphic disorder"
+        ],
+        "prompt": "Question: Body dysmorphic disorder: does it have a psychotic subtype? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pain"
+        ],
+        "prompt": "Question: Does receipt of hospice care in nursing homes improve the management of pain at the end of life? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "binge drinking",
+            "psychomotor deficits"
+        ],
+        "prompt": "Question: Does binge drinking during early pregnancy increase the risk of psychomotor deficits? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "synovitis",
+            "rheumatoid arthritis"
+        ],
+        "prompt": "Question: Does ultrasound-scored synovitis depend on the pharmacokinetics of subcutaneous anti-TNF agents in patients with rheumatoid arthritis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Failed IUD insertions"
+        ],
+        "prompt": "Question: Failed IUD insertions in community practice: an under-recognized problem? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Type II supracondylar humerus fractures"
+        ],
+        "prompt": "Question: Type II supracondylar humerus fractures: can some be treated nonoperatively? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "nosocomial pneumonia"
+        ],
+        "prompt": "Question: Does invasive diagnosis of nosocomial pneumonia during off-hours delay treatment? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Undescended testes"
+        ],
+        "prompt": "Question: Undescended testes: does age at orchiopexy affect survival of the testis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lipids",
+            "blood pressure",
+            "diabetes",
+            "myocardial infarction"
+        ],
+        "prompt": "Question: Do lipids, blood pressure, diabetes, and smoking confer equal risk of myocardial infarction in women as in men? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "VCUG"
+        ],
+        "prompt": "Question: Evaluation of pediatric VCUG at an academic children's hospital: is the radiographic scout image necessary? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "endometrial polyps"
+        ],
+        "prompt": "Question: Are endometrial polyps from pre-menopausal women similar to post-menopausal women? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "metabolic syndrome",
+            "heart dimensions",
+            "hypertensive"
+        ],
+        "prompt": "Question: Does accompanying metabolic syndrome contribute to heart dimensions in hypertensive patients? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Idiopathic Misty Mesentery",
+            "Obesity"
+        ],
+        "prompt": "Question: The Prevalence of Incidentally Detected Idiopathic Misty Mesentery on\u00a0Multidetector Computed Tomography: Can Obesity Be the Triggering Cause? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "concussion"
+        ],
+        "prompt": "Question: Are pediatric concussion patients compliant with discharge instructions? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "HIV viral load suppression"
+        ],
+        "prompt": "Question: Treatment as prevention in resource-limited settings: is it feasible to maintain HIV viral load suppression over time? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "carotid endarterectomy"
+        ],
+        "prompt": "Question: Are octogenarians at high risk for carotid endarterectomy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Invasive Cervical Cancer"
+        ],
+        "prompt": "Question: Screening History Among Women with Invasive Cervical Cancer in an Academic Medical Center: Will We Miss Cancers Following Updated Guidelines? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Oral mucocele",
+            "ranula",
+            "human immunodeficiency virus-related salivary gland disease"
+        ],
+        "prompt": "Question: Oral mucocele/ranula: Another human immunodeficiency virus-related salivary gland disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gbs carrier rates"
+        ],
+        "prompt": "Question: Is there an increase in the incidence of gbs carrier rates among pregnant women in northern Israel? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "adolescent smoking susceptibility"
+        ],
+        "prompt": "Question: Cigarettes and cinema: does parental restriction of R-rated movie viewing reduce adolescent smoking susceptibility? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "thyroid cancer"
+        ],
+        "prompt": "Question: Is it time to reconsider lobectomy in low-risk paediatric thyroid cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "palliative care"
+        ],
+        "prompt": "Question: Is an advance care planning model feasible in community palliative care? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "C-reactive protein",
+            "prostate cancer"
+        ],
+        "prompt": "Question: Do preoperative serum C-reactive protein levels predict the definitive pathological stage in patients with clinically localized prostate cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "low-grade cerebellar astrocytoma"
+        ],
+        "prompt": "Question: Sub-classification of low-grade cerebellar astrocytoma: is it clinically meaningful? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "disabilities"
+        ],
+        "prompt": "Question: After CLASS--Is a voluntary public insurance program a realistic way to meet the long-term support and service needs of adults with disabilities? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "intraoperative neuromonitoring"
+        ],
+        "prompt": "Question: Is intraoperative neuromonitoring associated with better functional outcome in patients undergoing open TME? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "head and neck cancer",
+            "fears of recurrence"
+        ],
+        "prompt": "Question: Can we predict which head and neck cancer survivors develop fears of recurrence? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "secular growth acceleration"
+        ],
+        "prompt": "Question: The secular growth acceleration: does it appear during fetal life? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hippocampal atrophy",
+            "cognitive decline"
+        ],
+        "prompt": "Question: Does hippocampal atrophy on MRI predict cognitive decline? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "endomyocardial fibrosis"
+        ],
+        "prompt": "Question: Does quantitative left ventricular regional wall motion change after fibrous tissue resection in endomyocardial fibrosis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "implantable left ventricular assist devices"
+        ],
+        "prompt": "Question: Bridge experience with long-term implantable left ventricular assist devices. Are they an alternative to transplantation? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "radical cystectomy"
+        ],
+        "prompt": "Question: Is patient outcome compromised during the initial experience with robot-assisted radical cystectomy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Condylar Fractures"
+        ],
+        "prompt": "Question: Is the Retromandibular Transparotid Approach a Reliable Option for the Surgical Treatment of Condylar Fractures? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "complications"
+        ],
+        "prompt": "Question: Appendectomy timing: Will delayed surgery increase the complications? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "vitamin D deficiency",
+            "CKD"
+        ],
+        "prompt": "Question: Treatment of vitamin D deficiency in CKD patients with ergocalciferol: are current K/DOQI treatment guidelines adequate? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Viral Co-Infection",
+            "Acute Respiratory Infection"
+        ],
+        "prompt": "Question: Does Viral Co-Infection Influence the Severity of Acute Respiratory Infection in Children? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cardiogenic shock",
+            "acute myocardial infarction"
+        ],
+        "prompt": "Question: Cardiogenic shock complicating acute myocardial infarction in elderly patients: does admission to a tertiary center improve survival? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "postpartum"
+        ],
+        "prompt": "Question: Learning needs of postpartum women: does socioeconomic status matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "urinary stone"
+        ],
+        "prompt": "Question: Pitfalls in urinary stone identification using CT attenuation values: are we getting the same information on different scanner models? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "degenerative stenosis",
+            "ossification of the posterior longitudinal ligament"
+        ],
+        "prompt": "Question: Laminoplasty outcomes: is there a difference between patients with degenerative stenosis and those with ossification of the posterior longitudinal ligament? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute fibrinous and organizing pneumonia",
+            "immune dysregulation"
+        ],
+        "prompt": "Question: Is acute fibrinous and organizing pneumonia the expression of immune dysregulation? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Hypotension",
+            "coronary disease",
+            "hypotensive events",
+            "myocardial ischaemic events"
+        ],
+        "prompt": "Question: Hypotension in patients with coronary disease: can profound hypotensive events cause myocardial ischaemic events? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "TB/HIV co-infection"
+        ],
+        "prompt": "Question: An HIV1/2 point of care test on sputum for screening TB/HIV co-infection in Central India - Will it work? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "dyspnea",
+            "bronchoconstriction",
+            "asthma"
+        ],
+        "prompt": "Question: Do inhaled corticosteroids affect perception of dyspnea during bronchoconstriction in asthma? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "transbronchial biopsy"
+        ],
+        "prompt": "Question: Is routine chest radiography after transbronchial biopsy necessary? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "rectal anastomosis"
+        ],
+        "prompt": "Question: Is it safe to perform rectal anastomosis in gynaecological debulking surgery without a diverting stoma? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic kidney disease",
+            "hypertensive"
+        ],
+        "prompt": "Question: Does angiotensin-converting enzyme-1 (ACE-1) gene polymorphism lead to chronic kidney disease among hypertensive patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gastro-oesophageal reflux disease"
+        ],
+        "prompt": "Question: Does laparoscopic antireflux surgery improve quality of life in patients whose gastro-oesophageal reflux disease is well controlled with medical therapy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "limb-threatening ischemia"
+        ],
+        "prompt": "Question: Is semi-closed endarterectomy of the superficial femoral artery combined with a short venous bypass in case of insufficient venous material an acceptable alternative for limb-threatening ischemia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "epilepsy"
+        ],
+        "prompt": "Question: Do cytokines have any role in epilepsy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "alcohol craving"
+        ],
+        "prompt": "Question: Cue-induced behavioural activation: a novel model of alcohol craving? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Colorectal cancer"
+        ],
+        "prompt": "Question: Colorectal cancer in young patients: is it a distinct clinical entity? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "infected TKA"
+        ],
+        "prompt": "Question: Can implant retention be recommended for treatment of infected TKA? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "postictal psychotic episodes",
+            "interictal psychotic episodes"
+        ],
+        "prompt": "Question: Long-term significance of postictal psychotic episodes II. Are they predictive of interictal psychotic episodes? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Blunt trauma"
+        ],
+        "prompt": "Question: Blunt trauma in intoxicated patients: is computed tomography of the abdomen always necessary? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Chronic progressive cervical myelopathy",
+            "HTLV-I infection",
+            "HAM/TSP"
+        ],
+        "prompt": "Question: Chronic progressive cervical myelopathy with HTLV-I infection: Variant form of HAM/TSP? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "non-small cell lung cancer"
+        ],
+        "prompt": "Question: Gender difference in survival of resected non-small cell lung cancer: histology-related phenomenon? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cerebrospinal fluid fistula"
+        ],
+        "prompt": "Question: Is lumbar drainage of postoperative cerebrospinal fluid fistula after spine surgery effective? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "obesity",
+            "wheezing"
+        ],
+        "prompt": "Question: Is obesity a risk factor for wheezing among adolescents? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "extremely low birth weight"
+        ],
+        "prompt": "Question: Dose end-tidal carbon dioxide measurement correlate with arterial carbon dioxide in extremely low birth weight infants in the first week of life? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ovarian endometrioma",
+            "epithelial ovarian cancer"
+        ],
+        "prompt": "Question: Is CA72-4 a useful biomarker in differential diagnosis between ovarian endometrioma and epithelial ovarian cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "trigeminal neuralgia"
+        ],
+        "prompt": "Question: Does increased nerve length within the treatment volume improve trigeminal neuralgia radiosurgery? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tumor",
+            "soft tissue sarcoma"
+        ],
+        "prompt": "Question: Should tumor depth be included in prognostication of soft tissue sarcoma? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "fetal acidosis"
+        ],
+        "prompt": "Question: Is intrapartum vibroacoustic stimulation an effective predictor of fetal acidosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "alcohol use"
+        ],
+        "prompt": "Question: The association of puberty and young adolescent alcohol use: do parents have a moderating role? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "loss of consciousness",
+            "neuropsychological decrements",
+            "concussion"
+        ],
+        "prompt": "Question: Does loss of consciousness predict neuropsychological decrements after concussion? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gastric cancer"
+        ],
+        "prompt": "Question: Does body mass index (BMI) influence morbidity and long-term survival in gastric cancer patients after gastrectomy? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ligament balancing",
+            "total knee arthroplasty"
+        ],
+        "prompt": "Question: Does patella position influence ligament balancing in total knee arthroplasty? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "GERD"
+        ],
+        "prompt": "Question: Is the advanced age a contraindication to GERD laparoscopic surgery? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "psychosis",
+            "Ultra high risk for psychosis"
+        ],
+        "prompt": "Question: Ultra high risk (UHR) for psychosis criteria: are there different levels of risk for transition to psychosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "myoelectric fatigue"
+        ],
+        "prompt": "Question: Can continuous physical training counteract aging effect on myoelectric fatigue? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ischemic preconditioning",
+            "ischemia"
+        ],
+        "prompt": "Question: Does ischemic preconditioning require reperfusion before index ischemia? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pseudoexfoliation syndrome"
+        ],
+        "prompt": "Question: Does head positioning influence anterior chamber depth in pseudoexfoliation syndrome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "polymorphisms",
+            "lipid levels"
+        ],
+        "prompt": "Question: Are polymorphisms in oestrogen receptors genes associated with lipid levels in response to hormone therapy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "sternal closure"
+        ],
+        "prompt": "Question: Sternal plating for primary and secondary sternal closure; can it improve sternal stability? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "xerostomia"
+        ],
+        "prompt": "Question: Can dose reduction to one parotid gland prevent xerostomia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "schizophrenia"
+        ],
+        "prompt": "Question: Is the histidine triad nucleotide-binding protein 1 (HINT1) gene a candidate for schizophrenia? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "major trauma",
+            "acute respiratory distress syndrome"
+        ],
+        "prompt": "Question: Increased neutrophil migratory activity after major trauma: a factor in the etiology of acute respiratory distress syndrome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "body mass index",
+            "asthma"
+        ],
+        "prompt": "Question: Does higher body mass index contribute to worse asthma control in an urban population? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "non-communicable disease"
+        ],
+        "prompt": "Question: Living in an urban environment and non-communicable disease risk in Thailand: Does timing matter? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "renal warm ischemia"
+        ],
+        "prompt": "Question: Is renal warm ischemia over 30 minutes during laparoscopic partial nephrectomy possible? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "febrile reaction",
+            "red blood cell alloimmunization"
+        ],
+        "prompt": "Question: Does a febrile reaction to platelets predispose recipients to red blood cell alloimmunization? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "glandular cell abnormalities"
+        ],
+        "prompt": "Question: Pap smears with glandular cell abnormalities: Are they detected by rapid prescreening? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "HELPP syndrome",
+            "pre-eclampsia"
+        ],
+        "prompt": "Question: The HELPP syndrome--evidence of a possible systemic inflammatory response in pre-eclampsia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Delayed peripheral facial palsy"
+        ],
+        "prompt": "Question: Delayed peripheral facial palsy in the stapes surgery: can it be prevented? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "unresectable hepatocellular carcinomas"
+        ],
+        "prompt": "Question: Hepatic arterial embolization for unresectable hepatocellular carcinomas: do technical factors affect prognosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "arthroscopic acetabular labral repair"
+        ],
+        "prompt": "Question: Are pelvic anatomical structures in danger during arthroscopic acetabular labral repair? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hepatocellular carcinoma"
+        ],
+        "prompt": "Question: Staging laparoscopy in patients with hepatocellular carcinoma: is it useful? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hereditary transthyretin V30M amyloidosis",
+            "hypertrophic cardiomyopathy"
+        ],
+        "prompt": "Question: Can echocardiography and ECG discriminate hereditary transthyretin V30M amyloidosis from hypertrophic cardiomyopathy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostatectomy"
+        ],
+        "prompt": "Question: Is robotically assisted laparoscopic radical prostatectomy less invasive than retropubic radical prostatectomy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Nasal polyposis"
+        ],
+        "prompt": "Question: Nasal polyposis: is there an inheritance pattern? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "uveal melanoma"
+        ],
+        "prompt": "Question: c-Kit-dependent growth of uveal melanoma cells: a potential therapeutic target? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "dyschesia"
+        ],
+        "prompt": "Question: Is anorectal endosonography valuable in dyschesia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "atherosclerosis"
+        ],
+        "prompt": "Question: Production of chemokines by perivascular adipose tissue: a role in the pathogenesis of atherosclerosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "primary systemic vasculitis"
+        ],
+        "prompt": "Question: Are environmental factors important in primary systemic vasculitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "low serum chloride level",
+            "cardiovascular mortality"
+        ],
+        "prompt": "Question: Is low serum chloride level a risk factor for cardiovascular mortality? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute coronary syndrome"
+        ],
+        "prompt": "Question: Is EQ-5D a valid quality of life instrument in patients with acute coronary syndrome? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "migraine",
+            "headache"
+        ],
+        "prompt": "Question: Does early migraine treatment shorten time to headache peak and reduce its severity? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "manic/mixed episode",
+            "bipolar disorder"
+        ],
+        "prompt": "Question: Does the manic/mixed episode distinction in bipolar disorder patients run true over time? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Post-tonsillectomy late haemorrhage"
+        ],
+        "prompt": "Question: Post-tonsillectomy late haemorrhage: is it a preferably night-time event? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Acute hepatitis C",
+            "iatrogenic disease"
+        ],
+        "prompt": "Question: Acute hepatitis C in Israel: a predominantly iatrogenic disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cardiovascular risk",
+            "early breast cancer"
+        ],
+        "prompt": "Question: Do adjuvant aromatase inhibitors increase the cardiovascular risk in postmenopausal women with early breast cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Metastatic carcinoma",
+            "cervical nodes"
+        ],
+        "prompt": "Question: Metastatic carcinoma to the cervical nodes from an unknown head and neck primary site: Is there a need for neck dissection? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hiatal hernia"
+        ],
+        "prompt": "Question: Location and number of sutures placed for hiatal hernia repair during laparoscopic adjustable gastric banding: does it matter? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Protracted Bacterial Bronchitis",
+            "Bronchiectasis"
+        ],
+        "prompt": "Question: Is Alveolar Macrophage Phagocytic Dysfunction in Children With Protracted Bacterial Bronchitis a Forerunner to Bronchiectasis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "metastatic spinal cord compression"
+        ],
+        "prompt": "Question: Do elderly patients benefit from surgery in addition to radiotherapy for treatment of metastatic spinal cord compression? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "HIV"
+        ],
+        "prompt": "Question: Are WHO/UNAIDS/UNICEF-recommended replacement milks for infants of HIV-infected mothers appropriate in the South African context? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "inguinal hernia"
+        ],
+        "prompt": "Question: Is minilaparoscopic inguinal hernia repair feasible? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prosthetic valve endocarditis"
+        ],
+        "prompt": "Question: Surgical treatment of prosthetic valve endocarditis in patients with double prostheses: is single-valve replacement safe? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "frail elderly"
+        ],
+        "prompt": "Question: Are physicians meeting the needs of family caregivers of the frail elderly? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "nonproliferative breast disease",
+            "proliferative breast disease without atypia"
+        ],
+        "prompt": "Question: Can nonproliferative breast disease and proliferative breast disease without atypia be distinguished by fine-needle aspiration cytology? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "central venous pressure"
+        ],
+        "prompt": "Question: Does the central venous pressure predict fluid responsiveness? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Alzheimer's disease"
+        ],
+        "prompt": "Question: Memory-provoked rCBF-SPECT as a diagnostic tool in Alzheimer's disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "colonoscopy"
+        ],
+        "prompt": "Question: Can we ease the financial burden of colonoscopy? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "low birth weight",
+            "congenital cytomegalovirus infection"
+        ],
+        "prompt": "Question: Is low birth weight a risk indicator for congenital cytomegalovirus infection? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gallbladder carcinoma"
+        ],
+        "prompt": "Question: Is external palliative radiotherapy for gallbladder carcinoma effective? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "TEOAE",
+            "AABR"
+        ],
+        "prompt": "Question: Is discordance in TEOAE and AABR outcomes predictable in newborns? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "solid breast masses"
+        ],
+        "prompt": "Question: Chemical shift MRI: is there any contribution to morphologic evaluation of solid breast masses? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "injury mortality"
+        ],
+        "prompt": "Question: Do some U.S. states have higher/lower injury mortality rates than others? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "type 1 diabetes"
+        ],
+        "prompt": "Question: Do European people with type 1 diabetes consume a high atherogenic diet? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "mild intellectual disabilities"
+        ],
+        "prompt": "Question: Adults with mild intellectual disabilities: can their reading comprehension ability be improved? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "uterine endometrial cancer"
+        ],
+        "prompt": "Question: Body diffusion-weighted MR imaging of uterine endometrial cancer: is it helpful in the detection of cancer in nonenhanced MR imaging? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Substance use",
+            "HIV"
+        ],
+        "prompt": "Question: Substance use and HIV-related sexual behaviors among US high school students: are they related? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Thrombosis"
+        ],
+        "prompt": "Question: Thrombosis prophylaxis in hospitalised medical patients: does prophylaxis in all patients make sense? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Paget's disease"
+        ],
+        "prompt": "Question: Does Paget's disease exist in India? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Radioiodine Refractory Thyroid Cancers"
+        ],
+        "prompt": "Question: Does Molecular Genotype Provide Useful Information in the Management of Radioiodine Refractory Thyroid Cancers? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "gestational diabetes mellitus"
+        ],
+        "prompt": "Question: Screening for gestational diabetes mellitus: are the criteria proposed by the international association of the Diabetes and Pregnancy Study Groups cost-effective? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "depression"
+        ],
+        "prompt": "Question: Are higher rates of depression in women accounted for by differential symptom reporting? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cardiovascular"
+        ],
+        "prompt": "Question: Follow-up of patients with new cardiovascular implantable electronic devices: are experts' recommendations implemented in routine clinical practice? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "limb-salvage surgery",
+            "amputation"
+        ],
+        "prompt": "Question: Does limb-salvage surgery offer patients better quality of life and functional capacity than amputation? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "severe hypoglycaemia",
+            "Type 1 diabetes"
+        ],
+        "prompt": "Question: Serum angiotensin-converting enzyme and frequency of severe hypoglycaemia in Type 1 diabetes: does a relationship exist? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cervical spine fractures",
+            "blunt trauma"
+        ],
+        "prompt": "Question: Cervical spine fractures in geriatric blunt trauma patients with low-energy mechanism: are clinical predictors adequate? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "poor pregnancy outcome"
+        ],
+        "prompt": "Question: Do microbiological factors account for poor pregnancy outcome among unmarried pregnant women in Poland? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "preoperative hemoglobin level"
+        ],
+        "prompt": "Question: Should all patients be optimized to the same preoperative hemoglobin level to avoid transfusion in primary knee arthroplasty? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cervical cord plaques",
+            "discopathy",
+            "multiple sclerosis"
+        ],
+        "prompt": "Question: Is there any relation between cervical cord plaques and discopathy in patients with multiple sclerosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute appendicitis"
+        ],
+        "prompt": "Question: Is there a role for leukocyte and CRP measurements in the diagnosis of acute appendicitis in the elderly? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "bipolar disorders",
+            "depressive episodes"
+        ],
+        "prompt": "Question: Are bipolar disorders underdiagnosed in patients with depressive episodes? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "low-tone sudden deafness",
+            "Meniere's disease"
+        ],
+        "prompt": "Question: Prognosis of low-tone sudden deafness - does it inevitably progress to Meniere's disease? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "smoking-related health disparities"
+        ],
+        "prompt": "Question: Can pictorial warning labels on cigarette packages address smoking-related health disparities? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "patient-prosthesis mismatch",
+            "aortic valve replacement"
+        ],
+        "prompt": "Question: Does patient-prosthesis mismatch after aortic valve replacement affect survival and quality of life in elderly patients? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "anaphylactic shock",
+            "liver hydatid cyst"
+        ],
+        "prompt": "Question: Is fear of anaphylactic shock discouraging surgeons from more widely adopting percutaneous and laparoscopic techniques in the treatment of liver hydatid cyst? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "red blood cell morphology"
+        ],
+        "prompt": "Question: Reporting and interpreting red blood cell morphology: is there discordance between clinical pathologists and clinicians? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "sebaceous cell carcinoma"
+        ],
+        "prompt": "Question: Does \u03b2-catenin have a role in pathogenesis of sebaceous cell carcinoma of the eyelid? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "fracture"
+        ],
+        "prompt": "Question: Is ultrasound equal to X-ray in pediatric fracture diagnosis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Hearing loss",
+            "pre-eclampsia"
+        ],
+        "prompt": "Question: Hearing loss: an unknown complication of pre-eclampsia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "extremity fracture"
+        ],
+        "prompt": "Question: Is portable ultrasonography accurate in the evaluation of Schanz pin placement during extremity fracture fixation in austere environments? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "emergency medicine"
+        ],
+        "prompt": "Question: Medical student education in emergency medicine: do students meet the national standards for clinical encounters of selected core conditions? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hot flash"
+        ],
+        "prompt": "Question: Sternal skin conductance: a reasonable surrogate for hot flash measurement? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic aortic dissection",
+            "haemolytic anaemia"
+        ],
+        "prompt": "Question: Elephant trunk in a small-calibre true lumen for chronic aortic dissection: cause of haemolytic anaemia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "adverse effects of radiotherapy"
+        ],
+        "prompt": "Question: Does partial expander deflation exacerbate the adverse effects of radiotherapy in two-stage breast reconstruction? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "kidney allograft preservation"
+        ],
+        "prompt": "Question: Should temperature be monitorized during kidney allograft preservation? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tumour",
+            "locally advanced rectal cancer"
+        ],
+        "prompt": "Question: Can p53 alterations be used to predict tumour response to pre-operative chemo-radiotherapy in locally advanced rectal cancer? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "irritable bowel syndrome"
+        ],
+        "prompt": "Question: Is irritable bowel syndrome a diagnosis of exclusion? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "pelvic pain",
+            "defecatory symptoms",
+            "pelvic organ prolapse"
+        ],
+        "prompt": "Question: Is pelvic pain associated with defecatory symptoms in women with pelvic organ prolapse? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Crohn's disease",
+            "abscesses",
+            "phlegmons",
+            "recurrent disease"
+        ],
+        "prompt": "Question: Laparoscopic-assisted ileocolic resections in patients with Crohn's disease: are abscesses, phlegmons, or recurrent disease contraindications? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic disease-related functional limitations"
+        ],
+        "prompt": "Question: Has the use of complementary and alternative medicine therapies by U.S. adults with chronic disease-related functional limitations changed from 2002 to 2007? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute type A dissection"
+        ],
+        "prompt": "Question: Is extended aortic replacement in acute type A dissection justifiable? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "heart rate",
+            "QT interval"
+        ],
+        "prompt": "Question: Effects of exercise training on heart rate and QT interval in healthy young individuals: are there gender differences? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "coeliac disease"
+        ],
+        "prompt": "Question: Is coeliac disease screening in risk groups justified? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Shigellosis",
+            "sexually transmitted infection"
+        ],
+        "prompt": "Question: Analysis of the epidemiological pattern of Shigellosis in Barcelona between 1988 and 2012: Is it an emerging sexually transmitted infection? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "myelomeningocele",
+            "scoliosis"
+        ],
+        "prompt": "Question: A patient with myelomeningocele: is untethering necessary prior to scoliosis correction? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ambulatory blood pressure"
+        ],
+        "prompt": "Question: Is aerobic workload positively related to ambulatory blood pressure? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "STREPTOCOCUS AGALACTIAE"
+        ],
+        "prompt": "Question: PREVALENCE OF THE STREPTOCOCUS AGALACTIAE IN THE PREGNANT WOMAN FROM THE AUTONOMIC CITY OF MELILLA: IS CULTURE A DETERMINANT FACTOR? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "lower ureteric stones"
+        ],
+        "prompt": "Question: Is fluoroscopy essential for retrieval of lower ureteric stones? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "abdominal aortic aneurysm",
+            "distal embolisation"
+        ],
+        "prompt": "Question: Does the sequence of clamp application during open abdominal aortic aneurysm surgery influence distal embolisation? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "type 2 diabetes"
+        ],
+        "prompt": "Question: Are lower fasting plasma glucose levels at diagnosis of type 2 diabetes associated with improved outcomes? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute stroke"
+        ],
+        "prompt": "Question: Do elderly patients call 911 when presented with clinical scenarios suggestive of acute stroke? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Cerebromediastinal tuberculosis",
+            "Say-Barber-Miller syndrome"
+        ],
+        "prompt": "Question: Cerebromediastinal tuberculosis in a child with a probable Say-Barber-Miller syndrome: a causative link? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "head and neck reconstruction"
+        ],
+        "prompt": "Question: Are virtual planning and guided surgery for head and neck reconstruction economically viable? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "overweight"
+        ],
+        "prompt": "Question: Do overweight children necessarily make overweight adults? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Biliary atresia"
+        ],
+        "prompt": "Question: Biliary atresia: should all patients undergo a portoenterostomy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "unintended pregnancy"
+        ],
+        "prompt": "Question: Does a history of unintended pregnancy lessen the likelihood of desire for sterilization reversal? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "newborn metabolic screening"
+        ],
+        "prompt": "Question: Does early discharge with nurse home visits affect adequacy of newborn metabolic screening? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "dialysis"
+        ],
+        "prompt": "Question: Does increasing blood pH stimulate protein synthesis in dialysis patients? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "homocysteine",
+            "vitiligo"
+        ],
+        "prompt": "Question: Is there a relationship between homocysteine and vitiligo? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "dermatomyositis",
+            "polymyositis"
+        ],
+        "prompt": "Question: Do dermatomyositis and polymyositis affect similar thigh muscles? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Juvenile ankylosing spondylitis",
+            "adult ankylosing spondylitis"
+        ],
+        "prompt": "Question: Juvenile ankylosing spondylitis--is it the same disease as adult ankylosing spondylitis? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Aspiration Thrombectomy",
+            "Primary Percutaneous Coronary Intervention"
+        ],
+        "prompt": "Question: Is Aspiration Thrombectomy Beneficial in Patients Undergoing Primary Percutaneous Coronary Intervention? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "delayed gastric emptying",
+            "pancreaticoduodenectomy"
+        ],
+        "prompt": "Question: Is delayed gastric emptying following pancreaticoduodenectomy related to pylorus preservation? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Upper Tract Urinary Carcinoma"
+        ],
+        "prompt": "Question: Is Overexpression of Ki-67 a Prognostic Biomarker of Upper Tract Urinary Carcinoma? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "fracture of the proximal femur"
+        ],
+        "prompt": "Question: Does a delay in transfer to a rehabilitation unit for older people affect outcome after fracture of the proximal femur? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "amblyopia"
+        ],
+        "prompt": "Question: Does the treatment of amblyopia normalise subfoveal choroidal thickness in amblyopic children? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "foreign bodies"
+        ],
+        "prompt": "Question: Do foreign bodies migrate through the body towards the heart? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "epicardial fat tissue thickness"
+        ],
+        "prompt": "Question: Is there a relationship between serum paraoxonase level and epicardial fat tissue thickness? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "complex coronary lesions",
+            "diabetes mellitus"
+        ],
+        "prompt": "Question: Are complex coronary lesions more frequent in patients with diabetes mellitus? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "carotid endarterectomy"
+        ],
+        "prompt": "Question: Are variations in the use of carotid endarterectomy explained by population Need? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "ductal carcinoma in situ"
+        ],
+        "prompt": "Question: Is expert breast pathology assessment necessary for the management of ductal carcinoma in situ ? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Thoracic aneurysm",
+            "thoracoabdominal aneurysm"
+        ],
+        "prompt": "Question: Thoracic and thoracoabdominal aneurysm repair: is reimplantation of spinal cord arteries a waste of time? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostate cancer"
+        ],
+        "prompt": "Question: Is year of radical prostatectomy a predictor of outcome in prostate cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "spinal cord sarcoidosis",
+            "compressive cervical myelopathy"
+        ],
+        "prompt": "Question: Is decompressive surgery effective for spinal cord sarcoidosis accompanied with compressive cervical myelopathy? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "small saphenous varicose veins"
+        ],
+        "prompt": "Question: Endovenous laser ablation in the treatment of small saphenous varicose veins: does site of access influence early outcomes? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "work disability"
+        ],
+        "prompt": "Question: Do people who were passive smokers during childhood have increased risk of long-term work disability? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "resection margin",
+            "distal pancreatectomy"
+        ],
+        "prompt": "Question: Is the covering of the resection margin after distal pancreatectomy advantageous? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostate cancer"
+        ],
+        "prompt": "Question: Does treatment duration affect outcome after radiotherapy for prostate cancer? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "tubular lesions",
+            "solitary kidney"
+        ],
+        "prompt": "Question: Is the urinary biomarkers assessment a non-invasive approach to tubular lesions of the solitary kidney? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "chronic low back pain"
+        ],
+        "prompt": "Question: Motor performance in chronic low back pain: is there an influence of pain-related cognitions? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "stage III thymoma"
+        ],
+        "prompt": "Question: Adjuvant radiation of stage III thymoma: is it necessary? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hydatidiform mole"
+        ],
+        "prompt": "Question: Inhibin: a new circulating marker of hydatidiform mole? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cervical disk disease"
+        ],
+        "prompt": "Question: Is the fibronectin-aggrecan complex present in cervical disk disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "peritoneal dialysis",
+            "halitosis",
+            "end-stage renal disease"
+        ],
+        "prompt": "Question: Does peritoneal dialysis affect halitosis in patients with end-stage renal disease? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "elevated troponin I levels",
+            "acute pulmonary embolism"
+        ],
+        "prompt": "Question: Can elevated troponin I levels predict complicated clinical course and inhospital mortality in patients with acute pulmonary embolism? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "osteoarthritis pain"
+        ],
+        "prompt": "Question: The colour of pain: can patients use colour to describe osteoarthritis pain? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Tonsillectomy"
+        ],
+        "prompt": "Question: Inpatient Pediatric Tonsillectomy: Does Hospital Type Affect Cost and Outcomes of Care? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "anterior laxity",
+            "ACL reconstruction"
+        ],
+        "prompt": "Question: Does anterior laxity of the uninjured knee influence clinical outcomes of ACL reconstruction? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "major depressive episode",
+            "relapses"
+        ],
+        "prompt": "Question: Is the type of remission after a major depressive episode an important risk factor to relapses in a 4-year follow up? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "prostate cancer"
+        ],
+        "prompt": "Question: Prostate-specific antigen and free prostate-specific antigen in the early detection of prostate cancer: do combination tests improve detection? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cancer"
+        ],
+        "prompt": "Question: Do elderly cancer patients have different care needs compared with younger ones? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "breast cancer"
+        ],
+        "prompt": "Question: Is breast cancer survival improving? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cardiovascular phenotype"
+        ],
+        "prompt": "Question: Can common carotid intima media thickness serve as an indicator of both cardiovascular phenotype and risk among black Africans? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "anorectal malformations"
+        ],
+        "prompt": "Question: Delayed diagnosis of anorectal malformations: are current guidelines sufficient? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "small for gestational age",
+            "retinopathy of prematurity"
+        ],
+        "prompt": "Question: Is being small for gestational age a risk factor for retinopathy of prematurity? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "asthma"
+        ],
+        "prompt": "Question: Fast foods - are they a risk factor for asthma? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cancer",
+            "enlarged prostates"
+        ],
+        "prompt": "Question: Can magnetic resonance-ultrasound fusion biopsy improve cancer detection in enlarged prostates? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "hypertrophied hearts"
+        ],
+        "prompt": "Question: Does normothermic normokalemic simultaneous antegrade/retrograde perfusion improve myocardial oxygenation and energy metabolism for hypertrophied hearts? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "schizophrenia"
+        ],
+        "prompt": "Question: Are there progressive brain changes in schizophrenia? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "Androgen Deficiency of Aging Men (ADAM)",
+            "partial androgenic deficiency of aging men"
+        ],
+        "prompt": "Question: Is the Androgen Deficiency of Aging Men (ADAM) questionnaire useful for the screening of partial androgenic deficiency of aging men? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "suicidal symptoms"
+        ],
+        "prompt": "Question: Does the Transmissible Liability Index (TLI) assessed in late childhood predict suicidal symptoms at young adulthood? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "acute myocardial infarction"
+        ],
+        "prompt": "Question: Are there gender differences in the reasons why African Americans delay in seeking medical help for symptoms of an acute myocardial infarction? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "histologic chorioamnionitis",
+            "clinical chorioamnionitis"
+        ],
+        "prompt": "Question: Does histologic chorioamnionitis correspond to clinical chorioamnionitis? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "impetigo",
+            "molluscum",
+            "herpes infection",
+            "atopic dermatitis"
+        ],
+        "prompt": "Question: Are lifetime prevalence of impetigo, molluscum and herpes infection really increased in children having atopic dermatitis? the answer to the question is",
+        "attribute": "maybe"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "diabetic"
+        ],
+        "prompt": "Question: Pancreas retransplantation:  a second chance for diabetic patients? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "nasopharyngeal carcinoma",
+            "lung metastasis"
+        ],
+        "prompt": "Question: Factors determining the survival of nasopharyngeal carcinoma with lung metastasis alone: does combined modality treatment benefit? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "viral infections",
+            "benign paroxysmal positional vertigo"
+        ],
+        "prompt": "Question: Do viral infections have a role in benign paroxysmal positional vertigo? the answer to the question is",
+        "attribute": "yes"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "cortisol excess",
+            "obese",
+            "Type 2 diabetes"
+        ],
+        "prompt": "Question: Is late-night salivary cortisol a better screening test for possible cortisol excess than standard screening tests in obese patients with Type 2 diabetes? the answer to the question is",
+        "attribute": "no"
+    },
+    {
+        "category": "Disease",
+        "subjects": [
+            "psychological distress",
+            "disability"
+        ],
+        "prompt": "Question: Does psychological distress predict disability? the answer to the question is",
+        "attribute": "yes"
     }
 ]
