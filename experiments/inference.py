@@ -14,16 +14,16 @@ def main():
     aa("--interactive", action="store_true", help="Whether to run in interactive mode")
     args = parser.parse_args()
 
-    print("Running in interactive mode")
     if args.interactive:
+        print("Running in interactive mode")
         while True:
-            question = input(": ")
-            if not question:
-                print("Prompt cannot be empty")
-                continue
-            prompt = (
-                f"Question: {question} the answer to the question is"
-            )
+            prompt = input(": ")
+            # if not question:
+            #     print("Prompt cannot be empty")
+            #     continue
+            # prompt = (
+            #     f"Question: {question} the answer to the question is"
+            # )
             generate_text(prompt)
             
 
@@ -39,7 +39,7 @@ def generate_text(prompt):
         truncation=True,
     )
 
-    print(result[0]["generated_text"][len(prompt):])
+    print(result[0]["generated_text"])
 
 if __name__ == "__main__":
     main()
