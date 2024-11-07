@@ -8,3 +8,6 @@
 # Plots and results
 /results
 .DS_Store
+
+# Torch Models
+*.pth
