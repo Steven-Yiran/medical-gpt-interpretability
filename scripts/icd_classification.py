@@ -2,6 +2,8 @@ import requests
 import json
 import matplotlib.pyplot as plt
 import os
+import re
+from tqdm import tqdm
 
 disease_name_file = '../data/diseases.txt'
 base_url = "http://id.who.int/icd/entity/search"
@@ -10,6 +12,7 @@ client_id = "c10af678-4f8c-4f4f-b8a2-679c86429f6c_2b5f9b6b-557a-4b17-a059-7f97a3
 client_secret = "wqP5FKmVE52ogozR7iByQKLlnWZ6hoRhFZN78XsTdDY="
 scope = "icdapi_access"
 grant_type = "client_credentials"
+disease_pattern = r"Disease|Syndrome|Disorders"
 
 def get_token():
     payload = {
@@ -28,6 +31,9 @@ def get_disease_names():
     
 
 def get_icd_codes(disease_name, api_key=None):
+    if not api_key:
+        api_key = get_token()
+
     headers = {
         "Authorization": f'Bearer {api_key}',
         "Accept": "application/json",
@@ -66,21 +72,79 @@ def plot_chapters_distribution(chapters):
     ax.set_title('Distribution of ICD-10 Chapters')
     plt.show()
 
-def main():
+
+def get_icd_chapters():
     diseases = get_disease_names()
     chapters = []
     api_key = get_token()
     
     for disease in diseases:
         chapter = get_icd_codes(disease, api_key)
-        chapters.append(chapter)
+        if chapter != "N/A":
+            chapters.append(chapter)
 
-    plot_chapters_distribution(chapters)
+    return chapters
 
-    # Save the chapters to a file
-    with open('../data/icd_chapters.txt', 'w') as f:
-        f.write('\n'.join(chapters))
 
+def group_by_icd_chapters(data):
+    icd_groups = {}
+    for entry in tqdm(data, desc="Grouping data by ICD codes"):
+        disease_mesh = entry["disease_mesh"]
+        icd_code = get_icd_codes(disease_mesh)
+        if icd_code == "N/A":
+            continue
+        if icd_code not in icd_groups:
+            icd_groups[icd_code] = []
+        icd_groups[icd_code].append(entry)
+
+    return icd_groups
+
+
+def filter_disease_entries(data):
+    filtered_data = []
+    for id, entry in tqdm(data.items(), desc="Filtering disease data"):
+        meshes = entry["MESHES"]
+
+        for mesh in meshes:
+            if re.search(disease_pattern, mesh):
+                entry["disease_mesh"] = mesh
+                entry["ori_id"] = id
+                filtered_data.append(entry)
+                break
+    
+    return filtered_data
+
+
+def main():
+    data_path = "../data/ori_pqal.json"
+    output_path = "../data/pqal_grouped_by_icd.json"
+    disease_file = "../data/diseases.txt"
+    chapter_file = "../data/icd_chapters.txt"
+
+    with open(data_path, 'r') as f:
+        data = json.load(f)    
+
+    if os.path.exists(chapter_file):
+        with open(chapter_file, 'r') as f:
+            chapters = f.read().splitlines()
+    else:
+        print("Getting ICD-10 chapters...")
+        chapters = get_icd_chapters()
+    
+    if os.path.exists(disease_file):
+        with open(disease_file, 'r') as f:
+            diseases = f.read().splitlines()
+    else:
+        print("Missing disease names file")
+
+    filtered_data = filter_disease_entries(data)
+    icd_groups = group_by_icd_chapters(filtered_data)
+
+    with open(output_path, 'w') as f:
+        json.dump(icd_groups, f, indent=4)
+
+    print("Data grouped by ICD codes saved to", output_path)
+    
 
 
 if __name__ == '__main__':
