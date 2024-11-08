@@ -5,6 +5,8 @@ import os
 import re
 from tqdm import tqdm
 
+from preprocess_keyword import run_openai_task
+
 disease_name_file = '../data/diseases.txt'
 base_url = "http://id.who.int/icd/entity/search"
 token_endpoint = 'https://icdaccessmanagement.who.int/connect/token'
@@ -13,6 +15,7 @@ client_secret = "wqP5FKmVE52ogozR7iByQKLlnWZ6hoRhFZN78XsTdDY="
 scope = "icdapi_access"
 grant_type = "client_credentials"
 disease_pattern = r"Disease|Syndrome|Disorders"
+required_context_labels = ['BACKGROUND', 'PATIENTS AND METHODS', 'RESULTS']
 
 def get_token():
     payload = {
@@ -100,6 +103,20 @@ def group_by_icd_chapters(data):
     return icd_groups
 
 
+def find_disease_ner(entry):
+    question = entry.get("QUESTION", "").lower()
+    contexts = entry.get("CONTEXTS", [])
+    labels = entry.get("LABELS", [])
+    combined_context = "".join(
+        [contexts[i].lower() for i in range(len(contexts)) if labels[i].upper() in required_context_labels]
+    )
+
+    response = run_openai_task(question + " " + combined_context)
+    ner = response.lower().split(", ")
+
+    return ner
+
+
 def filter_disease_entries(data):
     filtered_data = []
     for id, entry in tqdm(data.items(), desc="Filtering disease data"):
@@ -109,6 +126,14 @@ def filter_disease_entries(data):
             if re.search(disease_pattern, mesh):
                 entry["disease_mesh"] = mesh
                 entry["ori_id"] = id
+
+                disease_ner = find_disease_ner(entry)
+                if not disease_ner:
+                    print("No disease NER found for", entry["disease_mesh"])
+                    break
+
+                entry["subject"] = disease_ner
+
                 filtered_data.append(entry)
                 break
     

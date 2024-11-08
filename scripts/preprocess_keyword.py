@@ -5,63 +5,23 @@ import re
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# def system_message():
-#     return f"""
-# You are an expert in Natural Language Processing. Your task is to identify wo.
-# First, you need to identify MeSH keywords that are related to a specific disease, symptom, or disorder.
-# Then, you need to identify the words in the text that are related to the diseases MeSH keywords.
-# You need to return the identified words in a common separated string.
-# If you can't find any related words, return an empty string.
-# """
-
-def system_message(labels):
+def system_message():
     return f"""
-You are an expert in Natural Language Processing. Your task is to identify common biomedicine Named Entity in a given test.
-The possible Named Entities (NER) are exclusively: ({", ".join(labels)}).
-Return the identified Named Entities as a dictionary in json string.
+You are an expert in Natural Language Processing. Your task is to identify the Named Entities in the text 
+that are related to the given diseases keyword. You need to return the identified words in a common separated string.
 """
 
-# def assistant_message():
-#     return f"""
-# EXAMPLE:
-#     MeSH: Baths, Histamine, Humans, Infant, Syncope, Urticaria, Water
-#     Text: 'Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. / 
-#         The prognosis is uncertain because of risk of sudden infant death syndrome. / 
-#         Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
-#     {"syncope, water-induced urticaria"}
-# --"""
+def assistant_message():
+    return f"""
+EXAMPLE:
+    Keyword: Hirschsprung Disease
+    Text: 'Are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through? / 
+        The transanal endorectal pull-through (TERPT) is becoming the most popular procedure in the treatment of Hirschsprung disease (HD), /
+        but overstretching of the anal sphincters remains a critical issue that may impact the continence. This study examined the long-term /
+        outcome of TERPT versus conventional transabdominal (ABD) pull-through for HD. / 
+    {"Hirschsprung Disease, HD, HD"}
+--"""
 
-
-def assistant_message(keyword_type):
-    if keyword_type == "Disease":
-        return f"""
-    EXAMPLE:
-        Text: 'Apparent life-threatening events in infants are a difficult and frequent problem in pediatric practice. /
-            The prognosis is uncertain because of risk of sudden infant death syndrome. /
-            Syncope during bathing in infants, a pediatric form of water-induced urticaria?'
-            {{
-                "Disease": ["Syncope", "Urticaria"],
-            }}
-    --"""
-    elif keyword_type == "Medicine":
-        return f"""
-    EXAMPLE:
-        Text: 'From March 2007 to January 2011, 88 DBE procedures were performed on 66 patients. Indications included evaluation anemia/gastrointestinal bleed, small bowel IBD and dilation of strictures. Video-capsule endoscopy (VCE) was used prior to DBE in 43 of the 66 patients prior to DBE evaluation. \
-            The mean age was 62 years. Thirty-two patients were female, 15 were African-American; 44 antegrade and 44 retrograde DBEs were performed. The mean time per antegrade DBE was 107.4\u00b130.0 minutes with a distance of 318.4\u00b1152.9 cm reached past the pylorus. The mean time per lower DBE was 100.7\u00b127.3 minutes with 168.9\u00b1109.1 cm meters past the ileocecal valve reached. Endoscopic therapy in the form of electrocautery to ablate bleeding sources was performed in 20 patients (30.3%), biopsy in 17 patients (25.8%) and dilation of Crohn's-related small bowel strictures in 4 (6.1%). 43 VCEs with pathology noted were performed prior to DBE, with findings endoscopically confirmed in 32 cases (74.4%). In 3 cases the DBE showed findings not noted on VCE.
-            Double balloon enteroscopy: is it efficacious and safe in a community setting?'
-            {{
-                "Medicine": ["Double balloon enteroscopy"],
-            }}
-    --"""
-    else:
-        print("Invalid keyword type")
-
-# def user_message(meshes, text):
-#     return f"""
-# TASK:
-#     MeSH: {", ".join(meshes)}
-#     Text: {text}
-# """
 
 def user_message(text):
     return f"""
@@ -70,169 +30,87 @@ TASK:
 """
 
 
-# def run_openai_task(meshes, text):
-#     messages = [
-#         {"role": "system", "content": system_message()},
-#         {"role": "assistant", "content": assistant_message()},
-#         {"role": "user", "content": user_message(meshes, text)}
-#     ]
-
-#     response = client.chat.completions.create(
-#         model="gpt-4-turbo",
-#         messages=messages
-#     )
-
-#     return response.choices[0].message.content
-
-
-# def contain_disease_meshes(meshes):
-#     """
-#     Filter meshes that contain *disease*, *syndrome*, *infections*, *neoplasms*, *disorders*, *conditions*
-#     """
-#     for mesh in meshes:
-#         if re.search(r'disease|syndrome|infections|neoplasms|disorders|conditions', mesh, re.IGNORECASE):
-#             return True
-#     return False
-
-
-def run_openai_task(text, type):
-    if type == "Disease":
-        labels = ["Disease"]
-    elif type == "Medicine":
-        labels = ["Medicine"]
-
+def run_openai_task(text):
     messages = [
-        {"role": "system", "content": system_message(labels)},
-        {"role": "assistant", "content": assistant_message(type)},
+        {"role": "system", "content": system_message()},
+        {"role": "assistant", "content": assistant_message()},
         {"role": "user", "content": user_message(text)}
     ]
 
-    print(messages)
-    return
-
     response = client.chat.completions.create(
-        model="gpt-4-turbo",
+        model="gpt-3.5-turbo",
         messages=messages
     )
 
     return response.choices[0].message.content
 
 
-# def main():
-#     num_samples = 50
-#     original_file = 'data/ori_pqal.json'
-#     output_file = 'data/pqa_disease.json'
-#     output_keywords_file = 'data/disease_keywords.json'
-
-#     with open(original_file, 'r') as f:
-#         data = json.load(f)
-
-#     required_context_labels = ['BACKGROUND', 'PATIENTS AND METHODS', 'RESULTS']
-
-#     filtered_data = []
-#     all_disease_keywords = {}
-#     new_id = 0
-
-#     for entry_id, entry_data in data.items():
-#         meshes = entry_data.get("MESHES", [])
-#         if not contain_disease_meshes(meshes):
-#             continue
-
-#         question = entry_data.get("QUESTION", "").lower()
-#         contexts = entry_data.get("CONTEXTS", [])
-#         labels = entry_data.get("LABELS", [])
-#         combined_context = "".join(
-#             [contexts[i].lower() for i in range(len(contexts)) if labels[i].upper() in required_context_labels]
-#         )
-#         answer = entry_data.get("final_decision", "")
-
-
-#         response = run_openai_task(meshes, question + " " + combined_context)
-#         disease_keywords = response.lower().split(", ")
-#         all_disease_keywords[new_id] = disease_keywords
-
-#         filtered_data.append({
-#             "id": new_id,
-#             "subject": disease_keywords,
-#             "attribute": answer,
-#             "question": question,
-#             "context": combined_context,
-#             "original_id": entry_id,
-#         })
-
-#         new_id += 1
-
-#         # save first x samples
-#         if new_id >= 50:
-#             break
-
-#     with open(output_file, 'w') as f:
-#         json.dump(filtered_data, f, indent=2)
-
-#     with open(output_keywords_file, 'w') as f:
-#         json.dump(all_disease_keywords, f, indent=2)
-
-#     print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
-#     print(f"Disease keywords saved to {output_keywords_file}")
+def contain_disease_meshes(meshes):
+    """
+    Filter meshes that contain *disease*, *syndrome*, *infections*, *neoplasms*, *disorders*, *conditions*
+    """
+    for mesh in meshes:
+        if re.search(r'disease|syndrome|infections|neoplasms|disorders|conditions', mesh, re.IGNORECASE):
+            return True
+    return False
 
 
 def main():
-    num_samples = 100
-    keyword_type = "Disease" # "Disease" or "Medicine"
-    original_file = f"data/{keyword_type.lower()}_pqal.json"
-    output_file = f"data/{keyword_type.lower()}_subjects.json"
+    num_samples = 50
+    original_file = 'data/ori_pqal.json'
+    output_file = 'data/pqa_disease.json'
+    output_keywords_file = 'data/disease_keywords.json'
 
-    with open(original_file, "r") as f:
+    with open(original_file, 'r') as f:
         data = json.load(f)
 
     required_context_labels = ['BACKGROUND', 'PATIENTS AND METHODS', 'RESULTS']
-    
+
     filtered_data = []
+    all_disease_keywords = {}
     new_id = 0
 
-    for entry in data:
-        question = entry.get("QUESTION", "").lower()
-        contexts = entry.get("CONTEXTS", [])
-        labels = entry.get("LABELS", [])
+    for entry_id, entry_data in data.items():
+        meshes = entry_data.get("MESHES", [])
+        if not contain_disease_meshes(meshes):
+            continue
+
+        question = entry_data.get("QUESTION", "").lower()
+        contexts = entry_data.get("CONTEXTS", [])
+        labels = entry_data.get("LABELS", [])
         combined_context = "".join(
             [contexts[i].lower() for i in range(len(contexts)) if labels[i].upper() in required_context_labels]
         )
-        answer = entry.get("final_decision", "")
+        answer = entry_data.get("final_decision", "")
 
 
-        response = run_openai_task(question + " " + combined_context, keyword_type)
-        return
-        # parse resonse as json
-        try:
-            response = json.loads(response)
-        except:
-            print(f"Failed to parse response {response}")
-            continue
-        entities = response.get(keyword_type, [])
+        response = run_openai_task(meshes, question + " " + combined_context)
+        disease_keywords = response.lower().split(", ")
+        all_disease_keywords[new_id] = disease_keywords
 
-        if not entities:
-            print(f"Empty entities for question: {question}")
-            continue
-        
         filtered_data.append({
             "id": new_id,
-            "subject": entities,
+            "subject": disease_keywords,
             "attribute": answer,
             "question": question,
-            "context": combined_context
+            "context": combined_context,
+            "original_id": entry_id,
         })
 
         new_id += 1
 
-        # # save first x samples
-        if new_id >= num_samples:
+        # save first x samples
+        if new_id >= 50:
             break
 
-    with open(output_file, "w") as f:
+    with open(output_file, 'w') as f:
         json.dump(filtered_data, f, indent=2)
 
-    print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
+    with open(output_keywords_file, 'w') as f:
+        json.dump(all_disease_keywords, f, indent=2)
 
+    print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
+    print(f"Disease keywords saved to {output_keywords_file}")
 
 
 if __name__ == "__main__":
