@@ -104,6 +104,7 @@ def group_by_icd_chapters(data):
 
 
 def find_disease_ner(entry):
+    keyword = entry["disease_mesh"]
     question = entry.get("QUESTION", "").lower()
     contexts = entry.get("CONTEXTS", [])
     labels = entry.get("LABELS", [])
@@ -111,8 +112,15 @@ def find_disease_ner(entry):
         [contexts[i].lower() for i in range(len(contexts)) if labels[i].upper() in required_context_labels]
     )
 
-    response = run_openai_task(question + " " + combined_context)
-    ner = response.lower().split(", ")
+    response = run_openai_task(keyword, question + " " + combined_context)
+    # make sure the response is a valid JSON
+    try:
+        response_dict = json.loads(response)
+    except json.JSONDecodeError:
+        print("Invalid JSON response for", keyword)
+        return None
+
+    ner = response_dict[keyword]
 
     return ner
 

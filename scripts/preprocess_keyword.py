@@ -7,8 +7,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def system_message():
     return f"""
-You are an expert in Natural Language Processing. Your task is to identify the Named Entities in the text 
-that are related to the given diseases keyword. You need to return the identified words in a common separated string.
+You are an expert in Natural Language Processing. Your task is to identify the Named Entities (NER) in a given text.
+The possible Named Entities (NER) types are exclusively user-defined.
 """
 
 def assistant_message():
@@ -19,22 +19,25 @@ EXAMPLE:
         The transanal endorectal pull-through (TERPT) is becoming the most popular procedure in the treatment of Hirschsprung disease (HD), /
         but overstretching of the anal sphincters remains a critical issue that may impact the continence. This study examined the long-term /
         outcome of TERPT versus conventional transabdominal (ABD) pull-through for HD. / 
-    {"Hirschsprung Disease, HD, HD"}
+    {{
+        "Hirschsprung Disease": ["Hirschsprung Disease", "HD", "HD"]
+    }}
 --"""
 
 
-def user_message(text):
+def user_message(keyword, text):
     return f"""
 TASK:
+    Keyword: {keyword}
     Text: {text}
 """
 
 
-def run_openai_task(text):
+def run_openai_task(keyword, text):
     messages = [
         {"role": "system", "content": system_message()},
         {"role": "assistant", "content": assistant_message()},
-        {"role": "user", "content": user_message(text)}
+        {"role": "user", "content": user_message(keyword, text)}
     ]
 
     response = client.chat.completions.create(
@@ -43,6 +46,19 @@ def run_openai_task(text):
     )
 
     return response.choices[0].message.content
+
+
+def test_openai_task():
+    text = "Are the long-term results of the transanal pull-through equal to those of the transabdominal pull-through? / " \
+           "The transanal endorectal pull-through (TERPT) is becoming the most popular procedure in the treatment of Hirschsprung disease (HD), " \
+           "but overstretching of the anal sphincters remains a critical issue that may impact the continence. This study examined the long-term " \
+           "outcome of TERPT versus conventional transabdominal (ABD) pull-through for HD. "
+    keyword = "Hirschsprung Disease"
+    response = run_openai_task(keyword, text)
+    
+    # load as dict
+    response_dict = json.loads(response)
+    print(response_dict[keyword])
 
 
 def contain_disease_meshes(meshes):
@@ -55,7 +71,7 @@ def contain_disease_meshes(meshes):
     return False
 
 
-def main():
+def split_disease_entries():
     num_samples = 50
     original_file = 'data/ori_pqal.json'
     output_file = 'data/pqa_disease.json'
@@ -111,6 +127,10 @@ def main():
 
     print(f"Filtered data saved to {output_file} with {len(filtered_data)} samples")
     print(f"Disease keywords saved to {output_keywords_file}")
+
+
+def main():
+    test_openai_task()
 
 
 if __name__ == "__main__":
