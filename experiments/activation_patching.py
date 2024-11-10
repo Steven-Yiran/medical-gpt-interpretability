@@ -12,7 +12,13 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from dsets import ClinicalKnownsDataset, ClinicalAgeGroupDataset, ClinicalDiseaseDataset, ClinicalMedicineDataset
+from dsets import (
+    ClinicalKnownsDataset,
+    ClinicalAgeGroupDataset,
+    ClinicalDiseaseDataset,
+    ClinicalMedicineDataset,
+    ClinicalICDDiseaseDataset,
+)
 from util import nethook
 
 def main():
@@ -61,6 +67,8 @@ def main():
         knowns = ClinicalDiseaseDataset("data")
     elif args.fact_data == "pqa-medicine":
         knowns = ClinicalMedicineDataset("data")
+    elif args.fact_data == "icd-disease":
+        knowns = ClinicalICDDiseaseDataset("data")
     else:
         raise ValueError(f"Unknown fact_data: {args.fact_data}")
 
