@@ -46,11 +46,19 @@ def main():
     aa("--fact_data", default=None, type=str)
     aa("--output_dir", default="results/{model_name}/causal_trace")
     aa("--noise_level", default="s3", type=parse_noise_rule)
+    aa("--method",
+        default="GN",
+        choices=["GN", "STR"]
+    )
     aa("--replace", default=False, type=bool)
     args = parser.parse_args()
 
     model_dir = f"r{args.replace}_{args.model_name.replace('/', '_')}"
-    model_dir = f"n{args.noise_level}_{model_dir}"
+    if args.method == "GN":
+        model_dir = f"n{args.noise_level}_{model_dir}"
+    elif args.method == "STR":
+        model_dir = f"STR_{model_dir}"
+
     output_dir = args.output_dir.format(model_name=model_dir)
     result_dir = f"{output_dir}/cases"
     pdf_dir = f"{output_dir}/pdf"
@@ -71,7 +79,7 @@ def main():
         knowns = ClinicalICDDiseaseDataset("data")
     else:
         raise ValueError(f"Unknown fact_data: {args.fact_data}")
-
+ 
     noise_level = args.noise_level
     uniform_noise = False
     if isinstance(noise_level, str):
@@ -82,7 +90,7 @@ def main():
             print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
 
     for i, knowledge in tqdm(enumerate(knowns)):
-        if args.fact_data in ["pqa-disease", "pqa-medicine"]:
+        if args.fact_data in ["pqa-disease", "pqa-medicine", "icd-disease"]:
             kid = i
         else:
             kid = knowledge["id"]
