@@ -22,6 +22,7 @@ class ClinicalICDDiseaseDataset(Dataset):
 
     def flatten_data(self, data_dict):
         data = []
+        not_found = 0
         for icd, group in data_dict.items():
             for item in group:
                 entry = {}
@@ -31,10 +32,19 @@ class ClinicalICDDiseaseDataset(Dataset):
                     raise NotImplementedError("Context is not implemented yet")
                 else:
                     template = "Question: {} The answer to the question is"
-                    entry["prompt"] = template.format(item["QUESTION"])
+                    entry["prompt"] = template.format(item["QUESTION"].lower())
 
-                entry["subject"] = item["subject"][-1]
+                entry["subject"] = ""
+                for s in item["subject"]:
+                    if s in entry["prompt"]:
+                        entry["subject"] = s
+                        break
+                if entry["subject"] == "":
+                    not_found += 1
+                    continue
+
                 entry["attribute"] = item["final_decision"]
                 data.append(entry)
+        print(f"Could not find subjects in {not_found} entries")
         return data
         

@@ -50,10 +50,9 @@ def main():
         default="GN",
         choices=["GN", "STR"]
     )
-    aa("--replace", default=False, type=bool)
     args = parser.parse_args()
 
-    model_dir = f"r{args.replace}_{args.model_name.replace('/', '_')}"
+    model_dir = f"{args.model_name.replace('/', '_')}"
     if args.method == "GN":
         model_dir = f"n{args.noise_level}_{model_dir}"
     elif args.method == "STR":
@@ -79,28 +78,21 @@ def main():
         knowns = ClinicalICDDiseaseDataset("data")
     else:
         raise ValueError(f"Unknown fact_data: {args.fact_data}")
- 
+
     noise_level = args.noise_level
     uniform_noise = False
-    if isinstance(noise_level, str):
+    if method == "GN" and isinstance(noise_level, str):
         if noise_level.startswith("s"):
             # Automatic spherical gaussian noise
             factor = float(noise_level[1:]) if len(noise_level) > 1 else 1.0
             noise_level = factor * 0.05 # TODO: temporary
             print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
 
-    for i, knowledge in tqdm(enumerate(knowns)):
-        if args.fact_data in ["pqa-disease", "pqa-medicine", "icd-disease"]:
-            kid = i
-        else:
-            kid = knowledge["id"]
-        #orid = knowledge["original_id"]
+    for kid, knowledge in tqdm(enumerate(knowns)):
         for module_kind in None, "mlp", "attn":
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{kid}{kind_suffix}.npz"
             if not os.path.exists(filename):
-                if args.fact_data in ["pqa-disease", "pqa-medicine"]:
-                    knowledge["subject"] = knowledge["subjects"][0]
                 result = run_patching_analysis(
                     mt,
                     knowledge["prompt"],
@@ -110,6 +102,7 @@ def main():
                     noise=noise_level,
                     uniform_noise=uniform_noise,
                     replace=args.replace,
+                    method=args.method,
                 ) 
                 numpy_result = {
                     k: v.detach().cpu().numpy() if torch.is_tensor(v) else v
@@ -117,6 +110,7 @@ def main():
                 }
                 numpy.savez(filename, **numpy_result)
             else:
+                print(f"Skipping {kid} because {filename} exists")
                 numpy_result = numpy.load(filename, allow_pickle=True)
             if not numpy_result["correct_prediction"]:
                 tqdm.write(f"Skipping {kid}, prediction: {numpy_result['answer']}, expected: {numpy_result['expect']}")
@@ -127,7 +121,54 @@ def main():
             plot_trace_heatmap(plot_result, filepath=pdfname, modelname=args.model_name)
 
 
-def get_prob_interv(
+def get_prob_interve_replacement(
+    model,
+    clean_tokens,
+    states_to_patch,
+    answer_t,
+    corrupt_range: Tuple[int, int],
+):
+    patch_spec = defaultdict(list)
+    for token, layer in states_to_patch:
+        patch_spec[layer].append(token)
+
+    embed_layername = get_layer_name(model, 0, component="embed")
+
+    def intervention_rule(x, layer):
+        """
+        This function execute state patching/corruption depending on the layer.
+        """
+        if layer == embed_layername:
+            if corrupt_range is not None:
+                start, end = corrupt_range
+                default_token = 42
+                # replace the tokens in the corrupt range with a default token
+                x[1:, start:end] = default_token
+            return x
+
+        if layer not in patch_spec:
+            return x
+
+        # patch states
+        h = untuple(x)
+        for t in patch_spec[layer]:
+            h[1:, t] = h[0, t]
+        return x
+
+    with torch.no_grad(), nethook.TraceDict(
+        model,
+        [embed_layername] + list(patch_spec.keys()),
+        edit_output=intervention_rule,
+    ) as td:
+        out = model(**clean_tokens)
+
+    # report the probability of the output token
+    probs = torch.softmax(out.logits[1:, -1, :], dim=1).mean(dim=0)[answer_t]
+
+    return probs
+
+
+def get_prob_interve_noising(
     model,
     inputs,
     states_to_patch,
@@ -136,7 +177,7 @@ def get_prob_interv(
     noise: int = 0.1,
     uniform_noise=False,
     replace: bool = False,
-    trace_layers=None, 
+    trace_layers=None,
 ):
     """
     Compute the probability of the output while performing intervention on model's states.
@@ -170,18 +211,15 @@ def get_prob_interv(
 
     embed_layername = get_layer_name(model, 0, component="embed")
 
-    def untuple(x):
-        return x[0] if isinstance(x, tuple) else x
-
-    # Define patch rules
+    # Define corruption rules
     if isinstance(noise, float):
         noise_fn = lambda x: noise * x
     else:
         noise_fn = noise
 
-    def patch_rule(x, layer):
+    def intervention_rule(x, layer):
         """
-        This function execute state patching depending on the layer.
+        This function execute state patching/corruption depending on the layer.
         """
         if layer == embed_layername:
             if corrupt_range is not None:
@@ -205,7 +243,7 @@ def get_prob_interv(
     with torch.no_grad(), nethook.TraceDict(
         model,
         [embed_layername] + list(patch_spec.keys()) + additional_layers,
-        edit_output=patch_rule,
+        edit_output=intervention_rule,
     ) as td:
         out = model(**inputs)
 
@@ -227,6 +265,7 @@ def run_patching_analysis(
     replace: bool = False,
     window=10,
     module_kind: str = None,
+    method: str = "GN",
 ):
     """
     Runs an activation patching experiment over the provided model, subject, object, 
@@ -249,10 +288,12 @@ def run_patching_analysis(
         - high_score: the probability of the output in the clean run
 
     """
+    if method not in ["GN", "STR"]:
+        raise ValueError(f"Unknown corruption method: {method}")
     # clean run
-    inputs = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
+    clean_tokens = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
     with torch.no_grad():
-        answer_id, clean_prob = [d[0] for d in predict_from_input(mt.model, inputs)]
+        answer_id, clean_prob = [d[0] for d in predict_from_input(mt.model, clean_tokens)]
     [answer_tok] = decode_tokens(mt.tokenizer, [answer_id])
     if expect is not None and answer_tok.strip() != expect:
         return dict(
@@ -260,40 +301,51 @@ def run_patching_analysis(
             expect=expect,
             correct_prediction=False
         )
-    corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
+    corrupt_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], subject)
     # corrupted run
-    corrupt_prob = get_prob_interv(
-        mt.model,
-        inputs,
-        [],
-        answer_id,
-        corrupt_range=corrupt_range,
-        noise=noise,
-        uniform_noise=uniform_noise
-    ).item()
+    if method == "GN":
+        corrupt_prob = get_prob_interve_noising(
+            mt.model,
+            clean_tokens,
+            [],
+            answer_id,
+            corrupt_range=corrupt_range,
+            noise=noise,
+            uniform_noise=uniform_noise
+        ).item()
+    elif method == "STR":
+        corrupt_prob = get_prob_interve_replacement(
+            mt.model,
+            clean_tokens,
+            [],
+            answer_id,
+            corrupt_range=corrupt_range,
+        ).item()
+
     # find trace token range: (i.e. After "Questions:" token Before "the answer of the question is" token)
     # if token_range is None:
-    #     start_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "Question:")
-    #     end_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "the answer of the question is")
+    #     start_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], "Question:")
+    #     end_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], "the answer of the question is")
     #     token_range = (start_range[1], end_range[0])
     # corrupted-with-restoration run
     if not module_kind:
         probs = trace_significant_states(
             mt.model,
             mt.num_layers,
-            inputs,
+            clean_tokens,
             corrupt_range,
             answer_id,
             noise=noise,
             uniform_noise=uniform_noise,
             replace=replace,
             token_range=token_range,
+            method=method,
         )
     else:
         probs = trace_significant_window(
             mt.model,
             mt.num_layers,
-            inputs,
+            clean_tokens,
             corrupt_range,
             answer_id,
             noise=noise,
@@ -302,14 +354,15 @@ def run_patching_analysis(
             window=window,
             module_kind=module_kind,
             token_range=token_range,
+            method=method,
         )
     probs = probs.detach().cpu()
     return dict(
         scores=probs,
         low_score=corrupt_prob,
         high_score=clean_prob,
-        input_ids=inputs["input_ids"][0],
-        input_tokens=decode_tokens(mt.tokenizer, inputs["input_ids"][0]),
+        input_ids=clean_tokens["input_ids"][0],
+        input_tokens=decode_tokens(mt.tokenizer, clean_tokens["input_ids"][0]),
         subject_range=corrupt_range,
         answer=answer_tok,
         window=window,
@@ -329,6 +382,7 @@ def trace_significant_states(
     uniform_noise=False,
     replace=False,
     token_range=None,
+    method="GN",
 ):
     """
     Traces the important states in the model by running the activation patching experiment
@@ -350,16 +404,25 @@ def trace_significant_states(
     for tid in token_range:
         row = []
         for layer in range(num_layers):
-            r = get_prob_interv(
-                model,
-                inputs,
-                [(tid, get_layer_name(model, layer))],
-                answer_t,
-                corrupt_range=corrupt_range,
-                noise=noise,
-                uniform_noise=uniform_noise,
-                replace=replace,
-            )
+            if method == "GN":
+                r = get_prob_interve_noising(
+                    model,
+                    inputs,
+                    [(tid, get_layer_name(model, layer))],
+                    answer_t,
+                    corrupt_range=corrupt_range,
+                    noise=noise,
+                    uniform_noise=uniform_noise,
+                    replace=replace,
+                )
+            elif method == "STR":
+                r = get_prob_interve_replacement(
+                    model,
+                    inputs,
+                    [(tid, get_layer_name(model, layer))],
+                    answer_t,
+                    corrupt_range=corrupt_range,
+                )
             row.append(r)
         table.append(torch.stack(row))
     return torch.stack(table)
@@ -377,6 +440,7 @@ def trace_significant_window(
     uniform_noise=False,
     replace=False,
     token_range=None,
+    method="GN",
 ):
     ntokens = inputs["input_ids"].shape[1]
     table = []
@@ -395,16 +459,25 @@ def trace_significant_window(
                     max(0, layer - window // 2), min(num_layers, layer - (-window // 2))
                 )
             ]
-            r = get_prob_interv(
-                model,
-                inputs,
-                layerlist,
-                answer_t,
-                corrupt_range=corrupt_range,
-                noise=noise,
-                uniform_noise=uniform_noise,
-                replace=replace,
-            )
+            if method == "GN":
+                r = get_prob_interve_noising(
+                    model,
+                    inputs,
+                    layerlist,
+                    answer_t,
+                    corrupt_range=corrupt_range,
+                    noise=noise,
+                    uniform_noise=uniform_noise,
+                    replace=replace,
+                )
+            elif method == "STR":
+                r = get_prob_interve_replacement(
+                    model,
+                    inputs,
+                    layerlist,
+                    answer_t,
+                    corrupt_range=corrupt_range,
+                )
             row.append(r)
         table.append(torch.stack(row))
     return torch.stack(table)
@@ -483,6 +556,10 @@ def predict_from_input(model, inputs):
     probs = torch.softmax(out[:, -1], dim=1)
     p, preds = torch.max(probs, dim=1)
     return preds, p
+
+
+def untuple(x):
+    return x[0] if isinstance(x, tuple) else x
 
 
 def make_inputs(tokenizer, prompts, device="cuda"):
