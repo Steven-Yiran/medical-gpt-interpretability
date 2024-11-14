@@ -9,6 +9,7 @@ import numpy
 import torch
 import matplotlib.pyplot as plt
 from datasets import load_dataset
+import pandas as pd
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -81,29 +82,46 @@ def main():
 
     noise_level = args.noise_level
     uniform_noise = False
-    if method == "GN" and isinstance(noise_level, str):
+    if args.method == "GN" and isinstance(noise_level, str):
         if noise_level.startswith("s"):
             # Automatic spherical gaussian noise
             factor = float(noise_level[1:]) if len(noise_level) > 1 else 1.0
             noise_level = factor * 0.05 # TODO: temporary
             print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
+    elif args.method == "STR":
+        lookup_table = make_disease_lookup_table("data/disease_by_icd_group.csv", mt.tokenizer)
+        def replace_fn(subject):
+            return icd_subject_replace_fn(mt.tokenizer, subject, lookup_table)
+        print("Using STR as corrupted method")
 
     for kid, knowledge in tqdm(enumerate(knowns)):
         for module_kind in None, "mlp", "attn":
             kind_suffix = f"_{module_kind}" if module_kind is not None else ""
             filename = f"{result_dir}/knowledge_{kid}{kind_suffix}.npz"
             if not os.path.exists(filename):
-                result = run_patching_analysis(
-                    mt,
-                    knowledge["prompt"],
-                    knowledge["subject"],
-                    knowledge["attribute"],
-                    module_kind=module_kind,
-                    noise=noise_level,
-                    uniform_noise=uniform_noise,
-                    replace=args.replace,
-                    method=args.method,
-                ) 
+                if args.method == "STR":
+                    result = run_patching_analysis(
+                        mt,
+                        knowledge["prompt"],
+                        knowledge["subject"],
+                        knowledge["attribute"],
+                        module_kind,
+                        method="STR",
+                        replace_fn=replace_fn,
+                        samples=1,
+                        lookup_table=lookup_table,
+                    )
+                elif args.method == "GN":
+                    result = run_patching_analysis(
+                        mt,
+                        knowledge["prompt"],
+                        knowledge["subject"],
+                        knowledge["attribute"],
+                        module_kind,
+                        method="GN",
+                        noise=noise_level,
+                        uniform_noise=uniform_noise,
+                    ) 
                 numpy_result = {
                     k: v.detach().cpu().numpy() if torch.is_tensor(v) else v
                     for k, v in result.items()
@@ -123,29 +141,20 @@ def main():
 
 def get_prob_interve_replacement(
     model,
-    clean_tokens,
+    inputs,
     states_to_patch,
     answer_t,
-    corrupt_range: Tuple[int, int],
+    trace_layers=None,
 ):
+    """
+    Compute the probability of the output while performing intervention on model's states.
+    Using Symmetric Token Replacement (STR) method.
+    """
     patch_spec = defaultdict(list)
     for token, layer in states_to_patch:
         patch_spec[layer].append(token)
 
-    embed_layername = get_layer_name(model, 0, component="embed")
-
     def intervention_rule(x, layer):
-        """
-        This function execute state patching/corruption depending on the layer.
-        """
-        if layer == embed_layername:
-            if corrupt_range is not None:
-                start, end = corrupt_range
-                default_token = 42
-                # replace the tokens in the corrupt range with a default token
-                x[1:, start:end] = default_token
-            return x
-
         if layer not in patch_spec:
             return x
 
@@ -155,17 +164,19 @@ def get_prob_interve_replacement(
             h[1:, t] = h[0, t]
         return x
 
+    additional_layers = [] if trace_layers is None else trace_layers
     with torch.no_grad(), nethook.TraceDict(
         model,
-        [embed_layername] + list(patch_spec.keys()),
+        list(patch_spec.keys()) + additional_layers,
         edit_output=intervention_rule,
     ) as td:
-        out = model(**clean_tokens)
+        out = model(**inputs)
 
     # report the probability of the output token
     probs = torch.softmax(out.logits[1:, -1, :], dim=1).mean(dim=0)[answer_t]
 
     return probs
+
 
 
 def get_prob_interve_noising(
@@ -176,7 +187,6 @@ def get_prob_interve_noising(
     corrupt_range: Tuple[int, int],
     noise: int = 0.1,
     uniform_noise=False,
-    replace: bool = False,
     trace_layers=None,
 ):
     """
@@ -258,14 +268,15 @@ def run_patching_analysis(
     prompt: str,
     subject: str,
     expect: str,
-    samples: int = 10,
-    noise: float = 0.0,
-    token_range: Tuple = None,
-    uniform_noise: bool = False,
-    replace: bool = False,
-    window=10,
-    module_kind: str = None,
+    module_kind: str,
     method: str = "GN",
+    token_range: Tuple = None,
+    noise: float = 0.0,
+    uniform_noise: bool = False,
+    replace_fn: callable = None,
+    lookup_table: pd.DataFrame = None,
+    window: int = 10,
+    samples: int = 10,
 ):
     """
     Runs an activation patching experiment over the provided model, subject, object, 
@@ -288,25 +299,43 @@ def run_patching_analysis(
         - high_score: the probability of the output in the clean run
 
     """
-    if method not in ["GN", "STR"]:
-        raise ValueError(f"Unknown corruption method: {method}")
     # clean run
-    clean_tokens = make_inputs(mt.tokenizer, [prompt] * (samples + 1), device="cuda")
+    if method == "GN":
+        inputs = make_gn_inputs(
+            mt.tokenizer,
+            [prompt] * (samples + 1),
+            device="cuda"
+        )
+    elif method == "STR":
+        inputs = make_str_inputs(
+            mt.tokenizer,
+            prompt,
+            subject,
+            samples,
+            replace_fn,
+            device="cuda")
+        if inputs is None:
+            print(f"Could not find a replacement for {subject}")
+            return dict(
+                answer=None,
+                expect=expect,
+                correct_prediction=False
+            )
     with torch.no_grad():
-        answer_id, clean_prob = [d[0] for d in predict_from_input(mt.model, clean_tokens)]
+        answer_id, clean_prob = [d[0] for d in predict_from_input(mt.model, inputs)]
     [answer_tok] = decode_tokens(mt.tokenizer, [answer_id])
-    if expect is not None and answer_tok.strip() != expect:
+    if answer_tok.strip() != expect:
         return dict(
             answer=answer_tok,
             expect=expect,
             correct_prediction=False
         )
-    corrupt_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], subject)
     # corrupted run
+    corrupt_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], subject)
     if method == "GN":
         corrupt_prob = get_prob_interve_noising(
             mt.model,
-            clean_tokens,
+            inputs,
             [],
             answer_id,
             corrupt_range=corrupt_range,
@@ -316,28 +345,26 @@ def run_patching_analysis(
     elif method == "STR":
         corrupt_prob = get_prob_interve_replacement(
             mt.model,
-            clean_tokens,
+            inputs,
             [],
             answer_id,
-            corrupt_range=corrupt_range,
         ).item()
 
     # find trace token range: (i.e. After "Questions:" token Before "the answer of the question is" token)
     # if token_range is None:
-    #     start_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], "Question:")
-    #     end_range = find_token_range(mt.tokenizer, clean_tokens["input_ids"][0], "the answer of the question is")
+    #     start_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "Question:")
+    #     end_range = find_token_range(mt.tokenizer, inputs["input_ids"][0], "the answer of the question is")
     #     token_range = (start_range[1], end_range[0])
     # corrupted-with-restoration run
     if not module_kind:
         probs = trace_significant_states(
             mt.model,
             mt.num_layers,
-            clean_tokens,
+            inputs,
             corrupt_range,
             answer_id,
             noise=noise,
             uniform_noise=uniform_noise,
-            replace=replace,
             token_range=token_range,
             method=method,
         )
@@ -345,12 +372,11 @@ def run_patching_analysis(
         probs = trace_significant_window(
             mt.model,
             mt.num_layers,
-            clean_tokens,
+            inputs,
             corrupt_range,
             answer_id,
             noise=noise,
             uniform_noise=uniform_noise,
-            replace=replace,
             window=window,
             module_kind=module_kind,
             token_range=token_range,
@@ -361,8 +387,8 @@ def run_patching_analysis(
         scores=probs,
         low_score=corrupt_prob,
         high_score=clean_prob,
-        input_ids=clean_tokens["input_ids"][0],
-        input_tokens=decode_tokens(mt.tokenizer, clean_tokens["input_ids"][0]),
+        input_ids=inputs["input_ids"][0],
+        input_tokens=decode_tokens(mt.tokenizer, inputs["input_ids"][0]),
         subject_range=corrupt_range,
         answer=answer_tok,
         window=window,
@@ -380,7 +406,6 @@ def trace_significant_states(
     answer_t,
     noise=0.1,
     uniform_noise=False,
-    replace=False,
     token_range=None,
     method="GN",
 ):
@@ -413,7 +438,6 @@ def trace_significant_states(
                     corrupt_range=corrupt_range,
                     noise=noise,
                     uniform_noise=uniform_noise,
-                    replace=replace,
                 )
             elif method == "STR":
                 r = get_prob_interve_replacement(
@@ -421,7 +445,6 @@ def trace_significant_states(
                     inputs,
                     [(tid, get_layer_name(model, layer))],
                     answer_t,
-                    corrupt_range=corrupt_range,
                 )
             row.append(r)
         table.append(torch.stack(row))
@@ -438,7 +461,6 @@ def trace_significant_window(
     window=10,
     noise=0.1,
     uniform_noise=False,
-    replace=False,
     token_range=None,
     method="GN",
 ):
@@ -468,7 +490,6 @@ def trace_significant_window(
                     corrupt_range=corrupt_range,
                     noise=noise,
                     uniform_noise=uniform_noise,
-                    replace=replace,
                 )
             elif method == "STR":
                 r = get_prob_interve_replacement(
@@ -476,7 +497,6 @@ def trace_significant_window(
                     inputs,
                     layerlist,
                     answer_t,
-                    corrupt_range=corrupt_range,
                 )
             row.append(r)
         table.append(torch.stack(row))
@@ -562,7 +582,42 @@ def untuple(x):
     return x[0] if isinstance(x, tuple) else x
 
 
-def make_inputs(tokenizer, prompts, device="cuda"):
+def make_disease_lookup_table(data_path, tokenizer) -> pd.DataFrame:
+    diseases = pd.read_csv(data_path)
+    diseases["token_length"] = diseases["Disease"].apply(
+        lambda x: len(tokenizer.encode(x))
+    )
+    return diseases
+
+
+def icd_subject_replace_fn(tokenizer, subject, lookup_table: pd.DataFrame):
+    """
+    Given a disease keyword, returns a semantically similar one with the same 
+    length after tokenization from the lookup table.
+    """
+    original_token = tokenizer.encode(subject)
+    # filter all diseases with the same token length
+    lookup_table = lookup_table[lookup_table["token_length"] == len(original_token)]
+    if lookup_table.empty:
+        return None
+    # randomly select a disease
+    replacement = lookup_table.sample(1)["Disease"].values[0]
+    return replacement
+
+
+def make_str_inputs(tokenizer, prompt, subject, num_sample, replace_fn, device):
+    prompts = [prompt]
+    for _ in range(num_sample):
+        start, end = find_token_range(tokenizer, tokenizer.encode(prompt), subject)
+        replacement_subject = replace_fn(subject)
+        if replacement_subject is None:
+            return None
+        corrupt_prompt = prompt.replace(subject, replacement_subject)
+        prompts.append(corrupt_prompt)
+    return make_gn_inputs(tokenizer, prompts, device)
+
+
+def make_gn_inputs(tokenizer, prompts, device):
     token_lists = [tokenizer.encode(p) for p in prompts]
     maxlen = max(len(t) for t in token_lists)
     if "[PAD]" in tokenizer.all_special_tokens:
