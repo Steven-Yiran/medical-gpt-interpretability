@@ -90,8 +90,8 @@ def main():
             print(f"Using noise_level {noise_level} to match emperical SD of model embedding times {factor}")
     elif args.method == "STR":
         lookup_table = make_disease_lookup_table("data/disease_by_icd_group.csv", mt.tokenizer)
-        def replace_fn(subject):
-            return icd_subject_replace_fn(mt.tokenizer, subject, lookup_table)
+        def replace_fn(subject, icd_group):
+            return icd_subject_replace_fn(mt.tokenizer, subject, icd_group, lookup_table)
         print("Using STR as corrupted method")
 
     for kid, knowledge in tqdm(enumerate(knowns)):
@@ -110,6 +110,7 @@ def main():
                         replace_fn=replace_fn,
                         samples=1,
                         lookup_table=lookup_table,
+                        icd_group=knowledge["icd_group"]
                     )
                 elif args.method == "GN":
                     result = run_patching_analysis(
@@ -275,6 +276,7 @@ def run_patching_analysis(
     uniform_noise: bool = False,
     replace_fn: callable = None,
     lookup_table: pd.DataFrame = None,
+    icd_group: str = None,
     window: int = 10,
     samples: int = 10,
 ):
@@ -313,7 +315,8 @@ def run_patching_analysis(
             subject,
             samples,
             replace_fn,
-            device="cuda")
+            device="cuda",
+            icd_group=icd_group)
         if inputs is None:
             print(f"Could not find a replacement for {subject}")
             return dict(
@@ -590,11 +593,37 @@ def make_disease_lookup_table(data_path, tokenizer) -> pd.DataFrame:
     return diseases
 
 
-def icd_subject_replace_fn(tokenizer, subject, lookup_table: pd.DataFrame):
+def icd_subject_replace_fn(tokenizer, subject, icd_group, lookup_table: pd.DataFrame):
     """
     Given a disease keyword, returns a semantically similar one with the same 
     length after tokenization from the lookup table.
     """
+    # create a map from ICD 10 labels
+    # Mapping from ICD-11 codes to ICD-10 chapter letters
+    icd_mapping = {
+        '01': 'Z',  # ICD-11 '01' mapped to ICD-10 'Z' (Factors influencing health status)
+        '02': 'K',  # ICD-11 '02' mapped to ICD-10 'K' (Diseases of the digestive system)
+        '03': 'L',  # ICD-11 '03' mapped to ICD-10 'L' (Diseases of the skin and subcutaneous tissue)
+        '04': 'M',  # ICD-11 '04' mapped to ICD-10 'M' (Diseases of the musculoskeletal system and connective tissue)
+        '05': 'N',  # ICD-11 '05' mapped to ICD-10 'N' (Diseases of the genitourinary system)
+        '06': 'O',  # ICD-11 '06' mapped to ICD-10 'O' (Pregnancy, childbirth and the puerperium)
+        '07': 'P',  # ICD-11 '07' mapped to ICD-10 'P' (Certain conditions originating in the perinatal period)
+        '08': 'Q',  # ICD-11 '08' mapped to ICD-10 'Q' (Congenital malformations)
+        '09': 'R',  # ICD-11 '09' mapped to ICD-10 'R' (Symptoms, signs, and abnormal clinical and laboratory findings)
+        '10': 'S',  # ICD-11 '10' mapped to ICD-10 'S' (Injury, poisoning, and certain other consequences of external causes)
+        '11': 'A',  # ICD-11 '11' mapped to ICD-10 'A' (Certain infectious and parasitic diseases)
+        '12': 'B',  # ICD-11 '12' mapped to ICD-10 'B' (Certain infectious and parasitic diseases)
+        '13': 'C',  # ICD-11 '13' mapped to ICD-10 'C' (Neoplasms)
+        '14': 'D',  # ICD-11 '14' mapped to ICD-10 'D' (Diseases of the blood and blood-forming organs)
+        '15': 'E',  # ICD-11 '15' mapped to ICD-10 'E' (Endocrine, nutritional, and metabolic diseases)
+        '16': 'F',  # ICD-11 '16' mapped to ICD-10 'F' (Mental and behavioural disorders)
+        '17': 'G',  # ICD-11 '17' mapped to ICD-10 'G' (Diseases of the nervous system)
+        '18': 'H',  # ICD-11 '18' mapped to ICD-10 'H' (Diseases of the eye and adnexa; ear and mastoid process)
+        '19': 'I',  # ICD-11 '19' mapped to ICD-10 'I' (Diseases of the circulatory system)
+        '20': 'J',  # ICD-11 '20' mapped to ICD-10 'J' (Diseases of the respiratory system)
+        '21': 'T',  # ICD-11 '21' mapped to ICD-10 'T' (Injury, poisoning, and certain other consequences of external causes)
+        '22': 'V',  # ICD-11 '22' mapped to ICD-10 'V' (External causes of morbidity and mortality)
+    }
     original_token = tokenizer.encode(subject)
     # filter all diseases with the same token length
     lookup_table = lookup_table[lookup_table["token_length"] == len(original_token)]
@@ -605,11 +634,11 @@ def icd_subject_replace_fn(tokenizer, subject, lookup_table: pd.DataFrame):
     return replacement
 
 
-def make_str_inputs(tokenizer, prompt, subject, num_sample, replace_fn, device):
+def make_str_inputs(tokenizer, prompt, subject, num_sample, replace_fn, device, icd_group=None):
     prompts = [prompt]
     for _ in range(num_sample):
         start, end = find_token_range(tokenizer, tokenizer.encode(prompt), subject)
-        replacement_subject = replace_fn(subject)
+        replacement_subject = replace_fn(subject, icd_group)
         if replacement_subject is None:
             return None
         corrupt_prompt = prompt.replace(subject, replacement_subject)
