@@ -40,6 +40,8 @@ def main():
         "--model_name",
         default="microsoft/biogpt",
         choices=[
+            "openai-community/gpt2-large",
+            "microsoft/BioGPT-Large",
             "microsoft/biogpt",
             "microsoft/BioGPT-Large-PubMedQA"
         ]
@@ -547,10 +549,10 @@ class ModelAndTokenizer:
 
 
 def find_token_range(tokenizer, token_array, substring):
-    toks = decode_tokens(tokenizer, token_array)
+    chars = decode_tokens(tokenizer, token_array)
     #remove all whitespace in substring
     substring = "".join(substring.split())
-    whole_string = "".join(toks)
+    whole_string = "".join(chars)
     try:
         char_loc = whole_string.index(substring)
     except ValueError:
@@ -558,7 +560,7 @@ def find_token_range(tokenizer, token_array, substring):
         raise ValueError
     loc = 0
     tok_start, tok_end = None, None
-    for i, t in enumerate(toks):
+    for i, t in enumerate(chars):
         loc += len(t)
         if tok_start is None and loc > char_loc:
             tok_start = i
