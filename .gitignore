@@ -3,7 +3,7 @@
 */__pycache__/
 
 # Environment
-/ENV
+ENV
 
 # Plots and results
 /results
@@ -12,4 +12,4 @@
 # Torch Models
 *.pth
 
-/data
+data/
