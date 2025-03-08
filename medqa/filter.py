@@ -5,7 +5,7 @@ import unicodedata
 
 class MultiChoiceFilter:
     # Inspiring from lmeval
-    def __init__(self, ignore_case=False, ignore_punctuation=False, regex_pattern=r"[\(\[]([A-Z])[\)\]]"):
+    def __init__(self, ignore_case=False, ignore_punctuation=False, regex_pattern=r"[\(\[]([A-D])[\)\]]"):
         
         self.ignore_case = ignore_case
         self.ignore_punctuation = ignore_punctuation
@@ -22,6 +22,7 @@ class MultiChoiceFilter:
         return text
 
     def find_match(self, regex, resp, convert_dict={}):
+        # look for the regex patter from the end to the start
         match = regex.findall(resp)
         if match:
             match = match[-1]
@@ -32,10 +33,16 @@ class MultiChoiceFilter:
                 match = convert_dict[match]
         return match
 
+
     def extract_answer(self, response, choices=None):
+        # give tally of each cases of match
         matchFirst = re.search(r'the answer is .(\w).', response)
         if matchFirst:
             return f"({matchFirst.group(1)})"
+        # also find "the correct answer is"
+        matchSecond = re.search(r'the correct answer is .(\w).', response)
+        if matchSecond:
+            return f"({matchSecond.group(1)})"
         match = self.find_match(self.regex, response) 
         if match:
             return f"({match})"
@@ -46,9 +53,10 @@ class MultiChoiceFilter:
 
 
 def main():
-    model_name = "KrithikV/MedMobile"
-    model_name = model_name.split("/")[-1]
+    #model_name = "KrithikV/MedMobile"
+    #model_name = model_name.split("/")[-1]
     path = "meerkat-7b-v1.0_results.json"
+    #path = "Llama-3.1-8B-Instruct_results.json"
     with open(path, "r") as f:
         results = json.load(f)
 
