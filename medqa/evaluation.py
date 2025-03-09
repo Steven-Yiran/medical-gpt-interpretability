@@ -127,13 +127,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, required=True)
     parser.add_argument("--max_tokens", type=int, default=1000)
+    parser.add_argument("--inference", action="store_true")
     args = parser.parse_args()
 
     # Load the model and tokenizer
     model_name = args.model_name
     model_out_name = model_name.split("/")[-1]
 
-    if not os.path.exists(f"{model_out_name}_results.json"):
+    if not os.path.exists(f"{model_out_name}_results.json") or args.inference:
         print(f"Running inference for {model_out_name}...")
         results = inference(args)
         with open(f"{model_out_name}_results.json", "w") as f:
