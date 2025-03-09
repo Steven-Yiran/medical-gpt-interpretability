@@ -23,66 +23,42 @@ class MultiChoiceFilter:
 
     def find_match(self, regex, resp, convert_dict={}):
         # look for the regex patter from the end to the start
-        match = regex.findall(resp)
+        # Search from the end to the start by reversing the string
+        reversed_resp = resp[::-1]
+        match = regex.search(reversed_resp)
         if match:
-            match = match[-1]
-            if isinstance(match, tuple):
-                match = [m for m in match if m][0]
-            match = match.strip()
-            if match and match in convert_dict: 
-                match = convert_dict[match]
+            # Extract the match and reverse it back to get the correct order
+            match = match.group(0)[::-1]
+            # Extract the actual letter from the match using the original regex
+            match = regex.search(match)
+            if match:
+                match = match.group(1)
+                if isinstance(match, tuple):
+                    match = [m for m in match if m][0]
+                match = match.strip()
+                if match and match in convert_dict:
+                    match = convert_dict[match]
         return match
 
 
     def extract_answer(self, response, choices=None):
         # give tally of each cases of match
-        matchFirst = re.search(r'the answer is .(\w).', response)
-        if matchFirst:
-            return f"({matchFirst.group(1)})"
-        # also find "the correct answer is"
-        matchSecond = re.search(r'the correct answer is .(\w).', response)
-        if matchSecond:
-            return f"({matchSecond.group(1)})"
+        match = re.search(r'the answer is .(\w).', response)
+        if match:
+            return match.group(1), "the answer is"
+        match = re.search(r'the answer is.*?\[([A-D])\]', response, re.IGNORECASE)
+        if match:
+            return match.group(1), "the answer is"
+        match = re.search(r'answer is .(\w).', response)
+        if match:
+            return match.group(1), "answer is"
+        match = re.search(r'answer is.*?\[([A-D])\]', response, re.IGNORECASE)
+        if match:
+            return match.group(1), "answer is"
         match = self.find_match(self.regex, response) 
         if match:
-            return f"({match})"
-        return "[invalid]"
+            return match, "single letter"
+        return "invalid", "invalid"
 
     def filter_responses(self, responses, choices):
         return [self.extract_answer(resp, choices) for resp in responses]
-
-
-def main():
-    #model_name = "KrithikV/MedMobile"
-    #model_name = model_name.split("/")[-1]
-    path = "meerkat-7b-v1.0_results.json"
-    #path = "Llama-3.1-8B-Instruct_results.json"
-    with open(path, "r") as f:
-        results = json.load(f)
-
-    correct = 0
-    incorrect = 0
-
-    filter = MultiChoiceFilter()
-    choice_tally = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
-    for result in results:
-        generated_response = result["generated_response"]
-        answer = filter.extract_answer(generated_response)
-        gold = result["gold"]
-        answer = answer.replace("(", "").replace(")", "")
-
-        if answer not in ['A', 'B', 'C', 'D']:
-            incorrect += 1
-        else:
-            choice_tally[answer] += 1
-            answer_num = ord(answer) - ord('A')
-            if answer_num == gold:
-                correct += 1
-            else:
-                incorrect += 1
-
-    print(f"Correct: {correct}, Incorrect: {incorrect}")
-    print(f"Accuracy: {correct / (correct + incorrect)}")
-    print(f"Choice Tally: {choice_tally}")
-if __name__ == "__main__":
-    main()
