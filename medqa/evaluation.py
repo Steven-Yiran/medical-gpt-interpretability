@@ -7,7 +7,7 @@ import re
 from tqdm import tqdm
 import argparse
 import os
-
+import sys
 from filter import MultiChoiceFilter
 
 # Define prompt template
@@ -20,26 +20,17 @@ def format_choices(choices):
         final_answers.append(f'[{x}] : {y}')
     return "\n".join(final_answers)
 
-def check_answer(model, tokenizer, question, choices):
+def check_answer(model, tokenizer, question, choices, max_tokens):
     content = prompt_template.format(question=question, **choices)
-    #content += " The answer is\n"
     messages = [
         {"role": "system", "content": "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\n"},
         {"role": "user", "content": content},
     ]
     encodeds = tokenizer.apply_chat_template(messages, return_tensors="pt").to("cuda:0")
-    generated_ids = model.generate(encodeds, max_new_tokens=500, do_sample=True, pad_token_id=tokenizer.eos_token_id)
+    generated_ids = model.generate(encodeds, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
     decoded = tokenizer.batch_decode(generated_ids)
 
-    # Extract the generated response after "ASSISTANT"
-    assistant_index = decoded[0].find("ASSISTANT:")
-    if assistant_index != -1:
-        generated_response = decoded[0][assistant_index + len("ASSISTANT:"):].strip()
-    else:
-        generated_response = decoded[0].strip()
-    #print(generated_response)
-    return generated_response
-
+    return decoded[0]
 
 def evaluate(model_name, results):
     filter = MultiChoiceFilter()
@@ -104,21 +95,44 @@ def evaluate(model_name, results):
 def inference(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16, device_map="cuda:0")
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
-
+    filter = MultiChoiceFilter()
     dataset = load_dataset("GBaker/MedQA-USMLE-4-options-hf", split="test")    
 
     results = []
-    for item in tqdm(dataset):
+    total = 0
+    correct = 0
+    invalid = 0
+    progress_bar = tqdm(dataset)
+    for item in progress_bar:
         question = item['sent1']
         choices = {'choice_A': item['ending0'], 'choice_B': item['ending1'], 'choice_C': item['ending2'], 'choice_D': item['ending3']}
+        gold_idx = item['label']
 
-        generated_response = check_answer(model, tokenizer, question, choices)
+        generated_response = check_answer(model, tokenizer, question, choices, args.max_tokens)
+
+        answer, answer_type = filter.extract_answer(generated_response)
+
+        total += 1
+        if answer not in ['A', 'B', 'C', 'D']:
+            print(f"Invalid answer: {answer}")
+            print(f"--------------------------------")
+            invalid += 1
+        else:
+            answer_idx = ord(answer) - ord('A')
+            if answer_idx == gold_idx:
+                correct += 1
+        
+        # Update progress bar with current accuracy
+        if total > 0:
+            accuracy = correct / total
+            invalid_rate = invalid / total
+            progress_bar.set_description(f"Accuracy: {accuracy:.4f}, Invalid: {invalid_rate:.4f}")
         
         results.append({
             "id": item['id'],
-        "gold": item['label'],
-        "generated_response": generated_response
-    })
+            "gold": item['label'],
+            "generated_response": generated_response
+        })
     
     return results
 

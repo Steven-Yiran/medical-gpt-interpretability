@@ -13,3 +13,5 @@ ENV
 *.pth
 
 data/
+
+*.log
