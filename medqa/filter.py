@@ -42,10 +42,9 @@ class MultiChoiceFilter:
 
 
     def extract_answer(self, response, choices=None):
-        # give tally of each cases of match
-        match = re.search(r'the answer is .(\w).', response)
+        match = re.search(r'(?:therefore,\s*)?the answer is.*?\(([A-D])\)', response, re.IGNORECASE)
         if match:
-            return match.group(1), "the answer is"
+            return match.group(1), "(therefore), the answer is"
         match = re.search(r'the answer is.*?\[([A-D])\]', response, re.IGNORECASE)
         if match:
             return match.group(1), "the answer is"
@@ -62,3 +61,47 @@ class MultiChoiceFilter:
 
     def filter_responses(self, responses, choices):
         return [self.extract_answer(resp, choices) for resp in responses]
+    
+class PatientInfoFilter:
+    def __init__(self):
+        # The previous regex had issues matching common age patterns
+        # This new pattern will match formats like:
+        # "A 40-year-old man", "A 40 year old woman", "An 85-yr-old patient"
+        self.regex = re.compile(r'a \d+[-\s]year[-\s]old (?:man|woman)', re.IGNORECASE)
+        self.gender_keywords = {
+            "man": "male",
+            "woman": "female",
+            "male": "male",
+            "female": "female",
+            "boy": "male",
+            "girl": "female",
+        }
+        self.pronoun_map = {
+            "male": {"he": "she", "his": "her", "him": "her"},
+            "female": {"she": "he", "her": "his", "hers": "his"},
+        }
+
+    def filter_text(self, text):
+        return self.regex.search(text)
+    
+    def extract_gender(self, question):
+        # Use regex to find gender-related keywords
+        pattern = r'\b(?:' + '|'.join(self.gender_keywords.keys()) + r')\b'
+        match = re.search(pattern, question.lower())
+        if match:
+            return self.gender_keywords[match.group().lower()]
+            
+        # If no direct gender keyword found, look for gender-specific pronouns
+        he_pattern = r'\b(?:he|his|him)\b'
+        she_pattern = r'\b(?:she|her|hers)\b'
+        
+        he_matches = len(re.findall(he_pattern, question.lower()))
+        she_matches = len(re.findall(she_pattern, question.lower()))
+        
+        if he_matches > she_matches:
+            return "male"
+        elif she_matches > he_matches:
+            return "female"
+            
+        return None  # Return None if no gender indicators found
+    

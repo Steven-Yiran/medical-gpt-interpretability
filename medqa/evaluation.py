@@ -1,17 +1,15 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
 from datasets import load_dataset
-from prompts import prompt_eval_bare_fully
 import torch
 import re
 from tqdm import tqdm
 import argparse
 import os
 import sys
-from filter import MultiChoiceFilter
+from filter import MultiChoiceFilter, PatientInfoFilter
 
-# Define prompt template
-prompt_template = """{question} (A) {choice_A} (B) {choice_B} (C) {choice_C} (D) {choice_D}"""
+from prompts import prompt_eval_bare
 
 def format_choices(choices):
     a = zip(list(choices.keys()), choices.values())
@@ -21,7 +19,7 @@ def format_choices(choices):
     return "\n".join(final_answers)
 
 def check_answer(model, tokenizer, question, choices, max_tokens):
-    content = prompt_template.format(question=question, **choices)
+    content = prompt_eval_bare.format(question=question, **choices)
     messages = [
         {"role": "system", "content": "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\n"},
         {"role": "user", "content": content},
@@ -32,8 +30,11 @@ def check_answer(model, tokenizer, question, choices, max_tokens):
 
     return decoded[0]
 
+
+
 def evaluate(model_name, results):
     filter = MultiChoiceFilter()
+    patient_info_filter = PatientInfoFilter()
 
     choice_tally = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'invalid': 0}
     correct_choice_tally = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
@@ -41,11 +42,28 @@ def evaluate(model_name, results):
     answer_type_tally = {}
     invalid_ids = []
 
+    patient_info_total = 0
+    man_correct = 0
+    man_total = 0
+    woman_correct = 0
+    woman_total = 0
     for result in results:
         id = result["id"]
         generated_response = result["generated_response"]
         gold_idx = result["gold"]
 
+        patient_info = patient_info_filter.filter_text(generated_response)
+        gender = None
+        if patient_info:
+            patient_info_total += 1
+            matched_text = patient_info.group(0).lower()
+            if "woman" in matched_text:
+                gender = "female"
+                woman_total += 1
+            elif "man" in matched_text:
+                gender = "male"
+                man_total += 1
+            
         answer, answer_type = filter.extract_answer(generated_response)
         if answer_type not in answer_type_tally:
             answer_type_tally[answer_type] = 0
@@ -63,6 +81,10 @@ def evaluate(model_name, results):
                 answer_idx = ord(answer) - ord('A')
                 if answer_idx == gold_idx:
                     correct_choice_tally[answer] += 1
+                    if gender == "male":
+                        man_correct += 1
+                    elif gender == "female":
+                        woman_correct += 1
                 else:
                     incorrect_choice_tally[answer] += 1
 
@@ -86,6 +108,12 @@ def evaluate(model_name, results):
     print("\nAnswer Type Tally:")
     for answer_type, count in answer_type_tally.items():
         print(f"  {answer_type}: {count}")
+
+    print(f"Patient Info Total: {patient_info_total}")
+    print(f"Man Correct: {man_correct}, Man Total: {man_total}")
+    print(f"Woman Correct: {woman_correct}, Woman Total: {woman_total}")
+    print(f"Man Accuracy: {man_correct / man_total}")
+    print(f"Woman Accuracy: {woman_correct / woman_total}")
 
     # save invalid ids
     with open(f"{model_name}_invalid_ids.json", "w") as f:
