@@ -1,6 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
-from datasets import load_dataset
+#from datasets import load_dataset
 import torch
 import re
 from tqdm import tqdm
@@ -124,7 +124,21 @@ def inference(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16, device_map="cuda:0")
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     filter = MultiChoiceFilter()
-    dataset = load_dataset("GBaker/MedQA-USMLE-4-options-hf", split="test")    
+
+    if args.dataset_name == "medqa-official":
+        dataset = load_dataset("GBaker/MedQA-USMLE-4-options-hf", split="test")    
+    elif args.dataset_name == "medqa-male":
+        data_path = "male_medqa.json"
+        dataset = json.load(open(data_path))
+    elif args.dataset_name == "medqa-female":
+        data_path = "female_medqa.json"
+        dataset = json.load(open(data_path))
+    else:
+        raise ValueError(f"Dataset {args.dataset_name} not found")
+    
+    
+
+    print(f"Loaded dataset from {data_path} with {len(dataset)} questions")
 
     results = []
     total = 0
@@ -169,6 +183,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, required=True)
     parser.add_argument("--max_tokens", type=int, default=1000)
+    parser.add_argument("--dataset_name", type=str, default="medqa-official")
     parser.add_argument("--inference", action="store_true")
     args = parser.parse_args()
 
@@ -176,14 +191,14 @@ def main():
     model_name = args.model_name
     model_out_name = model_name.split("/")[-1]
 
-    if not os.path.exists(f"{model_out_name}_results.json") or args.inference:
+    if not os.path.exists(f"{model_out_name}_{args.dataset_name}_results.json") or args.inference:
         print(f"Running inference for {model_out_name}...")
         results = inference(args)
-        with open(f"{model_out_name}_results.json", "w") as f:
+        with open(f"{model_out_name}_{args.dataset_name}_results.json", "w") as f:
             json.dump(results, f)
     else:
         print(f"Loading results for {model_out_name}...")
-        with open(f"{model_out_name}_results.json", "r") as f:
+        with open(f"{model_out_name}_{args.dataset_name}_results.json", "r") as f:
             results = json.load(f)
 
     evaluate(model_out_name, results)

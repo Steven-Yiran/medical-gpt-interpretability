@@ -4,6 +4,7 @@
 
 # Environment
 ENV
+venv
 
 # Plots and results
 /results
