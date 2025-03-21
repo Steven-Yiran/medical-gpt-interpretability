@@ -133,10 +133,11 @@ def inference(args):
     elif args.dataset_name == "medqa-female":
         data_path = "female_medqa.json"
         dataset = json.load(open(data_path))
+    elif args.dataset_name == "medqa-original":
+        data_path = "patient_medqa.json"
+        dataset = json.load(open(data_path))
     else:
         raise ValueError(f"Dataset {args.dataset_name} not found")
-    
-    
 
     print(f"Loaded dataset from {data_path} with {len(dataset)} questions")
 

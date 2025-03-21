@@ -3,7 +3,7 @@
 MODEL_NAME=dmis-lab/meerkat-7b-v1.0
 MAX_TOKENS=1000
 DO_INFERENCE=true
-DATASET_NAME=medqa-male
+DATASET_NAME=medqa-original
 
 if [ "$DO_INFERENCE" = true ]; then
     INFERENCE_FLAG=--inference
