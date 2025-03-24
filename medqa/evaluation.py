@@ -18,7 +18,7 @@ def format_choices(choices):
         final_answers.append(f'[{x}] : {y}')
     return "\n".join(final_answers)
 
-def check_answer(model, tokenizer, question, choices, max_tokens):
+def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
     content = prompt_eval_bare.format(question=question, **choices)
     messages = [
         {"role": "system", "content": "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\n"},
@@ -151,7 +151,7 @@ def inference(args):
         choices = {'choice_A': item['ending0'], 'choice_B': item['ending1'], 'choice_C': item['ending2'], 'choice_D': item['ending3']}
         gold_idx = item['label']
 
-        generated_response = check_answer(model, tokenizer, question, choices, args.max_tokens)
+        generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
 
         answer, answer_type = filter.extract_answer(generated_response)
 
