@@ -4,12 +4,13 @@ import re
 import argparse
 import json
 import random
+from functools import partial
 from tqdm import tqdm
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-#import transformer_lens.utils as utils
+import transformer_lens.utils as utils
 from transformer_lens.hook_points import (
     HookPoint,
 )  # Hooking utilities
@@ -62,6 +63,7 @@ def truncate_prompt(prompt):
         return None
     return prompt[:last_instance + len(pattern)]
 
+
 def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
     for i in range(len(baseline_data)):
         baseline_prompt = baseline_data[i]['generated_response']
@@ -78,8 +80,6 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             ],
             device="cuda"
         )
-        print(answers)
-        break
 
         if baseline_prompt is None or counterfactual_prompt is None:
             print(f"Skipping example {i} because the answer is not in the prompt")
@@ -97,6 +97,28 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
         print(f"Corrupted logit diff: {corrupted_logit_diff}")
 
+        def residual_stream_patching_hook(
+            resid_pre,
+            hook,
+            position
+        ):
+            clean_resid_pre = clean_cache[hook.name]
+            resid_pre[:, position, :] = clean_resid_pre[:, position, :]
+            return resid_pre
+
+        num_positions = len(clean_tokens[0])
+        patching_results = torch.zeros((model.cfg.n_layers, num_positions), device="cuda")
+
+        for layer in tqdm(range(model.cfg.n_layers)):
+            for position in range(num_positions):
+                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
+                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
+                ])
+                patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
+                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+
+        print(patching_results)
         break
 
         
