@@ -9,6 +9,8 @@ from tqdm import tqdm
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import matplotlib.pyplot as plt
+
 
 import transformer_lens.utils as utils
 from transformer_lens.hook_points import (
@@ -18,7 +20,16 @@ from transformer_lens import HookedTransformer, FactoredMatrix
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
 
+def imshow(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
+    px.imshow(utils.to_numpy(tensor), color_continuous_midpoint=0.0, color_continuous_scale="RdBu", labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
 
+def line(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
+    px.line(utils.to_numpy(tensor), labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
+
+def scatter(x, y, xaxis="", yaxis="", caxis="", renderer=None, **kwargs):
+    x = utils.to_numpy(x)
+    y = utils.to_numpy(y)
+    px.scatter(y=y, x=x, labels={"x":xaxis, "y":yaxis, "color":caxis}, **kwargs).show(renderer)
 
 def assert_logits_match(model, hf_model, tokenizer):
     prompts = [
@@ -63,9 +74,14 @@ def truncate_prompt(prompt):
         return None
     return prompt[:last_instance + len(pattern)]
 
+def save_plot_to_pdf(fig, filename):
+    fig.write_image(filename, format="pdf")
 
 def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
     for i in range(len(baseline_data)):
+        if os.path.exists(f"../results/patching_results_{i}.pdf"):
+            continue
+
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = truncate_prompt(baseline_prompt)
         answer = chr(ord('A') + baseline_data[i]['gold'])
@@ -118,9 +134,16 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
                 patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
                 patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
 
-        print(patching_results)
-        break
+        # plot heatmap using patching_results
+        # show magnitude of patching_results
+        patching_results = patching_results.cpu().numpy()
+        plt.imshow(patching_results, cmap='RdBu')
+        plt.colorbar()
+        plt.show()
+        plt.savefig(f"../results/patching_results_{i}.pdf")
+        plt.close()
 
+        break
         
 
 def main():
@@ -154,7 +177,6 @@ def main():
     )
 
     model = model.to("cuda")
-
     #hf_model = hf_model.to("cuda")
     #assert_logits_match(model, hf_model, tokenizer)
 
