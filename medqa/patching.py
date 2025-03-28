@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import argparse
 import json
 import random
@@ -37,41 +38,65 @@ def assert_logits_match(model, hf_model, tokenizer):
         assert torch.allclose(logits[i], tl_logits[i], atol=1, rtol=1e-1)
 
 
-def convert_to_tokens(tokenizer, question, choices):
-    content = prompt_eval_bare.format(question=question, **choices)
-    messages = [
-        {"role": "system", "content": meerkat_medqa_system_prompt},
-        {"role": "user", "content": content},
-    ]
-    tokens = tokenizer.apply_chat_template(messages, return_tensors="pt")
-    return tokens
-    #generated_ids = model.generate(encodeds, max_new_tokens=max_tokens, do_sample=False)
-    #decoded = tokenizer.batch_decode(generated_ids)
-    #return decoded[0]
-
-
 def select_random_answer(correct_answer):
     wrong_answers = ['A', 'B', 'C', 'D']
     wrong_answers.remove(correct_answer)
     return random.choice(wrong_answers)
 
+def get_logit_diff(logits, answer_token_indices):
+    if len(logits.shape) == 3:
+        # Get final logits only
+        logits = logits[:, -1, :]
+    correct_logits = logits.gather(1, answer_token_indices[:, 0].unsqueeze(1))
+    incorrect_logits = logits.gather(1, answer_token_indices[:, 1].unsqueeze(1))
+    return (correct_logits - incorrect_logits).mean()
 
-def setup_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
+
+def truncate_prompt(prompt):
+    # truncate the prompt until the end of the pattern "the answer is ("
+    # since there are multiple instances of this pattern in the prompt, we need to find the last one
+    pattern = "the answer is ("
+    # find the last instance of the pattern
+    last_instance = prompt.rfind(pattern)
+    if last_instance == -1:
+        return None
+    return prompt[:last_instance + len(pattern)]
+
+def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
     for i in range(len(baseline_data)):
-        question = baseline_data[i]['sent1']
-        choices = {'choice_A': baseline_data[i]['ending0'], 'choice_B': baseline_data[i]['ending1'], 'choice_C': baseline_data[i]['ending2'], 'choice_D': baseline_data[i]['ending3']}
-        answer = chr(ord('A') + baseline_data[i]['label'])
-        counterfactual_question = counterfactual_data[i]['sent1']
-        counterfactual_choices = {'choice_A': counterfactual_data[i]['ending0'], 'choice_B': counterfactual_data[i]['ending1'], 'choice_C': counterfactual_data[i]['ending2'], 'choice_D': counterfactual_data[i]['ending3']}
+        baseline_prompt = baseline_data[i]['generated_response']
+        baseline_prompt = truncate_prompt(baseline_prompt)
+        answer = chr(ord('A') + baseline_data[i]['gold'])
+        counterfactual_prompt = counterfactual_data[i]['generated_response']
+        counterfactual_prompt = truncate_prompt(counterfactual_prompt)
         counterfactual_answer = select_random_answer(answer)
-        answers = [answer, counterfactual_answer]
-
-        clean_tokens = convert_to_tokens(tokenizer, question, choices)
-        corrupted_tokens = convert_to_tokens(tokenizer, counterfactual_question, counterfactual_choices)
+        answers = [(answer, counterfactual_answer)]
         answer_token_indices = torch.tensor(
-            [model.to_single_token(ans) for ans in answers]
+            [
+                [model.to_single_token(answers[i][j]) for j in range(2)]
+                for i in range(len(answers))
+            ],
+            device="cuda"
         )
-        print(answer_token_indices)
+        print(answers)
+        break
+
+        if baseline_prompt is None or counterfactual_prompt is None:
+            print(f"Skipping example {i} because the answer is not in the prompt")
+            continue
+
+        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
+        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
+
+        clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
+        corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
+
+        clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
+        print(f"Clean logit diff: {clean_logit_diff}")
+
+        corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
+        print(f"Corrupted logit diff: {corrupted_logit_diff}")
+
         break
 
         
@@ -87,6 +112,14 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
     hf_model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16)
 
+    temp_content = "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\nUSER: A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of ringing sensation in his ear. He received this first course of neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to which of the following actions? (A) Inhibition of proteasome (B) Hyperstabilization of microtubules (C) Generation of free radicals (D) Cross-linking of DNA ASSISTANT: \n\nStep 1: Summarize available information. The patient is a 67-year-old man with transitional cell carcinoma of the bladder. He has a 2-day history of a ringing sensation in his ear, which began after he received neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB.\n\nStep 2: Relate the symptoms to chemotherapy. The patient's symptoms of a ringing sensation in the ear and sensorineural hearing loss are likely to be an adverse effect of chemotherapy.\n\nStep 3: Identify the drug likely responsible. Common chemotherapy agents known to cause ototoxicity (damage to the ear leading to hearing loss) include platinum compounds such as cisplatin.\n\nStep 4: Determine the mechanism of action of the drug. Cisplatin, a platinum-containing drug, is known to cause ototoxicity. Its mechanism of action involves the formation of free radicals that lead to cell death primarily through apoptosis.\n\nStep 5: Match the drug's action with the options provided. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to the generation of free radicals, as this is the mechanism of action by which drugs like cisplatin exert their anticancer effects.\n\nTherefore, the answer is ("
+    messages = [
+        {"role": "user", "content": temp_content},
+    ]
+    #tokens = tokenizer.apply_chat_template(messages, return_tensors="pt")
+    tokens = tokenizer.encode(temp_content, return_tensors="pt")
+    tokens = tokens.to("cuda")
+
     model = HookedTransformer.from_pretrained(
         "mistral-7b",
         hf_model=hf_model,
@@ -99,20 +132,20 @@ def main():
     )
 
     model = model.to("cuda")
+
     #hf_model = hf_model.to("cuda")
     #assert_logits_match(model, hf_model, tokenizer)
 
-    with open("patient_medqa.json", "r") as f:
+    with open("meerkat-7b-v1.0_medqa-original_results.json", "r") as f:
         baseline_data = json.load(f)
     
-    with open("male_medqa.json", "r") as f:
+    with open("meerkat-7b-v1.0_medqa-male_results.json", "r") as f:
         counterfactual_data = json.load(f)
 
     print(f"Baseline data: {len(baseline_data)}")
     print(f"Counterfactual data: {len(counterfactual_data)}")
 
-    setup_patching(model, tokenizer, baseline_data, counterfactual_data, args.max_tokens)
-
+    run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, args.max_tokens)
     
 if __name__ == "__main__":
     main()

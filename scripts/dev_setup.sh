@@ -8,4 +8,4 @@ git config --global user.email "Yiran Shi"
 
 echo "Git username and email have been set successfully."
 
-echo "Remember to set OPENAI_API_KEY to use preprocess scripts."
+echo "Remember to set Hugging Face token"
