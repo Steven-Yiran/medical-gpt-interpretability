@@ -77,13 +77,67 @@ def truncate_prompt(prompt):
 def save_plot_to_pdf(fig, filename):
     fig.write_image(filename, format="pdf")
 
-def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
+def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None, filepath=None, modelname="Mistral-7B"):
+    """
+    Plots the activation patching results as a heatmap.
+    
+    Args:
+        patching_results: Tensor of shape (n_layers, n_positions) containing patching scores
+        clean_tokens: Original token IDs
+        tokenizer: Tokenizer used for decoding
+        filepath: Where to save the plot
+        modelname: Name of the model for the plot title
+    """
+    # Convert results to numpy for plotting
+    differences = patching_results.cpu().numpy()
+    differences = differences.T
+    low_score = patching_results.min().item()
+    module_kind = None
+    window = 10
+    labels = [tokenizer.decode([t]) for t in clean_tokens[0]]
+    
+    with plt.rc_context():
+        fig, ax = plt.subplots(figsize=(3.5, 20), dpi=200)
+        h = ax.pcolor(
+            differences,
+            cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
+                module_kind
+            ],
+            vmin=low_score,
+        )
+        ax.invert_yaxis()
+        ax.set_yticks([0.5 + i for i in range(len(differences))])
+        ax.set_xticks([0.5 + i for i in range(0, differences.shape[1] - 6, 5)])
+        ax.set_xticklabels(list(range(0, differences.shape[1] - 6, 5)))
+        ax.set_yticklabels(labels)
+        if not module_kind:
+            ax.set_title("Impact of restoring state after corrupted input")
+            ax.set_xlabel(f"single restored layer within {modelname}")
+        else:
+            ax.set_title(f"Impact of restoring state after corrupted input ({module_kind})")
+            ax.set_xlabel(f"center of interval of {window} layers within {module_kind} layers")
+        cb = plt.colorbar(h)
+        if answer is not None:
+            cb.ax.set_title(f"p({str(answer).strip()})", y=-0.16, fontsize=10)
+        if filepath is not None:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            plt.savefig(filepath, bbox_inches="tight")
+            plt.close()
+        else:
+            plt.show()
+
+
+def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens, max_length=20):
+    average_clean_logit_diff = 0
+    average_corrupted_logit_diff = 0
     for i in range(len(baseline_data)):
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             continue
+        print(f"Processing example {i}")
 
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = truncate_prompt(baseline_prompt)
+
         answer = chr(ord('A') + baseline_data[i]['gold'])
         counterfactual_prompt = counterfactual_data[i]['generated_response']
         counterfactual_prompt = truncate_prompt(counterfactual_prompt)
@@ -101,17 +155,19 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             print(f"Skipping example {i} because the answer is not in the prompt")
             continue
 
-        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
-        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
+        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt")[-max_length:].to("cuda")
+        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt")[-max_length:].to("cuda")
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
         corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         print(f"Clean logit diff: {clean_logit_diff}")
+        average_clean_logit_diff += clean_logit_diff
 
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
         print(f"Corrupted logit diff: {corrupted_logit_diff}")
+        average_corrupted_logit_diff += corrupted_logit_diff
 
         def residual_stream_patching_hook(
             resid_pre,
@@ -122,26 +178,38 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             resid_pre[:, position, :] = clean_resid_pre[:, position, :]
             return resid_pre
 
-        num_positions = len(clean_tokens[0])
+        start_position = 0
+        end_position = len(clean_tokens[0])
+        num_positions = end_position - start_position
         patching_results = torch.zeros((model.cfg.n_layers, num_positions), device="cuda")
 
+        # Process in batches to reduce memory usage
+        batch_size = 4  # Adjust this based on your available memory
         for layer in tqdm(range(model.cfg.n_layers)):
-            for position in range(num_positions):
-                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
-                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
-                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
-                ])
-                patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
-                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
-
-        # plot heatmap using patching_results
-        # show magnitude of patching_results
-        patching_results = patching_results.cpu().numpy()
-        plt.imshow(patching_results, cmap='RdBu')
-        plt.colorbar()
-        plt.show()
-        plt.savefig(f"../results/patching_results_{i}.pdf")
-        plt.close()
+            for position_start in range(start_position, end_position, batch_size):
+                position_end = min(position_start + batch_size, end_position)
+                for position in range(position_start, position_end):
+                    temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                    patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
+                        (utils.get_act_name("resid_pre", layer), temp_hook_fn)
+                    ])
+                    patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
+                    patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+                torch.cuda.empty_cache()
+        # Plot the heatmap
+        plot_patching_heatmap(
+            patching_results,
+            clean_tokens,
+            tokenizer,
+            answer=answer,
+            filepath=f"../results/patching_results_{i}.pdf",
+            modelname="Mistral-7B"
+        )
+        
+        # Print average logit diffs
+        if i > 0:
+            print(f"Average clean logit diff: {average_clean_logit_diff / i}")
+            print(f"Average corrupted logit diff: {average_corrupted_logit_diff / i}")
 
         break
         
@@ -174,6 +242,7 @@ def main():
         dtype=torch.bfloat16,
         device="cuda",
         tokenizer=tokenizer,
+        use_checkpointing=True,  # Enable gradient checkpointing
     )
 
     model = model.to("cuda")
