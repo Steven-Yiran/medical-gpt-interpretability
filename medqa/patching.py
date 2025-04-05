@@ -77,7 +77,7 @@ def truncate_prompt(prompt):
 def save_plot_to_pdf(fig, filename):
     fig.write_image(filename, format="pdf")
 
-def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None, filepath=None, modelname="Mistral-7B"):
+def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None, filepath=None, modelname="Meerkat-7B"):
     """
     Plots the activation patching results as a heatmap.
     
@@ -96,8 +96,12 @@ def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None
     window = 10
     labels = [tokenizer.decode([t]) for t in clean_tokens[0]]
     
+    num_tokens = differences.shape[0]
+    num_layers = differences.shape[1]
+    plot_height = max(num_tokens / 7, 20)
+    plot_width = num_layers / 10
     with plt.rc_context():
-        fig, ax = plt.subplots(figsize=(3.5, 20), dpi=200)
+        fig, ax = plt.subplots(figsize=(plot_width, plot_height), dpi=200)
         h = ax.pcolor(
             differences,
             cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
@@ -127,7 +131,79 @@ def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None
             plt.show()
 
 
-def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens, max_length=20):
+"""
+Generate a counterfactual version of patient information by changing gender references.
+
+This function takes a prompt containing patient information and creates a counterfactual
+version by changing all references from female to male (or vice versa).
+
+Args:
+    prompt (str): The original prompt containing patient information
+
+Returns:
+    str: A modified version of the prompt with gender references changed
+"""
+def change_gender_references(text):
+    # Dictionary of gender-specific terms to replace
+    replacements = {
+        "woman": "man",
+        "women": "men",
+        "female": "male",
+        "she": "he",
+        "her": "his",
+        "hers": "his",
+        "herself": "himself",
+        "girl": "boy",
+        "girls": "boys",
+        "lady": "gentleman",
+        "ladies": "gentlemen",
+        "mother": "father",
+        "mom": "dad",
+        "sister": "brother",
+        "daughter": "son",
+        "wife": "husband",
+        "girlfriend": "boyfriend",
+        "fiancée": "fiancé",
+        "widow": "widower",
+        "Ms.": "Mr.",
+        "Mrs.": "Mr.",
+        "Miss": "Mr.",
+    }
+    
+    # Create case-insensitive pattern
+    pattern = re.compile(r'\b(' + '|'.join(re.escape(key) for key in replacements.keys()) + r')\b', 
+                         re.IGNORECASE)
+    
+    # Function to replace with correct case
+    def replace(match):
+        matched = match.group(0)
+        replacement = replacements[matched.lower()]
+        
+        # Preserve capitalization
+        if matched.islower():
+            return replacement
+        elif matched.isupper():
+            return replacement.upper()
+        elif matched[0].isupper():
+            return replacement[0].upper() + replacement[1:]
+        return replacement
+    
+    return pattern.sub(replace, text)
+
+def generate_counterfactual_patient_info(prompt):
+    """
+    Generate a counterfactual version of patient information by changing gender.
+    
+    Args:
+        prompt (str): The original prompt containing patient information
+        
+    Returns:
+        str: A counterfactual version of the prompt with gender changed
+    """
+    return change_gender_references(prompt)
+
+
+def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
     average_clean_logit_diff = 0
     average_corrupted_logit_diff = 0
     for i in range(len(baseline_data)):
@@ -137,10 +213,9 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
 
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = truncate_prompt(baseline_prompt)
-
+        baseline_prompt = baseline_prompt[-max_tokens:]
         answer = chr(ord('A') + baseline_data[i]['gold'])
-        counterfactual_prompt = counterfactual_data[i]['generated_response']
-        counterfactual_prompt = truncate_prompt(counterfactual_prompt)
+        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt)
         counterfactual_answer = select_random_answer(answer)
         answers = [(answer, counterfactual_answer)]
         answer_token_indices = torch.tensor(
@@ -155,19 +230,20 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             print(f"Skipping example {i} because the answer is not in the prompt")
             continue
 
-        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt")[-max_length:].to("cuda")
-        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt")[-max_length:].to("cuda")
+        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
+        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
         corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
-        print(f"Clean logit diff: {clean_logit_diff}")
-        average_clean_logit_diff += clean_logit_diff
-
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
+        print(f"Clean logit diff: {clean_logit_diff}")
         print(f"Corrupted logit diff: {corrupted_logit_diff}")
-        average_corrupted_logit_diff += corrupted_logit_diff
+
+        if abs(clean_logit_diff - corrupted_logit_diff) < 1e-2:
+            print(f"Skipping example {i} because the logit diff is too small")
+            continue
 
         def residual_stream_patching_hook(
             resid_pre,
@@ -178,24 +254,18 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             resid_pre[:, position, :] = clean_resid_pre[:, position, :]
             return resid_pre
 
-        start_position = 0
-        end_position = len(clean_tokens[0])
-        num_positions = end_position - start_position
-        patching_results = torch.zeros((model.cfg.n_layers, num_positions), device="cuda")
+        patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
 
-        # Process in batches to reduce memory usage
-        batch_size = 4  # Adjust this based on your available memory
+        # Process each position for each layer
         for layer in tqdm(range(model.cfg.n_layers)):
-            for position_start in range(start_position, end_position, batch_size):
-                position_end = min(position_start + batch_size, end_position)
-                for position in range(position_start, position_end):
-                    temp_hook_fn = partial(residual_stream_patching_hook, position=position)
-                    patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
-                        (utils.get_act_name("resid_pre", layer), temp_hook_fn)
-                    ])
-                    patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
-                    patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
-                torch.cuda.empty_cache()
+            for position in range(0, len(clean_tokens[0])):
+                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
+                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
+                ])
+                patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
+                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+            
         # Plot the heatmap
         plot_patching_heatmap(
             patching_results,
@@ -205,11 +275,6 @@ def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data
             filepath=f"../results/patching_results_{i}.pdf",
             modelname="Mistral-7B"
         )
-        
-        # Print average logit diffs
-        if i > 0:
-            print(f"Average clean logit diff: {average_clean_logit_diff / i}")
-            print(f"Average corrupted logit diff: {average_corrupted_logit_diff / i}")
 
         break
         
@@ -246,13 +311,11 @@ def main():
     )
 
     model = model.to("cuda")
-    #hf_model = hf_model.to("cuda")
-    #assert_logits_match(model, hf_model, tokenizer)
 
     with open("meerkat-7b-v1.0_medqa-original_results.json", "r") as f:
         baseline_data = json.load(f)
     
-    with open("meerkat-7b-v1.0_medqa-male_results.json", "r") as f:
+    with open("meerkat-7b-v1.0_medqa-female_results.json", "r") as f:
         counterfactual_data = json.load(f)
 
     print(f"Baseline data: {len(baseline_data)}")
