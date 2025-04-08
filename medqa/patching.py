@@ -17,9 +17,10 @@ from transformer_lens.hook_points import (
     HookPoint,
 )  # Hooking utilities
 from transformer_lens import HookedTransformer, FactoredMatrix
+import transformer_lens.patching as patching
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
-from filter import GenderConditionFilter
+from filter import *
 
 def imshow(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
     px.imshow(utils.to_numpy(tensor), color_continuous_midpoint=0.0, color_continuous_scale="RdBu", labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
@@ -163,12 +164,6 @@ def change_gender_references(text):
         "sister": "brother",
         "daughter": "son",
         "wife": "husband",
-        "girlfriend": "boyfriend",
-        "fiancée": "fiancé",
-        "widow": "widower",
-        "Ms.": "Mr.",
-        "Mrs.": "Mr.",
-        "Miss": "Mr.",
     }
     
     # Create case-insensitive pattern
@@ -191,7 +186,7 @@ def change_gender_references(text):
     
     return pattern.sub(replace, text)
 
-def generate_counterfactual_patient_info(prompt):
+def generate_counterfactual_patient_info(prompt, patient_gender):
     """
     Generate a counterfactual version of patient information by changing gender.
     
@@ -201,11 +196,34 @@ def generate_counterfactual_patient_info(prompt):
     Returns:
         str: A counterfactual version of the prompt with gender changed
     """
-    return change_gender_references(prompt)
+    pronoun_map = {
+        "male": {"he": "she", "his": "her", "him": "her"},
+        "female": {"she": "he", "her": "his", "hers": "his"},
+    }
+    #prompt = prompt.lower()
+    if patient_gender == "male":
+        prompt = prompt.replace("man", "woman")
+        prompt = prompt.replace("male", "female")
+    else:
+        prompt = prompt.replace("woman", "man")
+        prompt = prompt.replace("female", "male")
+    #replace_map = pronoun_map[patient_gender]
+    #for old, new in replace_map.items():
+    #    prompt = prompt.replace(old, new)
+    return prompt
 
 
-def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
+def run_activation_patching(
+    model, 
+    tokenizer, 
+    baseline_data, 
+    max_tokens,
+    cache_patching_results=False,
+    modelname="Meerkat-7B"
+):
     gender_condition_filter = GenderConditionFilter()
+    patient_gender_filter = PatientInfoFilter()
+
     for i in range(len(baseline_data)):
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             print(f"Skipping example {i} because results already exist")
@@ -216,14 +234,18 @@ def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
         baseline_prompt = truncate_prompt(baseline_prompt)
         baseline_prompt = baseline_prompt[-max_tokens:]
 
+        patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
+        if patient_gender is None:
+            print(f"Skipping example {i} because did not find patient gender")
+            continue
         if gender_condition_filter.filter_text(baseline_prompt):
             print(f"Skipping example {i} because it contains gender-specific medical conditions")
             continue
 
+        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender)       
         answer = chr(ord('A') + baseline_data[i]['gold'])
-        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt)
         counterfactual_answer = select_random_answer(answer)
-        answers = [(answer, counterfactual_answer)]
+        answers = [answer, counterfactual_answer]
         answer_token_indices = torch.tensor(
             [
                 [model.to_single_token(answer) for answer in answers]
@@ -241,6 +263,8 @@ def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
         corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
 
+        assert len(clean_tokens[0]) == len(corrupted_tokens[0]), f"Clean tokens length {len(clean_tokens[0])} is not equal to corrupted tokens length {len(corrupted_tokens[0])}"
+
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
         print(f"Clean logit diff: {clean_logit_diff}")
@@ -250,27 +274,36 @@ def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
             print(f"Skipping example {i} because the logit diff is too small")
             continue
 
-        def residual_stream_patching_hook(
-            resid_pre,
-            hook,
-            position
-        ):
-            clean_resid_pre = clean_cache[hook.name]
-            resid_pre[:, position, :] = clean_resid_pre[:, position, :]
-            return resid_pre
+        def corruption_metric(logits, answer_token_indices=answer_token_indices):
+            return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
 
-        patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
+        patching_results = patching.get_act_patch_resid_pre(model, corrupted_tokens, clean_cache, corruption_metric)   
 
-        # Process each position for each layer
-        for layer in tqdm(range(model.cfg.n_layers)):
-            for position in range(0, len(clean_tokens[0])):
-                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
-                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
-                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
-                ])
-                patched_logit_diff = get_logit_diff(patched_logits, answer_token_indices).detach()
-                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
-            
+        # def residual_stream_patching_hook(
+        #     resid_pre,
+        #     hook,
+        #     position
+        # ):
+        #     clean_resid_pre = clean_cache[hook.name]
+        #     resid_pre[:, position, :] = clean_resid_pre[:, position, :]
+        #     return resid_pre
+
+        # patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
+
+        # # Process each position for each layer
+        # for layer in tqdm(range(model.cfg.n_layers)):
+        #     for position in range(0, len(clean_tokens[0])):
+        #         temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+        #         patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
+        #             (utils.get_act_name("resid_pre", layer), temp_hook_fn)
+        #         ])
+        #         patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
+        #         patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+        
+        print(patching_results.shape)
+        print(patching_results.min(), patching_results.max())
+        if cache_patching_results:
+            torch.save(patching_results, f"../results/patching_results_{i}.pt")
         # Plot the heatmap
         plot_patching_heatmap(
             patching_results,
@@ -278,7 +311,7 @@ def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
             tokenizer,
             answer=answer,
             filepath=f"../results/patching_results_{i}.pdf",
-            modelname="Mistral-7B"
+            modelname=modelname
         )
 
         break
