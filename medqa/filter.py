@@ -105,3 +105,49 @@ class PatientInfoFilter:
             
         return None  # Return None if no gender indicators found
     
+
+class GenderConditionFilter:
+    """
+    Filter out responses that contain gender-specific medical conditions such as breast cancer, prostate cancer, etc.
+    """
+    def __init__(self):
+        male_conditions = [
+            "prostate",
+            "testicular",
+            "testicular",
+            "erectile",
+            "hypogonadism",
+            "varicocele",
+            "priapism",
+            "phimosis"
+        ]
+        female_conditions = [
+            "breast",
+            "ovarian",
+            "cervical",
+            "endometriosis",
+            "vaginitis",
+            "vulvodynia",
+            "menstrual",
+            "mastitis",
+            "pregnancy",
+        ]
+        gender_terms = [
+            "pregnancy",
+            "menstruation",
+            "ovulation",
+            "semen",
+            "sperm",
+            "prostate",
+            "vagina",
+            "uterus",
+            "ovaries",
+            "menopause",
+            "breastfeeding",
+            "labor",
+            "delivery"
+        ]
+        self.condition_keywords = male_conditions + female_conditions + gender_terms
+
+    def filter_text(self, text):
+        return any(keyword in text.lower() for keyword in self.condition_keywords)

@@ -13,6 +13,4 @@ venv
 # Torch Models
 *.pth
 
-data/
-
 *.log

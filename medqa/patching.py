@@ -19,6 +19,7 @@ from transformer_lens.hook_points import (
 from transformer_lens import HookedTransformer, FactoredMatrix
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
+from filter import GenderConditionFilter
 
 def imshow(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
     px.imshow(utils.to_numpy(tensor), color_continuous_midpoint=0.0, color_continuous_scale="RdBu", labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
@@ -203,25 +204,29 @@ def generate_counterfactual_patient_info(prompt):
     return change_gender_references(prompt)
 
 
-def run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, max_tokens):
-    average_clean_logit_diff = 0
-    average_corrupted_logit_diff = 0
+def run_activation_patching(model, tokenizer, baseline_data, max_tokens):
+    gender_condition_filter = GenderConditionFilter()
     for i in range(len(baseline_data)):
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
+            print(f"Skipping example {i} because results already exist")
             continue
         print(f"Processing example {i}")
 
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = truncate_prompt(baseline_prompt)
         baseline_prompt = baseline_prompt[-max_tokens:]
+
+        if gender_condition_filter.filter_text(baseline_prompt):
+            print(f"Skipping example {i} because it contains gender-specific medical conditions")
+            continue
+
         answer = chr(ord('A') + baseline_data[i]['gold'])
         counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt)
         counterfactual_answer = select_random_answer(answer)
         answers = [(answer, counterfactual_answer)]
         answer_token_indices = torch.tensor(
             [
-                [model.to_single_token(answers[i][j]) for j in range(2)]
-                for i in range(len(answers))
+                [model.to_single_token(answer) for answer in answers]
             ],
             device="cuda"
         )
@@ -283,20 +288,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
+    parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
     parser.add_argument("--max_tokens", type=int, default=1000)
-    parser.add_argument("--model_path", type=str, default=None)
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
     hf_model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16)
-
-    temp_content = "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\nUSER: A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of ringing sensation in his ear. He received this first course of neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to which of the following actions? (A) Inhibition of proteasome (B) Hyperstabilization of microtubules (C) Generation of free radicals (D) Cross-linking of DNA ASSISTANT: \n\nStep 1: Summarize available information. The patient is a 67-year-old man with transitional cell carcinoma of the bladder. He has a 2-day history of a ringing sensation in his ear, which began after he received neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB.\n\nStep 2: Relate the symptoms to chemotherapy. The patient's symptoms of a ringing sensation in the ear and sensorineural hearing loss are likely to be an adverse effect of chemotherapy.\n\nStep 3: Identify the drug likely responsible. Common chemotherapy agents known to cause ototoxicity (damage to the ear leading to hearing loss) include platinum compounds such as cisplatin.\n\nStep 4: Determine the mechanism of action of the drug. Cisplatin, a platinum-containing drug, is known to cause ototoxicity. Its mechanism of action involves the formation of free radicals that lead to cell death primarily through apoptosis.\n\nStep 5: Match the drug's action with the options provided. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to the generation of free radicals, as this is the mechanism of action by which drugs like cisplatin exert their anticancer effects.\n\nTherefore, the answer is ("
-    messages = [
-        {"role": "user", "content": temp_content},
-    ]
-    #tokens = tokenizer.apply_chat_template(messages, return_tensors="pt")
-    tokens = tokenizer.encode(temp_content, return_tensors="pt")
-    tokens = tokens.to("cuda")
 
     model = HookedTransformer.from_pretrained(
         "mistral-7b",
@@ -312,16 +309,11 @@ def main():
 
     model = model.to("cuda")
 
-    with open("meerkat-7b-v1.0_medqa-original_results.json", "r") as f:
+    with open(args.data_path, "r") as f:
         baseline_data = json.load(f)
-    
-    with open("meerkat-7b-v1.0_medqa-female_results.json", "r") as f:
-        counterfactual_data = json.load(f)
-
     print(f"Baseline data: {len(baseline_data)}")
-    print(f"Counterfactual data: {len(counterfactual_data)}")
 
-    run_activation_patching(model, tokenizer, baseline_data, counterfactual_data, args.max_tokens)
+    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens)
     
 if __name__ == "__main__":
     main()
