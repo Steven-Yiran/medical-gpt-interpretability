@@ -65,8 +65,7 @@ def get_logit_diff(logits, answer_token_indices):
     incorrect_logits = logits.gather(1, answer_token_indices[:, 1].unsqueeze(1))
     return (correct_logits - incorrect_logits).mean()
 
-
-def truncate_prompt(prompt):
+def truncate_answer_text(prompt):
     # truncate the prompt until the end of the pattern "the answer is ("
     # since there are multiple instances of this pattern in the prompt, we need to find the last one
     pattern = "the answer is ("
@@ -75,6 +74,18 @@ def truncate_prompt(prompt):
     if last_instance == -1:
         return None
     return prompt[:last_instance + len(pattern)]
+
+def find_assistant_response(prompt, pattern="ASSISTANT:"):
+    # find the last instance of the pattern
+    last_instance = prompt.rfind(pattern)
+    if last_instance == -1:
+        return None
+    return prompt[last_instance + len(pattern):]
+
+def setup_prompt(prompt):
+    prompt = truncate_answer_text(prompt)
+    prompt = find_assistant_response(prompt)
+    return prompt
 
 def save_plot_to_pdf(fig, filename):
     fig.write_image(filename, format="pdf")
@@ -133,59 +144,6 @@ def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None
             plt.show()
 
 
-"""
-Generate a counterfactual version of patient information by changing gender references.
-
-This function takes a prompt containing patient information and creates a counterfactual
-version by changing all references from female to male (or vice versa).
-
-Args:
-    prompt (str): The original prompt containing patient information
-
-Returns:
-    str: A modified version of the prompt with gender references changed
-"""
-def change_gender_references(text):
-    # Dictionary of gender-specific terms to replace
-    replacements = {
-        "woman": "man",
-        "women": "men",
-        "female": "male",
-        "she": "he",
-        "her": "his",
-        "hers": "his",
-        "herself": "himself",
-        "girl": "boy",
-        "girls": "boys",
-        "lady": "gentleman",
-        "ladies": "gentlemen",
-        "mother": "father",
-        "mom": "dad",
-        "sister": "brother",
-        "daughter": "son",
-        "wife": "husband",
-    }
-    
-    # Create case-insensitive pattern
-    pattern = re.compile(r'\b(' + '|'.join(re.escape(key) for key in replacements.keys()) + r')\b', 
-                         re.IGNORECASE)
-    
-    # Function to replace with correct case
-    def replace(match):
-        matched = match.group(0)
-        replacement = replacements[matched.lower()]
-        
-        # Preserve capitalization
-        if matched.islower():
-            return replacement
-        elif matched.isupper():
-            return replacement.upper()
-        elif matched[0].isupper():
-            return replacement[0].upper() + replacement[1:]
-        return replacement
-    
-    return pattern.sub(replace, text)
-
 def generate_counterfactual_patient_info(prompt, patient_gender):
     """
     Generate a counterfactual version of patient information by changing gender.
@@ -197,19 +155,18 @@ def generate_counterfactual_patient_info(prompt, patient_gender):
         str: A counterfactual version of the prompt with gender changed
     """
     pronoun_map = {
-        "male": {"he": "she", "his": "her", "him": "her"},
-        "female": {"she": "he", "her": "his", "hers": "his"},
+        "male": {"he": "she", "his": "her", "him": "her", "He": "She", "His": "Her", "Him": "Her"},
+        "female": {"she": "he", "her": "his", "hers": "his", "She": "He", "Her": "His", "Hers": "His"},
     }
-    #prompt = prompt.lower()
     if patient_gender == "male":
         prompt = prompt.replace("man", "woman")
         prompt = prompt.replace("male", "female")
     else:
         prompt = prompt.replace("woman", "man")
         prompt = prompt.replace("female", "male")
-    #replace_map = pronoun_map[patient_gender]
-    #for old, new in replace_map.items():
-    #    prompt = prompt.replace(old, new)
+    replace_map = pronoun_map[patient_gender]
+    for old, new in replace_map.items():
+        prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
     return prompt
 
 
@@ -231,8 +188,7 @@ def run_activation_patching(
         print(f"Processing example {i}")
 
         baseline_prompt = baseline_data[i]['generated_response']
-        baseline_prompt = truncate_prompt(baseline_prompt)
-        baseline_prompt = baseline_prompt[-max_tokens:]
+        baseline_prompt = setup_prompt(baseline_prompt)
 
         patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
         if patient_gender is None:
@@ -260,10 +216,14 @@ def run_activation_patching(
         clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
         corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 
+        assert len(clean_tokens[0]) == len(corrupted_tokens[0])
+
+        if len(clean_tokens[0]) > max_tokens:
+            print(f"Skipping example {i} because the prompt is too long")
+            continue
+
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
         corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
-
-        assert len(clean_tokens[0]) == len(corrupted_tokens[0]), f"Clean tokens length {len(clean_tokens[0])} is not equal to corrupted tokens length {len(corrupted_tokens[0])}"
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
@@ -300,8 +260,8 @@ def run_activation_patching(
         #         patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
         #         patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
         
-        print(patching_results.shape)
-        print(patching_results.min(), patching_results.max())
+        assert patching_results.abs().max() <= 1.0
+
         if cache_patching_results:
             torch.save(patching_results, f"../results/patching_results_{i}.pt")
         # Plot the heatmap
