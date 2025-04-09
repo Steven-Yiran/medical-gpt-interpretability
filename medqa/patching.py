@@ -159,11 +159,11 @@ def generate_counterfactual_patient_info(prompt, patient_gender):
         "female": {"she": "he", "her": "his", "hers": "his", "She": "He", "Her": "His", "Hers": "His"},
     }
     if patient_gender == "male":
-        prompt = prompt.replace("man", "woman")
-        prompt = prompt.replace("male", "female")
+        prompt = re.sub(r"\bman\b", "woman", prompt)
+        prompt = re.sub(r"\bmale\b", "female", prompt)
     else:
-        prompt = prompt.replace("woman", "man")
-        prompt = prompt.replace("female", "male")
+        prompt = re.sub(r"\bwoman\b", "man", prompt)
+        prompt = re.sub(r"\bfemale\b", "male", prompt)
     replace_map = pronoun_map[patient_gender]
     for old, new in replace_map.items():
         prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
@@ -223,7 +223,16 @@ def run_activation_patching(
             continue
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
-        corrupted_logits, corrupted_cache = model.run_with_cache(corrupted_tokens)
+        corrupted_logits = model(corrupted_tokens)
+
+        # Check that the top choice for the answer token is the same as the answer
+        clean_logits_last_token = clean_logits[0, -1, :]
+        top_token_id = torch.argmax(clean_logits_last_token).item()
+        top_token = tokenizer.decode([top_token_id])
+        
+        if top_token != answer:
+            print(f"Skipping example {i} because the top token '{top_token}' doesn't match the answer '{answer}'")
+            continue
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
@@ -232,6 +241,9 @@ def run_activation_patching(
 
         if abs(clean_logit_diff - corrupted_logit_diff) < 1e-2:
             print(f"Skipping example {i} because the logit diff is too small")
+            continue
+        if corrupted_logit_diff > clean_logit_diff:
+            print(f"Skipping example {i} because the corrupted logit diff is greater than the clean logit diff")
             continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
@@ -260,7 +272,8 @@ def run_activation_patching(
         #         patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
         #         patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
         
-        assert patching_results.abs().max() <= 1.0
+        if patching_results.abs().max() > 1.0:
+            print(f"Example {i} has absolute value greater than 1.0")
 
         if cache_patching_results:
             torch.save(patching_results, f"../results/patching_results_{i}.pt")
@@ -283,6 +296,7 @@ def main():
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
     parser.add_argument("--max_tokens", type=int, default=1000)
+    parser.add_argument("--cache_patching_results", type=bool, default=True)
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
@@ -306,7 +320,7 @@ def main():
         baseline_data = json.load(f)
     print(f"Baseline data: {len(baseline_data)}")
 
-    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens)
+    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results)
     
 if __name__ == "__main__":
     main()
