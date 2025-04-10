@@ -20,18 +20,9 @@ from transformer_lens import HookedTransformer, FactoredMatrix
 import transformer_lens.patching as patching
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
+from plotting import plot_patching_heatmap
 from filter import *
 
-def imshow(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
-    px.imshow(utils.to_numpy(tensor), color_continuous_midpoint=0.0, color_continuous_scale="RdBu", labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
-
-def line(tensor, renderer=None, xaxis="", yaxis="", **kwargs):
-    px.line(utils.to_numpy(tensor), labels={"x":xaxis, "y":yaxis}, **kwargs).show(renderer)
-
-def scatter(x, y, xaxis="", yaxis="", caxis="", renderer=None, **kwargs):
-    x = utils.to_numpy(x)
-    y = utils.to_numpy(y)
-    px.scatter(y=y, x=x, labels={"x":xaxis, "y":yaxis, "color":caxis}, **kwargs).show(renderer)
 
 def assert_logits_match(model, hf_model, tokenizer):
     prompts = [
@@ -87,64 +78,7 @@ def setup_prompt(prompt):
     prompt = find_assistant_response(prompt)
     return prompt
 
-def save_plot_to_pdf(fig, filename):
-    fig.write_image(filename, format="pdf")
-
-def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None, filepath=None, modelname="Meerkat-7B"):
-    """
-    Plots the activation patching results as a heatmap.
-    
-    Args:
-        patching_results: Tensor of shape (n_layers, n_positions) containing patching scores
-        clean_tokens: Original token IDs
-        tokenizer: Tokenizer used for decoding
-        filepath: Where to save the plot
-        modelname: Name of the model for the plot title
-    """
-    # Convert results to numpy for plotting
-    differences = patching_results.cpu().numpy()
-    differences = differences.T
-    low_score = patching_results.min().item()
-    module_kind = None
-    window = 10
-    labels = [tokenizer.decode([t]) for t in clean_tokens[0]]
-    
-    num_tokens = differences.shape[0]
-    num_layers = differences.shape[1]
-    plot_height = max(num_tokens / 7, 20)
-    plot_width = num_layers / 10
-    with plt.rc_context():
-        fig, ax = plt.subplots(figsize=(plot_width, plot_height), dpi=200)
-        h = ax.pcolor(
-            differences,
-            cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
-                module_kind
-            ],
-            vmin=low_score,
-        )
-        ax.invert_yaxis()
-        ax.set_yticks([0.5 + i for i in range(len(differences))])
-        ax.set_xticks([0.5 + i for i in range(0, differences.shape[1] - 6, 5)])
-        ax.set_xticklabels(list(range(0, differences.shape[1] - 6, 5)))
-        ax.set_yticklabels(labels)
-        if not module_kind:
-            ax.set_title("Impact of restoring state after corrupted input")
-            ax.set_xlabel(f"single restored layer within {modelname}")
-        else:
-            ax.set_title(f"Impact of restoring state after corrupted input ({module_kind})")
-            ax.set_xlabel(f"center of interval of {window} layers within {module_kind} layers")
-        cb = plt.colorbar(h)
-        if answer is not None:
-            cb.ax.set_title(f"p({str(answer).strip()})", y=-0.16, fontsize=10)
-        if filepath is not None:
-            os.makedirs(os.path.dirname(filepath), exist_ok=True)
-            plt.savefig(filepath, bbox_inches="tight")
-            plt.close()
-        else:
-            plt.show()
-
-
-def generate_counterfactual_patient_info(prompt, patient_gender):
+def generate_counterfactual_patient_info(prompt, patient_gender, swap_gender=False, swap_pronouns=False):
     """
     Generate a counterfactual version of patient information by changing gender.
     
@@ -158,17 +92,18 @@ def generate_counterfactual_patient_info(prompt, patient_gender):
         "male": {"he": "she", "his": "her", "him": "her", "He": "She", "His": "Her", "Him": "Her"},
         "female": {"she": "he", "her": "his", "hers": "his", "She": "He", "Her": "His", "Hers": "His"},
     }
-    if patient_gender == "male":
-        prompt = re.sub(r"\bman\b", "woman", prompt)
-        prompt = re.sub(r"\bmale\b", "female", prompt)
-    else:
-        prompt = re.sub(r"\bwoman\b", "man", prompt)
-        prompt = re.sub(r"\bfemale\b", "male", prompt)
-    replace_map = pronoun_map[patient_gender]
-    for old, new in replace_map.items():
-        prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
+    if swap_gender:
+        if patient_gender == "male":
+            prompt = re.sub(r"\bman\b", "woman", prompt)
+            prompt = re.sub(r"\bmale\b", "female", prompt)
+        else:
+            prompt = re.sub(r"\bwoman\b", "man", prompt)
+            prompt = re.sub(r"\bfemale\b", "male", prompt)
+    if swap_pronouns:
+        replace_map = pronoun_map[patient_gender]
+        for old, new in replace_map.items():
+            prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
     return prompt
-
 
 def run_activation_patching(
     model, 
@@ -198,7 +133,7 @@ def run_activation_patching(
             print(f"Skipping example {i} because it contains gender-specific medical conditions")
             continue
 
-        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender)       
+        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender, swap_gender=True, swap_pronouns=True)       
         answer = chr(ord('A') + baseline_data[i]['gold'])
         counterfactual_answer = select_random_answer(answer)
         answers = [answer, counterfactual_answer]
