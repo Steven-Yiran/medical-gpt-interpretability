@@ -148,6 +148,10 @@ class GenderConditionFilter:
             "delivery"
         ]
         self.condition_keywords = male_conditions + female_conditions + gender_terms
+        self.count = 0
 
     def filter_text(self, text):
-        return any(keyword in text.lower() for keyword in self.condition_keywords)
+        if any(keyword in text.lower() for keyword in self.condition_keywords):
+            self.count += 1
+            return True
+        return False

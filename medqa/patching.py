@@ -105,17 +105,29 @@ def generate_counterfactual_patient_info(prompt, patient_gender, swap_gender=Fal
             prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
     return prompt
 
+def get_top_answer_choice(logits, tokenizer):
+    answer_choices = ["A", "B", "C", "D"]
+    answer_choice_ids = [tokenizer.encode(choice)[1] for choice in answer_choices]
+    last_token_logits = logits[0, -1, answer_choice_ids]
+    return answer_choices[torch.argmax(last_token_logits).item()]
+
 def run_activation_patching(
     model, 
     tokenizer, 
     baseline_data, 
     max_tokens,
     cache_patching_results=False,
+    plot_patching_results=False,
     modelname="Meerkat-7B"
 ):
     gender_condition_filter = GenderConditionFilter()
     patient_gender_filter = PatientInfoFilter()
 
+    skipped_incorrect_answer = 0
+    skipped_long_prompt = 0
+    skipped_gender_condition = 0
+    skipped_no_patient_info = 0
+    skipped_small_logit_diff = 0
     for i in range(len(baseline_data)):
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             print(f"Skipping example {i} because results already exist")
@@ -125,13 +137,19 @@ def run_activation_patching(
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = setup_prompt(baseline_prompt)
 
+        if baseline_prompt is None:
+            print(f"Skipping example {i} because the prompt is None")
+            continue
+
         patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
         if patient_gender is None:
-            print(f"Skipping example {i} because did not find patient gender")
+            print(f"Skipping example {i} because did not find patient information")
+            skipped_no_patient_info += 1
             continue
-        if gender_condition_filter.filter_text(baseline_prompt):
-            print(f"Skipping example {i} because it contains gender-specific medical conditions")
-            continue
+        # if gender_condition_filter.filter_text(baseline_prompt):
+        #     print(f"Skipping example {i} because it contains gender-specific medical conditions")
+        #     skipped_gender_condition += 1
+        #     continue
 
         counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender, swap_gender=True, swap_pronouns=True)       
         answer = chr(ord('A') + baseline_data[i]['gold'])
@@ -146,6 +164,7 @@ def run_activation_patching(
 
         if baseline_prompt is None or counterfactual_prompt is None:
             print(f"Skipping example {i} because the answer is not in the prompt")
+            skipped_incorrect_answer += 1
             continue
 
         clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
@@ -155,34 +174,55 @@ def run_activation_patching(
 
         if len(clean_tokens[0]) > max_tokens:
             print(f"Skipping example {i} because the prompt is too long")
+            skipped_long_prompt += 1
             continue
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
-        corrupted_logits = model(corrupted_tokens)
-
         # Check that the top choice for the answer token is the same as the answer
-        clean_logits_last_token = clean_logits[0, -1, :]
-        top_token_id = torch.argmax(clean_logits_last_token).item()
-        top_token = tokenizer.decode([top_token_id])
-        
-        if top_token != answer:
-            print(f"Skipping example {i} because the top token '{top_token}' doesn't match the answer '{answer}'")
-            continue
+        # clean_top_token = get_top_answer_choice(clean_logits, tokenizer)
+        # if clean_top_token != answer:
+        #     print(f"Skipping example {i} because the top token '{clean_top_token}' doesn't match the answer '{answer}'")
+        #     continue
+
+        corrupted_logits = model(corrupted_tokens)
+        # corrupted_top_token = get_top_answer_choice(corrupted_logits, tokenizer)
+
+        # clean_top_token_index = tokenizer.encode(clean_top_token)[1]
+        # corrupted_top_token_index = tokenizer.encode(corrupted_top_token)[1]
+
+        # answers = [clean_top_token, corrupted_top_token] # could be the same token here
+        # answer_token_indices = torch.tensor(
+        #     [
+        #         [model.to_single_token(answer) for answer in answers]
+        #     ],
+        #     device="cuda"
+        # )
+
+        # clean_answer_logits = clean_logits[0, -1, clean_top_token_index]
+        # corrupted_answer_logits = corrupted_logits[0, -1, corrupted_top_token_index]
+        # print(f"Clean answer logits: {clean_answer_logits}")
+        # print(f"Corrupted answer logits: {corrupted_answer_logits}")
+
+        # print(f"logit diff: {clean_answer_logits - corrupted_answer_logits}")
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
         print(f"Clean logit diff: {clean_logit_diff}")
         print(f"Corrupted logit diff: {corrupted_logit_diff}")
 
-        if abs(clean_logit_diff - corrupted_logit_diff) < 1e-2:
+        if abs(clean_logit_diff - corrupted_logit_diff) < 1e-3:
             print(f"Skipping example {i} because the logit diff is too small")
+            skipped_small_logit_diff += 1
             continue
-        if corrupted_logit_diff > clean_logit_diff:
-            print(f"Skipping example {i} because the corrupted logit diff is greater than the clean logit diff")
-            continue
+        # if corrupted_logit_diff > clean_logit_diff:
+        #     print(f"Skipping example {i} because the corrupted logit diff is greater than the clean logit diff")
+        #     continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
-            return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+           return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+
+        # def corruption_metric(logits):
+        #     return (logits[0, -1, clean_top_token_index] - corrupted_answer_logits) / (clean_answer_logits - corrupted_answer_logits)
 
         patching_results = patching.get_act_patch_resid_pre(model, corrupted_tokens, clean_cache, corruption_metric)   
 
@@ -212,25 +252,31 @@ def run_activation_patching(
 
         if cache_patching_results:
             torch.save(patching_results, f"../results/patching_results_{i}.pt")
-        # Plot the heatmap
-        plot_patching_heatmap(
-            patching_results,
-            clean_tokens,
-            tokenizer,
-            answer=answer,
-            filepath=f"../results/patching_results_{i}.pdf",
-            modelname=modelname
-        )
 
-        break
-        
+        # Plot the heatmap
+        if plot_patching_results:
+            plot_patching_heatmap(
+                patching_results,
+                clean_tokens,
+                tokenizer,
+                answer=answer,
+                filepath=f"../results/patching_results_{i}.pdf",
+                modelname=modelname
+            )
+
+    print(f"Skipped due to incorrect answer: {skipped_incorrect_answer}")
+    print(f"Skipped due to long prompt: {skipped_long_prompt}")
+    print(f"Skipped due to gender condition: {skipped_gender_condition}")
+    print(f"Skipped due to no patient info: {skipped_no_patient_info}")
+    print(f"Skipped due to small logit diff: {skipped_small_logit_diff}")
+    
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
-    parser.add_argument("--max_tokens", type=int, default=1000)
+    parser.add_argument("--max_tokens", type=int, default=2000)
     parser.add_argument("--cache_patching_results", type=bool, default=True)
     args = parser.parse_args()
 
