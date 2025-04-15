@@ -108,7 +108,8 @@ def run_activation_patching(
             continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
-           return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+            print(get_logit_diff(logits, answer_token_indices))
+            return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
 
         def residual_stream_patching_hook(
             resid_pre,
@@ -131,6 +132,9 @@ def run_activation_patching(
                 patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
                 patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
         
+        print(patching_results)
+        exit()
+
         if patching_results.abs().max() > 1.0:
             print(f"Warning: Example {i} has absolute value greater than 1.0")
 
@@ -160,8 +164,8 @@ def main():
     parser.add_argument("--model_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
-    parser.add_argument("--max_tokens", type=int, default=2000)
-    parser.add_argument("--cache_patching_results", type=bool, default=True)
+    parser.add_argument("--max_tokens", type=int, default=1000)
+    parser.add_argument("--cache_patching_results", type=bool, default=False)
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
