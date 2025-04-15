@@ -21,32 +21,8 @@ import transformer_lens.patching as patching
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
 from plotting import plot_patching_heatmap
-from filter import *
+from medqa.utils import *
 
-
-def assert_logits_match(model, hf_model, tokenizer):
-    prompts = [
-        "The capital of Germany is",
-        "2 * 42 = ", 
-        "My favorite", 
-        "aosetuhaosuh aostud aoestuaoentsudhasuh aos tasat naostutshaosuhtnaoe usaho uaotsnhuaosntuhaosntu haouaoshat u saotheu saonuh aoesntuhaosut aosu thaosu thaoustaho usaothusaothuao sutao sutaotduaoetudet uaosthuao uaostuaoeu aostouhsaonh aosnthuaoscnuhaoshkbaoesnit haosuhaoe uasotehusntaosn.p.uo ksoentudhao ustahoeuaso usant.hsa otuhaotsi aostuhs",
-    ]
-
-    model.eval()
-    hf_model.eval()
-    prompt_ids = [tokenizer.encode(prompt, return_tensors="pt") for prompt in prompts]
-
-    tl_logits = [model(prompt_ids).detach().cpu() for prompt_ids in tqdm(prompt_ids)]
-    logits = [hf_model(prompt_ids).logits.detach().cpu() for prompt_ids in tqdm(prompt_ids)]
-
-    for i in range(len(prompts)):
-        assert torch.allclose(logits[i], tl_logits[i], atol=1, rtol=1e-1)
-
-
-def select_random_answer(correct_answer):
-    wrong_answers = ['A', 'B', 'C', 'D']
-    wrong_answers.remove(correct_answer)
-    return random.choice(wrong_answers)
 
 def get_logit_diff(logits, answer_token_indices):
     if len(logits.shape) == 3:
@@ -56,60 +32,6 @@ def get_logit_diff(logits, answer_token_indices):
     incorrect_logits = logits.gather(1, answer_token_indices[:, 1].unsqueeze(1))
     return (correct_logits - incorrect_logits).mean()
 
-def truncate_answer_text(prompt):
-    # truncate the prompt until the end of the pattern "the answer is ("
-    # since there are multiple instances of this pattern in the prompt, we need to find the last one
-    pattern = "the answer is ("
-    # find the last instance of the pattern
-    last_instance = prompt.rfind(pattern)
-    if last_instance == -1:
-        return None
-    return prompt[:last_instance + len(pattern)]
-
-def find_assistant_response(prompt, pattern="ASSISTANT:"):
-    # find the last instance of the pattern
-    last_instance = prompt.rfind(pattern)
-    if last_instance == -1:
-        return None
-    return prompt[last_instance + len(pattern):]
-
-def setup_prompt(prompt):
-    prompt = truncate_answer_text(prompt)
-    prompt = find_assistant_response(prompt)
-    return prompt
-
-def generate_counterfactual_patient_info(prompt, patient_gender, swap_gender=False, swap_pronouns=False):
-    """
-    Generate a counterfactual version of patient information by changing gender.
-    
-    Args:
-        prompt (str): The original prompt containing patient information
-        
-    Returns:
-        str: A counterfactual version of the prompt with gender changed
-    """
-    pronoun_map = {
-        "male": {"he": "she", "his": "her", "him": "her", "He": "She", "His": "Her", "Him": "Her"},
-        "female": {"she": "he", "her": "his", "hers": "his", "She": "He", "Her": "His", "Hers": "His"},
-    }
-    if swap_gender:
-        if patient_gender == "male":
-            prompt = re.sub(r"\bman\b", "woman", prompt)
-            prompt = re.sub(r"\bmale\b", "female", prompt)
-        else:
-            prompt = re.sub(r"\bwoman\b", "man", prompt)
-            prompt = re.sub(r"\bfemale\b", "male", prompt)
-    if swap_pronouns:
-        replace_map = pronoun_map[patient_gender]
-        for old, new in replace_map.items():
-            prompt = re.sub(r'\b' + re.escape(old) + r'\b', new, prompt)
-    return prompt
-
-def get_top_answer_choice(logits, tokenizer):
-    answer_choices = ["A", "B", "C", "D"]
-    answer_choice_ids = [tokenizer.encode(choice)[1] for choice in answer_choices]
-    last_token_logits = logits[0, -1, answer_choice_ids]
-    return answer_choices[torch.argmax(last_token_logits).item()]
 
 def run_activation_patching(
     model, 
@@ -155,12 +77,7 @@ def run_activation_patching(
         answer = chr(ord('A') + baseline_data[i]['gold'])
         counterfactual_answer = select_random_answer(answer)
         answers = [answer, counterfactual_answer]
-        answer_token_indices = torch.tensor(
-            [
-                [model.to_single_token(answer) for answer in answers]
-            ],
-            device="cuda"
-        )
+        answer_token_indices = torch.tensor([[model.to_single_token(answer) for answer in answers]], device="cuda")
 
         if baseline_prompt is None or counterfactual_prompt is None:
             print(f"Skipping example {i} because the answer is not in the prompt")
@@ -170,40 +87,15 @@ def run_activation_patching(
         clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
         corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 
-        assert len(clean_tokens[0]) == len(corrupted_tokens[0])
+        assert len(clean_tokens[0]) == len(corrupted_tokens[0]), "length mismatch, corrupted tokens are not the same length as clean tokens"
 
         if len(clean_tokens[0]) > max_tokens:
             print(f"Skipping example {i} because the prompt is too long")
             skipped_long_prompt += 1
             continue
 
-        clean_logits, clean_cache = model.run_with_cache(clean_tokens)   
-        # Check that the top choice for the answer token is the same as the answer
-        # clean_top_token = get_top_answer_choice(clean_logits, tokenizer)
-        # if clean_top_token != answer:
-        #     print(f"Skipping example {i} because the top token '{clean_top_token}' doesn't match the answer '{answer}'")
-        #     continue
-
+        clean_logits, clean_cache = model.run_with_cache(clean_tokens)
         corrupted_logits = model(corrupted_tokens)
-        # corrupted_top_token = get_top_answer_choice(corrupted_logits, tokenizer)
-
-        # clean_top_token_index = tokenizer.encode(clean_top_token)[1]
-        # corrupted_top_token_index = tokenizer.encode(corrupted_top_token)[1]
-
-        # answers = [clean_top_token, corrupted_top_token] # could be the same token here
-        # answer_token_indices = torch.tensor(
-        #     [
-        #         [model.to_single_token(answer) for answer in answers]
-        #     ],
-        #     device="cuda"
-        # )
-
-        # clean_answer_logits = clean_logits[0, -1, clean_top_token_index]
-        # corrupted_answer_logits = corrupted_logits[0, -1, corrupted_top_token_index]
-        # print(f"Clean answer logits: {clean_answer_logits}")
-        # print(f"Corrupted answer logits: {corrupted_answer_logits}")
-
-        # print(f"logit diff: {clean_answer_logits - corrupted_answer_logits}")
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
         corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
@@ -214,41 +106,33 @@ def run_activation_patching(
             print(f"Skipping example {i} because the logit diff is too small")
             skipped_small_logit_diff += 1
             continue
-        # if corrupted_logit_diff > clean_logit_diff:
-        #     print(f"Skipping example {i} because the corrupted logit diff is greater than the clean logit diff")
-        #     continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
            return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
 
-        # def corruption_metric(logits):
-        #     return (logits[0, -1, clean_top_token_index] - corrupted_answer_logits) / (clean_answer_logits - corrupted_answer_logits)
+        def residual_stream_patching_hook(
+            resid_pre,
+            hook,
+            position
+        ):
+            clean_resid_pre = clean_cache[hook.name]
+            resid_pre[:, position, :] = clean_resid_pre[:, position, :]
+            return resid_pre
 
-        patching_results = patching.get_act_patch_resid_pre(model, corrupted_tokens, clean_cache, corruption_metric)   
+        patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
 
-        # def residual_stream_patching_hook(
-        #     resid_pre,
-        #     hook,
-        #     position
-        # ):
-        #     clean_resid_pre = clean_cache[hook.name]
-        #     resid_pre[:, position, :] = clean_resid_pre[:, position, :]
-        #     return resid_pre
-
-        # patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
-
-        # # Process each position for each layer
-        # for layer in tqdm(range(model.cfg.n_layers)):
-        #     for position in range(0, len(clean_tokens[0])):
-        #         temp_hook_fn = partial(residual_stream_patching_hook, position=position)
-        #         patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
-        #             (utils.get_act_name("resid_pre", layer), temp_hook_fn)
-        #         ])
-        #         patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
-        #         patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+        # Process each position for each layer
+        for layer in tqdm(range(model.cfg.n_layers)):
+            for position in range(0, len(clean_tokens[0])):
+                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
+                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
+                ])
+                patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
+                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
         
         if patching_results.abs().max() > 1.0:
-            print(f"Example {i} has absolute value greater than 1.0")
+            print(f"Warning: Example {i} has absolute value greater than 1.0")
 
         if cache_patching_results:
             torch.save(patching_results, f"../results/patching_results_{i}.pt")

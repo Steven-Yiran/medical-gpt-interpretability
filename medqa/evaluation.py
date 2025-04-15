@@ -7,7 +7,7 @@ from tqdm import tqdm
 import argparse
 import os
 import sys
-from filter import MultiChoiceFilter, PatientInfoFilter
+from medqa.utils import MultiChoiceFilter, PatientInfoFilter
 
 from prompts import prompt_eval_bare
 
