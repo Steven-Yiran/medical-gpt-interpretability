@@ -21,7 +21,7 @@ import transformer_lens.patching as patching
 
 from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
 from plotting import plot_patching_heatmap
-from medqa.utils import *
+from utils import *
 
 
 def get_logit_diff(logits, answer_token_indices):
@@ -29,7 +29,9 @@ def get_logit_diff(logits, answer_token_indices):
         # Get final logits only
         logits = logits[:, -1, :]
     correct_logits = logits.gather(1, answer_token_indices[:, 0].unsqueeze(1))
-    incorrect_logits = logits.gather(1, answer_token_indices[:, 1].unsqueeze(1))
+    incorrect_logits = logits.gather(1, answer_token_indices[:, 1:])
+    # get the min of the incorrect logits
+    incorrect_logits = incorrect_logits.mean(dim=1)
     return (correct_logits - incorrect_logits).mean()
 
 
@@ -50,6 +52,8 @@ def run_activation_patching(
     skipped_gender_condition = 0
     skipped_no_patient_info = 0
     skipped_small_logit_diff = 0
+    skipped_negative_clean_logit_diff = 0
+
     for i in range(len(baseline_data)):
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             print(f"Skipping example {i} because results already exist")
@@ -75,8 +79,9 @@ def run_activation_patching(
 
         counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender, swap_gender=True, swap_pronouns=True)       
         answer = chr(ord('A') + baseline_data[i]['gold'])
-        counterfactual_answer = select_random_answer(answer)
-        answers = [answer, counterfactual_answer]
+        counterfactual_answer = ["A", "B", "C", "D"]
+        counterfactual_answer.remove(answer)
+        answers = [answer] + counterfactual_answer
         answer_token_indices = torch.tensor([[model.to_single_token(answer) for answer in answers]], device="cuda")
 
         if baseline_prompt is None or counterfactual_prompt is None:
@@ -102,14 +107,18 @@ def run_activation_patching(
         print(f"Clean logit diff: {clean_logit_diff}")
         print(f"Corrupted logit diff: {corrupted_logit_diff}")
 
+        if clean_logit_diff < 0:
+            print(f"Skipping example {i} because the clean logit diff is negative, meaning wrong answer is more likely")
+            skipped_negative_clean_logit_diff += 1
+            continue
+
         if abs(clean_logit_diff - corrupted_logit_diff) < 1e-3:
             print(f"Skipping example {i} because the logit diff is too small")
             skipped_small_logit_diff += 1
             continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
-            print(get_logit_diff(logits, answer_token_indices))
-            return (get_logit_diff(logits, answer_token_indices) - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+            return get_logit_diff(logits, answer_token_indices)
 
         def residual_stream_patching_hook(
             resid_pre,
@@ -131,12 +140,9 @@ def run_activation_patching(
                 ])
                 patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
                 patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
-        
-        print(patching_results)
-        exit()
 
-        if patching_results.abs().max() > 1.0:
-            print(f"Warning: Example {i} has absolute value greater than 1.0")
+        # normalize the patching results
+        patching_results = (patching_results - patching_results.min(dim=1, keepdim=True).values) / (patching_results.max(dim=1, keepdim=True).values - patching_results.min(dim=1, keepdim=True).values)
 
         if cache_patching_results:
             torch.save(patching_results, f"../results/patching_results_{i}.pt")
@@ -164,8 +170,9 @@ def main():
     parser.add_argument("--model_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
-    parser.add_argument("--max_tokens", type=int, default=1000)
-    parser.add_argument("--cache_patching_results", type=bool, default=False)
+    parser.add_argument("--max_tokens", type=int, default=1500)
+    parser.add_argument("--cache_patching_results", type=bool, default=True)
+    parser.add_argument("--plot_patching_results", type=bool, default=False)
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
@@ -189,7 +196,7 @@ def main():
         baseline_data = json.load(f)
     print(f"Baseline data: {len(baseline_data)}")
 
-    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results)
+    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results, plot_patching_results=args.plot_patching_results)
     
 if __name__ == "__main__":
     main()
