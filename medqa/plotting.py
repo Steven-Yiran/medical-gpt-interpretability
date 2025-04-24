@@ -85,9 +85,9 @@ def plot_average_patching_heatmap(patching_results, patient_start_idx, patient_e
     
     # Define the categories
     categories = [
-        "first patient token",
+        "first patient token (a)",
         "middle patient token",
-        "last patient token",
+        "last patient token (man/woman)",
         "first subsequent token",
         "further tokens",
         "last token"
