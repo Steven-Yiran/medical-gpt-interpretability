@@ -1,9 +1,10 @@
 #! /bin/bash
 
-MODEL_NAME=dmis-lab/meerkat-7b-v1.0
+#MODEL_NAME=dmis-lab/meerkat-7b-v1.0
+MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
 MAX_TOKENS=1000
 DO_INFERENCE=true
-DATASET_NAME=medqa-original
+DATASET_NAME=medqa-official
 
 if [ "$DO_INFERENCE" = true ]; then
     INFERENCE_FLAG=--inference

@@ -1,15 +1,15 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
-#from datasets import load_dataset
+from datasets import load_dataset
 import torch
 import re
 from tqdm import tqdm
 import argparse
 import os
 import sys
-from medqa.utils import MultiChoiceFilter, PatientInfoFilter
+from utils import MultiChoiceFilter, PatientInfoFilter
 
-from prompts import prompt_eval_bare
+from prompts import prompt_eval_bare, prompt_eval_bare_mistral, meerkat_medqa_system_prompt, mistral_medqa_system_prompt
 
 def format_choices(choices):
     a = zip(list(choices.keys()), choices.values())
@@ -30,7 +30,13 @@ def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
 
     return decoded[0]
 
-
+def generate_with_mistral(model, tokenizer, question, choices, max_tokens):
+    content = prompt_eval_bare_mistral.format(question=question, **choices)
+    content = mistral_medqa_system_prompt + content
+    inputs = tokenizer(content, return_tensors="pt").to("cuda:0")
+    outputs = model.generate(**inputs, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
+    decoded = tokenizer.batch_decode(outputs)
+    return decoded[0]
 
 def evaluate(model_name, results):
     filter = MultiChoiceFilter()
@@ -120,13 +126,15 @@ def evaluate(model_name, results):
         json.dump(invalid_ids, f)
     print(f"Invalid IDs saved to {model_name}_invalid_ids.json")
 
+
 def inference(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16, device_map="cuda:0")
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     filter = MultiChoiceFilter()
 
     if args.dataset_name == "medqa-official":
-        dataset = load_dataset("GBaker/MedQA-USMLE-4-options-hf", split="test")    
+        data_path = "GBaker/MedQA-USMLE-4-options-hf"
+        dataset = load_dataset(data_path, split="test")    
     elif args.dataset_name == "medqa-male":
         data_path = "male_medqa.json"
         dataset = json.load(open(data_path))
@@ -151,8 +159,12 @@ def inference(args):
         choices = {'choice_A': item['ending0'], 'choice_B': item['ending1'], 'choice_C': item['ending2'], 'choice_D': item['ending3']}
         gold_idx = item['label']
 
-        generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
-
+        if "mistral" in args.model_name:
+            generated_response = generate_with_mistral(model, tokenizer, question, choices, args.max_tokens)
+            print(f"Generated response: {generated_response}")
+            continue
+        else:
+            generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
         answer, answer_type = filter.extract_answer(generated_response)
 
         total += 1
