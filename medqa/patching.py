@@ -42,7 +42,7 @@ def run_activation_patching(
     max_tokens,
     cache_patching_results=False,
     plot_patching_results=False,
-    modelname="Meerkat-7B"
+    modelname=None
 ):
     gender_condition_filter = GenderConditionFilter()
     patient_gender_filter = PatientInfoFilter()
@@ -55,13 +55,15 @@ def run_activation_patching(
     skipped_negative_clean_logit_diff = 0
 
     for i in range(len(baseline_data)):
+        if i in [0]:
+            continue
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             print(f"Skipping example {i} because results already exist")
             continue
         print(f"Processing example {i}")
 
         baseline_prompt = baseline_data[i]['generated_response']
-        baseline_prompt = setup_prompt(baseline_prompt)
+        baseline_prompt = setup_prompt(baseline_prompt, modelname)
 
         if baseline_prompt is None:
             print(f"Skipping example {i} because the prompt is None")
@@ -171,8 +173,8 @@ def main():
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
     parser.add_argument("--max_tokens", type=int, default=1500)
-    parser.add_argument("--cache_patching_results", type=bool, default=True)
-    parser.add_argument("--plot_patching_results", type=bool, default=False)
+    parser.add_argument("--cache_patching_results", action="store_true")
+    parser.add_argument("--plot_patching_results", action="store_true")
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name)
@@ -196,7 +198,7 @@ def main():
         baseline_data = json.load(f)
     print(f"Baseline data: {len(baseline_data)}")
 
-    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results, plot_patching_results=args.plot_patching_results)
+    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results, plot_patching_results=args.plot_patching_results, modelname=args.model_name)
     
 if __name__ == "__main__":
     main()

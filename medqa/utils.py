@@ -43,11 +43,13 @@ class MultiChoiceFilter:
                     match = convert_dict[match]
         return match
 
-
     def extract_answer(self, response, choices=None):
         match = re.search(r'(?:therefore,\s*)?the answer is.*?\(([A-D])\)', response, re.IGNORECASE)
         if match:
-            return match.group(1), "(therefore), the answer is"
+            return match.group(1), "(therefore), the answer is <ans>"
+        match = re.search(r'answer:\s*\(([A-D])\)', response, re.IGNORECASE)
+        if match:
+            return match.group(1), "answer: (ans)"
         match = re.search(r'the answer is.*?\[([A-D])\]', response, re.IGNORECASE)
         if match:
             return match.group(1), "the answer is"
@@ -166,19 +168,22 @@ def find_assistant_response(prompt, pattern="ASSISTANT:"):
         return None
     return prompt[last_instance + len(pattern):]
 
-def truncate_answer_text(prompt):
+def truncate_answer_text(prompt, pattern):
     # truncate the prompt until the end of the pattern "the answer is ("
     # since there are multiple instances of this pattern in the prompt, we need to find the last one
-    pattern = "the answer is ("
     # find the last instance of the pattern
     last_instance = prompt.rfind(pattern)
     if last_instance == -1:
         return None
     return prompt[:last_instance + len(pattern)]
 
-def setup_prompt(prompt):
-    prompt = truncate_answer_text(prompt)
-    prompt = find_assistant_response(prompt)
+def setup_prompt(prompt, model_name):
+    if "mistral" in model_name.lower():
+        prompt = truncate_answer_text(prompt, "Answer: (")
+        prompt = find_assistant_response(prompt, "Answer: ([option_id])\".\n\n")
+    else:
+        prompt = truncate_answer_text(prompt, "the answer is (")
+        prompt = find_assistant_response(prompt)
     return prompt
 
 def generate_counterfactual_patient_info(prompt, patient_gender, swap_gender=False, swap_pronouns=False):
