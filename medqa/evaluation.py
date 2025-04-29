@@ -9,7 +9,14 @@ import os
 import sys
 from utils import MultiChoiceFilter, PatientInfoFilter
 
-from prompts import prompt_eval_bare, prompt_eval_bare_mistral, meerkat_medqa_system_prompt, mistral_medqa_system_prompt
+from prompts import (
+    prompt_eval_bare,
+    prompt_eval_with_bracket,
+    prompt_eval_bare_mistral, 
+    meerkat_medqa_system_prompt_cot, 
+    meerkat_medqa_system_prompt_direct,
+    mistral_medqa_system_prompt
+)
 
 def format_choices(choices):
     a = zip(list(choices.keys()), choices.values())
@@ -18,16 +25,32 @@ def format_choices(choices):
         final_answers.append(f'[{x}] : {y}')
     return "\n".join(final_answers)
 
-def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
+def generate_with_prompt_cot(model, tokenizer, question, choices, max_tokens):
+    """
+    Meerkat inference code see Huggingface model repo for more details.
+    https://huggingface.co/dmis-lab/meerkat-7b-v1.0
+    """
     content = prompt_eval_bare.format(question=question, **choices)
     messages = [
-        {"role": "system", "content": "The following is a multiple-choice question about medical knowledge. Solve this in a step-by-step fashion, starting by summarizing the available information. Output a single option from the given options as the final answer. You are strongly required to follow the specified output format; conclude your response with the phrase \"the answer is ([option_id]) [answer_string]\".\n\n"},
+        {"role": "system", "content": meerkat_medqa_system_prompt_cot},
         {"role": "user", "content": content},
     ]
     encodeds = tokenizer.apply_chat_template(messages, return_tensors="pt").to("cuda:0")
     generated_ids = model.generate(encodeds, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
     decoded = tokenizer.batch_decode(generated_ids)
 
+    return decoded[0]
+
+def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
+    """
+    Meerkat inference code see Huggingface model repo for more details.
+    https://huggingface.co/dmis-lab/meerkat-7b-v1.0
+    """
+    content = prompt_eval_with_bracket.format(question=question, **choices)
+    content = meerkat_medqa_system_prompt_direct + content
+    inputs = tokenizer(content, return_tensors="pt").to("cuda:0")
+    outputs = model.generate(**inputs, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
+    decoded = tokenizer.batch_decode(outputs)
     return decoded[0]
 
 def generate_with_mistral(model, tokenizer, question, choices, max_tokens):
@@ -163,6 +186,7 @@ def inference(args):
             generated_response = generate_with_mistral(model, tokenizer, question, choices, args.max_tokens)
         else:
             generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
+
         answer, answer_type = filter.extract_answer(generated_response)
 
         total += 1

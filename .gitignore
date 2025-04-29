@@ -8,6 +8,7 @@ venv
 
 # Plots and results
 /results
+/outputs
 .DS_Store
 
 # Torch Models
