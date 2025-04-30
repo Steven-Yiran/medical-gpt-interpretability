@@ -25,14 +25,16 @@ else
     INFERENCE_FLAG=""
 fi
 
-python $DEV_HOME/medqa/evaluation.py \
- --model_name $MODEL_NAME \
- --max_tokens $MAX_TOKENS \
- --dataset_name $DATASET_NAME \
- $INFERENCE_FLAG
-
-# python $DEV_HOME/medqa/patching.py \
+# python $DEV_HOME/medqa/evaluation.py \
 #  --model_name $MODEL_NAME \
-#  --tokenizer_name $MODEL_NAME \
-#  --data_path $DEV_HOME/data/Mistral-7B-Instruct-v0.2_medqa-official_results.json \
-#  --cache_patching_results
+#  --max_tokens $MAX_TOKENS \
+#  --dataset_name $DATASET_NAME \
+#  $INFERENCE_FLAG
+
+python $DEV_HOME/medqa/patching.py \
+ --model_name $MODEL_NAME \
+ --tokenizer_name $MODEL_NAME \
+ --data_path GBaker/MedQA-USMLE-4-options-hf \
+ --result_dir ./results \
+ --cache_patching_results \
+ --plot_patching_results

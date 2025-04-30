@@ -88,7 +88,7 @@ def run_activation_patching(
         counterfactual_prompt = generate_counterfactual_patient_info(
             baseline_prompt,
             patient_gender,
-            swap_gender=False,
+            swap_gender=True,
             swap_pronouns=True
         )
         answer = chr(ord('A') + gold_idx)
@@ -114,7 +114,7 @@ def run_activation_patching(
 
         # patch the entire prompt, except for the system prompt
         system_prompt_token_len = tokenizer.encode(meerkat_medqa_system_prompt_direct, return_tensors="pt").shape[1]
-        patching_range = (system_prompt_token_len, len(clean_tokens[0]) - 1)
+        patching_range = range(system_prompt_token_len, len(clean_tokens[0]))
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)
         corrupted_logits = model(corrupted_tokens)
