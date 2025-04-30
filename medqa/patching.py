@@ -9,6 +9,7 @@ from tqdm import tqdm
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from datasets import load_dataset
 import matplotlib.pyplot as plt
 
 
@@ -19,10 +20,9 @@ from transformer_lens.hook_points import (
 from transformer_lens import HookedTransformer, FactoredMatrix
 import transformer_lens.patching as patching
 
-from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
 from plotting import plot_patching_heatmap
 from utils import *
-
+from prompts import *
 
 def get_logit_diff(logits, answer_token_indices):
     if len(logits.shape) == 3:
@@ -42,7 +42,8 @@ def run_activation_patching(
     max_tokens,
     cache_patching_results=False,
     plot_patching_results=False,
-    modelname=None
+    modelname=None,
+    result_dir=None
 ):
     gender_condition_filter = GenderConditionFilter()
     patient_gender_filter = PatientInfoFilter()
@@ -62,12 +63,17 @@ def run_activation_patching(
             continue
         print(f"Processing example {i}")
 
-        baseline_prompt = baseline_data[i]['generated_response']
-        baseline_prompt = setup_prompt(baseline_prompt, modelname)
+        question = baseline_data[i]['sent1']
+        choices = {
+            'choice_A': baseline_data[i]['ending0'],
+            'choice_B': baseline_data[i]['ending1'],
+            'choice_C': baseline_data[i]['ending2'],
+            'choice_D': baseline_data[i]['ending3']
+        }
+        gold_idx = baseline_data[i]['label']
 
-        if baseline_prompt is None:
-            print(f"Skipping example {i} because the prompt is None")
-            continue
+        content = prompt_eval_with_bracket.format(question=question, **choices)
+        baseline_prompt = meerkat_medqa_system_prompt_direct + content
 
         patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
         if patient_gender is None:
@@ -79,8 +85,13 @@ def run_activation_patching(
         #     skipped_gender_condition += 1
         #     continue
 
-        counterfactual_prompt = generate_counterfactual_patient_info(baseline_prompt, patient_gender, swap_gender=True, swap_pronouns=True)       
-        answer = chr(ord('A') + baseline_data[i]['gold'])
+        counterfactual_prompt = generate_counterfactual_patient_info(
+            baseline_prompt,
+            patient_gender,
+            swap_gender=False,
+            swap_pronouns=True
+        )
+        answer = chr(ord('A') + gold_idx)
         counterfactual_answer = ["A", "B", "C", "D"]
         counterfactual_answer.remove(answer)
         answers = [answer] + counterfactual_answer
@@ -100,6 +111,10 @@ def run_activation_patching(
             print(f"Skipping example {i} because the prompt is too long")
             skipped_long_prompt += 1
             continue
+
+        # patch the entire prompt, except for the system prompt
+        system_prompt_token_len = tokenizer.encode(meerkat_medqa_system_prompt_direct, return_tensors="pt").shape[1]
+        patching_range = (system_prompt_token_len, len(clean_tokens[0]) - 1)
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)
         corrupted_logits = model(corrupted_tokens)
@@ -134,8 +149,11 @@ def run_activation_patching(
         patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
 
         # Process each position for each layer
+        if patching_range is None:
+            patching_range = range(0, len(clean_tokens[0]))
+
         for layer in tqdm(range(model.cfg.n_layers)):
-            for position in range(0, len(clean_tokens[0])):
+            for position in patching_range:
                 temp_hook_fn = partial(residual_stream_patching_hook, position=position)
                 patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
                     (utils.get_act_name("resid_pre", layer), temp_hook_fn)
@@ -147,7 +165,7 @@ def run_activation_patching(
         patching_results = (patching_results - patching_results.min(dim=1, keepdim=True).values) / (patching_results.max(dim=1, keepdim=True).values - patching_results.min(dim=1, keepdim=True).values)
 
         if cache_patching_results:
-            torch.save(patching_results, f"../results/patching_results_{i}.pt")
+            torch.save(patching_results, f"{result_dir}/patching_results_{i}.pt")
 
         # Plot the heatmap
         if plot_patching_results:
@@ -156,7 +174,7 @@ def run_activation_patching(
                 clean_tokens,
                 tokenizer,
                 answer=answer,
-                filepath=f"../results/patching_results_{i}.pdf",
+                filepath=f"{result_dir}/patching_results_{i}.pdf",
                 modelname=modelname
             )
 
@@ -173,6 +191,7 @@ def main():
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
     parser.add_argument("--max_tokens", type=int, default=1500)
+    parser.add_argument("--result_dir", type=str, default="./results")
     parser.add_argument("--cache_patching_results", action="store_true")
     parser.add_argument("--plot_patching_results", action="store_true")
     args = parser.parse_args()
@@ -194,11 +213,23 @@ def main():
 
     model = model.to("cuda")
 
-    with open(args.data_path, "r") as f:
-        baseline_data = json.load(f)
+    if "hf" in args.data_path:
+        baseline_data = load_dataset(args.data_path, split="test")
+    else:
+        with open(args.data_path, "r") as f:
+            baseline_data = json.load(f)
     print(f"Baseline data: {len(baseline_data)}")
 
-    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results, plot_patching_results=args.plot_patching_results, modelname=args.model_name)
+    run_activation_patching(
+        model,
+        tokenizer,
+        baseline_data,
+        args.max_tokens, 
+        cache_patching_results=args.cache_patching_results, 
+        plot_patching_results=args.plot_patching_results, 
+        modelname=args.model_name,
+        result_dir=args.result_dir
+    )
     
 if __name__ == "__main__":
     main()
