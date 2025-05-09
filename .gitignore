@@ -19,3 +19,5 @@ venv
 data/
 
 out
+
+*.json
