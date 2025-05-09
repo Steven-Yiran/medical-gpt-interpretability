@@ -46,8 +46,8 @@ def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
     Meerkat inference code see Huggingface model repo for more details.
     https://huggingface.co/dmis-lab/meerkat-7b-v1.0
     """
-    content = prompt_eval_with_bracket.format(question=question, **choices)
-    content = meerkat_medqa_system_prompt_direct + content
+    content = prompt_eval_bare.format(question=question, **choices)
+    content = meerkat_medqa_system_prompt_cot + content
     inputs = tokenizer(content, return_tensors="pt").to("cuda:0")
     outputs = model.generate(**inputs, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
     decoded = tokenizer.batch_decode(outputs)
@@ -182,10 +182,7 @@ def inference(args):
         choices = {'choice_A': item['ending0'], 'choice_B': item['ending1'], 'choice_C': item['ending2'], 'choice_D': item['ending3']}
         gold_idx = item['label']
 
-        if "mistral" in args.model_name:
-            generated_response = generate_with_mistral(model, tokenizer, question, choices, args.max_tokens)
-        else:
-            generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
+        generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
 
         answer, answer_type = filter.extract_answer(generated_response)
 

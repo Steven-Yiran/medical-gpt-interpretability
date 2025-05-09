@@ -101,7 +101,8 @@ def run_activation_patching(
             print(f"Skipping example {i} because the answer is not in the prompt")
             skipped_incorrect_answer += 1
             continue
-
+        
+        print(baseline_prompt)
         clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
         corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 

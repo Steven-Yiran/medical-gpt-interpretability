@@ -47,12 +47,23 @@ class MultiChoiceFilter:
         match = re.search(r'(?:therefore,\s*)?the answer is.*?\(([A-D])\)', response, re.IGNORECASE)
         if match:
             return match.group(1), "(therefore), the answer is <ans>"
+
         match = re.search(r'answer:\s*\(([A-D])\)', response, re.IGNORECASE)
         if match:
             return match.group(1), "answer: (ans)"
+
+        match = re.search(r'answer:\s*([A-D])\)', response, re.IGNORECASE)
+        if match:
+            return match.group(1), "answer: ans)"
+
+        match = re.search(r'answer:\s*\n\(([A-E])\)', response, re.IGNORECASE)
+        if match:
+            return match.group(1), "answer: [new line] (ans)"
+
         match = re.search(r'the answer is.*?\[([A-D])\]', response, re.IGNORECASE)
         if match:
             return match.group(1), "the answer is"
+
         match = re.search(r'answer is .(\w).', response)
         if match:
             return match.group(1), "answer is"

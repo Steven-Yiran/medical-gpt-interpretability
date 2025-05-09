@@ -3,7 +3,7 @@
 #SBATCH --output=outputs/medqa/slurm_out/log_%j.out
 #SBATCH --error=outputs/medqa/slurm_out/log_%j.err
 #SBATCH --time=12:00:00
-#SBATCH --mem=100G
+#SBATCH --mem=128G
 #SBATCH -p gpu --gres=gpu:1
 #SBATCH --cpus-per-task=1
 #SBATCH --nodes=1
@@ -12,10 +12,10 @@ export DEV_HOME=/users/yshi28/dev/medical-gpt-interpretability
 
 source $DEV_HOME/venv/bin/activate
 
-MODEL_NAME=dmis-lab/meerkat-7b-v1.0
-#MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
-MAX_TOKENS=10
-DO_INFERENCE=true
+#MODEL_NAME=dmis-lab/meerkat-7b-v1.0
+MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
+MAX_TOKENS=1500
+DO_INFERENCE=false
 DATASET_NAME=medqa-official
 
 if [ "$DO_INFERENCE" = true ]; then
