@@ -19,7 +19,6 @@ from transformer_lens.hook_points import (
 from transformer_lens import HookedTransformer, FactoredMatrix
 import transformer_lens.patching as patching
 
-from prompts import prompt_eval_bare, meerkat_medqa_system_prompt
 from plotting import plot_patching_heatmap
 from utils import *
 
@@ -55,12 +54,17 @@ def run_activation_patching(
     skipped_negative_clean_logit_diff = 0
 
     for i in range(len(baseline_data)):
-        if i in [0]:
+        if i != 2:
             continue
         if os.path.exists(f"../results/patching_results_{i}.pdf"):
             print(f"Skipping example {i} because results already exist")
             continue
         print(f"Processing example {i}")
+
+        torch.cuda.empty_cache()
+        print("Allocated by tensors:    ", torch.cuda.memory_allocated())
+        print("Reserved (cached) total: ", torch.cuda.memory_reserved())
+        print("  ==> In cache:          ", torch.cuda.memory_reserved() - torch.cuda.memory_allocated())
 
         baseline_prompt = baseline_data[i]['generated_response']
         baseline_prompt = setup_prompt(baseline_prompt, modelname)
@@ -90,7 +94,7 @@ def run_activation_patching(
             print(f"Skipping example {i} because the answer is not in the prompt")
             skipped_incorrect_answer += 1
             continue
-
+        
         clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
         corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 
@@ -99,6 +103,7 @@ def run_activation_patching(
         if len(clean_tokens[0]) > max_tokens:
             print(f"Skipping example {i} because the prompt is too long")
             skipped_long_prompt += 1
+            del clean_tokens, corrupted_tokens
             continue
 
         clean_logits, clean_cache = model.run_with_cache(clean_tokens)
@@ -112,11 +117,13 @@ def run_activation_patching(
         if clean_logit_diff < 0:
             print(f"Skipping example {i} because the clean logit diff is negative, meaning wrong answer is more likely")
             skipped_negative_clean_logit_diff += 1
+            del clean_logits, clean_cache, corrupted_logits
             continue
 
         if abs(clean_logit_diff - corrupted_logit_diff) < 1e-3:
             print(f"Skipping example {i} because the logit diff is too small")
             skipped_small_logit_diff += 1
+            del clean_logits, clean_cache, corrupted_logits
             continue
 
         def corruption_metric(logits, answer_token_indices=answer_token_indices):
@@ -136,6 +143,7 @@ def run_activation_patching(
         # Process each position for each layer
         for layer in tqdm(range(model.cfg.n_layers)):
             for position in range(0, len(clean_tokens[0])):
+                torch.cuda.empty_cache()
                 temp_hook_fn = partial(residual_stream_patching_hook, position=position)
                 patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
                     (utils.get_act_name("resid_pre", layer), temp_hook_fn)
@@ -159,6 +167,9 @@ def run_activation_patching(
                 filepath=f"../results/patching_results_{i}.pdf",
                 modelname=modelname
             )
+
+        # clean up CUDA memory
+        del clean_logits, clean_cache, corrupted_logits, patching_results
 
     print(f"Skipped due to incorrect answer: {skipped_incorrect_answer}")
     print(f"Skipped due to long prompt: {skipped_long_prompt}")

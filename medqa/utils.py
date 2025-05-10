@@ -180,7 +180,7 @@ def truncate_answer_text(prompt, pattern):
 def setup_prompt(prompt, model_name):
     if "mistral" in model_name.lower():
         prompt = truncate_answer_text(prompt, "Answer: (")
-        prompt = find_assistant_response(prompt, "Answer: ([option_id])\".\n\n")
+        prompt = find_assistant_response(prompt, "Summary: The patient is ")
     else:
         prompt = truncate_answer_text(prompt, "the answer is (")
         prompt = find_assistant_response(prompt)

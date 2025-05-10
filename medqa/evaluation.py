@@ -15,7 +15,8 @@ from prompts import (
     prompt_eval_bare_mistral, 
     meerkat_medqa_system_prompt_cot, 
     meerkat_medqa_system_prompt_direct,
-    mistral_medqa_system_prompt
+    mistral_medqa_system_prompt,
+    prompt_eval_patient_mistral
 )
 
 def format_choices(choices):
@@ -54,7 +55,7 @@ def generate_with_prompt(model, tokenizer, question, choices, max_tokens):
     return decoded[0]
 
 def generate_with_mistral(model, tokenizer, question, choices, max_tokens):
-    content = prompt_eval_bare_mistral.format(question=question, **choices)
+    content = prompt_eval_patient_mistral.format(question=question, **choices)
     content = mistral_medqa_system_prompt + content
     inputs = tokenizer(content, return_tensors="pt").to("cuda:0")
     outputs = model.generate(**inputs, max_new_tokens=max_tokens, do_sample=True, pad_token_id=tokenizer.eos_token_id)
@@ -149,6 +150,11 @@ def evaluate(model_name, results):
         json.dump(invalid_ids, f)
     print(f"Invalid IDs saved to {model_name}_invalid_ids.json")
 
+def filter_patient_question(question):
+    # check if question starts with "A "
+    pattern = r"^A [0-9]{1,2}-year-old"
+    return re.match(pattern, question) is not None
+
 
 def inference(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_name, torch_dtype=torch.bfloat16, device_map="cuda:0")
@@ -176,11 +182,16 @@ def inference(args):
     total = 0
     correct = 0
     invalid = 0
+    skipped = 0
     progress_bar = tqdm(dataset)
     for item in progress_bar:
         question = item['sent1']
         choices = {'choice_A': item['ending0'], 'choice_B': item['ending1'], 'choice_C': item['ending2'], 'choice_D': item['ending3']}
         gold_idx = item['label']
+
+        if args.filter_patient_questions and not filter_patient_question(question):
+            skipped += 1
+            continue
 
         if "mistral" in args.model_name:
             generated_response = generate_with_mistral(model, tokenizer, question, choices, args.max_tokens)
@@ -203,7 +214,7 @@ def inference(args):
         if total > 0:
             accuracy = correct / total
             invalid_rate = invalid / total
-            progress_bar.set_description(f"Accuracy: {accuracy:.4f}, Invalid: {invalid_rate:.4f}")
+            progress_bar.set_description(f"Total: {total}, Skipped: {skipped}, Accuracy: {accuracy:.4f}, Invalid: {invalid_rate:.4f}")
         
         results.append({
             "id": item['id'],
@@ -219,6 +230,7 @@ def main():
     parser.add_argument("--model_name", type=str, required=True)
     parser.add_argument("--max_tokens", type=int, default=1000)
     parser.add_argument("--dataset_name", type=str, default="medqa-official")
+    parser.add_argument("--filter_patient_questions", action="store_true")
     parser.add_argument("--inference", action="store_true")
     args = parser.parse_args()
 
