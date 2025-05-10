@@ -89,12 +89,14 @@ class PatientInfoFilter:
     def filter_text(self, text):
         return self.regex.search(text)
     
-    def extract_gender(self, question):
+    def extract_gender(self, question, fuzzy=False):
         # Use regex to find gender-related keywords
         pattern = r'\b(?:' + '|'.join(self.gender_keywords.keys()) + r')\b'
-        match = re.search(pattern, question.lower())
+        match = re.search(pattern, question, re.IGNORECASE)
         if match:
             return self.gender_keywords[match.group().lower()]
+        if not fuzzy and match is None:
+            return None
             
         # If no direct gender keyword found, look for gender-specific pronouns
         he_pattern = r'\b(?:he|his|him)\b'
@@ -204,9 +206,11 @@ def generate_counterfactual_patient_info(prompt, patient_gender, swap_gender=Fal
         if patient_gender == "male":
             prompt = re.sub(r"\bman\b", "woman", prompt)
             prompt = re.sub(r"\bmale\b", "female", prompt)
+            prompt = re.sub(r"\bboy\b", "girl", prompt)
         else:
             prompt = re.sub(r"\bwoman\b", "man", prompt)
             prompt = re.sub(r"\bfemale\b", "male", prompt)
+            prompt = re.sub(r"\bgirl\b", "boy", prompt)
     if swap_pronouns:
         replace_map = pronoun_map[patient_gender]
         for old, new in replace_map.items():
