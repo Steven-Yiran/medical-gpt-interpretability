@@ -2,6 +2,7 @@
 
 #MODEL_NAME=dmis-lab/meerkat-7b-v1.0
 MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
+MODULE_KIND=mlp
 
 # MAX_TOKENS=10
 # DO_INFERENCE=true
@@ -23,5 +24,6 @@ python patching.py \
  --model_name $MODEL_NAME \
  --tokenizer_name $MODEL_NAME \
  --data_path ../data/Mistral-7B-Instruct-v0.2_medqa-official_results.json \
+ --module_kind $MODULE_KIND \
  --cache_patching_results \
  --plot_patching_results

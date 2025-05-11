@@ -34,14 +34,16 @@ def get_logit_diff(logits, answer_token_indices):
     return (correct_logits - incorrect_logits).mean()
 
 
-def run_activation_patching(
+def run_patching_experiment(
     model, 
     tokenizer, 
     baseline_data, 
     max_tokens,
+    max_layers,
     cache_patching_results=False,
     plot_patching_results=False,
-    modelname=None
+    modelname=None,
+    module_kind=None
 ):
     gender_condition_filter = GenderConditionFilter()
     patient_gender_filter = PatientInfoFilter()
@@ -54,7 +56,7 @@ def run_activation_patching(
     skipped_negative_clean_logit_diff = 0
 
     for i in range(len(baseline_data)):
-        if os.path.exists(f"../results/patching_results_{i}.pdf"):
+        if os.path.exists(f"../results/patching_results_{i}_{module_kind}.pdf"):
             print(f"Skipping example {i} because results already exist")
             continue
         print(f"Processing example {i}")
@@ -98,7 +100,10 @@ def run_activation_patching(
             skipped_long_prompt += 1
             continue
 
-        clean_logits, clean_cache = model.run_with_cache(clean_tokens)
+        def name_filter(name):
+            return "hook_resid_pre" in name or "mlp.hook_pre" in name
+
+        clean_logits, clean_cache = model.run_with_cache(clean_tokens, names_filter=name_filter)
         corrupted_logits = model(corrupted_tokens)
 
         clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
@@ -128,23 +133,33 @@ def run_activation_patching(
             resid_pre[:, position, :] = clean_resid_pre[:, position, :]
             return resid_pre
 
-        patching_results = torch.zeros((model.cfg.n_layers, len(clean_tokens[0])), device="cuda")
+        patching_results = torch.zeros((max_layers, len(clean_tokens[0])), device="cuda")
 
         # Process each position for each layer
-        for layer in tqdm(range(model.cfg.n_layers)):
+        for layer_idx in tqdm(range(max_layers)):            
             for position in range(0, len(clean_tokens[0])):
-                temp_hook_fn = partial(residual_stream_patching_hook, position=position)
-                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=[
-                    (utils.get_act_name("resid_pre", layer), temp_hook_fn)
-                ])
+                fwd_hooks = []
+                if module_kind == "resid":
+                    temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                    hook_point = f"blocks.{layer_idx}.hook_resid_pre"
+                    fwd_hooks.append((hook_point, temp_hook_fn))
+                elif module_kind == "mlp":
+                    temp_hook_fn = partial(residual_stream_patching_hook, position=position)
+                    hook_point = f"blocks.{layer_idx}.mlp.hook_pre"
+                    fwd_hooks.append((hook_point, temp_hook_fn))
+
+                patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=fwd_hooks)
                 patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
-                patching_results[layer, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
+                patching_results[layer_idx, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
 
-        # normalize the patching results
-        patching_results = (patching_results - patching_results.min(dim=1, keepdim=True).values) / (patching_results.max(dim=1, keepdim=True).values - patching_results.min(dim=1, keepdim=True).values)
-
+        # normalize the patching results 
+        # patching_results = (patching_results - patching_results.min(dim=1, keepdim=True).values) / (patching_results.max(dim=1, keepdim=True).values - patching_results.min(dim=1, keepdim=True).values)
+        min_val = patching_results.min()
+        max_val = patching_results.max()
+        patching_results = (patching_results - min_val) / (max_val - min_val)
+        
         if cache_patching_results:
-            torch.save(patching_results, f"../results/patching_results_{i}.pt")
+            torch.save(patching_results, f"../results/patching_results_{i}_{module_kind}.pt")
 
         # Plot the heatmap
         if plot_patching_results:
@@ -153,7 +168,7 @@ def run_activation_patching(
                 clean_tokens,
                 tokenizer,
                 answer=answer,
-                filepath=f"../results/patching_results_{i}.pdf",
+                filepath=f"../results/patching_results_{i}_{module_kind}.pdf",
                 modelname=modelname
             )
 
@@ -170,6 +185,7 @@ def main():
     parser.add_argument("--tokenizer_name", type=str, default="dmis-lab/meerkat-7b-v1.0")
     parser.add_argument("--data_path", type=str, default="../data/meerkat-7b-v1.0_medqa-original_results.json")
     parser.add_argument("--max_tokens", type=int, default=1500)
+    parser.add_argument("--module_kind", type=str, default="resid", choices=["resid", "attn", "mlp"])
     parser.add_argument("--cache_patching_results", action="store_true")
     parser.add_argument("--plot_patching_results", action="store_true")
     args = parser.parse_args()
@@ -194,8 +210,31 @@ def main():
     with open(args.data_path, "r") as f:
         baseline_data = json.load(f)
     print(f"Baseline data: {len(baseline_data)}")
-
-    run_activation_patching(model, tokenizer, baseline_data, args.max_tokens, cache_patching_results=args.cache_patching_results, plot_patching_results=args.plot_patching_results, modelname=args.model_name)
     
+    if args.module_kind == "resid":
+        run_patching_experiment(
+            model,
+            tokenizer,
+            baseline_data,
+            args.max_tokens,
+            max_layers=model.cfg.n_layers,
+            cache_patching_results=args.cache_patching_results,
+            plot_patching_results=args.plot_patching_results,
+            modelname=args.model_name,
+            module_kind=args.module_kind
+        )
+    elif args.module_kind == "mlp":
+        run_patching_experiment(
+            model,
+            tokenizer,
+            baseline_data,
+            args.max_tokens,
+            max_layers=model.cfg.n_layers,
+            cache_patching_results=args.cache_patching_results,
+            plot_patching_results=args.plot_patching_results,
+            modelname=args.model_name,
+            module_kind=args.module_kind
+        )
+
 if __name__ == "__main__":
     main()
