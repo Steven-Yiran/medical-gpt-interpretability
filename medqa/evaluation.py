@@ -196,7 +196,7 @@ def inference(args):
         if "mistral" in args.model_name:
             generated_response = generate_with_mistral(model, tokenizer, question, choices, args.max_tokens)
         else:
-            generated_response = generate_with_prompt(model, tokenizer, question, choices, args.max_tokens)
+            generated_response = generate_with_prompt_cot(model, tokenizer, question, choices, args.max_tokens)
 
         answer, answer_type = filter.extract_answer(generated_response)
 

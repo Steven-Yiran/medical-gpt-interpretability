@@ -2,8 +2,15 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 
-
-def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None, filepath=None, modelname="Meerkat-7B"):
+def plot_patching_heatmap_normalized(
+        patching_results,
+        clean_tokens,
+        tokenizer,
+        module_kind=None,
+        answer=None,
+        filepath=None,
+        modelname=None
+    ):
     """
     Plots the activation patching results as a heatmap.
     
@@ -18,19 +25,20 @@ def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None
     differences = patching_results.cpu().numpy()
     differences = differences.T
     low_score = patching_results.min().item()
-    module_kind = None
     window = 10
-    labels = [tokenizer.decode([t]) for t in clean_tokens[0]]
-    
     num_tokens = differences.shape[0]
     num_layers = differences.shape[1]
+
+    assert num_tokens <= clean_tokens.shape[1]
+    labels = [tokenizer.decode([t]) for t in clean_tokens[0][:num_tokens]]
+
     plot_height = max(num_tokens / 7, 20)
     plot_width = num_layers / 10
     with plt.rc_context():
         fig, ax = plt.subplots(figsize=(plot_width, plot_height), dpi=200)
         h = ax.pcolor(
             differences,
-            cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
+            cmap={None: "Purples", "resid": "Purples", "mlp": "Greens", "attn": "Reds"}[
                 module_kind
             ],
             vmin=low_score,
@@ -45,7 +53,8 @@ def plot_patching_heatmap(patching_results, clean_tokens, tokenizer, answer=None
             ax.set_xlabel(f"single restored layer within {modelname}")
         else:
             ax.set_title(f"Impact of restoring state after corrupted input ({module_kind})")
-            ax.set_xlabel(f"center of interval of {window} layers within {module_kind} layers")
+            ax.set_xlabel(f"single restored layer within {modelname}")
+            #ax.set_xlabel(f"center of interval of {window} layers within {module_kind} layers")
         cb = plt.colorbar(h)
         if answer is not None:
             cb.ax.set_title(f"p({str(answer).strip()})", y=-0.16, fontsize=10)
@@ -166,6 +175,81 @@ def plot_average_patching_heatmap(patching_results, patient_start_idx, patient_e
         else:
             ax.set_title(f"Impact of restoring state after corrupted input ({module_kind}, By Token Group)")
             ax.set_xlabel(f"center of interval of layers within {module_kind} layers")
+        
+        cb = plt.colorbar(h)
+        if answer is not None:
+            cb.ax.set_title(f"p({str(answer).strip()})", y=-0.16, fontsize=10)
+        
+        if filepath is not None:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            plt.savefig(filepath, bbox_inches="tight")
+            plt.close()
+        else:
+            plt.show()
+
+
+def plot_patching_heatmap(
+        patching_results,
+        clean_tokens,
+        tokenizer,
+        module_kind=None,
+        answer=None,
+        filepath=None,
+        modelname=None
+    ):
+    """
+    Plots the activation patching results as a heatmap with diverging colors.
+    Positive values are shown in red, negative values in blue.
+    
+    Args:
+        patching_results: Tensor of shape (n_layers, n_positions) containing patching scores
+        clean_tokens: Original token IDs
+        tokenizer: Tokenizer used for decoding
+        module_kind: Type of module being patched (resid, mlp, attn)
+        answer: The correct answer for the question
+        filepath: Where to save the plot
+        modelname: Name of the model for the plot title
+    """
+    # Convert results to numpy for plotting
+    differences = patching_results.cpu().numpy()
+    differences = differences.T
+    num_tokens = differences.shape[0]
+    num_layers = differences.shape[1]
+
+    assert num_tokens <= clean_tokens.shape[1]
+    labels = [tokenizer.decode([t]) for t in clean_tokens[0][:num_tokens]]
+
+    plot_height = max(num_tokens / 7, 20)
+    plot_width = num_layers / 10
+    
+    # Calculate symmetric vmin and vmax for diverging colormap
+    abs_max = max(abs(differences.min()), abs(differences.max()))
+    vmin = -abs_max
+    vmax = abs_max
+
+    with plt.rc_context():
+        fig, ax = plt.subplots(figsize=(plot_width, plot_height), dpi=200)
+        
+        # Use RdBu (Red-Blue) diverging colormap
+        h = ax.pcolor(
+            differences,
+            cmap="RdBu_r",  # Red for positive, Blue for negative
+            vmin=vmin,
+            vmax=vmax,
+        )
+        
+        ax.invert_yaxis()
+        ax.set_yticks([0.5 + i for i in range(len(differences))])
+        ax.set_xticks([0.5 + i for i in range(0, differences.shape[1] - 6, 5)])
+        ax.set_xticklabels(list(range(0, differences.shape[1] - 6, 5)))
+        ax.set_yticklabels(labels)
+        
+        if not module_kind:
+            ax.set_title("Impact of restoring state after corrupted input")
+            ax.set_xlabel(f"single restored layer within {modelname}")
+        else:
+            ax.set_title(f"Impact of restoring state after corrupted input ({module_kind})")
+            ax.set_xlabel(f"single restored layer within {modelname}")
         
         cb = plt.colorbar(h)
         if answer is not None:

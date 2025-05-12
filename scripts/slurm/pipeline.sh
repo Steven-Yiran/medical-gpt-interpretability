@@ -32,8 +32,15 @@ MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
 #  --filter_patient_questions \
 #  $INFERENCE_FLAG
 
+MODULE_KIND=attn
+
 python $DEV_HOME/medqa/patching.py \
- --model_name $MODEL_NAME \
- --tokenizer_name $MODEL_NAME \
+ --model_tag $MODEL_NAME \
  --data_path $DEV_HOME/data/Mistral-7B-Instruct-v0.2_medqa-official_results.json \
- --cache_patching_results
+ --module_kind $MODULE_KIND \
+ --patching_batch_size 4 \
+ --max_tokens_to_patch 11 \
+ --max_layers_to_patch 32 \
+ --cache \
+ --plot \
+ --results_dir $DEV_HOME/results

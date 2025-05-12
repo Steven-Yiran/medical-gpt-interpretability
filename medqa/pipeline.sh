@@ -2,7 +2,7 @@
 
 #MODEL_NAME=dmis-lab/meerkat-7b-v1.0
 MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
-MODULE_KIND=mlp
+MODULE_KIND=resid
 
 # MAX_TOKENS=10
 # DO_INFERENCE=true
