@@ -45,7 +45,7 @@ def run_patching_experiment(
     plot_patching_results=False,
     normalize_patching_results=False,
     modelname=None,
-    module_kind=None,
+    hook_points=None,
     results_dir=None,
     low_memory=False,
     start_idx=0,
@@ -72,120 +72,109 @@ def run_patching_experiment(
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.synchronize()
-
-        result_filepath = f"{results_dir}/{i}/{modelname}_{module_kind}"
-        if os.path.exists(f"{result_filepath}.pdf"):
-            print(f"Skipping example {i} because results already exist")
-            i += 1
-            continue
         print(f"\nProcessing example {i}")
 
-        try:
-            baseline_prompt = baseline_data[i]['generated_response']
-            baseline_prompt = setup_prompt(baseline_prompt, modelname)
+        baseline_prompt = baseline_data[i]['generated_response']
+        baseline_prompt = setup_prompt(baseline_prompt, model_name="mistral")
 
-            if baseline_prompt is None:
-                print(f"Skipping example {i} because the prompt is None")
-                skipped_none_prompt += 1
-                i += 1
-                continue
+        if baseline_prompt is None:
+            print(f"Skipping example {i} because the prompt is None")
+            skipped_none_prompt += 1
+            i += 1
+            continue
 
-            patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
-            if patient_gender is None:
-                print(f"Skipping example {i} because did not find patient information")
-                skipped_no_patient_info += 1
-                i += 1
-                continue
-            # if gender_condition_filter.filter_text(baseline_prompt):
-            #     print(f"Skipping example {i} because it contains gender-specific medical conditions")
-            #     skipped_gender_condition += 1
-            #     i += 1
-            #     continue
+        patient_gender = patient_gender_filter.extract_gender(baseline_prompt)
+        if patient_gender is None:
+            print(f"Skipping example {i} because did not find patient information")
+            skipped_no_patient_info += 1
+            i += 1
+            continue
+        # if gender_condition_filter.filter_text(baseline_prompt):
+        #     print(f"Skipping example {i} because it contains gender-specific medical conditions")
+        #     skipped_gender_condition += 1
+        #     i += 1
+        #     continue
 
-            counterfactual_prompt = generate_counterfactual_patient_info(
-                baseline_prompt,
-                patient_gender,
-                swap_gender=True,
-                swap_pronouns=False
-            )
-            answer = chr(ord('A') + baseline_data[i]['gold'])
-            counterfactual_answer = ["A", "B", "C", "D"]
-            counterfactual_answer.remove(answer)
-            answers = [answer] + counterfactual_answer
-            answer_token_indices = torch.tensor([[model.to_single_token(answer) for answer in answers]], device="cuda")
+        counterfactual_prompt = generate_counterfactual_patient_info(
+            baseline_prompt,
+            patient_gender,
+            swap_gender=True,
+            swap_pronouns=False
+        )
+        answer = chr(ord('A') + baseline_data[i]['gold'])
+        counterfactual_answer = ["A", "B", "C", "D"]
+        counterfactual_answer.remove(answer)
+        answers = [answer] + counterfactual_answer
+        answer_token_indices = torch.tensor([[model.to_single_token(answer) for answer in answers]], device="cuda")
 
-            if baseline_prompt is None or counterfactual_prompt is None:
-                print(f"Skipping example {i} because the answer is not in the prompt")
-                skipped_incorrect_answer += 1
-                i += 1
-                continue
-            
-            clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
-            corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
+        if baseline_prompt is None or counterfactual_prompt is None:
+            print(f"Skipping example {i} because the answer is not in the prompt")
+            skipped_incorrect_answer += 1
+            i += 1
+            continue
+        
+        clean_tokens = tokenizer.encode(baseline_prompt, return_tensors="pt").to("cuda")
+        corrupted_tokens = tokenizer.encode(counterfactual_prompt, return_tensors="pt").to("cuda")
 
-            assert len(clean_tokens[0]) == len(corrupted_tokens[0]), "length mismatch, corrupted tokens are not the same length as clean tokens"
+        assert len(clean_tokens[0]) == len(corrupted_tokens[0]), "length mismatch, corrupted tokens are not the same length as clean tokens"
 
-            def names_filter(name):
-                if module_kind == "resid":
-                    return "hook_resid_pre" in name
-                elif module_kind == "mlp":
-                    return "mlp.hook_out" in name
-                elif module_kind == "attn":
-                    return "hook_attn_out" in name
-                else:
-                    return (
-                        "hook_resid_pre" in name or
-                        "mlp.hook_out" in name or
-                        "hook_attn_out" in name
-                    )
+        def names_filter(name):
+            return any(hook_point in name for hook_point in hook_points)
 
-            # Run with cache and immediately delete unused tensors
-            clean_logits, clean_cache = model.run_with_cache(clean_tokens, names_filter=names_filter)
-            corrupted_logits = model(corrupted_tokens)
+        # Run with cache and immediately delete unused tensors
+        clean_logits, clean_cache = model.run_with_cache(clean_tokens, names_filter=names_filter)
+        corrupted_logits = model(corrupted_tokens)
 
-            # Clear cache after getting initial results
+        # Clear cache after getting initial results
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()
+
+        clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
+        corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
+        print(f"Total patching effect: {clean_logit_diff - corrupted_logit_diff}")
+
+        if clean_logit_diff < 0:
+            print(f"Skipping example {i} because the clean logit diff is negative, meaning wrong answer is more likely")
+            skipped_negative_clean_logit_diff += 1
+            del clean_logits, clean_cache, corrupted_logits
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
                 torch.cuda.synchronize()
+            i += 1
+            continue
 
-            clean_logit_diff = get_logit_diff(clean_logits, answer_token_indices).item()
-            corrupted_logit_diff = get_logit_diff(corrupted_logits, answer_token_indices).item()
-            print(f"Total patching effect: {clean_logit_diff - corrupted_logit_diff}")
+        if abs(clean_logit_diff - corrupted_logit_diff) < 1e-4:
+            print(f"Skipping example {i} because the total patching effect is too small")
+            skipped_small_logit_diff += 1
+            del clean_logits, clean_cache, corrupted_logits
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
+            i += 1
+            continue
 
-            if clean_logit_diff < 0:
-                print(f"Skipping example {i} because the clean logit diff is negative, meaning wrong answer is more likely")
-                skipped_negative_clean_logit_diff += 1
-                del clean_logits, clean_cache, corrupted_logits
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
-                    torch.cuda.synchronize()
-                i += 1
+        def corruption_metric(logits, answer_token_indices=answer_token_indices):
+            return get_logit_diff(logits, answer_token_indices)
+
+        def patching_hook(
+            activations,
+            hook,
+            position
+        ):
+            clean_activations = clean_cache[hook.name]
+            activations[:, position, :] = clean_activations[:, position, :]
+            return activations
+
+        for hook_point in hook_points:
+
+            result_filepath = f"{results_dir}/{i}/{modelname}_{hook_point}"
+            if os.path.exists(f"{result_filepath}.pt"):
+                print(f"Skipping example {i} hook point {hook_point} because results already exist")
                 continue
-
-            if abs(clean_logit_diff - corrupted_logit_diff) < 1e-4:
-                print(f"Skipping example {i} because the total patching effect is too small")
-                skipped_small_logit_diff += 1
-                del clean_logits, clean_cache, corrupted_logits
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
-                    torch.cuda.synchronize()
-                i += 1
-                continue
-
-            def corruption_metric(logits, answer_token_indices=answer_token_indices):
-                return get_logit_diff(logits, answer_token_indices)
-
-            def patching_hook(
-                activations,
-                hook,
-                position
-            ):
-                clean_activations = clean_cache[hook.name]
-                activations[:, position, :] = clean_activations[:, position, :]
-                return activations
 
             patching_results = torch.zeros((max_layers_to_patch, max_tokens_to_patch), device="cuda")
-            
+        
             # Process layers in smaller batches to manage memory
             for layer_batch_start in tqdm(range(0, max_layers_to_patch, batch_size)):
                 layer_batch_end = min(layer_batch_start + batch_size, max_layers_to_patch)
@@ -193,25 +182,12 @@ def run_patching_experiment(
                     for position in range(0, max_tokens_to_patch):
                         fwd_hooks = []
                         temp_hook_fn = partial(patching_hook, position=position)
-                        if module_kind == "resid":
-                            hook_point = f"blocks.{layer_idx}.hook_resid_pre"
-                            fwd_hooks.append((hook_point, temp_hook_fn))
-                        elif module_kind == "mlp":
-                            hook_point = f"blocks.{layer_idx}.mlp.hook_out"
-                            fwd_hooks.append((hook_point, temp_hook_fn))
-                        elif module_kind == "attn":
-                            hook_point = f"blocks.{layer_idx}.hook_attn_out"
-                            fwd_hooks.append((hook_point, temp_hook_fn))
+                        hook_point_name = f"blocks.{layer_idx}.{hook_point}"
+                        fwd_hooks.append((hook_point_name, temp_hook_fn))
 
                         patched_logits = model.run_with_hooks(corrupted_tokens, fwd_hooks=fwd_hooks)
                         patched_logit_diff = corruption_metric(patched_logits, answer_token_indices).detach()
                         patching_results[layer_idx, position] = (patched_logit_diff - corrupted_logit_diff) / (clean_logit_diff - corrupted_logit_diff)
-                        
-                        # Clear memory after each position
-                        del patched_logits
-                        if torch.cuda.is_available():
-                            torch.cuda.empty_cache()
-                            torch.cuda.synchronize()
 
                 # Clear memory after each batch
                 if torch.cuda.is_available():
@@ -230,6 +206,13 @@ def run_patching_experiment(
 
             # Plot the heatmap
             if plot_patching_results:
+                if "mlp" in hook_point:
+                    module_kind = "mlp"
+                elif "attn" in hook_point:
+                    module_kind = "attn"
+                else:
+                    module_kind = "resid"
+
                 if normalize_patching_results:
                     plot_patching_heatmap_normalized(
                         patching_results,
@@ -251,13 +234,13 @@ def run_patching_experiment(
                         modelname=modelname
                     )
 
-            # Clean up all tensors at the end of each iteration
-            del clean_logits, clean_cache, corrupted_logits, patching_results
-            if torch.cuda.is_available():
-                torch.cuda.empty_cache()
-                torch.cuda.synchronize()
+        # Clean up all tensors at the end of each iteration
+        del clean_logits, clean_cache, corrupted_logits, patching_results
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()
 
-            i += 1
+        i += 1
 
     print(f"Skipped due to incorrect answer: {skipped_incorrect_answer}")
     print(f"Skipped due to gender condition: {skipped_gender_condition}")
@@ -272,7 +255,7 @@ def main():
     parser.add_argument("--patching_batch_size", type=int, default=4)
     parser.add_argument("--max_tokens_to_patch", type=int, default=1500)
     parser.add_argument("--max_layers_to_patch", type=int, default=None)
-    parser.add_argument("--module_kind", type=str, default="resid", choices=["resid", "attn", "mlp"])
+    parser.add_argument("--hook_points", type=list, default=["hook_resid_pre", "hook_mlp_out", "hook_attn_out"])
     parser.add_argument("--cache", "-c", action="store_true")
     parser.add_argument("--plot", "-p", action="store_true")
     parser.add_argument("--normalize", "-n", action="store_true")
@@ -317,7 +300,7 @@ def main():
         plot_patching_results=args.plot,
         normalize_patching_results=args.normalize,
         modelname=model_name,
-        module_kind=args.module_kind,
+        hook_points=args.hook_points,
         results_dir=args.results_dir,
         low_memory=args.low_memory,
         start_idx=args.start_idx,
