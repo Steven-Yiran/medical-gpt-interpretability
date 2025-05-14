@@ -75,7 +75,7 @@ def run_patching_experiment(
         print(f"\nProcessing example {i}")
 
         baseline_prompt = baseline_data[i]['generated_response']
-        baseline_prompt = setup_prompt(baseline_prompt, model_name="mistral")
+        baseline_prompt = setup_prompt(baseline_prompt, model_name=modelname)
 
         if baseline_prompt is None:
             print(f"Skipping example {i} because the prompt is None")
@@ -191,6 +191,7 @@ def run_patching_experiment(
 
                 # Clear memory after each batch
                 if torch.cuda.is_available():
+                    del patched_logits, patched_logit_diff
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
 
@@ -234,8 +235,9 @@ def run_patching_experiment(
                         modelname=modelname
                     )
 
-        # Clean up all tensors at the end of each iteration
-        del clean_logits, clean_cache, corrupted_logits, patching_results
+            # Clean up all tensors at the end of each iteration
+            del patching_results
+        
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.synchronize()
